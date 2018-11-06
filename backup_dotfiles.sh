@@ -7,10 +7,6 @@ do
 	cp -r $file .
 done
 	
-date='America/Sao_Paulo' date
-commit_msg="Backup de "
-commit_msg+=$date
-
 git add -A
-git commit -m "$commit_msg"
+git commit -m "Backup automático"
 git push -u origin master
