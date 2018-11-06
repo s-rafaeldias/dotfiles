@@ -7,7 +7,7 @@ do
 	cp -r $file .
 done
 	
-date=date+"%c"
+date='America/Sao_Paulo' date
 
 git add -A
 git commit -m "Backup de $date"
