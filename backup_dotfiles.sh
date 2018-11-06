@@ -10,5 +10,5 @@ done
 date='America/Sao_Paulo' date
 
 git add -A
-git commit -m "Backup de $date"
+git commit -m "Backup de ${date}"
 git push -u origin master
