@@ -7,3 +7,8 @@ do
 	cp -r $file .
 done
 	
+data=date +"%c"
+
+git add -A
+git commit -m "Backup de $data"
+git push -u origin master
