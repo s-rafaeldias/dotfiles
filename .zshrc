@@ -73,11 +73,11 @@ source $ZSH/oh-my-zsh.sh
 # export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
+if [[ -n $SSH_CONNECTION ]]; then
+   export EDITOR='vim'
+else
+   export EDITOR='vim'
+fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -94,7 +94,7 @@ source $ZSH/oh-my-zsh.sh
 alias zshconfig="sudo vim ~/.zshrc"
 alias vimconfig="sudo vim ~/.vimrc"
 alias ls="ls -SsXal -1 --color"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+alias backup_dotfiles="cd ~/Documents/dotfiles/ && bash backup_dotfiles.sh"
 #eval `dircolors ~/.dir_colors/dircolors`
 
 
