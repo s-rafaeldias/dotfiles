@@ -1,9 +1,10 @@
 #!/bin/bash
 
-files_to_save=(~/.vimrc ~/.zshrc)
+files_to_save=(~/.vimrc ~/.zshrc ~/.vim)
 
 for file in "${files_to_save[@]}"
 do
+	echo "Copying $file"
 	cp -r $file .
 done
 	
