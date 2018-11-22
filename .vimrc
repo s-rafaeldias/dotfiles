@@ -1,5 +1,5 @@
 set nocompatible
-set nowrap
+"set nowrap
 set encoding=utf8
 
 """"" START VUNDLE CONFIG
@@ -27,7 +27,7 @@ Plugin 'AnsiEsc.vim'
 Plugin 'ryanoasis/vim-devicons'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-
+Plugin 'jszakmeister/vim-togglecursor'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 
@@ -60,34 +60,25 @@ syntax enable
 set showmatch
 " show a visual line under the cursor's current line
 set cursorline
+" show whitespaces
+set listchars=eol:¬,tab:>-,trail:~,extends:>,precedes:<,space:·
+set list
 
 " Vim-Airline Configuration
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
-let g:airline_theme='violet'
+let g:airline_theme='base16_spacemacs'
 let g:hybrid_custom_term_colors = 1
 let g:hybrid_reduced_contrast = 1
 set t_Co=256
 
 """ NERDTree Settings
-
-" open NERDTree automatically when vim starts up on opening a directory
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
-
-" Automatically close vim if only NERDTree left
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-
-" Auto refresh NERDTree files
-autocmd CursorHold,CursorHoldI * if (winnr("$") > 1) | call NERDTreeFocus() | call g:NERDTree.ForCurrentTab().getRoot().refresh() | call g:NERDTree.ForCurrentTab().render() | wincmd w | endif
-
-" Preserve scroll position when switching between buffers
-au BufLeave * if !&diff | let b:winview = winsaveview() | endif
-au BufEnter * if exists('b:winview') && !&diff | call winrestview(b:winview) | unlet! b:winview | endif
-
 let NERDTreeShowHidden=1
 
 map <C-n> :NERDTreeToggle<CR>
+
+" Cursor settings
+let g:togglecursor_insert='blinking_line'
 
 " C/C++ config
 "let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"

@@ -7,7 +7,7 @@ export ZSH=/home/rafael/.oh-my-zsh
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+ZSH_THEME="agnoster"
 
 # Set list of themes to load
 # Setting this variable when ZSH_THEME=random
@@ -61,6 +61,7 @@ ZSH_THEME="robbyrussell"
 plugins=(
   git
   zsh-syntax-highlighting
+  docker
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -79,6 +80,10 @@ else
    export EDITOR='vim'
 fi
 
+if [[ -n $SSH_CONNECTION ]]; then
+  ZSH_THEME="robbyrussell"
+fi
+
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
@@ -91,11 +96,12 @@ fi
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-alias zshconfig="sudo vim ~/.zshrc"
-alias vimconfig="sudo vim ~/.vimrc"
-alias ls="ls -SsXal -1 --color"
+alias zshconfig="vim ~/.zshrc"
+alias vimconfig="vim ~/.vimrc"
+alias ls_all="ls -SsXal -1 --color"
 alias backup_dotfiles="cd ~/Documents/dotfiles/ && bash backup_dotfiles.sh"
-#eval `dircolors ~/.dir_colors/dircolors`
+
+eval `dircolors ~/.dir_colors/dircolors`
 
 
 # spark
@@ -133,4 +139,33 @@ zstyle ':completion:*:warnings' format "$fg[red]No matches for:$reset_color %d"
 zstyle ':completion:*:corrections' format '%B%d (errors: %e)%b'
 zstyle ':completion:*' group-name ''
 
-# Auto install:
+# .bashrc config:
+
+if [ -n "$force_color_prompt" ]; then
+    if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
+	# We have color support; assume it's compliant with Ecma-48
+	# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
+	# a case would tend to support setf rather than setaf.)
+	color_prompt=yes
+    else
+	color_prompt=
+    fi
+fi
+
+# set a fancy prompt (non-color, unless we know we "want" color)
+case "$TERM" in
+    xterm-color|*-256color) color_prompt=yes;;
+esac
+
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls --color=auto'
+    #alias dir='dir --color=auto'
+    #alias vdir='vdir --color=auto'
+
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
+fi
+
+
