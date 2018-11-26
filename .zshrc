@@ -100,6 +100,7 @@ alias zshconfig="vim ~/.zshrc"
 alias vimconfig="vim ~/.vimrc"
 alias ls_all="ls -SsXal -1 --color"
 alias backup_dotfiles="cd ~/Documents/dotfiles/ && bash backup_dotfiles.sh"
+alias plugin_install_vim="sudo vim +PluginInstall +qall"
 
 eval `dircolors ~/.dir_colors/dircolors`
 
@@ -160,8 +161,8 @@ esac
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
     alias ls='ls --color=auto'
-    #alias dir='dir --color=auto'
-    #alias vdir='vdir --color=auto'
+    alias dir='dir --color=auto'
+    alias vdir='vdir --color=auto'
 
     alias grep='grep --color=auto'
     alias fgrep='fgrep --color=auto'

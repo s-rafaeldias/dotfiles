@@ -1,6 +1,6 @@
 #!/bin/bash
 
-files_to_save=(~/.vimrc ~/.zshrc ~/.vim)
+files_to_save=(~/.vimrc ~/.zshrc ~/.vim/ftplugin ~/.vim/syntax)
 
 for file in "${files_to_save[@]}"
 do
