@@ -18,6 +18,8 @@ Plugin 'git://git.wincent.com/command-t.git'
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 Plugin 'davidhalter/jedi-vim'
 Plugin 'editorconfig/editorconfig-vim'
+Plugin 'cjrh/vim-conda'
+
 """ NerdTree
 Plugin 'scrooloose/nerdtree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
