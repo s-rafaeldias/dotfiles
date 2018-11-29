@@ -50,9 +50,9 @@ noremap  <Right> ""
 noremap! <Right> <Esc>
 
 " Syntax highlighting
-syntax on 
+syntax on
 " Adiciona número na linha
-set number 
+set number
 " Disable annoying beeping
 set noerrorbells
 set vb t_vb=
@@ -69,23 +69,18 @@ set list
 " Vim-Airline Configuration
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
-let g:airline_theme='base16_spacemacs'
+let g:airline_theme='violet'
 let g:hybrid_custom_term_colors = 1
 let g:hybrid_reduced_contrast = 1
+let g:airline#extensions#tabline#formatter = 'unique_tail'
 set t_Co=256
 
 """ NERDTree Settings
 let NERDTreeShowHidden=1
 
-map <C-n> :NERDTreeToggle<CR>
+map <C-d> :NERDTreeToggle<CR>
 
 " Cursor settings
 let g:togglecursor_insert='blinking_line'
 
-" C/C++ config
-"let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
-"let g:cpp_class_scope_highlight = 1
-"let g:cpp_member_variable_highlight = 1
-"let g:cpp_class_decl_highlight = 1
-"let g:cpp_experimental_simple_template_highlight = 1
-"let g:cpp_concepts_highlight = 1
+

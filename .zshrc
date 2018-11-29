@@ -100,7 +100,7 @@ alias zshconfig="vim ~/.zshrc"
 alias vimconfig="vim ~/.vimrc"
 alias ls_all="ls -SsXal -1 --color"
 alias backup_dotfiles="cd ~/Documents/dotfiles/ && bash backup_dotfiles.sh"
-alias plugin_install_vim="sudo vim +PluginInstall +qall"
+alias vim_plugin_install="sudo vim +PluginInstall +qall"
 
 eval `dircolors ~/.dir_colors/dircolors`
 
