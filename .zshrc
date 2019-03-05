@@ -118,7 +118,7 @@ export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 
 # GO PATH
-export GOPATH=$HOME/Documents/Programas/Go
+export PATH=$PATH:/usr/local/go/bin
 
 # Miniconda Path
 export PATH=/home/rafael/miniconda3/bin:$PATH

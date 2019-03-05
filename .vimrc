@@ -19,6 +19,7 @@ Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 Plugin 'davidhalter/jedi-vim'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'cjrh/vim-conda'
+Plugin 'fatih/vim-go'
 
 """ NerdTree
 Plugin 'scrooloose/nerdtree'
