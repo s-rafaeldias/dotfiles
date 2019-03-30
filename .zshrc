@@ -101,6 +101,7 @@ alias vimconfig="vim ~/.vimrc"
 alias ls_all="ls -SsXal -1 --color"
 alias backup_dotfiles="cd ~/Documents/dotfiles/ && bash backup_dotfiles.sh"
 alias vim_plugin_install="sudo vim +PluginInstall +qall"
+alias update="sudo apt update && sudo apt upgrade -y"
 
 eval `dircolors ~/.dir_colors/dircolors`
 
