@@ -62,6 +62,7 @@ plugins=(
   git
   zsh-syntax-highlighting
   docker
+  kubectl
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -101,6 +102,7 @@ alias vimconfig="vim ~/.vimrc"
 alias ls_all="ls -SsXal -1 --color"
 alias backup_dotfiles="cd ~/Documents/dotfiles/ && bash backup_dotfiles.sh"
 alias vim_plugin_install="sudo vim +PluginInstall +qall"
+alias update="sudo apt update && sudo apt upgrade -y"
 
 eval `dircolors ~/.dir_colors/dircolors`
 
@@ -119,10 +121,6 @@ export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 # GO PATH
 export PATH=$PATH:/usr/local/go/bin
-
-# Miniconda Path
-export PATH=/home/rafael/miniconda3/bin:$PATH
-export PATH=~/home/rafael/.local/bin/:$PATH
 
 # Do menu-driven completion.
 zstyle ':completion:*' menu select
@@ -169,4 +167,18 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/rafael/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+ if [ -f "/home/rafael/anaconda3/etc/profile.d/conda.sh" ]; then
+ . "/home/rafael/anaconda3/etc/profile.d/conda.sh"
+ else
+ export PATH="/home/rafael/anaconda3/bin:$PATH"
+ fi
+fi
+unset __conda_setup
+# <<< conda initialize <<
 
