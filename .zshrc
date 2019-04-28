@@ -113,11 +113,10 @@ eval `dircolors ~/.dir_colors/dircolors`
 
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-#export PATH="$HOME/.rbenv/bin:$PATH"
-#eval "$(rbenv init -)"
-#export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
-
-
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+# Miniconda path
+export PATH="/home/rafael/miniconda3/bin:$PATH"
 
 # GO PATH
 export PATH=$PATH:/usr/local/go/bin
@@ -167,18 +166,4 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/rafael/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
- if [ -f "/home/rafael/anaconda3/etc/profile.d/conda.sh" ]; then
- . "/home/rafael/anaconda3/etc/profile.d/conda.sh"
- else
- export PATH="/home/rafael/anaconda3/bin:$PATH"
- fi
-fi
-unset __conda_setup
-# <<< conda initialize <<
 

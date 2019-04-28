@@ -16,10 +16,15 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'git://git.wincent.com/command-t.git'
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-Plugin 'davidhalter/jedi-vim'
 Plugin 'editorconfig/editorconfig-vim'
+Plugin 'Valloric/YouCompleteMe'
+
+""" C++
+Plugin 'octol/vim-cpp-enhanced-highlight'
+
+""" Python
 Plugin 'cjrh/vim-conda'
-Plugin 'fatih/vim-go'
+Plugin 'davidhalter/jedi-vim'
 
 """ NerdTree
 Plugin 'scrooloose/nerdtree'
@@ -31,6 +36,7 @@ Plugin 'ryanoasis/vim-devicons'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'jszakmeister/vim-togglecursor'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 
@@ -78,10 +84,13 @@ set t_Co=256
 
 """ NERDTree Settings
 let NERDTreeShowHidden=1
-
 map <C-d> :NERDTreeToggle<CR>
+
+""" Vim Conda settings
+"let g:conda_startup_msg_suppress = 1
 
 " Cursor settings
 let g:togglecursor_insert='blinking_line'
 
-
+""" YouCompleteMe settings
+let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
