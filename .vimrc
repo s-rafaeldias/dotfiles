@@ -1,9 +1,26 @@
-set nocompatible
-"set nowrap
-set encoding=utf8
+""" Capotes Vimrc
+""" Arquivo de configurações do VIM
+""" Sections:
+""" 00 - Vundle
+""" 01 - Colors
+""" 02 - Misc
+""" 03 - Spaces & Tabs
+""" 04 - UI Layout
+""" 05 - Searching
+""" 06 - Folding
+""" 08 - Leader Shortcus
+""" 09 - Powerline
+""" 10 - CrtlP
+""" 11 - NERDTree
+""" 12 - Syntastic
+""" 13 - Launch Config
+""" 14 - Tmux
+""" 15 - AutoGroups
+""" 16 - Backups
+""" 17 - Custom Functions
 
+""" 00 - Vundle {{{
 """"" START VUNDLE CONFIG
-
 filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
@@ -18,7 +35,6 @@ Plugin 'git://git.wincent.com/command-t.git'
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'Valloric/YouCompleteMe'
-
 """ C++
 Plugin 'octol/vim-cpp-enhanced-highlight'
 
@@ -31,11 +47,13 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 
 """ Theme / Interface
+Plugin 'Lokaltog/powerline'
 Plugin 'AnsiEsc.vim'
 Plugin 'ryanoasis/vim-devicons'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'jszakmeister/vim-togglecursor'
+Plugin 'sonph/onehalf', {'rtp': 'vim/'}
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -44,8 +62,20 @@ filetype on
 filetype plugin on
 filetype plugin indent on    " required
 " Put your non-Plugin stuff after this line
+" }}}
 
-" Configurações de beginning
+""" 01 - Colors {{{
+syntax on	" Syntax highlighting
+syntax enable	" Enable syntax highlighting
+set background=dark
+"set t_Co=256
+colorscheme onehalfdark
+"}}}
+
+""" 02 - Misc {{{
+set nocompatible
+set encoding=utf8
+
 " Disable arrow keys
 noremap  <Up> ""
 noremap! <Up> <Esc>
@@ -56,41 +86,71 @@ noremap! <Left> <Esc>
 noremap  <Right> ""
 noremap! <Right> <Esc>
 
-" Syntax highlighting
-syntax on
-" Adiciona número na linha
-set number
 " Disable annoying beeping
 set noerrorbells
 set vb t_vb=
-" enable syntax highlighting
-syntax enable
-" show the matching part of the pair for [] {} and ()
-set showmatch
-" show a visual line under the cursor's current line
-set cursorline
+let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
+"}}}
+
+"" 03 - Spaces & Tabs {{{
 " show whitespaces
 set listchars=eol:¬,tab:>-,trail:~,extends:>,precedes:<,space:·
 set list
 
-" Vim-Airline Configuration
+"}}}
+
+""" 04 - UI Layout {{{
+set number					" show line numbers
+set cursorline					" show a visual line under the cursor's current line
+set showmatch					" show the matching part of the pair for [] {} and ()
+let g:togglecursor_insert='blinking_line'
+"}}}
+
+""" 05 - Searching {{{
+"}}}
+
+""" 06 - Folding {{{
+"}}}
+
+""" 08 - Leader Shortcuts {{{
+"}}}
+
+""" 09 - Powerline {{{
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
-let g:airline_theme='violet'
+let g:airline_theme='onehalfdark'
 let g:hybrid_custom_term_colors = 1
 let g:hybrid_reduced_contrast = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
-set t_Co=256
+"}}}
 
-""" NERDTree Settings
+""" 10 - CrtlP {{{
+"}}}
+
+""" 11 - NERDTree {{{
 let NERDTreeShowHidden=1
 map <C-d> :NERDTreeToggle<CR>
+"}}}
 
-""" Vim Conda settings
-"let g:conda_startup_msg_suppress = 1
+""" 12 - Syntastic {{{
+"}}}
 
-" Cursor settings
-let g:togglecursor_insert='blinking_line'
+""" 13 - Launch Config {{{
+"}}}
+
+""" 14 - Tmux {{{
+"}}}
+
+""" 15 - AutoGroups {{{
+" disable continuation of comments to the next line
+autocmd BufNewFile,BufRead * setlocal formatoptions-=cro
+"}}}
+
+""" 16 - Backups {{{
+"}}}
+
+""" 17 - Custom Functions {{{
+"}}}
 
 """ YouCompleteMe settings
-let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
+
