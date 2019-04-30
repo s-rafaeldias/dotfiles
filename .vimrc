@@ -35,6 +35,8 @@ Plugin 'git://git.wincent.com/command-t.git'
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'ctrlpvim/ctrlp.vim'
+
 """ C++
 Plugin 'octol/vim-cpp-enhanced-highlight'
 
@@ -45,6 +47,9 @@ Plugin 'davidhalter/jedi-vim'
 """ NerdTree
 Plugin 'scrooloose/nerdtree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
+
+""" YAML
+Plugin 'avakhov/vim-yaml'
 
 """ Theme / Interface
 Plugin 'Lokaltog/powerline'
@@ -90,6 +95,8 @@ noremap! <Right> <Esc>
 set noerrorbells
 set vb t_vb=
 let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
+
+nnoremap <leader>. :CtrlPTag<cr>
 "}}}
 
 "" 03 - Spaces & Tabs {{{
@@ -151,6 +158,3 @@ autocmd BufNewFile,BufRead * setlocal formatoptions-=cro
 
 """ 17 - Custom Functions {{{
 "}}}
-
-""" YouCompleteMe settings
-
