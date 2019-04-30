@@ -15,7 +15,10 @@ install:
 	cp .bashrc ~/.
 	cp .tmux.conf ~/.
 
-git:
+git-push:
 	git add -A
 	git commit -m "Backup automático"
 	git push -u origin master
+
+git-pull:
+	git pull origin master
