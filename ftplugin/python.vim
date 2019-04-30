@@ -9,8 +9,8 @@ setlocal expandtab
 setlocal shiftwidth=4
 " enable all Python syntax highlighting features
 let python_highlight_all = 1
-
 setlocal completeopt-=preview
 let g:jedi#popup_on_dot = 0
 let g:jedi#show_call_signatures = "1"
 let g:jedi#popup_select_first = 0
+
