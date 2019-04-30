@@ -2,7 +2,7 @@ all: install
 
 update:
 	cp -rf ~/.vim/ftplugin .
-	cp -rf ~/.vim/.ycm_extra_conf.py .
+	cp -rf ~/.vim/.ycm_extra_conf.py .vim
 	cp ~/.vimrc .
 	cp ~/.zshrc .
 	cp ~/.bashrc .

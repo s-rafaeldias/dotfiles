@@ -73,7 +73,7 @@ filetype plugin indent on    " required
 syntax on	" Syntax highlighting
 syntax enable	" Enable syntax highlighting
 set background=dark
-"set t_Co=256
+set t_Co=256
 colorscheme onehalfdark
 "}}}
 
@@ -111,6 +111,9 @@ set number					" show line numbers
 set cursorline					" show a visual line under the cursor's current line
 set showmatch					" show the matching part of the pair for [] {} and ()
 let g:togglecursor_insert='blinking_line'
+
+set colorcolumn=110
+highlight ColorColumn ctermbg=darkgray
 "}}}
 
 """ 05 - Searching {{{
