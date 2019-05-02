@@ -44,6 +44,9 @@ Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'cjrh/vim-conda'
 Plugin 'davidhalter/jedi-vim'
 
+""" Ruby/Rails
+Plugin 'tpope/vim-rails'
+
 """ NerdTree
 Plugin 'scrooloose/nerdtree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
@@ -117,6 +120,7 @@ highlight ColorColumn ctermbg=darkgray
 "}}}
 
 """ 05 - Searching {{{
+set tags=./tags;
 "}}}
 
 """ 06 - Folding {{{
