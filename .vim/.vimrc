@@ -46,6 +46,7 @@ Plugin 'davidhalter/jedi-vim'
 
 """ Ruby/Rails
 Plugin 'tpope/vim-rails'
+Plugin 'tpope/vim-rbenv'
 
 """ NerdTree
 Plugin 'scrooloose/nerdtree'
