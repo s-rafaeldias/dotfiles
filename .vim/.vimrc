@@ -45,6 +45,11 @@ Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'cjrh/vim-conda'
 Plugin 'davidhalter/jedi-vim'
 
+""" Ruby/Rails
+Plugin 'vim-ruby/vim-ruby'
+Plugin 'tpope/vim-rails'
+Plugin 'tpope/vim-rbenv'
+
 """ NerdTree
 Plugin 'scrooloose/nerdtree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
@@ -98,6 +103,7 @@ set vb t_vb=
 
 
 nnoremap <leader>. :CtrlPTag<cr>
+set tags=./tags
 "}}}
 
 "" 03 - Spaces & Tabs {{{
@@ -139,6 +145,7 @@ let g:airline#extensions#tabline#formatter = 'unique_tail'
 "}}}
 
 """ 11 - NERDTree {{{
+let NERDTreeQuitOnOpen = 1
 let NERDTreeShowHidden=1
 map <C-d> :NERDTreeToggle<CR>
 "}}}
