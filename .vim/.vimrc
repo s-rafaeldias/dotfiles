@@ -12,12 +12,13 @@
 """ 09 - Powerline
 """ 10 - CrtlP
 """ 11 - NERDTree
-""" 12 - Syntastic
-""" 13 - Launch Config
-""" 14 - Tmux
-""" 15 - AutoGroups
-""" 16 - Backups
-""" 17 - Custom Functions
+""" 12 - YouCompleteMe
+""" 13 - Syntastic
+""" 14 - Launch Config
+""" 15 - Tmux
+""" 16 - AutoGroups
+""" 17 - Backups
+""" 18 - Custom Functions
 
 """ 00 - Vundle {{{
 """"" START VUNDLE CONFIG
@@ -43,9 +44,6 @@ Plugin 'octol/vim-cpp-enhanced-highlight'
 """ Python
 Plugin 'cjrh/vim-conda'
 Plugin 'davidhalter/jedi-vim'
-
-""" Ruby/Rails
-Plugin 'tpope/vim-rails'
 
 """ NerdTree
 Plugin 'scrooloose/nerdtree'
@@ -97,7 +95,7 @@ noremap! <Right> <Esc>
 " Disable annoying beeping
 set noerrorbells
 set vb t_vb=
-let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
+
 
 nnoremap <leader>. :CtrlPTag<cr>
 "}}}
@@ -120,7 +118,6 @@ highlight ColorColumn ctermbg=darkgray
 "}}}
 
 """ 05 - Searching {{{
-set tags=./tags;
 "}}}
 
 """ 06 - Folding {{{
@@ -146,22 +143,28 @@ let NERDTreeShowHidden=1
 map <C-d> :NERDTreeToggle<CR>
 "}}}
 
-""" 12 - Syntastic {{{
+""" 12 - YouCompleteMe {{{
+let g:ycm_filetype_blacklist = { 'python': 1 }
 "}}}
 
-""" 13 - Launch Config {{{
+""" 13 - Syntastic {{{
 "}}}
 
-""" 14 - Tmux {{{
 "}}}
 
-""" 15 - AutoGroups {{{
+""" 14 - Launch Config {{{
+"}}}
+
+""" 15 - Tmux {{{
+"}}}
+
+""" 16 - AutoGroups {{{
 " disable continuation of comments to the next line
 autocmd BufNewFile,BufRead * setlocal formatoptions-=cro
 "}}}
 
-""" 16 - Backups {{{
+""" 17 - Backups {{{
 "}}}
 
-""" 17 - Custom Functions {{{
+""" 18 - Custom Functions {{{
 "}}}
