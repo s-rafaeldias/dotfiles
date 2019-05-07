@@ -32,7 +32,7 @@ Plugin 'VundleVim/Vundle.vim'
 
 """ Utility
 Plugin 'tpope/vim-fugitive'
-Plugin 'git://git.wincent.com/command-t.git'
+Plugin 'wincent/command-t'
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'Valloric/YouCompleteMe'
@@ -101,6 +101,7 @@ noremap! <Right> <Esc>
 set noerrorbells
 set vb t_vb=
 
+set timeoutlen=1000 ttimeoutlen=0
 
 nnoremap <leader>. :CtrlPTag<cr>
 set tags=./tags
