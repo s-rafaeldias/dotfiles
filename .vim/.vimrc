@@ -103,6 +103,8 @@ set vb t_vb=
 
 set timeoutlen=1000 ttimeoutlen=0
 
+set pastetoggle=<F2>
+
 nnoremap <leader>. :CtrlPTag<cr>
 set tags=./tags
 "}}}
@@ -152,7 +154,7 @@ map <C-d> :NERDTreeToggle<CR>
 "}}}
 
 """ 12 - YouCompleteMe {{{
-let g:ycm_filetype_blacklist = { 'python': 1 }
+let g:ycm_filetype_blacklist = { 'python': 1, 'ruby': 1 }
 "}}}
 
 """ 13 - Syntastic {{{
