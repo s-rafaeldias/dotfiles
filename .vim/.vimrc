@@ -35,8 +35,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'wincent/command-t'
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 Plugin 'editorconfig/editorconfig-vim'
-"Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'ervandew/supertab'
+Plugin 'sheerun/vim-polyglot'
 
 """ C++
 Plugin 'octol/vim-cpp-enhanced-highlight'
@@ -57,14 +56,16 @@ Plugin 'Xuyuanp/nerdtree-git-plugin'
 """ YAML
 Plugin 'avakhov/vim-yaml'
 
-""" Theme / Interface
+""" UI Interface
 Plugin 'Lokaltog/powerline'
 Plugin 'AnsiEsc.vim'
 Plugin 'ryanoasis/vim-devicons'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'jszakmeister/vim-togglecursor'
+""" Themes
 Plugin 'sonph/onehalf', {'rtp': 'vim/'}
+Plugin 'jacoborus/tender.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -75,12 +76,13 @@ filetype plugin indent on    " required
 " Put your non-Plugin stuff after this line
 " }}}
 
+
 """ 01 - Colors {{{
 syntax on	" Syntax highlighting
 syntax enable	" Enable syntax highlighting
 set background=dark
 set t_Co=256
-colorscheme onehalfdark
+colorscheme tender
 "}}}
 
 """ 02 - Misc {{{
@@ -138,7 +140,7 @@ highlight ColorColumn ctermbg=darkgray
 """ 09 - Powerline {{{
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
-let g:airline_theme='onehalfdark'
+let g:airline_theme='tender'
 let g:hybrid_custom_term_colors = 1
 let g:hybrid_reduced_contrast = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
