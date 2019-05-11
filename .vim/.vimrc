@@ -34,6 +34,7 @@ Plugin 'wincent/command-t'
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'sheerun/vim-polyglot'
+Plugin 'Valloric/YouCompleteMe'
 
 """ C++
 Plugin 'octol/vim-cpp-enhanced-highlight'
