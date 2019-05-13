@@ -35,6 +35,7 @@ Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'sheerun/vim-polyglot'
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'jeffkreeftmeijer/vim-numbertoggle'
 
 """ C++
 Plugin 'octol/vim-cpp-enhanced-highlight'
