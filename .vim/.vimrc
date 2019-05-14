@@ -155,6 +155,7 @@ let g:airline#extensions#tabline#formatter = 'unique_tail'
 """ 09 - NERDTree {{{
 let NERDTreeQuitOnOpen = 1
 let NERDTreeShowHidden=1
+let NERDTreeChDirMode=2
 map <C-d> :NERDTreeToggle<CR>
 """ }}}
 
