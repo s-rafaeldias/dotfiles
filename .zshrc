@@ -57,6 +57,10 @@ export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 # Miniconda path
 export PATH="/home/rafael/miniconda3/bin:$PATH"
+# Go PATH
+export PATH=$PATH:/usr/local/go/bin
+export GOPATH=$HOME/Documents/projects/go
+
 
 # Do menu-driven completion.
 zstyle ':completion:*' menu select

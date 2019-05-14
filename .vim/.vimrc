@@ -36,6 +36,7 @@ Plugin 'editorconfig/editorconfig-vim'
 Plugin 'sheerun/vim-polyglot'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'jeffkreeftmeijer/vim-numbertoggle'
+Plugin 'majutsushi/tagbar'
 
 """ C++
 Plugin 'octol/vim-cpp-enhanced-highlight'
@@ -141,6 +142,7 @@ highlight ColorColumn ctermbg=darkgray
 
 """ 07 - Fn Shortcus {{{
 set pastetoggle=<F2>
+nmap <F8> :TagbarToggle<CR>
 """ }}}
 
 """ 08 - Powerline {{{
