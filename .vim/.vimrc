@@ -49,6 +49,9 @@ Plugin 'vim-ruby/vim-ruby'
 Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-rbenv'
 
+""" Go
+Plugin 'fatih/vim-go'
+
 """ NerdTree
 Plugin 'scrooloose/nerdtree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
@@ -110,6 +113,8 @@ set tags=./tags
 if $PATH !~ "\.rbenv"
     let $PATH="/home/rafael/.rbenv/shims:/home/rafael/.rbenv/bin:" . $PATH
 endif
+
+set completeopt-=preview
 """ }}}
 
 """ 03 - Spaces & Tabs {{{
