@@ -16,5 +16,8 @@ zsh:
 	cp ~/.zshrc .
 	cp ~/.bashrc .
 
-backup: vim tmux zsh
+git:
+	cp ~/.gitconfig .
+
+backup: vim tmux zsh git
 backup-work: vim tmux

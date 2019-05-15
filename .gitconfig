@@ -1,0 +1,9 @@
+[user]
+	email = rafa197795@gmail.com
+	name = Rafael Dias
+[diff]
+	tool = vimdiff
+[merge]
+	tool = vimdiff
+[difftool]
+	prompt = false
