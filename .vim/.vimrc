@@ -162,7 +162,7 @@ map <C-d> :NERDTreeToggle<CR>
 """ }}}
 
 """ 10 - YouCompleteMe {{{
-let g:ycm_filetype_blacklist = { 'python': 1 }
+let g:ycm_filetype_blacklist = { 'python': 1, 'go': 1, 'ruby': 1 }
 """ }}}
 
 """ 11 - Launch Confi {{{g
