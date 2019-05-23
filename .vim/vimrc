@@ -107,6 +107,11 @@ noremap  <Left> ""
 noremap! <Left> <Esc>
 noremap  <Right> ""
 noremap! <Right> <Esc>
+
+" Remap jk for exit Insert mode
+inoremap jk <Esc>
+inoremap <Esc> <nop>
+
 " Move line up
 nnoremap - ddp
 " Move line down
@@ -116,12 +121,22 @@ inoremap <c-u> <esc>bveUea
 " Upper word on normal mode
 nnoremap <c-u> bveUe
 
+
 """ 05 - Leader Shortcus
 let mapleader=","
 " Open vim config
 nnoremap <leader>ev :vsplit $MYVIMRC<CR>
 " Reload vim config
 nnoremap <leader>sv :source $MYVIMRC<CR>
+" Wrap word in double quotes
+nnoremap <Leader>" viw<esc>a"<esc>bi"<esc>lel
+" Wrap word in single quotes
+nnoremap <Leader>' viw<esc>a'<esc>bi'<esc>lel
+" Wrap selected area in Visual mode in single quotes
+vnoremap <Leader>' <Esc>`>a'<Esc>`<i'<Esc>
+" Wrap selected area in Visual mode in double quotes
+vnoremap <Leader>" <Esc>`>a"<Esc>`<i"<Esc>
+
 
 """ 06 - Fn Shortcus
 set pastetoggle=<F2>
@@ -169,4 +184,7 @@ if $PATH !~ "\.rbenv"
 endif
 
 set completeopt-=preview
+
+""" Abbreviations
+iabbrev @@ Rafael Dias Silveira
 
