@@ -30,7 +30,7 @@ Plugin 'wincent/command-t'
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'sheerun/vim-polyglot'
-"Plugin 'Valloric/YouCompleteMe'
+Plugin 'Valloric/YouCompleteMe'
 Plugin 'majutsushi/tagbar'
 
 """ C++
@@ -47,6 +47,7 @@ Plugin 'tpope/vim-rbenv'
 
 """ Go
 Plugin 'fatih/vim-go'
+Plugin 'mdempsky/gocode', {'rtp': 'vim/'}
 
 """ NerdTree
 Plugin 'scrooloose/nerdtree'
@@ -108,10 +109,6 @@ noremap! <Left> <Esc>
 noremap  <Right> ""
 noremap! <Right> <Esc>
 
-" Remap jk for exit Insert mode
-inoremap jk <Esc>
-inoremap <Esc> <nop>
-
 " Move line up
 nnoremap - ddp
 " Move line down
@@ -120,14 +117,16 @@ nnoremap _ ddkP
 inoremap <c-u> <esc>bveUea
 " Upper word on normal mode
 nnoremap <c-u> bveUe
-
+" Remap jk for exit Insert mode
+inoremap kj <Esc>
+inoremap <Esc> <nop>
 
 """ 05 - Leader Shortcus
 let mapleader=","
 " Open vim config
 nnoremap <leader>ev :vsplit $MYVIMRC<CR>
 " Reload vim config
-nnoremap <leader>sv :source $MYVIMRC<CR>
+nnoremap <leader>sv :source ~/.vim/vimrc<CR>
 " Wrap word in double quotes
 nnoremap <Leader>" viw<esc>a"<esc>bi"<esc>lel
 " Wrap word in single quotes
@@ -157,7 +156,7 @@ let NERDTreeChDirMode=2
 map <c-d> :NERDTreeToggle<CR>
 
 """ 09 - YouCompleteMe
-let g:ycm_filetype_blacklist = { 'python': 1, 'go': 1, 'ruby': 1 }
+let g:ycm_filetype_blacklist = { 'python': 1, 'ruby': 1 }
 
 """ 10 - AutoGroups
 " disable continuation of comments to the next line
@@ -179,12 +178,12 @@ set timeoutlen=1000 ttimeoutlen=0
 
 set tags=./tags
 
-if $PATH !~ "\.rbenv"
+if $PATH !~ "/.rbenv"
     let $PATH="/home/rafael/.rbenv/shims:/home/rafael/.rbenv/bin:" . $PATH
 endif
 
 set completeopt-=preview
+fixdel
+
 
 """ Abbreviations
-iabbrev @@ Rafael Dias Silveira
-
