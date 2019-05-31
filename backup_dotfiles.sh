@@ -10,7 +10,7 @@ echo "Backup do ambiente $ambiente"
 git checkout $ambiente
 
 # Git backup
-if cp ~/.gitconfig git/ ; then
+if cp ~/.gitconfig ~/.gitmessage git/ ; then
 	echo -e "${GREEN}GG${NC} do git"
 else
 	echo -e "${RED}ERROR${NC} do git"
