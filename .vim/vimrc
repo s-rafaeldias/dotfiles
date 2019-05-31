@@ -185,5 +185,5 @@ endif
 set completeopt-=preview
 fixdel
 
-
-""" Abbreviations
+""" Fix mapping of some keys
+inoremap [3~ <Del>
