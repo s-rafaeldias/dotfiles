@@ -1,4 +1,7 @@
 #!/bin/bash
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+NC='\033[0m' # No Color
 
 # Input do ambiente (home ou work)
 ambiente=$1
@@ -7,11 +10,10 @@ echo "Backup do ambiente $ambiente"
 git checkout $ambiente
 
 # Git backup
-echo Backing up git configs
 if cp ~/.gitconfig git/ ; then
-	echo GG
+	echo -e "${RED}GG${NC} do git"
 else
-	echo Erro ao fazer backup das configurações do git
+	echo -e "${RED}ERROR${NC} do git"
 fi
 
 # Vim backup
