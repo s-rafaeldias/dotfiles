@@ -188,4 +188,5 @@ fixdel
 
 """ Abbreviations
 " Fix
-map [3~ <Del>
+inoremap [3~ <Del>
+inoremap OQ <F2>
