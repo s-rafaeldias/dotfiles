@@ -1,13 +1,24 @@
 #!/bin/bash
 
-files_to_save=(~/.vimrc ~/.zshrc)
+# Input do ambiente (home ou work)
+ambiente=$1
+echo "Backup do ambiente $ambiente"
 
-for file in "${files_to_save[@]}"
-do
-	echo "Copying $file"
-	cp -r $file .
-done
-	
-git add -A
-git commit -m "Backup automático"
-git push -u origin master
+git checkout $ambiente
+
+# Git backup
+echo Backing up git configs
+if cp ~/.gitconfig git/ ; then
+	echo GG
+else
+	echo Erro ao fazer backup das configurações do git
+fi
+
+# Vim backup
+echo Backing up vim configs
+rsync -r --exclude 'bundle' --links ~/.vim/ vim/
+
+# Oh my zsh backup
+echo Backing up shell configs
+cp ~/.zshrc ~/.bashrc shell
+

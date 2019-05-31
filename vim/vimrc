@@ -187,3 +187,4 @@ fixdel
 
 """ Fix mapping of some keys
 inoremap [3~ <Del>
+inoremap OQ <F2>

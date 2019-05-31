@@ -1,6 +1,10 @@
+[http]
+	sslVerify = false
 [user]
-	email = rafa197795@gmail.com
 	name = Rafael Dias
+	email = rafael.silveira@poupex.com.br
+[core]
+	editor = vim
 [diff]
 	tool = vimdiff
 [merge]
