@@ -68,6 +68,7 @@ Plugin 'jszakmeister/vim-togglecursor'
 Plugin 'sonph/onehalf', {'rtp': 'vim/'}
 Plugin 'jacoborus/tender.vim'
 
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 
@@ -185,6 +186,6 @@ endif
 set completeopt-=preview
 fixdel
 
-""" Fix mapping of some keys
-inoremap [3~ <Del>
-inoremap OQ <F2>
+""" Abbreviations
+" Fix
+map [3~ <Del>
