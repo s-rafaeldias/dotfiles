@@ -1,7 +1,19 @@
 export TERM="xterm-256color"
 export ZSH="/home/05018601183/.oh-my-zsh"
-ZSH_THEME="powerlevel9k/powerlevel9k"
 COMPLETION_WAITING_DOTS="true"
+
+#POWERLEVEL9k Config
+ZSH_THEME="powerlevel9k/powerlevel9k"
+POWERLEVEL9K_MODE='nerdfont-complete'
+POWERLEVEL9K_PROMPT_ON_NEWLINE=true
+POWERLEVEL9K_RPROMPT_ON_NEWLINE=true
+POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX=""
+POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX=""
+POWERLEVEL9K_MULTILINE_NEWLINE_PROMPT_PREFIX=""
+POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
+
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(user dir newline go_version anaconda rbenv vcs)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator dir_writable)
 
 plugins=(
   git
@@ -22,17 +34,11 @@ else
   export EDITOR='vim'
 fi
 
-#POWERLEVEL9k Config
-POWERLEVEL9K_MODE='nerdfont-complete'
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(user dir newline anaconda vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator dir_writable time)
-POWERLEVEL9K_PROMPT_ON_NEWLINE=true
-POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
 
 
 # ALIAS
 alias zshconfig="vim ~/.zshrc"
-alias vimconfig="vim ~/.vim"
+alias vimconfig="vim ~/.vim/"
 alias vim_plugin_install="sudo vim +PluginInstall +qall"
 alias tmux='TERM=screen-256color tmux -2'
 alias tmuxinator='TERM=screen-256color tmuxinator'

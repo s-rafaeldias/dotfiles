@@ -165,6 +165,14 @@ autocmd BufNewFile,BufRead * setlocal formatoptions-=cro
 autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
 autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
+" Python settings
+autocmd FileType python iabbrev <buffer> iff if:<left>i
+
+augroup code_comment
+	autocmd FileType python, yaml nnoremap <buffer> <Leader>c I#<esc>
+	autocmd FileType javascript nnoremap <buffer> <Leader>c I//<esc>
+augroup END
+
 
 """ 11 - Misc
 "set nocompatible

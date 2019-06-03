@@ -11,7 +11,7 @@ git checkout $ambiente
 
 # Git backup
 if cp ~/.gitconfig git/ ; then
-	echo -e "${RED}GG${NC} do git"
+	echo -e "${GREEN}GG${NC} do git"
 else
 	echo -e "${RED}ERROR${NC} do git"
 fi
