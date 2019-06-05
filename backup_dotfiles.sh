@@ -10,7 +10,7 @@ echo "Backup do ambiente $ambiente"
 git checkout $ambiente
 
 # Git backup
-if cp ~/.gitconfig git/ ; then
+if cp ~/.gitconfig ~/.gitmessage git/ ; then
 	echo -e "${GREEN}GG${NC} do git"
 else
 	echo -e "${RED}ERROR${NC} do git"
@@ -20,7 +20,10 @@ fi
 echo Backing up vim configs
 rsync -r --exclude 'bundle' --links ~/.vim/ vim/
 
+# Nvim backup
+echo Backing up nvim configs
+rsync -r --exclude 'plugged' --links ~/.config/nvim/ nvim/
+
 # Oh my zsh backup
 echo Backing up shell configs
 cp ~/.zshrc ~/.bashrc shell
-

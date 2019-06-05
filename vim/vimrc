@@ -169,8 +169,8 @@ autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
 autocmd FileType python iabbrev <buffer> iff if:<left>i
 
 augroup code_comment
-	autocmd FileType python, yaml nnoremap <buffer> <Leader>c I#<esc>
-	autocmd FileType javascript nnoremap <buffer> <Leader>c I//<esc>
+    autocmd FileType python,yaml  nnoremap <buffer> <Leader>c I#<esc>
+    autocmd FileType javascript   nnoremap <buffer> <Leader>c I//<esc>
 augroup END
 
 
