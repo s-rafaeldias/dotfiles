@@ -25,6 +25,11 @@ Plug 'roxma/nvim-yarp'
 Plug 'roxma/vim-hug-neovim-rpc'
 let g:deoplete#enable_at_startup = 1
 
+""" Themes
+Plug 'joshdick/onedark.vim'
+Plug 'KeitaNakamura/neodark.vim'
+
+
 " Initialize plugin system
 call plug#end()
 
@@ -51,6 +56,9 @@ set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
 
 set timeoutlen=1000 ttimeoutlen=0
 
+"let g:neodark#background = '#202020'
+"let g:neodark#use_256color = 1
+colorscheme onedark
 
 " ===================================
 "          Custom mappings
