@@ -39,9 +39,9 @@ source $ZSH/oh-my-zsh.sh
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
-   export EDITOR='vim'
+   export EDITOR='nvim'
 else
-   export EDITOR='vim'
+   export EDITOR='nvim'
 fi
 
 if [[ -n $SSH_CONNECTION ]]; then
@@ -53,11 +53,11 @@ fi
 # For a full list of active aliases, run `alias`.
 
 # ALIAS
-alias zshconfig="vim ~/.zshrc"
-alias vimconfig="vim ~/.vim"
-alias ls_all="ls -SsXal -1 --color"
-alias backup_dotfiles="cd ~/Documents/dotfiles/ && bash backup_dotfiles.sh"
+alias zshconfig="nvim ~/.zshrc"
+alias vimconfig="nvim ~/.config/nvim"
 alias vim_plugin_install="vim +PluginInstall +qall"
+
+alias backup_dotfiles="cd ~/Documents/dotfiles/ && bash backup_dotfiles.sh"
 alias update="sudo apt update && sudo apt upgrade -y"
 alias tmux='TERM=screen-256color tmux -2'
 alias tmuxinator='TERM=screen-256color tmuxinator'

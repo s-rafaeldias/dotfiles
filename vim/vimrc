@@ -127,7 +127,7 @@ let mapleader=","
 " Open vim config
 nnoremap <leader>ev :vsplit $MYVIMRC<CR>
 " Reload vim config
-nnoremap <leader>sv :source ~/.vim/vimrc<CR>
+nnoremap <leader>sv :source $MYVIMRC<CR>
 " Wrap word in double quotes
 nnoremap <Leader>" viw<esc>a"<esc>bi"<esc>lel
 " Wrap word in single quotes
@@ -184,7 +184,6 @@ if $PATH !~ "/.rbenv"
 endif
 
 set completeopt-=preview
-fixdel
 
 """ Abbreviations
 " Fix
