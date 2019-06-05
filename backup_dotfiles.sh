@@ -20,6 +20,10 @@ fi
 echo Backing up vim configs
 rsync -r --exclude 'bundle' --links ~/.vim/ vim/
 
+# Nvim backup
+echo Backing up nvim configs
+rsync -r --exclude 'plugged' --links ~/.config/nvim/ nvim/
+
 # Oh my zsh backup
 echo Backing up shell configs
 cp ~/.zshrc ~/.bashrc shell
