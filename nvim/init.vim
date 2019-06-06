@@ -1,20 +1,28 @@
+" Python configuration using conda
+let g:python3_host_prog = '/home/rafael/miniconda3/envs/neovim/bin/python'
+
 " ===================================
 "              Plugins
 " ===================================
 call plug#begin()
-" Git
-Plug 'airblade/vim-gitgutter'
 
-" Syntax
+""" Git
+Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
+
+""" Syntax
 Plug 'sheerun/vim-polyglot'
 Plug 'junegunn/vim-easy-align'
 
-" NERDTree
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+""" Golang
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'deoplete-plugins/deoplete-go', { 'do': 'make'}
+
+""" NERDTree
+Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 
 """ Misc
-Plug 'jszakmeister/vim-togglecursor'
 
 """ Deoplete
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -25,10 +33,37 @@ let g:deoplete#enable_at_startup = 1
 """ Themes
 Plug 'joshdick/onedark.vim'
 Plug 'KeitaNakamura/neodark.vim'
+Plug 'jacoborus/tender.vim'
+
+""" Airline
+Plug 'Lokaltog/powerline'
+Plug 'ryanoasis/vim-devicons'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 
 " Initialize plugin system
 call plug#end()
+
+
+" ===================================
+"            Airline
+" ===================================
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
+let g:airline_theme='tender'
+let g:hybrid_custom_term_colors = 1
+let g:hybrid_reduced_contrast = 1
+let g:airline#extensions#tabline#formatter = 'unique_tail'
+let g:airline#extensions#branch#enabled = 1
+
+" ===================================
+"            NERDTree
+" ===================================
+let NERDTreeQuitOnOpen = 1
+let NERDTreeShowHidden=1
+let NERDTreeChDirMode=2
+map <c-d> :NERDTreeToggle<CR>
 
 
 " ===================================
@@ -52,10 +87,10 @@ set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
 		  \,sm:block-blinkwait175-blinkoff150-blinkon175
 
 set timeoutlen=1000 ttimeoutlen=0
+set updatetime=100
 
-"let g:neodark#background = '#202020'
-"let g:neodark#use_256color = 1
 colorscheme onedark
+set completeopt-=preview
 
 " ===================================
 "          Custom mappings
