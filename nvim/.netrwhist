@@ -1,7 +1,10 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_cnt =8
 let g:netrw_dirhist_1='/home/05018601183/Documents/personal/dotfiles/vim'
 let g:netrw_dirhist_2='/home/05018601183/Documents/personal/dotfiles'
 let g:netrw_dirhist_3='/home/05018601183/Documents/EQANA/projetos/pexia/pexia-actions'
 let g:netrw_dirhist_4='/home/05018601183/Documents/EQANA/projetos/pexia/pexia-actions/actions'
 let g:netrw_dirhist_5='/home/05018601183/Documents/EQANA/projetos/pexia/pexia-nlu'
+let g:netrw_dirhist_6='/home/05018601183/Documents/EQANA/projetos/pexia/pexia-nlu/nlu'
+let g:netrw_dirhist_7='/home/05018601183/Documents/EQANA/projetos/pexia/pexia-nlu'
+let g:netrw_dirhist_8='/home/05018601183/.config/nvim/plugged'

@@ -5,19 +5,22 @@ let g:python3_host_prog = '/home/05018601183/anaconda3/envs/neovim/bin/python'
 "              Plugins
 " ===================================
 call plug#begin()
-" Git
-Plug 'airblade/vim-gitgutter'
 
-" Syntax
+""" Git
+Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
+
+""" Syntax
 Plug 'sheerun/vim-polyglot'
 Plug 'junegunn/vim-easy-align'
 
-" NERDTree
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+
+""" NERDTree
+Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 
 """ Misc
-Plug 'jszakmeister/vim-togglecursor'
+Plug 'majutsushi/tagbar'
 
 """ Deoplete
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -28,10 +31,37 @@ let g:deoplete#enable_at_startup = 1
 """ Themes
 Plug 'joshdick/onedark.vim'
 Plug 'KeitaNakamura/neodark.vim'
+Plug 'jacoborus/tender.vim'
+
+""" Airline
+Plug 'ryanoasis/vim-devicons'
+"Plug 'Lokaltog/powerline'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 
 " Initialize plugin system
 call plug#end()
+
+
+" ===================================
+"            Airline
+" ===================================
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
+let g:airline_theme='tender'
+let g:hybrid_custom_term_colors = 1
+let g:hybrid_reduced_contrast = 1
+let g:airline#extensions#tabline#formatter = 'unique_tail'
+"let g:airline#extensions#branch#enabled = 1
+
+" ===================================
+"            NERDTree
+" ===================================
+let NERDTreeQuitOnOpen = 1
+let NERDTreeShowHidden=1
+let NERDTreeChDirMode=2
+map <c-d> :NERDTreeToggle<CR>
 
 
 " ===================================
@@ -45,6 +75,9 @@ set showmatch	" show the matching part of the pair for [] {} and ()
 set colorcolumn=110
 highlight ColorColumn ctermbg=darkgray
 
+set background=dark
+colorscheme tender
+
 " White space settings
 set listchars=eol:¬,tab:>-,trail:~,extends:>,precedes:<,space:·
 set list
@@ -54,11 +87,14 @@ set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
 		  \,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
 		  \,sm:block-blinkwait175-blinkoff150-blinkon175
 
-set timeoutlen=1000 ttimeoutlen=0
 
-"let g:neodark#background = '#202020'
-"let g:neodark#use_256color = 1
-colorscheme onedark
+" ===================================
+"          Misc
+" ===================================
+set timeoutlen=1000 ttimeoutlen=0
+set updatetime=100
+set completeopt-=preview
+
 
 " ===================================
 "          Custom mappings
@@ -115,4 +151,4 @@ nmap <F8> :TagbarToggle<CR>
 "             Autocmd
 " ===================================
 " disable continuation of comments to the next line
-autocmd BufNewFile,BufRead * setlocal formatoptions-=cro
+autocmd BufNewFile,BufRead * setlocal formatoptions-=cronoremap 

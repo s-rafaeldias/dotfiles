@@ -29,18 +29,18 @@ source $ZSH/oh-my-zsh.sh
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vim'
+  export EDITOR='nvim'
   ZSH_THEME="agnoster"
 else
-  export EDITOR='vim'
+  export EDITOR='nvim'
 fi
 
 
 
 # ALIAS
-alias zshconfig="vim ~/.zshrc"
-alias vimconfig="vim ~/.vim/"
-alias vim_plugin_install="sudo vim +PluginInstall +qall"
+alias zshconfig="nvim ~/.zshrc"
+alias vimconfig="nvim ~/.config/nvim/"
+alias vim_plugin_install="sudo nvim +PluginInstall +qall"
 alias tmux='TERM=screen-256color tmux -2'
 alias tmuxinator='TERM=screen-256color tmuxinator'
 
