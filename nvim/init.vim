@@ -1,5 +1,6 @@
 " Python configuration using conda
 let g:python3_host_prog = '/home/rafael/miniconda3/envs/neovim/bin/python'
+set directory=.
 
 " ===================================
 "              Plugins
@@ -7,7 +8,6 @@ let g:python3_host_prog = '/home/rafael/miniconda3/envs/neovim/bin/python'
 call plug#begin()
 
 """ Git
-Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 
 """ Syntax
@@ -89,7 +89,9 @@ set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
 set timeoutlen=1000 ttimeoutlen=0
 set updatetime=100
 
-colorscheme onedark
+set background=dark
+set t_Co=256
+colorscheme tender
 set completeopt-=preview
 
 " ===================================
@@ -109,9 +111,9 @@ noremap! <Right> <Esc>
 nnoremap - ddp
 " Move line down
 nnoremap _ ddkP
-" Upper word on insert mode
+" Upper word on Insert mode
 inoremap <c-u> <esc>bveUea
-" Upper word on normal mode
+" Upper word on Normal mode
 nnoremap <c-u> bveUe
 " Remap jk for exit Insert mode
 inoremap kj <Esc>
@@ -119,7 +121,7 @@ inoremap <Esc> <nop>
 
 
 " ===================================
-""" Leader Shortcus
+"          Leader Shortcus
 " ===================================
 let mapleader=","
 " Open vim config

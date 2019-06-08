@@ -1,6 +1,7 @@
 [user]
 	email = rafa197795@gmail.com
 	name = Rafael Dias
+	signingkey = 099764F38578A7C7
 [diff]
 	tool = vimdiff
 [merge]
@@ -10,3 +11,4 @@
 
 [commit]
 	template = ~/.gitmessage
+	gpgsign = true
