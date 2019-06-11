@@ -14,8 +14,8 @@ POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX=""
 POWERLEVEL9K_MULTILINE_NEWLINE_PROMPT_PREFIX=""
 POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
 
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(user dir newline vcs go_version anaconda rbenv)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator dir_writable)
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(user dir vcs)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator dir_writable go_version anaconda rbenv)
 
 
 # Uncomment the following line to display red dots whilst waiting for completion.
@@ -57,11 +57,11 @@ alias zshconfig="nvim ~/.zshrc"
 alias vimconfig="nvim ~/.config/nvim"
 alias vim_plugin_install="vim +PluginInstall +qall"
 
-alias backup_dotfiles="cd ~/Documents/dotfiles/ && bash backup_dotfiles.sh"
+alias backup_dotfiles="cd ~/dotfiles/ && bash backup_dotfiles.sh"
 alias update="sudo apt update && sudo apt upgrade -y"
 alias tmux='TERM=screen-256color tmux -2'
 alias tmuxinator='TERM=screen-256color tmuxinator'
-alias go_workspace='cd ~/Documents/workspace/go'
+alias go_workspace='cd ~/workspace/go'
 
 eval `dircolors ~/.dir_colors/dircolors`
 
@@ -73,7 +73,7 @@ eval "$(rbenv init -)"
 export PATH="/home/rafael/miniconda3/bin:$PATH"
 # Go PATH
 export PATH=$PATH:/usr/local/go/bin
-export GOPATH=$HOME/Documents/workspace/go
+export GOPATH=$HOME/workspace/go
 export PATH=$PATH:$GOPATH/bin
 
 

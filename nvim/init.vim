@@ -16,18 +16,17 @@ Plug 'junegunn/vim-easy-align'
 
 """ Golang
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-Plug 'deoplete-plugins/deoplete-go', { 'do': 'make'}
 
 """ NERDTree
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 
 """ Misc
+Plug 'majutsushi/tagbar'
+Plug 'ctrlpvim/ctrlp.vim'
 
 """ Deoplete
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'roxma/nvim-yarp'
-Plug 'roxma/vim-hug-neovim-rpc'
 let g:deoplete#enable_at_startup = 1
 
 """ Themes
