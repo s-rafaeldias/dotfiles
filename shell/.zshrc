@@ -63,7 +63,7 @@ zstyle ':completion:*:warnings' format "$fg[red]No matches for:$reset_color %d"
 zstyle ':completion:*:corrections' format '%B%d (errors: %e)%b'
 zstyle ':completion:*' group-name ''
 
-export EDITOR='vim'
+export EDITOR='nvim'
 # Go PATH
 export PATH=$PATH:/usr/local/go/bin
 export GOPATH=$HOME/go

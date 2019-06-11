@@ -60,20 +60,16 @@ let g:netrw_liststyle = 3
 let g:netrw_browse_split = 4
 let g:netrw_altv = 1
 let g:netrw_winsize = 20
-augroup ProjectDrawer
-  autocmd!
-  autocmd VimEnter * :Vexplore
-augroup END
 
 
 " ===================================
 "            UI Layout
 " ===================================
-set rnu 	" show relative numbers
-set nu 		" show line numbers
-set cursorline  " show a visual line under the cursor's current line
-set cursorcolumn
-set showmatch	" show the matching part of the pair for [] {} and ()
+set rnu 	 " show relative numbers
+set nu 		 " show line numbers
+set cursorline   " show a visual line under the cursor's current line
+set cursorcolumn " show a visual line under cursor's current column
+set showmatch	 " show the matching part of the pair for [] {} and ()
 
 set colorcolumn=110
 highlight ColorColumn ctermbg=darkgray
