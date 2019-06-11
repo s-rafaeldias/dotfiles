@@ -1,5 +1,7 @@
 " Python configuration using conda
 let g:python3_host_prog = '/home/05018601183/anaconda3/envs/neovim/bin/python'
+set directory=.
+
 
 " ===================================
 "              Plugins
@@ -14,18 +16,12 @@ Plug 'tpope/vim-fugitive'
 Plug 'sheerun/vim-polyglot'
 Plug 'junegunn/vim-easy-align'
 
-
-""" NERDTree
-Plug 'scrooloose/nerdtree'
-Plug 'Xuyuanp/nerdtree-git-plugin'
-
 """ Misc
 Plug 'majutsushi/tagbar'
+Plug 'ctrlpvim/ctrlp.vim'
 
 """ Deoplete
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'roxma/nvim-yarp'
-Plug 'roxma/vim-hug-neovim-rpc'
 let g:deoplete#enable_at_startup = 1
 
 """ Themes
@@ -53,15 +49,21 @@ let g:airline_theme='tender'
 let g:hybrid_custom_term_colors = 1
 let g:hybrid_reduced_contrast = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
-"let g:airline#extensions#branch#enabled = 1
+let g:airline#extensions#branch#enabled = 1
+
 
 " ===================================
-"            NERDTree
+"              netrw
 " ===================================
-let NERDTreeQuitOnOpen = 1
-let NERDTreeShowHidden=1
-let NERDTreeChDirMode=2
-map <c-d> :NERDTreeToggle<CR>
+let g:netrw_banner = 0
+let g:netrw_liststyle = 3
+let g:netrw_browse_split = 4
+let g:netrw_altv = 1
+let g:netrw_winsize = 20
+augroup ProjectDrawer
+  autocmd!
+  autocmd VimEnter * :Vexplore
+augroup END
 
 
 " ===================================
@@ -70,6 +72,7 @@ map <c-d> :NERDTreeToggle<CR>
 set rnu 	" show relative numbers
 set nu 		" show line numbers
 set cursorline  " show a visual line under the cursor's current line
+set cursorcolumn
 set showmatch	" show the matching part of the pair for [] {} and ()
 
 set colorcolumn=110

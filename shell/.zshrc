@@ -3,7 +3,7 @@ export ZSH="/home/05018601183/.oh-my-zsh"
 COMPLETION_WAITING_DOTS="true"
 
 #POWERLEVEL9k Config
-ZSH_THEME="powerlevel9k/powerlevel9k"
+ZSH_THEME="powerlevel10k/powerlevel10k"
 POWERLEVEL9K_MODE='nerdfont-complete'
 POWERLEVEL9K_PROMPT_ON_NEWLINE=true
 POWERLEVEL9K_RPROMPT_ON_NEWLINE=true
