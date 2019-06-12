@@ -12,8 +12,8 @@ POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX=""
 POWERLEVEL9K_MULTILINE_NEWLINE_PROMPT_PREFIX=""
 POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
 
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(user dir newline go_version anaconda rbenv vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator dir_writable)
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(user dir newline vcs)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator dir_writable go_version anaconda rbenv)
 
 plugins=(
   git
@@ -40,7 +40,6 @@ fi
 # ALIAS
 alias zshconfig="nvim ~/.zshrc"
 alias vimconfig="nvim ~/.config/nvim/"
-alias vim_plugin_install="sudo nvim +PluginInstall +qall"
 alias tmux='TERM=screen-256color tmux -2'
 alias tmuxinator='TERM=screen-256color tmuxinator'
 
@@ -63,7 +62,6 @@ zstyle ':completion:*:warnings' format "$fg[red]No matches for:$reset_color %d"
 zstyle ':completion:*:corrections' format '%B%d (errors: %e)%b'
 zstyle ':completion:*' group-name ''
 
-export EDITOR='nvim'
 # Go PATH
 export PATH=$PATH:/usr/local/go/bin
 export GOPATH=$HOME/go

@@ -2,7 +2,6 @@
 let g:python3_host_prog = '/home/05018601183/anaconda3/envs/neovim/bin/python'
 set directory=.
 
-
 " ===================================
 "              Plugins
 " ===================================
@@ -55,12 +54,11 @@ let g:airline#extensions#branch#enabled = 1
 " ===================================
 "              netrw
 " ===================================
-let g:netrw_banner = 0
+let g:netrw_banner = 1
 let g:netrw_liststyle = 3
-let g:netrw_browse_split = 4
 let g:netrw_altv = 1
-let g:netrw_winsize = 20
-
+let g:netrw_winsize = 25
+nnoremap <C-D> :Explore<CR>
 
 " ===================================
 "            UI Layout
@@ -150,4 +148,13 @@ nmap <F8> :TagbarToggle<CR>
 "             Autocmd
 " ===================================
 " disable continuation of comments to the next line
-autocmd BufNewFile,BufRead * setlocal formatoptions-=cronoremap 
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+
+" comment code
+augroup codeComment
+	autocmd!
+	autocmd FileType python nnoremap <buffer> <Leader>c I#<Esc>
+	autocmd FileType yaml nnoremap <buffer> <Leader>c I# <Esc>
+	autocmd FileType vim nnoremap <buffer> <Leader>c I"<Esc>
+augroup END
+
