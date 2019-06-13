@@ -4,7 +4,7 @@ set directory=.
 
 " ===================================
 "              Plugins
-" ===================================
+" =================================== {{{
 call plug#begin()
 
 """ Git
@@ -36,11 +36,11 @@ Plug 'vim-airline/vim-airline-themes'
 
 " Initialize plugin system
 call plug#end()
-
+" }}}
 
 " ===================================
 "            Airline
-" ===================================
+" =================================== {{{
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 let g:airline_theme='tender'
@@ -48,19 +48,20 @@ let g:hybrid_custom_term_colors = 1
 let g:hybrid_reduced_contrast = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline#extensions#branch#enabled = 1
-
+" }}}
 
 " ===================================
 "              netrw
-" ===================================
+" =================================== {{{
 let g:netrw_banner = 1
 let g:netrw_liststyle = 3
 let g:netrw_altv = 1
 let g:netrw_winsize = 25
+" }}}
 
 " ===================================
 "            UI Layout
-" ===================================
+" =================================== {{{
 set rnu 	 " show relative numbers
 set nu 		 " show line numbers
 set cursorline   " show a visual line under the cursor's current line
@@ -81,19 +82,20 @@ set list
 set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
 		  \,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
 		  \,sm:block-blinkwait175-blinkoff150-blinkon175
+" }}}
 
 
 " ===================================
 "          Misc
-" ===================================
+" =================================== {{{
 set timeoutlen=1000 ttimeoutlen=0
 set updatetime=100
 set completeopt-=preview
-
+" }}}
 
 " ===================================
 "          Custom mappings
-" ===================================
+" =================================== {{{
 " Disable arrow keys
 noremap  <Up> ""
 noremap! <Up> <Esc>
@@ -115,11 +117,12 @@ nnoremap <c-u> bveUe
 " Remap jk for exit Insert mode
 inoremap kj <Esc>
 inoremap <Esc> <nop>
+" }}}
 
 
 " ===================================
 "          Leader Shortcus
-" ===================================
+" =================================== {{{
 let mapleader=","
 " Open vim config
 nnoremap <leader>ev :vsplit $MYVIMRC<CR>
@@ -133,18 +136,18 @@ nnoremap <Leader>' viw<esc>a'<esc>bi'<esc>lel
 vnoremap <Leader>' <Esc>`>a'<Esc>`<i'<Esc>
 " Wrap selected area in Visual mode in double quotes
 vnoremap <Leader>" <Esc>`>a"<Esc>`<i"<Esc>
-
+" }}}
 
 " ===================================
 "            Fn Shortcuts
-" ===================================
+" =================================== {{{
 set pastetoggle=<F2>
 nmap <F8> :TagbarToggle<CR>
-
+" }}}
 
 " ===================================
 "             Autocmd
-" ===================================
+" =================================== {{{
 " disable continuation of comments to the next line
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
@@ -160,4 +163,8 @@ augroup END
 "augroup nvimSettings
 	"autocmd!
 "augroup END
-
+augroup filetype_vim
+	autocmd!
+	autocmd FileType vim setlocal foldmethod=marker
+augroup END
+" }}}
