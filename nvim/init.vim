@@ -30,7 +30,6 @@ Plug 'jacoborus/tender.vim'
 
 """ Airline
 Plug 'ryanoasis/vim-devicons'
-"Plug 'Lokaltog/powerline'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
@@ -58,7 +57,6 @@ let g:netrw_banner = 1
 let g:netrw_liststyle = 3
 let g:netrw_altv = 1
 let g:netrw_winsize = 25
-nnoremap <C-D> :Explore<CR>
 
 " ===================================
 "            UI Layout
@@ -120,7 +118,7 @@ inoremap <Esc> <nop>
 
 
 " ===================================
-""" Leader Shortcus
+"          Leader Shortcus
 " ===================================
 let mapleader=","
 " Open vim config
@@ -157,4 +155,9 @@ augroup codeComment
 	autocmd FileType yaml nnoremap <buffer> <Leader>c I# <Esc>
 	autocmd FileType vim nnoremap <buffer> <Leader>c I"<Esc>
 augroup END
+
+" Open init.vim filetype config on a new tab
+"augroup nvimSettings
+	"autocmd!
+"augroup END
 
