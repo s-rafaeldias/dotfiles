@@ -1,13 +1,29 @@
 #!/bin/bash
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+NC='\033[0m' # No Color
 
-files_to_save=(~/.vimrc ~/.zshrc)
+# Input do ambiente (home ou work)
+ambiente=$1
+echo "Backup do ambiente $ambiente"
 
-for file in "${files_to_save[@]}"
-do
-	echo "Copying $file"
-	cp -r $file .
-done
-	
-git add -A
-git commit -m "Backup automático"
-git push -u origin master
+git checkout $ambiente
+
+# Git backup
+if cp ~/.gitconfig ~/.gitmessage git/ ; then
+	echo -e "${GREEN}GG${NC} do git"
+else
+	echo -e "${RED}ERROR${NC} do git"
+fi
+
+# Vim backup
+echo Backing up vim configs
+rsync -r --exclude 'bundle' --links ~/.vim/ vim/
+
+# Nvim backup
+echo Backing up nvim configs
+rsync -r --exclude 'plugged' --links ~/.config/nvim/ nvim/
+
+# Oh my zsh backup
+echo Backing up shell configs
+cp ~/.zshrc ~/.bashrc shell

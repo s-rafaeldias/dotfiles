@@ -4,7 +4,19 @@ export ZSH=/home/rafael/.oh-my-zsh
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="avit"
+#ZSH_THEME="avit"
+ZSH_THEME="powerlevel10k/powerlevel10k"
+POWERLEVEL9K_MODE='nerdfont-complete'
+POWERLEVEL9K_PROMPT_ON_NEWLINE=true
+POWERLEVEL9K_RPROMPT_ON_NEWLINE=true
+POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX=""
+POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX=""
+POWERLEVEL9K_MULTILINE_NEWLINE_PROMPT_PREFIX=""
+POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
+
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(user dir vcs)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator dir_writable go_version anaconda rbenv)
+
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 COMPLETION_WAITING_DOTS="true"
@@ -18,6 +30,7 @@ plugins=(
   zsh-syntax-highlighting
   docker
   kubectl
+  tmuxinator
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -26,9 +39,9 @@ source $ZSH/oh-my-zsh.sh
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
-   export EDITOR='vim'
+   export EDITOR='nvim'
 else
-   export EDITOR='vim'
+   export EDITOR='nvim'
 fi
 
 if [[ -n $SSH_CONNECTION ]]; then
@@ -40,14 +53,15 @@ fi
 # For a full list of active aliases, run `alias`.
 
 # ALIAS
-alias zshconfig="vim ~/.zshrc"
-alias vimconfig="vim ~/.vimrc"
-alias ls_all="ls -SsXal -1 --color"
-alias backup_dotfiles="cd ~/Documents/dotfiles/ && bash backup_dotfiles.sh"
-alias vim_plugin_install="sudo vim +PluginInstall +qall"
+alias zshconfig="nvim ~/.zshrc"
+alias vimconfig="nvim ~/.config/nvim"
+alias vim_plugin_install="vim +PluginInstall +qall"
+
+alias backup_dotfiles="cd ~/dotfiles/ && bash backup_dotfiles.sh"
 alias update="sudo apt update && sudo apt upgrade -y"
 alias tmux='TERM=screen-256color tmux -2'
 alias tmuxinator='TERM=screen-256color tmuxinator'
+alias go_workspace='cd ~/workspace/go'
 
 eval `dircolors ~/.dir_colors/dircolors`
 
@@ -59,7 +73,8 @@ eval "$(rbenv init -)"
 export PATH="/home/rafael/miniconda3/bin:$PATH"
 # Go PATH
 export PATH=$PATH:/usr/local/go/bin
-export GOPATH=$HOME/Documents/projects/go
+export GOPATH=$HOME/workspace/go
+export PATH=$PATH:$GOPATH/bin
 
 
 # Do menu-driven completion.
@@ -86,6 +101,9 @@ if [ -n "$force_color_prompt" ]; then
         color_prompt=
     fi
 fi
+# Go PATH
+export PATH=$PATH:/usr/local/go/bin
+export GOPATH=$HOME/go
 
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
