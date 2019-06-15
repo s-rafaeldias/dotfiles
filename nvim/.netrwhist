@@ -1,5 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =3
-let g:netrw_dirhist_1='/home/rafael/.config/nvim'
-let g:netrw_dirhist_2='/home/rafael/Documents/workspace/go/src/github.com/s-rafaeldias/avatarme'
-let g:netrw_dirhist_3='/home/rafael/.config/nvim'
