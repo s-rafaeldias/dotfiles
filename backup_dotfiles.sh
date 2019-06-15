@@ -27,4 +27,3 @@ rsync -r --exclude 'plugged' --links ~/.config/nvim/ nvim/
 # Oh my zsh backup
 echo Backing up shell configs
 cp ~/.zshrc ~/.bashrc shell
-

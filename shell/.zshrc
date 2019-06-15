@@ -101,6 +101,9 @@ if [ -n "$force_color_prompt" ]; then
         color_prompt=
     fi
 fi
+# Go PATH
+export PATH=$PATH:/usr/local/go/bin
+export GOPATH=$HOME/go
 
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
