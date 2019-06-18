@@ -75,7 +75,7 @@ export PATH="/home/rafael/miniconda3/bin:$PATH"
 export PATH=$PATH:/usr/local/go/bin
 export GOPATH=$HOME/workspace/go
 export PATH=$PATH:$GOPATH/bin
-
+export TERM=xterm-256color
 
 # Do menu-driven completion.
 zstyle ':completion:*' menu select
@@ -101,15 +101,8 @@ if [ -n "$force_color_prompt" ]; then
         color_prompt=
     fi
 fi
-# Go PATH
-export PATH=$PATH:/usr/local/go/bin
-export GOPATH=$HOME/go
 
 # set a fancy prompt (non-color, unless we know we "want" color)
-case "$TERM" in
-    xterm-color|*-256color) color_prompt=yes;;
-esac
-
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
     alias ls='ls --color=auto'
