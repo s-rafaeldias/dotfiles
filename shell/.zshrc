@@ -54,8 +54,8 @@ fi
 
 # ALIAS
 alias zshconfig="nvim ~/.zshrc"
-alias vimconfig="nvim ~/.config/nvim"
-alias vim_plugin_install="vim +PluginInstall +qall"
+alias source_zhs="source ~/.zshrc"
+alias vimconfig="nvim ~/.config/nvim/init.vim"
 
 alias backup_dotfiles="cd ~/dotfiles/ && bash backup_dotfiles.sh"
 alias update="sudo apt update && sudo apt upgrade -y"
@@ -113,3 +113,5 @@ if [ -x /usr/bin/dircolors ]; then
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
 fi
+
+
