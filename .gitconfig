@@ -1,0 +1,13 @@
+[http]
+	sslVerify = false
+[user]
+	name = Rafael Dias
+	email = rafael.silveira@poupex.com.br
+[core]
+	editor = vim
+[diff]
+	tool = vimdiff
+[merge]
+	tool = vimdiff
+[difftool]
+	prompt = false
