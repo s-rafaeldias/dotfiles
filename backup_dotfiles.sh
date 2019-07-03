@@ -3,27 +3,30 @@ RED='\033[0;31m'
 GREEN='\033[0;32m'
 NC='\033[0m' # No Color
 
+ERROR_MSG="[${RED}ERROR${NC}]"
+SUCCESS_MSG="[${GREEN}SUCCESS${NC}]"
+
 # Input do ambiente (home ou work)
 ambiente=$1
 echo "Backup do ambiente $ambiente"
 
 git checkout $ambiente
 
-# Git backup
-if cp ~/.gitconfig ~/.gitmessage git/ ; then
-	echo -e "${GREEN}GG${NC} do git"
-else
-	echo -e "${RED}ERROR${NC} do git"
-fi
+# git
+cp ~/.gitmessage .
+cp ~/.gitconfig .
 
-# Vim backup
-echo Backing up vim configs
-rsync -r --exclude 'bundle' --links ~/.vim/ vim/
+# nvim
+rsync -r -aqz --exclude 'plugged' --links ~/.config/nvim/ .config/nvim/
 
-# Nvim backup
-echo Backing up nvim configs
-rsync -r --exclude 'plugged' --links ~/.config/nvim/ nvim/
+# vim
+rsync -r --exclude 'bundle' --links ~/.vim/ .vim/
 
-# Oh my zsh backup
-echo Backing up shell configs
-cp ~/.zshrc ~/.bashrc shell
+# tmux
+cp ~/.tmux.conf .
+
+# tmuxinator
+rsync -r --links ~/.config/tmuxinator .config/tmuxinator
+
+# shell (zshrc and bashrc)
+cp ~/.zshrc ~/.zsh_profile ~/.bashrc ~/.bash_profile .
