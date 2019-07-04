@@ -14,15 +14,15 @@ plugins=(
 #POWERLEVEL9k Config
 ZSH_THEME="powerlevel10k/powerlevel10k"
 POWERLEVEL9K_MODE='nerdfont-complete'
-POWERLEVEL9K_PROMPT_ON_NEWLINE=true
-POWERLEVEL9K_RPROMPT_ON_NEWLINE=true
-POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX=""
-POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX=""
-POWERLEVEL9K_MULTILINE_NEWLINE_PROMPT_PREFIX=""
-POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
+#POWERLEVEL9K_PROMPT_ON_NEWLINE=true
+#POWERLEVEL9K_RPROMPT_ON_NEWLINE=true
+#POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX=""
+#POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX=""
+#POWERLEVEL9K_MULTILINE_NEWLINE_PROMPT_PREFIX=""
+#POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
 
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(user dir newline vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator dir_writable go_version anaconda rbenv)
+#POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(user dir newline vcs)
+#POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator dir_writable go_version anaconda rbenv)
 
 COMPLETION_WAITING_DOTS="true"
 
@@ -71,3 +71,4 @@ zstyle ':completion:*:messages' format '%d'
 zstyle ':completion:*:warnings' format "$fg[red]No matches for:$reset_color %d"
 zstyle ':completion:*:corrections' format '%B%d (errors: %e)%b'
 zstyle ':completion:*' group-name ''
+source ~/.purepower

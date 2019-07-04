@@ -1,0 +1,16 @@
+# /home/05018601183/.config/tmuxinator/room-reservation.yml
+
+name: room-reservation
+root: ~/Workspace/room-reservation
+
+pre_window: source activate room-reservation
+
+windows:
+  - editor:
+      panes:
+        - nvim
+  - terminal:
+      layout: even-vertical
+      panes:
+        - 
+        -

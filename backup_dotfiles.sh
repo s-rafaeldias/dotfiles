@@ -29,4 +29,4 @@ cp ~/.tmux.conf .
 rsync -r --links ~/.config/tmuxinator .config/tmuxinator
 
 # shell (zshrc and bashrc)
-cp ~/.zshrc ~/.zsh_profile ~/.bashrc ~/.bash_profile .
+cp ~/.zshrc ~/.zsh_profile ~/.bashrc ~/.bash_profile ~/.purepower .
