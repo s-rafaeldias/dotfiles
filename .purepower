@@ -155,7 +155,7 @@ fi
       anaconda                # conda environment (https://conda.io/)
       go_version              # go version
       kubecontext             # current kubernetes context (https://kubernetes.io/)
-      #custom_rprompt          # the output of function `custom_rprompt()` if it is defined
+      custom_rprompt          # the output of function `custom_rprompt()` if it is defined
       context                 # user@host
   )
 
@@ -276,7 +276,7 @@ fi
   typeset -g POWERLEVEL9K_ANACONDA_RIGHT_DELIMITER=')'
 
   # Icon for virtualenv, anaconda and pyenv.
-  typeset -g POWERLEVEL9K_PYTHON_ICON=
+  #typeset -g POWERLEVEL9K_PYTHON_ICON=
 
   # Go settings
   typeset -g POWERLEVEL9K_GO_VERSION_BACKGROUND=none
@@ -303,12 +303,6 @@ fi
   typeset -g POWERLEVEL9K_KUBECONTEXT_TEST_FOREGROUND=2
   typeset -g POWERLEVEL9K_KUBECONTEXT_DEFAULT_FOREGROUND=3
   typeset -g POWERLEVEL9K_KUBERNETES_ICON=
-
-  typeset -g POWERLEVEL9K_TIME_BACKGROUND=none
-  typeset -g POWERLEVEL9K_TIME_FOREGROUND=$(_pp_c 7 66)
-  typeset -g POWERLEVEL9K_TIME_ICON=
-  # Format for the time segment: 09:51:02. See `man 3 strftime`.
-  typeset -g POWERLEVEL9K_TIME_FORMAT='%D{%H:%M:%S}'
 
   unfunction _pp_c _pp_s
 } "$@"
