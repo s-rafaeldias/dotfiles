@@ -12,5 +12,5 @@ windows:
   - terminal:
       layout: even-vertical
       panes:
-        - 
-        -
+        - clear
+        - clear
