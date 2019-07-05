@@ -6,11 +6,6 @@ ERROR_MSG="[${RED}ERROR${NC}]"
 SUCCESS_MSG="[${GREEN}SUCCESS${NC}]"
 
 backup() {
-	ambiente=$1
-	echo "Backup do ambiente $ambiente"
-
-	git checkout $ambiente
-
 	# git
 	cp ~/.gitmessage .
 	cp ~/.gitconfig .
@@ -34,6 +29,4 @@ backup() {
 	rsync -r --links ~/.lein .
 }
 
-restore() {
-
-}
+backup
