@@ -118,6 +118,8 @@ inoremap <C-U> <ESC>bveUea
 inoremap kj <Esc>
 " Disable <Esc> for exit insert mode
 inoremap <Esc> <NOP>
+" Create new undo block on <CR> in insert mode
+inoremap <CR> <C-G>u<CR>
 " }}}
 
 " NORMAL MODE mappings ================================================= {{{

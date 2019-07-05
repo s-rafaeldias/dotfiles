@@ -34,6 +34,4 @@ backup() {
 	rsync -r --links ~/.lein .
 }
 
-restore() {
-
-}
+backup work
