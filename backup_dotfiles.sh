@@ -8,7 +8,7 @@ SUCCESS_MSG="[${GREEN}SUCCESS${NC}]"
 backup() {
 	# git
 	cp ~/.gitmessage .
-	cp ~/.gitconfig .
+	cp ~/.gitconfig ./.gitconfig_$1
 
 	# nvim
 	rsync -r -aqz --exclude 'plugged' --links ~/.config/nvim/ .config/nvim/
@@ -29,4 +29,4 @@ backup() {
 	rsync -r --links ~/.lein .
 }
 
-backup
+backup $1
