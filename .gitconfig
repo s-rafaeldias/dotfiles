@@ -1,13 +1,17 @@
-[http]
-	sslVerify = false
 [user]
+	email = rafa197795@gmail.com
 	name = Rafael Dias
-	email = rafael.silveira@poupex.com.br
-[core]
-	editor = vim
+	signingkey = 099764F38578A7C7
 [diff]
 	tool = vimdiff
 [merge]
 	tool = vimdiff
 [difftool]
 	prompt = false
+
+[commit]
+	template = ~/.gitmessage
+	gpgsign = true
+
+[mergetool "nvim"]
+  cmd = nvim -f -c \"Gdiff\" \"$MERGED\"

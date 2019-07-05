@@ -17,6 +17,7 @@ Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
     \ 'do': 'bash install.sh',
     \ }
+"Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'sheerun/vim-polyglot'
 " Python
 Plug 'vim-python/python-syntax'
@@ -27,22 +28,15 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'deoplete-plugins/deoplete-go', { 'do': 'make'}
 " Clojure
 Plug 'tpope/vim-fireplace'
-" Markdown
-Plug 'tpope/vim-markdown'
-
-
 
 """ Colorscheme
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ryanoasis/vim-devicons'
 Plug 'joshdick/onedark.vim'
+Plug 'KeitaNakamura/neodark.vim'
 Plug 'jacoborus/tender.vim'
 Plug 'rakr/vim-one'
-Plug 'romainl/Apprentice'
-
-""" Custom plugins
-Plug '~/Workspace/custom-grep'
 
 " Initialize plugin system
 call plug#end()
@@ -72,13 +66,18 @@ set list
 syntax enable
 
 if has('nvim')
-    let g:python3_host_prog = '/home/05018601183/anaconda3/envs/neovim/bin/python'
+    if $USER ==# 'rafael'
+        let g:python3_host_prog = $HOME . '/miniconda3/envs/neovim/bin/python'
+    elseif $USER ==# '05018601183'
+        let g:python3_host_prog = $HOME . '/anaconda3/envs/neovim/bin/python'
+    endif
 endif
 
 let g:deoplete#enable_at_startup = 1
 let g:LanguageClient_serverCommands = {
     \ 'python': ['pyls'],
     \ 'ruby': ['bundle', 'exec', 'solargraph', 'stdio'],
+    \ 'clojure': ['clojure-lsp']
     \ }
 
 let mapleader=","
@@ -108,8 +107,8 @@ if (has("termguicolors"))
     set termguicolors
 endif
 
-set background=dark " for the dark version
 colorscheme one
+set background=dark " for the dark version
 " }}}
 
 " INSERT MODE mappings ================================================= {{{
@@ -119,8 +118,6 @@ inoremap <C-U> <ESC>bveUea
 inoremap kj <Esc>
 " Disable <Esc> for exit insert mode
 inoremap <Esc> <NOP>
-" Break undo block with <CR> on insert mode
-inoremap <CR> <C-G>u<CR>
 " }}}
 
 " NORMAL MODE mappings ================================================= {{{
@@ -140,9 +137,6 @@ nnoremap <Leader>" viw<esc>a"<esc>bi"<esc>lel
 nnoremap <Leader>' viw<esc>a'<esc>bi'<esc>lel
 " highligth trailing spaces
 nnoremap <Leader>w :execute ":match Error " . '/\v\s+$/' <CR>
-
-nnoremap <Leader>cn :cnext<CR>
-nnoremap <Leader>cp :cprevious<CR>
 " }}}
 
 " VISUAL MODE mappings ================================================= {{{
@@ -199,6 +193,10 @@ nmap <F8> :TagbarToggle<CR>
 " }}}
 
 " Language: Python ================================================= {{{
+autocmd FileType python set ts=4
+autocmd FileType python set expandtab
+autocmd FileType python set shiftwidth=4
+
 let g:python_highlight_all=1
 let g:jedi#completions_enabled = 0
 " }}}

@@ -1,0 +1,13 @@
+# /home/rafael/.config/tmuxinator/go.yml
+
+name: go
+root: ~/workspace/go
+
+windows:
+  - editor:
+      root: ~/workspace/go/src/github.com/s-rafaeldias/<%= @args[0] %>
+      layout: main-vertical
+      panes:
+        - nvim .
+  - terminal:
+      root: ~/workspace/go/src/github.com/s-rafaeldias/<%= @args[0] %>
