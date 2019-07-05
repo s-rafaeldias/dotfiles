@@ -14,4 +14,4 @@
 	gpgsign = true
 
 [mergetool "nvim"]
-  cmd = nvim -f -c \"Gdiff\" \"$MERGED\"
+	cmd = nvim -f -c \"Gdiff\" \"$MERGED\"
