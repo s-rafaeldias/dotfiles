@@ -67,9 +67,7 @@ else
 fi
 
 
-if [[ $USER == '05018601183' ]]; then
-	source $ZSH/oh-my-zsh.sh
-fi
+source $ZSH/oh-my-zsh.sh
 
 # Do menu-driven completion.
 zstyle ':completion:*' menu select

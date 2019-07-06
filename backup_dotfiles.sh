@@ -23,10 +23,20 @@ backup() {
 	rsync -r --links ~/.config/tmuxinator .config/
 
 	# shell (zshrc and bashrc)
-	cp ~/.zshrc ~/.zsh_profile ~/.bashrc ~/.bash_profile ~/.purepower .
+	cp ~/.zshrc ~/.bashrc ~/.purepower .
 
 	# Lein (clojure)
 	rsync -r --links ~/.lein .
 }
 
-backup $1
+restore() {
+	# .config
+	cp .config ~/ -r
+
+	# lein
+	cp .lein ~/ -r
+
+	# shell
+	cp .zshrc .bashrc .purepower ~/
+}
+
