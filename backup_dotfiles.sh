@@ -40,3 +40,12 @@ restore() {
 	cp .zshrc .bashrc .purepower ~/
 }
 
+echo -e "O que vc gostaria de fazer?\n[1] - Backup\n[2] - Restore\n"
+read option
+
+if [[ $option == 1 ]];then
+	backup work
+else
+	restore
+fi
+

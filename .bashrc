@@ -116,19 +116,28 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/rafael/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/rafael/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/rafael/anaconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/rafael/anaconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
+if [[ $USER == 'rafael' ]]; then
+	# >>> conda initialize >>>
+	# !! Contents within this block are managed by 'conda init' !!
+	__conda_setup="$('/home/rafael/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+	if [ $? -eq 0 ]; then
+	    eval "$__conda_setup"
+	else
+	    if [ -f "/home/rafael/anaconda3/etc/profile.d/conda.sh" ]; then
+		. "/home/rafael/anaconda3/etc/profile.d/conda.sh"
+	    else
+		export PATH="/home/rafael/anaconda3/bin:$PATH"
+	    fi
+	fi
+	unset __conda_setup
+	# <<< conda initialize <<<
 
-eval "$(rbenv init -)"
+	eval "$(rbenv init -)"
+else
+	export PATH="/home/05018601183/anaconda3/bin:$PATH"
+	# Go PATH
+	export PATH=$PATH:/usr/local/go/bin
+	export PATH=/home/05018601183/.local/bin:$PATH
+
+	exec /usr/bin/zsh
+fi

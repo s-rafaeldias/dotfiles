@@ -1,0 +1,18 @@
+[http]
+	sslVerify = false
+[user]
+	name = Rafael Dias
+	email = rafael.silveira@poupex.com.br
+[core]
+	editor = nvim
+
+[merge]
+	tool = vimdiff
+[mergetool]
+	prompt = true
+[mergetool "vimdiff"]
+	cmd = nvim -f -c \"Gdiff\" \"$MERGED\"
+[difftool]
+	prompt = true
+[diff]
+	tool = vimdiff
