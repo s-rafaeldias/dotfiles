@@ -4,6 +4,7 @@ call plug#begin()
 """ General plugins
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
+Plug 'sodapopcan/vim-twiggy'
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'majutsushi/tagbar'
@@ -22,7 +23,7 @@ Plug 'sheerun/vim-polyglot'
 " Python
 Plug 'vim-python/python-syntax'
 Plug 'davidhalter/jedi-vim'
-Plug 'cjrh/vim-conda'
+"Plug 'cjrh/vim-conda'
 " Go
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'deoplete-plugins/deoplete-go', { 'do': 'make'}
@@ -62,6 +63,8 @@ set novisualbell        " Disable bells
 " White space settings
 set listchars=eol:¬,tab:>-,trail:~,extends:>,precedes:<
 set list
+
+set diffopt=vertical
 
 syntax enable
 

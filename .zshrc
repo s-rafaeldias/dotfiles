@@ -40,6 +40,7 @@ else
   export PATH=$PATH:/bin/lein
   export TERM=xterm-256color
   export PATH=~/bin:$PATH
+  export PATH=$PATH:~/.garden/bin
 fi
 
 
