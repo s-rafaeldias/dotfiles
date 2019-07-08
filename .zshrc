@@ -1,17 +1,18 @@
 # User settings ======================================
 if [[ $USER == 'rafael' ]]; then
-  export ZSH=/home/rafael/.oh-my-zsh
+	export ZSH=/home/rafael/.oh-my-zsh
+	eval `dircolors ~/.dir_colors/dircolors`
 else
-  export ZSH="/home/05018601183/.oh-my-zsh"
+	export ZSH="/home/05018601183/.oh-my-zsh"
 fi
 
 # Plugins ============================================
 plugins=(
-  docker
-  kubectl
-  tmuxinator
-  zsh-syntax-highlighting
-  zsh-autosuggestions
+	git
+	zsh-syntax-highlighting
+	docker
+	kubectl
+	tmuxinator
 )
 
 # Theme ==============================================
@@ -20,27 +21,25 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 POWERLEVEL9K_MODE='nerdfont-complete'
 COMPLETION_WAITING_DOTS="true"
 
-eval `dircolors ~/.dir_colors/dircolors`
 
 # PATH ===============================================
 if [[ $USER == 'rafael' ]]; then
-  export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-  export PATH="$HOME/.rbenv/bin:$PATH"
-  eval "$(rbenv init -)"
-  # Miniconda path
-  export PATH="/home/rafael/miniconda3/bin:$PATH"
-  # Go PATH
-  export PATH=$PATH:/usr/local/go/bin
-  export GOPATH=$HOME/workspace/go
-  export PATH=$PATH:$GOPATH/bin
-  export TERM=xterm-256color
+	export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+	export PATH="$HOME/.rbenv/bin:$PATH"
+	eval "$(rbenv init -)"
+	# Miniconda path
+	export PATH="/home/rafael/miniconda3/bin:$PATH"
+	# Go PATH
+	export PATH=$PATH:/usr/local/go/bin
+	export GOPATH=$HOME/workspace/go
+	export PATH=$PATH:$GOPATH/bin
+	export TERM=xterm-256color
 else
-  export PATH=$PATH:/usr/local/go/bin
-  export GOPATH=$HOME/go
-  export PATH=$PATH:/bin/lein
-  export TERM=xterm-256color
-  export PATH=~/bin:$PATH
-  export PATH=$PATH:~/.garden/bin
+	export PATH=$PATH:/usr/local/go/bin
+	export GOPATH=$HOME/go
+	export PATH=$PATH:/bin/lein
+	export TERM=xterm-256color
+	export PATH=~/bin:$PATH
 fi
 
 
@@ -61,10 +60,10 @@ fi
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='nvim'
-  ZSH_THEME="agnoster"
+	export EDITOR='nvim'
+	ZSH_THEME="agnoster"
 else
-  export EDITOR='nvim'
+	export EDITOR='nvim'
 fi
 
 

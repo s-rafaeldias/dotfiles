@@ -4,12 +4,13 @@ call plug#begin()
 """ General plugins
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
-Plug 'sodapopcan/vim-twiggy'
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'majutsushi/tagbar'
 Plug 'wincent/command-t', { 'do': 'cd ruby/command-t/ext/command-t && ruby extconf.rb && make' }
 Plug 'junegunn/vim-easy-align'
+Plug 'kien/rainbow_parentheses.vim'
+
 " Deoplete
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
@@ -23,12 +24,14 @@ Plug 'sheerun/vim-polyglot'
 " Python
 Plug 'vim-python/python-syntax'
 Plug 'davidhalter/jedi-vim'
-"Plug 'cjrh/vim-conda'
+Plug 'cjrh/vim-conda'
 " Go
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'deoplete-plugins/deoplete-go', { 'do': 'make'}
 " Clojure
 Plug 'tpope/vim-fireplace'
+Plug 'guns/vim-clojure-highlight'
+Plug 'guns/vim-clojure-static'
 
 """ Colorscheme
 Plug 'vim-airline/vim-airline'
@@ -63,8 +66,6 @@ set novisualbell        " Disable bells
 " White space settings
 set listchars=eol:¬,tab:>-,trail:~,extends:>,precedes:<
 set list
-
-set diffopt=vertical
 
 syntax enable
 
@@ -175,6 +176,13 @@ autocmd BufWritePost * GitGutter
 
 " Plugin: Tagbar ================================================= {{{
 nmap <F8> :TagbarToggle<CR>
+" }}}
+
+" Plugin: kien/rainbow_parentheses.vim ================================================= {{{
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
 " }}}
 
 " Plugin: LanguageClient-neovim ================================================= {{{
