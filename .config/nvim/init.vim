@@ -23,7 +23,6 @@ Plug 'sheerun/vim-polyglot'
 " Python
 Plug 'vim-python/python-syntax'
 Plug 'davidhalter/jedi-vim'
-"Plug 'cjrh/vim-conda'
 " Go
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'deoplete-plugins/deoplete-go', { 'do': 'make'}
