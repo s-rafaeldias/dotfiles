@@ -11,28 +11,30 @@ Plug 'majutsushi/tagbar'
 Plug 'wincent/command-t', { 'do': 'cd ruby/command-t/ext/command-t && ruby extconf.rb && make' }
 Plug 'junegunn/vim-easy-align'
 Plug 'kien/rainbow_parentheses.vim'
+Plug 'TaDaa/vimade'
 
 " Deoplete
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+"Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
 """ Language support
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
-"Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"Plug 'autozimu/LanguageClient-neovim', {
+"    \ 'branch': 'next',
+"    \ 'do': 'bash install.sh',
+"    \ }
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'sheerun/vim-polyglot'
 " Python
 Plug 'vim-python/python-syntax'
 Plug 'davidhalter/jedi-vim'
+
 " Go
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-Plug 'deoplete-plugins/deoplete-go', { 'do': 'make'}
+"Plug 'deoplete-plugins/deoplete-go', { 'do': 'make'}
 " Clojure
 Plug 'tpope/vim-fireplace'
 Plug 'guns/vim-clojure-highlight'
 Plug 'guns/vim-clojure-static'
-Plug 'clojure-vim/async-clj-omni'
+"Plug 'clojure-vim/async-clj-omni'
 
 """ Colorscheme
 Plug 'vim-airline/vim-airline'
@@ -115,8 +117,9 @@ set background=dark " for the dark version
 " INSERT MODE mappings ================================================= {{{
 " Upper word on insert mode
 inoremap <C-U> <ESC>bveUea
-" Remap jk for exit Insert mode
+" Remap jk and kj for exit Insert mode
 inoremap kj <Esc>
+inoremap jk <Esc>
 " Disable <Esc> for exit insert mode
 inoremap <Esc> <NOP>
 " Create new undo block on <CR> in insert mode

@@ -8,11 +8,11 @@ fi
 
 # Plugins ============================================
 plugins=(
-	git
-	zsh-syntax-highlighting
 	docker
 	kubectl
 	tmuxinator
+	zsh-autosuggestions
+	zsh-syntax-highlighting
 )
 
 # Theme ==============================================
