@@ -4,6 +4,7 @@ call plug#begin()
 """ General plugins
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
+Plug 'sodapopcan/vim-twiggy'
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'majutsushi/tagbar'
@@ -24,7 +25,6 @@ Plug 'sheerun/vim-polyglot'
 " Python
 Plug 'vim-python/python-syntax'
 Plug 'davidhalter/jedi-vim'
-Plug 'cjrh/vim-conda'
 " Go
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'deoplete-plugins/deoplete-go', { 'do': 'make'}
@@ -32,6 +32,7 @@ Plug 'deoplete-plugins/deoplete-go', { 'do': 'make'}
 Plug 'tpope/vim-fireplace'
 Plug 'guns/vim-clojure-highlight'
 Plug 'guns/vim-clojure-static'
+Plug 'clojure-vim/async-clj-omni'
 
 """ Colorscheme
 Plug 'vim-airline/vim-airline'
@@ -67,6 +68,8 @@ set novisualbell        " Disable bells
 set listchars=eol:¬,tab:>-,trail:~,extends:>,precedes:<
 set list
 
+set diffopt=vertical
+
 syntax enable
 
 if has('nvim')
@@ -77,12 +80,6 @@ if has('nvim')
     endif
 endif
 
-let g:deoplete#enable_at_startup = 1
-let g:LanguageClient_serverCommands = {
-    \ 'python': ['pyls'],
-    \ 'ruby': ['bundle', 'exec', 'solargraph', 'stdio'],
-    \ 'clojure': ['clojure-lsp']
-    \ }
 
 let mapleader=","
 set pastetoggle=<F2>
@@ -152,6 +149,13 @@ vnoremap <Leader>' <Esc>`>a'<Esc>`<i'<Esc>
 vnoremap <Leader>" <Esc>`>a"<Esc>`<i"<Esc>
 " }}}
 
+" Plugin: Deoplete ================================================= {{{
+let g:deoplete#enable_at_startup = 1
+
+let g:deoplete#keyword_patterns = {}
+let g:deoplete#keyword_patterns.clojure = '[\w!$%&*+/:<=>?@\^_~\-\.#]*'
+" }}}
+
 " Plugin: Airline ================================================= {{{
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
@@ -186,6 +190,11 @@ au Syntax * RainbowParenthesesLoadBraces
 " }}}
 
 " Plugin: LanguageClient-neovim ================================================= {{{
+let g:LanguageClient_serverCommands = {
+    \ 'python': ['pyls'],
+    \ 'ruby': ['bundle', 'exec', 'solargraph', 'stdio'],
+    \ 'clojure': ['clojure-lsp']
+    \ }
 "function SetLSPShortcuts()
 "  nnoremap <leader>ld :call LanguageClient#textDocument_definition()<CR>
   "nnoremap <leader>lr :call LanguageClient#textDocument_rename()<CR>
