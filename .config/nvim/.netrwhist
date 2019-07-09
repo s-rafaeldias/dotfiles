@@ -1,8 +1,5 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =6
-let g:netrw_dirhist_1='/home/05018601183/.config/nvim'
-let g:netrw_dirhist_2='/home/05018601183/Documents/EQANA/projetos/pexia/pexia-nlu'
-let g:netrw_dirhist_3='/home/05018601183/Documents/EQANA/projetos/pexia/pexia-nlu/nlu'
-let g:netrw_dirhist_4='/home/05018601183/Documents/EQANA/projetos/pexia/pexia-nlu/nlu/__pycache__'
-let g:netrw_dirhist_5='/home/05018601183/Documents/EQANA/projetos/pexia/pexia-nlu/nlu'
-let g:netrw_dirhist_6='/home/05018601183/.config/nvim'
+let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_1='/home/rafael/.config/nvim'
+let g:netrw_dirhist_2='/home/rafael/Documents/workspace/go/src/github.com/s-rafaeldias/avatarme'
+let g:netrw_dirhist_3='/home/rafael/.config/nvim'

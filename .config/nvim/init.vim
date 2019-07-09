@@ -10,6 +10,8 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'majutsushi/tagbar'
 Plug 'wincent/command-t', { 'do': 'cd ruby/command-t/ext/command-t && ruby extconf.rb && make' }
 Plug 'junegunn/vim-easy-align'
+Plug 'kien/rainbow_parentheses.vim'
+
 " Deoplete
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
@@ -28,6 +30,9 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'deoplete-plugins/deoplete-go', { 'do': 'make'}
 " Clojure
 Plug 'tpope/vim-fireplace'
+Plug 'guns/vim-clojure-highlight'
+Plug 'guns/vim-clojure-static'
+Plug 'clojure-vim/async-clj-omni'
 
 """ Colorscheme
 Plug 'vim-airline/vim-airline'
@@ -75,12 +80,6 @@ if has('nvim')
     endif
 endif
 
-let g:deoplete#enable_at_startup = 1
-let g:LanguageClient_serverCommands = {
-    \ 'python': ['pyls'],
-    \ 'ruby': ['bundle', 'exec', 'solargraph', 'stdio'],
-    \ 'clojure': ['clojure-lsp']
-    \ }
 
 let mapleader=","
 set pastetoggle=<F2>
@@ -150,6 +149,13 @@ vnoremap <Leader>' <Esc>`>a'<Esc>`<i'<Esc>
 vnoremap <Leader>" <Esc>`>a"<Esc>`<i"<Esc>
 " }}}
 
+" Plugin: Deoplete ================================================= {{{
+let g:deoplete#enable_at_startup = 1
+
+let g:deoplete#keyword_patterns = {}
+let g:deoplete#keyword_patterns.clojure = '[\w!$%&*+/:<=>?@\^_~\-\.#]*'
+" }}}
+
 " Plugin: Airline ================================================= {{{
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
@@ -176,7 +182,19 @@ autocmd BufWritePost * GitGutter
 nmap <F8> :TagbarToggle<CR>
 " }}}
 
+" Plugin: kien/rainbow_parentheses.vim ================================================= {{{
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
+" }}}
+
 " Plugin: LanguageClient-neovim ================================================= {{{
+let g:LanguageClient_serverCommands = {
+    \ 'python': ['pyls'],
+    \ 'ruby': ['bundle', 'exec', 'solargraph', 'stdio'],
+    \ 'clojure': ['clojure-lsp']
+    \ }
 "function SetLSPShortcuts()
 "  nnoremap <leader>ld :call LanguageClient#textDocument_definition()<CR>
   "nnoremap <leader>lr :call LanguageClient#textDocument_rename()<CR>

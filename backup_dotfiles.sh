@@ -6,15 +6,23 @@ ERROR_MSG="[${RED}ERROR${NC}]"
 SUCCESS_MSG="[${GREEN}SUCCESS${NC}]"
 
 backup() {
+	echo -e "Qual ambiente?\n[1] Personal\n[2] Work"
+	read ambiente
+
+	if [[ $ambiente == 1 ]]; then
+		cp ~/.gitconfig ./.gitconfig_personal
+	else
+		cp ~/.gitconfig ./.gitconfig_work
+	fi
+
 	# git
 	cp ~/.gitmessage .
-	cp ~/.gitconfig ./.gitconfig_$1
 
 	# nvim
 	rsync -r -aqz --exclude 'plugged' --links ~/.config/nvim/ .config/nvim/
 
 	# vim
-	rsync -r --exclude 'bundle' --links ~/.vim/ .vim/
+	#rsync -r --exclude 'bundle' --links ~/.vim/ .vim/
 
 	# tmux
 	cp ~/.tmux.conf .
@@ -44,7 +52,7 @@ echo -e "O que vc gostaria de fazer?\n[1] - Backup\n[2] - Restore\n"
 read option
 
 if [[ $option == 1 ]];then
-	backup work
+	backup
 else
 	restore
 fi
