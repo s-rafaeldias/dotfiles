@@ -26,6 +26,7 @@ Plug 'sheerun/vim-polyglot'
 " Python
 Plug 'vim-python/python-syntax'
 Plug 'davidhalter/jedi-vim'
+"Plug 'cjrh/vim-conda'
 
 " Go
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
@@ -168,6 +169,7 @@ let g:hybrid_reduced_contrast = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#ale#enabled = 1
+let g:airline#extensions#coc#enabled = 1
 " }}}
 
 " Plugin: NERDTree ================================================= {{{
@@ -217,6 +219,20 @@ let g:LanguageClient_serverCommands = {
 "augroup END
 " }}}
 
+" Plugin: Coc ================================================= {{{
+" Trigger coc completion with <C-SPACE>
+inoremap <silent><expr> <c-space> coc#refresh()
+" Use <cr> to confirm completion
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+" Close the preview window when completion is done.
+autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
+
+" Disable Coc for clojure files
+autocmd BufNew,BufEnter *.clj  execute "silent! CocDisable"
+autocmd BufLeave *.clj execute "silent! CocEnable"
+
+" }}}
+
 " Language: Python ================================================= {{{
 autocmd FileType python set ts=4
 autocmd FileType python set expandtab
@@ -251,4 +267,6 @@ autocmd FileType vim set tabstop=4
 autocmd FileType vim set foldmethod=marker
 " }}}
 
-
+" Language: Json ================================================= {{{
+autocmd FileType json syntax match Comment +\/\/.\+$+
+" }}}

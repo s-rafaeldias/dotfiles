@@ -1,0 +1,14 @@
+{
+    // Python
+    "python.jediEnabled": true,
+    "python.condaPath": "/home/rafael/miniconda3/bin/conda",
+
+    "languageserver": {
+        "golang": {
+            "command": "gopls",
+            "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
+            "filetypes": ["go"]
+        }
+    }
+}
+

@@ -1,1 +1,5 @@
 exit
+(defn sum
+  ([vals] (sum vals 0))
+  ([vals acc] 
+exit
