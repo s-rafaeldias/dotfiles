@@ -46,6 +46,9 @@ restore() {
 
 	# shell
 	cp .zshrc .bashrc .purepower ~/
+
+	# tmux
+	cp .tmux.conf ~/.
 }
 
 echo -e "O que vc gostaria de fazer?\n[1] - Backup\n[2] - Restore\n"

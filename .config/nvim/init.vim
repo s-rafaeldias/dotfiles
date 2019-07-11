@@ -12,30 +12,19 @@ Plug 'wincent/command-t', { 'do': 'cd ruby/command-t/ext/command-t && ruby extco
 Plug 'junegunn/vim-easy-align'
 Plug 'kien/rainbow_parentheses.vim'
 Plug 'TaDaa/vimade'
-
-" Deoplete
-"Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-
-""" Language support
-"Plug 'autozimu/LanguageClient-neovim', {
-"    \ 'branch': 'next',
-"    \ 'do': 'bash install.sh',
-"    \ }
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'jiangmiao/auto-pairs'
 Plug 'sheerun/vim-polyglot'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
 " Python
 Plug 'vim-python/python-syntax'
 Plug 'davidhalter/jedi-vim'
-"Plug 'cjrh/vim-conda'
-
 " Go
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-"Plug 'deoplete-plugins/deoplete-go', { 'do': 'make'}
 " Clojure
 Plug 'tpope/vim-fireplace'
 Plug 'guns/vim-clojure-highlight'
 Plug 'guns/vim-clojure-static'
-"Plug 'clojure-vim/async-clj-omni'
 
 """ Colorscheme
 Plug 'vim-airline/vim-airline'
@@ -45,7 +34,7 @@ Plug 'joshdick/onedark.vim'
 Plug 'KeitaNakamura/neodark.vim'
 Plug 'jacoborus/tender.vim'
 Plug 'rakr/vim-one'
-
+Plug 'danilo-augusto/vim-afterglow'
 " Initialize plugin system
 call plug#end()
 " }}}
@@ -54,7 +43,7 @@ call plug#end()
 set relativenumber      " show relative numbers
 set number              " show line numbers
 set cursorline          " show a visual line under the cursor's current line
-set cursorcolumn        " show a visual line under cursor's current column
+"set cursorcolumn        " show a visual line under cursor's current column
 set showmatch           " show the matching part of the pair for [] {} and ()
 
 set timeoutlen=1000
@@ -85,7 +74,6 @@ endif
 
 
 let mapleader=","
-set pastetoggle=<F2>
 
 " disable continuation of comments to the next line
 autocmd FileType * setlocal formatoptions-=cro
@@ -111,8 +99,17 @@ if (has("termguicolors"))
     set termguicolors
 endif
 
-colorscheme one
-set background=dark " for the dark version
+colorscheme afterglow
+let g:afterglow_italic_comments=1
+"set background=dark " for the dark version
+" }}}
+
+" Fn mappings ================================================= {{{
+set pastetoggle=<F2>
+" Copy selected text to + register (clipboard)
+vnoremap <F5> "+y
+" Paste clipboard (register *)
+nnoremap <F6> "*P
 " }}}
 
 " INSERT MODE mappings ================================================= {{{
@@ -136,6 +133,8 @@ nnoremap <leader>sv :source $MYVIMRC<CR>
 nnoremap - ddp
 " Move line down
 nnoremap _ ddkP
+" <CR> on normal mode add a new line below cursor
+nnoremap <CR> o<ESC>
 " Upper word on normal mode
 nnoremap <C-U> bveUe
 " Wrap word in double quotes
@@ -163,7 +162,7 @@ let g:deoplete#keyword_patterns.clojure = '[\w!$%&*+/:<=>?@\^_~\-\.#]*'
 " Plugin: Airline ================================================= {{{
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
-let g:airline_theme='one'
+let g:airline_theme='afterglow'
 let g:hybrid_custom_term_colors = 1
 let g:hybrid_reduced_contrast = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
@@ -188,10 +187,10 @@ nmap <F8> :TagbarToggle<CR>
 " }}}
 
 " Plugin: kien/rainbow_parentheses.vim ================================================= {{{
-au VimEnter * RainbowParenthesesToggle
-au Syntax * RainbowParenthesesLoadRound
-au Syntax * RainbowParenthesesLoadSquare
-au Syntax * RainbowParenthesesLoadBraces
+autocmd VimEnter * RainbowParenthesesToggle
+autocmd Syntax * RainbowParenthesesLoadRound
+autocmd Syntax * RainbowParenthesesLoadSquare
+autocmd Syntax * RainbowParenthesesLoadBraces
 " }}}
 
 " Plugin: LanguageClient-neovim ================================================= {{{
