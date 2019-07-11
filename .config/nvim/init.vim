@@ -12,17 +12,16 @@ Plug 'wincent/command-t', { 'do': 'cd ruby/command-t/ext/command-t && ruby extco
 Plug 'junegunn/vim-easy-align'
 Plug 'kien/rainbow_parentheses.vim'
 Plug 'TaDaa/vimade'
-Plug 'jiangmiao/auto-pairs'
 
 " Deoplete
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+"Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
 """ Language support
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
-"Plug 'neoclide/coc.nvim', {'branch': 'release'"}
+"Plug 'autozimu/LanguageClient-neovim', {
+"    \ 'branch': 'next',
+"    \ 'do': 'bash install.sh',
+"    \ }
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'sheerun/vim-polyglot'
 " Python
 Plug 'vim-python/python-syntax'
@@ -137,8 +136,6 @@ nnoremap <leader>sv :source $MYVIMRC<CR>
 nnoremap - ddp
 " Move line down
 nnoremap _ ddkP
-" <CR> on normal mode add a new line below cursor
-nnoremap <CR> o<ESC>
 " Upper word on normal mode
 nnoremap <C-U> bveUe
 " Wrap word in double quotes

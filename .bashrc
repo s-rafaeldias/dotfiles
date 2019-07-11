@@ -140,6 +140,7 @@ else
 	export PATH=/home/05018601183/.local/bin:$PATH
 
 	exec /usr/bin/zsh
+  complete -C /home/05018601183/bin/vault vault
 fi
 
-complete -C /home/05018601183/bin/vault vault
+
