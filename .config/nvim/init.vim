@@ -2,17 +2,21 @@
 call plug#begin()
 
 """ General plugins
+" Git
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 Plug 'sodapopcan/vim-twiggy'
+" NERDTree
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+
 Plug 'majutsushi/tagbar'
 Plug 'wincent/command-t', { 'do': 'cd ruby/command-t/ext/command-t && ruby extconf.rb && make' }
 Plug 'junegunn/vim-easy-align'
 Plug 'kien/rainbow_parentheses.vim'
 Plug 'TaDaa/vimade'
-Plug 'jiangmiao/auto-pairs'
+"Plug 'jiangmiao/auto-pairs'
 Plug 'sheerun/vim-polyglot'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
@@ -30,10 +34,6 @@ Plug 'guns/vim-clojure-static'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ryanoasis/vim-devicons'
-Plug 'joshdick/onedark.vim'
-Plug 'KeitaNakamura/neodark.vim'
-Plug 'jacoborus/tender.vim'
-Plug 'rakr/vim-one'
 Plug 'danilo-augusto/vim-afterglow'
 " Initialize plugin system
 call plug#end()
@@ -99,8 +99,8 @@ if (has("termguicolors"))
     set termguicolors
 endif
 
-colorscheme afterglow
 let g:afterglow_italic_comments=1
+colorscheme afterglow
 "set background=dark " for the dark version
 " }}}
 
