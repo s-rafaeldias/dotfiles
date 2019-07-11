@@ -84,3 +84,6 @@ zstyle ':completion:*:corrections' format '%B%d (errors: %e)%b'
 zstyle ':completion:*' group-name ''
 
 source ~/.purepower
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /home/05018601183/bin/vault vault

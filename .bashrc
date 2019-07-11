@@ -141,3 +141,5 @@ else
 
 	exec /usr/bin/zsh
 fi
+
+complete -C /home/05018601183/bin/vault vault
