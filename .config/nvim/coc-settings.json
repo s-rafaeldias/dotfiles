@@ -2,7 +2,6 @@
     // Python
     "python.jediEnabled": true,
     "python.condaPath": "/home/05018601183/anaconda3/bin/conda",
-    "coc.source.omni.filetypes": ["clojure"],
 
     "languageserver": {
         "golang": {

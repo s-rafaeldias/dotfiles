@@ -16,7 +16,7 @@ Plug 'wincent/command-t', { 'do': 'cd ruby/command-t/ext/command-t && ruby extco
 Plug 'junegunn/vim-easy-align'
 Plug 'kien/rainbow_parentheses.vim'
 Plug 'TaDaa/vimade'
-"Plug 'jiangmiao/auto-pairs'
+Plug 'jiangmiao/auto-pairs'
 Plug 'sheerun/vim-polyglot'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
@@ -60,6 +60,7 @@ set novisualbell        " Disable bells
 set listchars=eol:¬,tab:>-,trail:~,extends:>,precedes:<
 set list
 
+" Git diff settings
 set diffopt=vertical
 
 syntax enable
@@ -106,10 +107,6 @@ colorscheme afterglow
 
 " Fn mappings ================================================= {{{
 set pastetoggle=<F2>
-" Copy selected text to + register (clipboard)
-vnoremap <F5> "+y
-" Paste clipboard (register *)
-nnoremap <F6> "*P
 " }}}
 
 " INSERT MODE mappings ================================================= {{{
@@ -129,20 +126,31 @@ inoremap <CR> <C-G>u<CR>
 nnoremap <leader>ev :vsplit $MYVIMRC<CR>
 " Reload vim config
 nnoremap <leader>sv :source $MYVIMRC<CR>
+
 " Move line up
 nnoremap - ddp
 " Move line down
 nnoremap _ ddkP
 " <CR> on normal mode add a new line below cursor
 nnoremap <CR> o<ESC>
+
 " Upper word on normal mode
 nnoremap <C-U> bveUe
+
+" Move to next buffer
+nnoremap <S-TAB> :bn<CR>
+" Move to previous buffer
+nnoremap <C-TAB> :bp<CR>
+
 " Wrap word in double quotes
 nnoremap <Leader>" viw<esc>a"<esc>bi"<esc>lel
 " Wrap word in single quotes
 nnoremap <Leader>' viw<esc>a'<esc>bi'<esc>lel
 " highligth trailing spaces
 nnoremap <Leader>w :execute ":match Error " . '/\v\s+$/' <CR>
+" Paste clipboard (register *)
+nnoremap <Leader>P "*P
+nnoremap <Leader>p <F2>"*p<F2>
 " }}}
 
 " VISUAL MODE mappings ================================================= {{{
@@ -150,13 +158,8 @@ nnoremap <Leader>w :execute ":match Error " . '/\v\s+$/' <CR>
 vnoremap <Leader>' <Esc>`>a'<Esc>`<i'<Esc>
 " Wrap selected area in Visual mode in double quotes
 vnoremap <Leader>" <Esc>`>a"<Esc>`<i"<Esc>
-" }}}
-
-" Plugin: Deoplete ================================================= {{{
-let g:deoplete#enable_at_startup = 1
-
-let g:deoplete#keyword_patterns = {}
-let g:deoplete#keyword_patterns.clojure = '[\w!$%&*+/:<=>?@\^_~\-\.#]*'
+" Copy selected text to + register (clipboard)
+vnoremap <Leader>y "+y
 " }}}
 
 " Plugin: Airline ================================================= {{{
@@ -193,31 +196,6 @@ autocmd Syntax * RainbowParenthesesLoadSquare
 autocmd Syntax * RainbowParenthesesLoadBraces
 " }}}
 
-" Plugin: LanguageClient-neovim ================================================= {{{
-let g:LanguageClient_serverCommands = {
-    \ 'python': ['pyls'],
-    \ 'ruby': ['bundle', 'exec', 'solargraph', 'stdio'],
-    \ 'clojure': ['clojure-lsp']
-    \ }
-"function SetLSPShortcuts()
-"  nnoremap <leader>ld :call LanguageClient#textDocument_definition()<CR>
-  "nnoremap <leader>lr :call LanguageClient#textDocument_rename()<CR>
-  "nnoremap <leader>lf :call LanguageClient#textDocument_formatting()<CR>
-  "nnoremap <leader>lt :call LanguageClient#textDocument_typeDefinition()<CR>
-  "nnoremap <leader>lx :call LanguageClient#textDocument_references()<CR>
-  "nnoremap <leader>la :call LanguageClient_workspace_applyEdit()<CR>
-  "nnoremap <leader>lc :call LanguageClient#textDocument_completion()<CR>
-  "nnoremap <leader>lh :call LanguageClient#textDocument_hover()<CR>
-  "nnoremap <leader>ls :call LanguageClient_textDocument_documentSymbol()<CR>
-  "nnoremap <leader>lm :call LanguageClient_contextMenu()<CR>
-"endfunction()
-
-"augroup LSP
-  "autocmd!
-  "autocmd FileType * call SetLSPShortcuts()
-"augroup END
-" }}}
-
 " Plugin: Coc ================================================= {{{
 " Trigger coc completion with <C-SPACE>
 inoremap <silent><expr> <c-space> coc#refresh()
@@ -226,10 +204,12 @@ inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 " Close the preview window when completion is done.
 autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 
+" Use K to show documentation in preview window
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
 " Disable Coc for clojure files
 autocmd BufNew,BufEnter *.clj  execute "silent! CocDisable"
 autocmd BufLeave *.clj execute "silent! CocEnable"
-
 " }}}
 
 " Language: Python ================================================= {{{
