@@ -13,12 +13,13 @@ Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 
 Plug 'majutsushi/tagbar'
 Plug 'wincent/command-t', { 'do': 'cd ruby/command-t/ext/command-t && ruby extconf.rb && make' }
-Plug 'junegunn/vim-easy-align'
-Plug 'kien/rainbow_parentheses.vim'
 Plug 'TaDaa/vimade'
-Plug 'jiangmiao/auto-pairs'
 Plug 'sheerun/vim-polyglot'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'scrooloose/nerdcommenter'
+Plug 'junegunn/vim-easy-align'
+Plug 'jiangmiao/auto-pairs'
+Plug 'kien/rainbow_parentheses.vim'
 
 " Python
 Plug 'vim-python/python-syntax'
@@ -196,6 +197,11 @@ autocmd Syntax * RainbowParenthesesLoadSquare
 autocmd Syntax * RainbowParenthesesLoadBraces
 " }}}
 
+" Plugin: nerdcommenter ================================================= {{{
+" Add spaces after comment delimiters by default
+let g:NERDSpaceDelims = 1
+" }}}
+
 " Plugin: Coc ================================================= {{{
 " Trigger coc completion with <C-SPACE>
 inoremap <silent><expr> <c-space> coc#refresh()
@@ -234,8 +240,8 @@ let g:go_auto_sameids = 1
 let g:go_fmt_command = "goimports"
 let g:go_auto_type_info = 1
 " Error and warning signs.
-let g:ale_sign_error = '⤫'
-let g:ale_sign_warning = '⚠'
+"let g:ale_sign_error = '⤫'
+"let g:ale_sign_warning = '⚠'
 " }}}
 
 " Language: Vimscript ================================================= {{{
