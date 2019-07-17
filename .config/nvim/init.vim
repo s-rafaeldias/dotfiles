@@ -58,8 +58,8 @@ set noerrorbells        " Disable bells
 set novisualbell        " Disable bells
 
 " White space settings
-set listchars=eol:¬,tab:>-,trail:~,extends:>,precedes:<
-set list
+" set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<
+" set list
 
 " Git diff settings
 set diffopt=vertical
@@ -203,8 +203,8 @@ let g:NERDSpaceDelims = 1
 " }}}
 
 " Plugin: Coc ================================================= {{{
-" Trigger coc completion with <C-SPACE>
-inoremap <silent><expr> <c-space> coc#refresh()
+" Trigger coc completion with <C-N>
+inoremap <silent><expr> <C-N> coc#refresh()
 " Use <cr> to confirm completion
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 " Close the preview window when completion is done.
@@ -228,14 +228,19 @@ let g:jedi#completions_enabled = 0
 " }}}
 
 " Language: Go ================================================= {{{
-let g:go_highlight_build_constraints = 1
 let g:go_highlight_extra_types = 1
-let g:go_highlight_fields = 1
-let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
+let g:go_highlight_space_tab_error = 1
 let g:go_highlight_operators = 1
-let g:go_highlight_structs = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_function_parameters = 1
+let g:go_highlight_function_calls = 1
 let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_build_constraints = 1
+let g:go_highlight_generate_tags = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_trailing_whitespace_error = 1
 let g:go_auto_sameids = 1
 let g:go_fmt_command = "goimports"
 let g:go_auto_type_info = 1
