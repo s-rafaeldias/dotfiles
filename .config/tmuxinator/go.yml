@@ -8,6 +8,6 @@ windows:
       root: ~/workspace/go/src/github.com/s-rafaeldias/<%= @args[0] %>
       layout: main-vertical
       panes:
-        - nvim .
+        - nvim
   - terminal:
       root: ~/workspace/go/src/github.com/s-rafaeldias/<%= @args[0] %>

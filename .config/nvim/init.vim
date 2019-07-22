@@ -58,8 +58,8 @@ set noerrorbells        " Disable bells
 set novisualbell        " Disable bells
 
 " White space settings
-" set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<
-" set list
+ set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<
+ set list
 
 " Git diff settings
 set diffopt=vertical
@@ -114,8 +114,8 @@ set pastetoggle=<F2>
 " Upper word on insert mode
 inoremap <C-U> <ESC>bveUea
 " Remap jk and kj for exit Insert mode
-inoremap kj <Esc>
-inoremap jk <Esc>
+inoremap kj <Esc><Right>
+inoremap jk <Esc><Right>
 " Disable <Esc> for exit insert mode
 inoremap <Esc> <NOP>
 " Create new undo block on <CR> in insert mode
