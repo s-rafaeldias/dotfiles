@@ -206,6 +206,8 @@ let g:NERDSpaceDelims = 1
 " }}}
 
 " Plugin: Coc ================================================= {{{
+let g:coc_global_extensions = ['coc-json', 'coc-python']
+
 inoremap <silent><expr> <C-N> coc#refresh()
 " Use <cr> to confirm completion
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
