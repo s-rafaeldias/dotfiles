@@ -58,7 +58,7 @@ set noerrorbells        " Disable bells
 set novisualbell        " Disable bells
 
 " White space settings
-set listchars=eol:¬,tab:>-,trail:~,extends:>,precedes:<
+set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<
 set list
 
 " Git diff settings
@@ -183,6 +183,9 @@ map <C-D> :NERDTreeToggle<CR>
 " }}}
 
 " Plugin: GitGutter ================================================= {{{
+highlight GitGutterAdd    guifg=#009900 ctermfg=2
+highlight GitGutterChange guifg=#bbbb00 ctermfg=3
+highlight GitGutterDelete guifg=#ff2222 ctermfg=1
 autocmd BufWritePost * GitGutter
 " }}}
 
@@ -204,7 +207,7 @@ let g:NERDSpaceDelims = 1
 
 " Plugin: Coc ================================================= {{{
 " Trigger coc completion with <C-SPACE>
-inoremap <silent><expr> <c-space> coc#refresh()
+inoremap <silent><expr> <c-n> coc#refresh()
 " Use <cr> to confirm completion
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 " Close the preview window when completion is done.
