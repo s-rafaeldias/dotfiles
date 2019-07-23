@@ -58,3 +58,13 @@ else
 	usermod -aG docker $USER
 	newgrp docker 
 fi
+
+#################### docker-compose ####################
+if [[ $(docker-compose -v) ]]; then
+	echo "docker-compose já instalado"
+else
+	curl -L "https://github.com/docker/compose/releases/download/1.24.1/docker-compose-$(uname -s)-$(uname -m)" \
+		-o /usr/local/bin/docker-compose
+
+	chmod +x /usr/local/bin/docker-compose
+fi
