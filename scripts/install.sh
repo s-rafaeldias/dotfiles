@@ -17,7 +17,7 @@ fi
 if [[ $(snap version) ]]; then
 	echo "Snap já instalado!"
 else
-	apt install snapd
+	apt install snapd -y
 fi
 
 #################### Nodejs ####################
@@ -37,7 +37,7 @@ else
 		ca-certificates \
 		curl \
 		gnupg2 \
-		software-properties-common
+		software-properties-common -y
 
 	# Add GPG key
 	curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
@@ -51,12 +51,12 @@ else
 	apt update
 
 	# Install docker
-	apt-get install docker-ce docker-ce-cli containerd.io
+	apt-get install docker-ce docker-ce-cli containerd.io -y
 
 	# Post install
 	groupadd docker
 	usermod -aG docker $USER
-	newgrp docker 
+	newgrp docker
 fi
 
 #################### docker-compose ####################
