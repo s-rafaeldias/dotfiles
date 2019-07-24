@@ -68,3 +68,12 @@ else
 
 	chmod +x /usr/local/bin/docker-compose
 fi
+
+#################### Java ####################
+
+#################### Clojure + lein ####################
+if [[ $(clj -h -n) ]]; then
+	echo "Clojure já instalado"
+else
+	apt install bash curl rlwrap -y
+fi
