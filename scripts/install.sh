@@ -1,9 +1,5 @@
 #!/bin/bash
-
-if [ $EUID != 0 ]; then
-	echo "Favor rodar script com sudo"
-	exit 1
-fi
+INSTALL_PATH=$(pwd)
 
 echo "Preparando..."
 if [ ! -d ~/tmp ]; then
@@ -17,14 +13,14 @@ fi
 if [[ $(snap version) ]]; then
 	echo "Snap já instalado!"
 else
-	apt install snapd -y
+	sudo apt install snapd -y
 fi
 
 #################### Nodejs ####################
 if [[ $(node -v) ]]; then
 	echo "Node.js já instalado"
 else
-	snap install node --classic --channel=12
+	sudo snap install node --classic --channel=12
 fi
 
 #################### Docker ####################
@@ -32,7 +28,7 @@ if [[ $(docker -v) ]]; then
 	echo "Docker já instalado"
 else
 	# Install deps
-	apt-get install \
+	sudo apt-get install \
 		apt-transport-https \
 		ca-certificates \
 		curl \
@@ -43,20 +39,19 @@ else
 	curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
 
 	# Add repo
-	add-apt-repository \
+	sudo add-apt-repository \
 		"deb [arch=amd64] https://download.docker.com/linux/debian \
 		$(lsb_release -cs) \
 		stable"
 
-	apt update
+	sudo apt update
 
 	# Install docker
-	apt-get install docker-ce docker-ce-cli containerd.io -y
+	sudo apt-get install docker-ce docker-ce-cli containerd.io -y
 
 	# Post install
-	groupadd docker
-	usermod -aG docker $USER
-	newgrp docker
+	sudo groupadd docker
+	sudo usermod -aG docker $USER
 fi
 
 #################### docker-compose ####################
@@ -66,7 +61,7 @@ else
 	curl -L "https://github.com/docker/compose/releases/download/1.24.1/docker-compose-$(uname -s)-$(uname -m)" \
 		-o /usr/local/bin/docker-compose
 
-	chmod +x /usr/local/bin/docker-compose
+	sudo chmod +x /usr/local/bin/docker-compose
 fi
 
 #################### Java ####################
@@ -95,4 +90,16 @@ else
 	curl https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein > /tmp/lein
 	mv /tmp/lein /home/rafael/bin
 	chmod a+x /home/rafael/bin/lein
+fi
+
+#################### Neovim ####################
+if [[ $(nvim -v) ]]; then
+  echo "Neovim já instalado"
+else
+  git clone https://github.com/neovim/neovim.git ~/tmp/neovim
+  cd ~/tmp/neovim
+  git checkout stable
+  make CMAKE_BUILD_TYPE=Release
+  sudo make install
+  cd $INSTALL_PATH
 fi
