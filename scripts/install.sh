@@ -70,10 +70,29 @@ else
 fi
 
 #################### Java ####################
+if [[ $(java -version) ]]; then
+	echo "Java já instalado"
+else
+	apt install openjdk-11-jdk -y
+	echo "JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64/" >> /etc/environment
+	source /etc/environment
+fi
 
 #################### Clojure + lein ####################
 if [[ $(clj -h -n) ]]; then
 	echo "Clojure já instalado"
 else
 	apt install bash curl rlwrap -y
+	curl -O https://download.clojure.org/install/linux-install-1.10.1.466.sh
+	chmod +x linux-install-1.10.1.466.sh
+	./linux-install-1.10.1.466.sh
+	rm -rf linux-install-1.10.1.466.sh
+fi
+
+if [[ $(lein -v) ]]; then
+	echo "Lein já instalado"
+else
+	curl https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein > /tmp/lein
+	mv /tmp/lein /home/rafael/bin
+	chmod a+x /home/rafael/bin/lein
 fi
