@@ -46,6 +46,7 @@ set number              " show line numbers
 set cursorline          " show a visual line under the cursor's current line
 "set cursorcolumn        " show a visual line under cursor's current column
 set showmatch           " show the matching part of the pair for [] {} and ()
+set scrolloff=10
 
 set timeoutlen=1000
 set ttimeoutlen=0
@@ -70,6 +71,7 @@ if has('nvim')
     if $USER ==# 'rafael'
         let g:python3_host_prog = $HOME . '/miniconda3/envs/neovim/bin/python'
     elseif $USER ==# '05018601183'
+        let g:ruby_host_prog = $HOME . '/.gem/ruby/2.6.0/bin/neovim-ruby-host'
         let g:python3_host_prog = $HOME . '/anaconda3/envs/neovim/bin/python'
     endif
 endif

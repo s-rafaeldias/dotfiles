@@ -6,12 +6,14 @@
 [core]
 	editor = nvim
 
+
 [merge]
 	tool = vimdiff
 [mergetool]
 	prompt = true
 [mergetool "vimdiff"]
 	cmd = nvim -f -c \"Gdiff\" \"$MERGED\"
+
 
 [difftool]
 	prompt = true
