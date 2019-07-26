@@ -1,0 +1,57 @@
+INFO  2019-07-26T08:56:07.053 19873 channel_create_event:207: new channel 3 (function provider#python3#Call[9]..remote#host#Require[10]..provider#pythonx#Require[13]..provider#Poll:3) : {"id": 3, "client": {}, "mode": "rpc", "stream": "job"}
+INFO  2019-07-26T08:56:08.275 19873 channel_create_event:207: new channel 4 (function coc#rpc#start_server[16]..<SNR>56_start:25) : {"id": 4, "client": {}, "mode": "rpc", "stream": "job"}
+INFO  2019-07-26T08:56:11.777 19873 main:593: starting main loop
+INFO  2019-07-26T08:56:11.891 19873 on_process_exit:385: exited: pid=19893 status=0 stoptime=0
+INFO  2019-07-26T08:56:11.895 19873 on_process_exit:385: exited: pid=19894 status=0 stoptime=0
+INFO  2019-07-26T08:56:12.348 19873 on_process_exit:385: exited: pid=19895 status=0 stoptime=0
+INFO  2019-07-26T08:56:13.679 19873 os_proc_tree_kill:96: sending SIGTERM to process group: -19877
+WARN  2019-07-26T08:56:13.691 19873 call_set_error:604: RPC: ch 4 was closed by the client
+INFO  2019-07-26T08:56:13.693 19873 on_process_exit:385: exited: pid=19877 status=0 stoptime=1561324512632
+INFO  2019-07-26T08:56:13.705 19873 os_proc_tree_kill:96: sending SIGTERM to process group: -19875
+INFO  2019-07-26T08:56:13.720 19873 on_process_exit:385: exited: pid=19875 status=0 stoptime=1561350774236
+INFO  2019-07-26T08:56:13.722 19873 mch_exit:152: Nvim exit: 0
+INFO  2019-07-26T08:56:35.473 20007 channel_create_event:207: new channel 3 (function provider#python3#Call[9]..remote#host#Require[10]..provider#pythonx#Require[13]..provider#Poll:3) : {"id": 3, "client": {}, "mode": "rpc", "stream": "job"}
+INFO  2019-07-26T08:56:35.584 20007 channel_create_event:207: new channel 4 (function coc#rpc#start_server[16]..<SNR>56_start:25) : {"id": 4, "client": {}, "mode": "rpc", "stream": "job"}
+INFO  2019-07-26T08:56:35.696 20007 main:593: starting main loop
+INFO  2019-07-26T08:56:35.714 20007 on_process_exit:385: exited: pid=20019 status=0 stoptime=0
+INFO  2019-07-26T08:56:35.719 20007 on_process_exit:385: exited: pid=20020 status=0 stoptime=0
+INFO  2019-07-26T08:56:35.734 20007 on_process_exit:385: exited: pid=20025 status=0 stoptime=0
+INFO  2019-07-26T08:56:36.479 20007 on_process_exit:385: exited: pid=20059 status=0 stoptime=0
+INFO  2019-07-26T08:56:36.488 20007 on_process_exit:385: exited: pid=20060 status=0 stoptime=0
+INFO  2019-07-26T08:56:39.841 20007 on_process_exit:385: exited: pid=20067 status=0 stoptime=0
+INFO  2019-07-26T08:56:40.584 20007 on_process_exit:385: exited: pid=20069 status=0 stoptime=0
+INFO  2019-07-26T08:56:40.607 20007 channel_create_event:207: new channel 5 (function <SNR>16_on_bufenter[5]..gitgutter#process_buffer[12]..<SNR>114_setup_path[7]..gitgutter#utility#set_repo_path[12]..gitgutter#async#execute:11) : {"id": 5, "mode": "bytes", "stream": "job"}
+INFO  2019-07-26T08:56:40.610 20007 on_process_exit:385: exited: pid=20070 status=0 stoptime=0
+INFO  2019-07-26T08:56:40.659 20007 channel_create_event:207: new channel 6 (function airline#extensions#branch#get_head[1]..airline#extensions#branch#head[6]..<SNR>97_update_untracked[38]..airline#async#vcs_untracked[6]..airline#async#nvim_vcs_untracked:19) : {"id": 6, "mode": "bytes", "stream": "job"}
+INFO  2019-07-26T08:56:40.662 20007 channel_create_event:207: new channel 7 (function airline#extensions#branch#get_head[1]..airline#extensions#branch#head[6]..<SNR>97_update_untracked[42]..airline#async#vcs_clean[6]..airline#async#nvim_vcs_clean:24) : {"id": 7, "mode": "bytes", "stream": "job"}
+INFO  2019-07-26T08:56:40.664 20007 on_process_exit:385: exited: pid=20073 status=0 stoptime=0
+INFO  2019-07-26T08:56:40.666 20007 on_process_exit:385: exited: pid=20072 status=0 stoptime=0
+INFO  2019-07-26T08:56:40.692 20007 on_process_exit:385: exited: pid=20075 status=0 stoptime=0
+INFO  2019-07-26T08:56:40.694 20007 channel_create_event:207: new channel 8 (function <SNR>139_on_exit_nvim[2]..1[5]..gitgutter#process_buffer[21]..gitgutter#diff#run_diff[83]..gitgutter#async#execute:11) : {"id": 8, "mode": "bytes", "stream": "job"}
+INFO  2019-07-26T08:56:40.702 20007 on_process_exit:385: exited: pid=20076 status=0 stoptime=0
+INFO  2019-07-26T08:56:50.321 20007 channel_create_event:207: new channel 9 (function gitgutter#process_buffer[21]..gitgutter#diff#run_diff[83]..gitgutter#async#execute:11) : {"id": 9, "mode": "bytes", "stream": "job"}
+INFO  2019-07-26T08:56:50.332 20007 on_process_exit:385: exited: pid=20127 status=0 stoptime=0
+INFO  2019-07-26T08:56:51.540 20007 channel_create_event:207: new channel 10 (function gitgutter#process_buffer[21]..gitgutter#diff#run_diff[83]..gitgutter#async#execute:11) : {"id": 10, "mode": "bytes", "stream": "job"}
+INFO  2019-07-26T08:56:51.547 20007 on_process_exit:385: exited: pid=20134 status=0 stoptime=0
+INFO  2019-07-26T08:56:53.897 20007 channel_create_event:207: new channel 11 (function gitgutter#process_buffer[21]..gitgutter#diff#run_diff[83]..gitgutter#async#execute:11) : {"id": 11, "mode": "bytes", "stream": "job"}
+INFO  2019-07-26T08:56:53.908 20007 on_process_exit:385: exited: pid=20141 status=0 stoptime=0
+INFO  2019-07-26T08:56:54.726 20007 channel_create_event:207: new channel 12 (function gitgutter#process_buffer[21]..gitgutter#diff#run_diff[83]..gitgutter#async#execute:11) : {"id": 12, "mode": "bytes", "stream": "job"}
+INFO  2019-07-26T08:56:54.745 20007 on_process_exit:385: exited: pid=20147 status=0 stoptime=0
+INFO  2019-07-26T08:56:56.796 20007 channel_create_event:207: new channel 13 (function gitgutter#process_buffer[21]..gitgutter#diff#run_diff[83]..gitgutter#async#execute:11) : {"id": 13, "mode": "bytes", "stream": "job"}
+INFO  2019-07-26T08:56:56.810 20007 on_process_exit:385: exited: pid=20186 status=0 stoptime=0
+INFO  2019-07-26T08:57:00.326 20007 channel_create_event:207: new channel 14 (function gitgutter#process_buffer[21]..gitgutter#diff#run_diff[83]..gitgutter#async#execute:11) : {"id": 14, "mode": "bytes", "stream": "job"}
+INFO  2019-07-26T08:57:00.335 20007 on_process_exit:385: exited: pid=20194 status=0 stoptime=0
+INFO  2019-07-26T08:57:01.829 20007 channel_create_event:207: new channel 15 (function gitgutter#process_buffer[21]..gitgutter#diff#run_diff[83]..gitgutter#async#execute:11) : {"id": 15, "mode": "bytes", "stream": "job"}
+INFO  2019-07-26T08:57:01.836 20007 on_process_exit:385: exited: pid=20205 status=0 stoptime=0
+INFO  2019-07-26T08:57:01.857 20007 channel_create_event:207: new channel 16 (function airline#extensions#branch#get_head[1]..airline#extensions#branch#head[6]..<SNR>97_update_untracked[38]..airline#async#vcs_untracked[6]..airline#async#nvim_vcs_untracked:19) : {"id": 16, "mode": "bytes", "stream": "job"}
+INFO  2019-07-26T08:57:01.859 20007 channel_create_event:207: new channel 17 (function airline#extensions#branch#get_head[1]..airline#extensions#branch#head[6]..<SNR>97_update_untracked[42]..airline#async#vcs_clean[6]..airline#async#nvim_vcs_clean:24) : {"id": 17, "mode": "bytes", "stream": "job"}
+INFO  2019-07-26T08:57:01.862 20007 on_process_exit:385: exited: pid=20210 status=0 stoptime=0
+INFO  2019-07-26T08:57:01.864 20007 on_process_exit:385: exited: pid=20211 status=0 stoptime=0
+INFO  2019-07-26T08:57:01.997 20007 on_process_exit:385: exited: pid=20213 status=0 stoptime=0
+INFO  2019-07-26T08:57:10.417 20007 channel_create_event:207: new channel 18 (function gitgutter#process_buffer[21]..gitgutter#diff#run_diff[83]..gitgutter#async#execute:11) : {"id": 18, "mode": "bytes", "stream": "job"}
+INFO  2019-07-26T08:57:10.428 20007 on_process_exit:385: exited: pid=20303 status=0 stoptime=0
+INFO  2019-07-26T08:57:10.431 20007 os_proc_tree_kill:96: sending SIGTERM to process group: -20011
+INFO  2019-07-26T08:57:10.442 20007 os_proc_tree_kill:96: sending SIGTERM to process group: -20009
+INFO  2019-07-26T08:57:10.446 20007 on_process_exit:385: exited: pid=20011 status=0 stoptime=1618074732834
+INFO  2019-07-26T08:57:10.458 20007 on_process_exit:385: exited: pid=20009 status=0 stoptime=1618087569791
+INFO  2019-07-26T08:57:10.460 20007 mch_exit:152: Nvim exit: 0

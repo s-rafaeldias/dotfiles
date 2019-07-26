@@ -94,12 +94,12 @@ fi
 
 #################### Neovim ####################
 if [[ $(nvim -v) ]]; then
-  echo "Neovim já instalado"
+	echo "Neovim já instalado"
 else
-  git clone https://github.com/neovim/neovim.git ~/tmp/neovim
-  cd ~/tmp/neovim
-  git checkout stable
-  make CMAKE_BUILD_TYPE=Release
-  sudo make install
-  cd $INSTALL_PATH
+	git clone https://github.com/neovim/neovim.git ~/tmp/neovim
+	cd ~/tmp/neovim
+	git checkout stable
+	make CMAKE_BUILD_TYPE=Release
+	sudo make install
+	cd $INSTALL_PATH
 fi
