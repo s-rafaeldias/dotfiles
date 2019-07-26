@@ -65,13 +65,13 @@ else
 fi
 
 #################### Java ####################
-if [[ $(java -version) ]]; then
-	echo "Java já instalado"
-else
-	sudo apt install openjdk-11-jdk -y
-	echo "JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64/" >> /etc/environment
-	source /etc/environment
-fi
+# if [[ $(java -version) ]]; then
+	# echo "Java já instalado"
+# else
+	# sudo apt install openjdk-11-jdk -y
+	# sudo echo "JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64/" >> /etc/environment
+	# sudo source /etc/environment
+# fi
 
 #################### Clojure + lein ####################
 if [[ $(clj -h -n) ]]; then
@@ -89,14 +89,15 @@ if [[ $(lein -v) ]]; then
 else
 	curl https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein > /tmp/lein
 	mv /tmp/lein /home/rafael/bin
-	chmod a+x /home/rafael/bin/lein
+	sudo chmod a+x /home/rafael/bin/lein
 fi
 
 #################### Ruby ####################
 if [[ $(ruby -v) ]]; then
 	echo "Ruby já instalado"
 else
-	sudo snap install ruby --classic
+	# sudo snap install ruby --classic
+	sudo apt install ruby -v
 fi
 
 #################### Neovim ####################
