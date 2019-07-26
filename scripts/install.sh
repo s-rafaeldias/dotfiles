@@ -68,7 +68,7 @@ fi
 if [[ $(java -version) ]]; then
 	echo "Java já instalado"
 else
-	apt install openjdk-11-jdk -y
+	sudo apt install openjdk-11-jdk -y
 	echo "JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64/" >> /etc/environment
 	source /etc/environment
 fi
@@ -77,9 +77,9 @@ fi
 if [[ $(clj -h -n) ]]; then
 	echo "Clojure já instalado"
 else
-	apt install bash curl rlwrap -y
+	sudo apt install bash curl rlwrap -y
 	curl -O https://download.clojure.org/install/linux-install-1.10.1.466.sh
-	chmod +x linux-install-1.10.1.466.sh
+	sudo chmod +x linux-install-1.10.1.466.sh
 	./linux-install-1.10.1.466.sh
 	rm -rf linux-install-1.10.1.466.sh
 fi
@@ -90,6 +90,13 @@ else
 	curl https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein > /tmp/lein
 	mv /tmp/lein /home/rafael/bin
 	chmod a+x /home/rafael/bin/lein
+fi
+
+#################### Ruby ####################
+if [[ $(ruby -v) ]]; then
+	echo "Ruby já instalado"
+else
+	sudo snap install ruby --classic
 fi
 
 #################### Neovim ####################
