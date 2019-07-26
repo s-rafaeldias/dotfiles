@@ -6,6 +6,8 @@
 [core]
 	editor = nvim
 
+[commit]
+	template = ~/.gitmessage
 
 [merge]
 	tool = vimdiff
