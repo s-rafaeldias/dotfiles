@@ -1,0 +1,11 @@
+alias zshconfig="nvim ~/.zshrc"
+alias source_zsh="source ~/.zshrc"
+alias vimconfig="nvim ~/.config/nvim/init.vim"
+alias tmux='TERM=screen-256color tmux -2'
+alias tmuxinator='TERM=screen-256color tmuxinator'
+alias update="sudo apt update && sudo apt upgrade -y"
+
+if [[ $USER == '05018601183' ]]; then
+	alias ssh_eqana_prod="ssh EQANA@SRVANALYTIC01"
+	alias ssh_eu_prod="ssh 05018601116@poupex.com.br@SRVANALYTIC01"
+fi

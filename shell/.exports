@@ -1,0 +1,17 @@
+# Yarn
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+# rbenv
+#export PATH="$HOME/.rbenv/bin:$PATH"
+#eval "$(rbenv init -)"
+# Miniconda path
+export PATH="/home/rafael/miniconda3/bin:$PATH"
+# Go PATH
+export PATH=$PATH:/usr/local/go/bin
+export GOPATH=$HOME/workspace/go
+export PATH=$PATH:$GOPATH/bin
+# Xterm colors
+export TERM=xterm-256color
+# ~/bin
+export PATH=~/bin:$PATH
+# Editor
+export EDITOR='nvim'
