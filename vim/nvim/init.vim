@@ -20,6 +20,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'junegunn/vim-easy-align'
 Plug 'jiangmiao/auto-pairs'
 Plug 'kien/rainbow_parentheses.vim'
+Plug 'junegunn/vim-peekaboo'
 
 " Python
 Plug 'vim-python/python-syntax'
