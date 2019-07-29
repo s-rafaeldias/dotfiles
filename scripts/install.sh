@@ -104,6 +104,7 @@ fi
 if [[ $(nvim -v) ]]; then
 	echo "Neovim já instalado"
 else
+	sudo apt-get install ninja-build gettext libtool libtool-bin autoconf automake cmake g++ pkg-config unzip
 	git clone https://github.com/neovim/neovim.git ~/tmp/neovim
 	cd ~/tmp/neovim
 	git checkout stable
