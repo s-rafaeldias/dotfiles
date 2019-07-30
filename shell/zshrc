@@ -22,3 +22,5 @@ source ~/.alias
 source $ZSH/oh-my-zsh.sh
 source ~/.zstyles
 source ~/.purepower
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

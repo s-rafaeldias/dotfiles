@@ -125,3 +125,5 @@ else
 	exec /usr/bin/zsh
 fi
 
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
