@@ -1,7 +1,7 @@
 {
     // Python
     "python.jediEnabled": true,
-    "python.condaPath": "/home/05018601183/anaconda3/bin/conda",
+    "python.condaPath": "/home/05018601183/miniconda3/bin/conda",
 
     "languageserver": {
         "golang": {
