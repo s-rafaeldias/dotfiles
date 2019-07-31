@@ -147,8 +147,6 @@ nnoremap <C-U> bveUe
 
 " Move to next buffer
 nnoremap <S-TAB> :bn<CR>
-" Move to previous buffer
-nnoremap <C-TAB> :bp<CR>
 
 " Wrap word in double quotes
 nnoremap <Leader>" viw<esc>a"<esc>bi"<esc>lel
