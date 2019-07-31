@@ -17,3 +17,5 @@ export PATH=~/bin:$PATH
 export EDITOR='nvim'
 # Ruby
 export PATH="$HOME/.gem/ruby/2.5.0/bin:$PATH"
+# Snap
+export PATH="/snap/bin:$PATH"

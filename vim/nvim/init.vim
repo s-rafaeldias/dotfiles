@@ -62,7 +62,7 @@ set noerrorbells        " Disable bells
 set novisualbell        " Disable bells
 
 " White space settings
-set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<
+set listchars=eol:¬,tab:>\ ,trail:~,extends:>,precedes:<
 set list
 
 " Git diff settings
@@ -72,6 +72,7 @@ syntax enable
 
 if has('nvim')
     let g:python3_host_prog = $HOME . '/miniconda3/envs/neovim/bin/python'
+    let g:python_host_prog = $HOME . '/miniconda3/envs/neovim2/bin/python'
 endif
 
 
