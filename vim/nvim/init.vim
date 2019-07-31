@@ -12,7 +12,7 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 
 Plug 'majutsushi/tagbar'
-Plug 'wincent/command-t', { 'do': 'cd ruby/command-t/ext/command-t && ruby extconf.rb && make' }
+"Plug 'wincent/command-t', { 'do': 'cd ruby/command-t/ext/command-t && ruby extconf.rb && make' }
 Plug 'TaDaa/vimade'
 Plug 'sheerun/vim-polyglot'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -129,6 +129,12 @@ nnoremap <leader>ev :vsplit $MYVIMRC<CR>
 " Reload vim config
 nnoremap <leader>sv :source $MYVIMRC<CR>
 
+" Move between windows
+nnoremap <C-H> <C-W>h
+nnoremap <C-J> <C-W>j
+nnoremap <C-K> <C-W>k
+nnoremap <C-L> <C-W>l
+
 " Move line up
 nnoremap - ddp
 " Move line down
@@ -221,6 +227,13 @@ nnoremap <silent> K :call <SID>show_documentation()<CR>
 " Disable Coc for clojure files
 autocmd BufNew,BufEnter *.clj  execute "silent! CocDisable"
 autocmd BufLeave *.clj execute "silent! CocEnable"
+" }}}
+
+" Plugin: FZF ================================================= {{{
+nnoremap <Leader>t :Files<CR>
+nnoremap <Leader>b :Buffers<CR>
+nnoremap <Leader>gf :GFiles?<CR>
+nnoremap <Leader>ft :Filetypes<CR>
 " }}}
 
 " Language: Python ================================================= {{{
