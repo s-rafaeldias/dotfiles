@@ -231,6 +231,8 @@ autocmd BufLeave *.clj execute "silent! CocEnable"
 " Plugin: FZF ================================================= {{{
 nnoremap <Leader>t :Files<CR>
 nnoremap <Leader>b :Buffers<CR>
+nnoremap <Leader>gf :GFiles?<CR>
+nnoremap <Leader>ft :Filetypes<CR>
 " }}}
 
 " Language: Python ================================================= {{{
