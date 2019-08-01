@@ -56,7 +56,6 @@ set ttimeoutlen=0
 set updatetime=100
 
 set completeopt-=preview    " Disable preview for autocomplete
-set directory=.             " set root directory for .swp files
 
 set noerrorbells        " Disable bells
 set novisualbell        " Disable bells
