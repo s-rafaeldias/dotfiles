@@ -10,17 +10,23 @@ Plug 'sodapopcan/vim-twiggy'
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-
+" displays tags in a window
 Plug 'majutsushi/tagbar'
-"Plug 'wincent/command-t', { 'do': 'cd ruby/command-t/ext/command-t && ruby extconf.rb && make' }
+" Fades inactive buffers
 Plug 'TaDaa/vimade'
+" Language pack
 Plug 'sheerun/vim-polyglot'
+" Autocomplete
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Code comments
 Plug 'scrooloose/nerdcommenter'
-Plug 'junegunn/vim-easy-align'
+" Insert or delete brackets, parens, quotes in pair
 Plug 'jiangmiao/auto-pairs'
+" Color matching (), {}, []
 Plug 'kien/rainbow_parentheses.vim'
+" Show content of registers
 Plug 'junegunn/vim-peekaboo'
+" Fuzzy finder
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
@@ -44,10 +50,14 @@ call plug#end()
 " }}}
 
 " General Settings ================================================= {{{
+if has('nvim')
+    let g:python3_host_prog = $HOME . '/miniconda3/envs/neovim/bin/python'
+    let g:python_host_prog = $HOME . '/miniconda3/envs/neovim2/bin/python'
+endif
+
 set relativenumber      " show relative numbers
 set number              " show line numbers
 set cursorline          " show a visual line under the cursor's current line
-"set cursorcolumn        " show a visual line under cursor's current column
 set showmatch           " show the matching part of the pair for [] {} and ()
 set scrolloff=10
 
@@ -67,14 +77,11 @@ set list
 " Git diff settings
 set diffopt=vertical
 
-syntax enable
+" Open new split panes to right and bottom, which feels more natural
+set splitbelow
+set splitright
 
-if has('nvim')
-    let g:python3_host_prog = $HOME . '/miniconda3/envs/neovim/bin/python'
-    let g:python_host_prog = $HOME . '/miniconda3/envs/neovim2/bin/python'
-endif
-
-
+" Change <Leader> to ','
 let mapleader=","
 
 " disable continuation of comments to the next line
@@ -92,6 +99,8 @@ noremap! <Right> <Esc>
 " }}}
 
 " Colors ================================================= {{{
+syntax enable
+
 if (has("nvim"))
     "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
     let $NVIM_TUI_ENABLE_TRUE_COLOR=1
@@ -194,7 +203,7 @@ autocmd BufWritePost * GitGutter
 " }}}
 
 " Plugin: Tagbar ================================================= {{{
-nmap <F8> :TagbarToggle<CR>
+nmap <F9> :TagbarToggle<CR>
 " }}}
 
 " Plugin: kien/rainbow_parentheses.vim ================================================= {{{
@@ -210,7 +219,12 @@ let g:NERDSpaceDelims = 1
 " }}}
 
 " Plugin: Coc ================================================= {{{
-let g:coc_global_extensions = ['coc-json', 'coc-python']
+let g:coc_global_extensions = [
+            \ 'coc-json',
+            \ 'coc-python',
+            \ 'coc-solargraph',
+            \ 'coc-yaml',
+            \ 'coc-highlight']
 
 inoremap <silent><expr> <C-N> coc#refresh()
 " Use <cr> to confirm completion
