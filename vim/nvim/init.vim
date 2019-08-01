@@ -60,6 +60,8 @@ set number              " show line numbers
 set cursorline          " show a visual line under the cursor's current line
 set showmatch           " show the matching part of the pair for [] {} and ()
 set scrolloff=10
+set signcolumn=yes      " always show signcolumns
+
 
 set timeoutlen=1000
 set ttimeoutlen=0
@@ -77,8 +79,7 @@ set list
 " Git diff settings
 set diffopt=vertical
 
-" Open new split panes to right and bottom, which feels more natural
-set splitbelow
+" Open new split panes to right, which feels more natural
 set splitright
 
 " Change <Leader> to ','
