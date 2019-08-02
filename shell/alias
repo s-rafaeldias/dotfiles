@@ -1,4 +1,4 @@
-alias shellconfig="nvim ~/dotfiles/shell"
+alias shellconfig="nvim ~/dotfiles/shell/."
 alias source_zsh="source ~/.zshrc"
 alias vimconfig="nvim ~/.config/nvim/init.vim"
 alias tmux='TERM=screen-256color tmux -2'
