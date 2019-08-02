@@ -162,7 +162,7 @@ nnoremap <Leader>' viw<esc>a'<esc>bi'<esc>lel
 nnoremap <Leader>w :execute ":match Error " . '/\v\s+$/' <CR>
 " Paste clipboard (register *)
 nnoremap <Leader>P "*P
-nnoremap <Leader>p <F2>"*p<F2>
+nnoremap <Leader>p "*p
 " }}}
 
 " VISUAL MODE mappings ================================================= {{{
