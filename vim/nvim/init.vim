@@ -240,6 +240,7 @@ autocmd BufLeave *.clj execute "silent! CocEnable"
 " }}}
 
 " Plugin: FZF ================================================= {{{
+let $FZF_DEFAULT_COMMAND="find . -path '*/\.*' -type d -prune -o -type f -print -o -type l -print 2> /dev/null | sed s/^..//"
 nnoremap <Leader>t :Files<CR>
 nnoremap <Leader>b :Buffers<CR>
 nnoremap <Leader>gf :GFiles?<CR>
