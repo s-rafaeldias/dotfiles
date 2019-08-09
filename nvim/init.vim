@@ -30,6 +30,8 @@ Plug 'junegunn/vim-peekaboo'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
+" Dockerfile
+Plug 'ekalinin/Dockerfile.vim'
 " Python
 Plug 'vim-python/python-syntax'
 Plug 'davidhalter/jedi-vim'
