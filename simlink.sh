@@ -8,3 +8,6 @@ done
 # Nvim files
 ln -sf ~/dotfiles/vim/nvim/init.vim ~/.config/nvim/init.vim
 ln -sf ~/dotfiles/vim/nvim/coc-settings.json ~/.config/nvim/coc-settings.json
+
+# tmux files
+ln -sf ~/dotfiles/tmux/.tmux.conf ~/.tmux.conf
