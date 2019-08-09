@@ -29,6 +29,8 @@ Plug 'junegunn/vim-peekaboo'
 " Fuzzy finder
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+" Wakatime
+Plug 'wakatime/vim-wakatime'
 
 " Dockerfile
 Plug 'ekalinin/Dockerfile.vim'
