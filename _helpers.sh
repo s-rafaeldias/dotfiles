@@ -19,8 +19,3 @@ echo_done() {
 echo_info() {
   printf '\n\033[36m%s\033[0m\n' "$1"
 }
-
-echo_error "teste"
-echo_warning "teste"
-echo_done "teste"
-echo_info "teste"
