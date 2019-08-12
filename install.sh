@@ -10,6 +10,15 @@ else
 	echo_info "Diretório ~/tmp já existe!"
 fi
 
+#################### Git ####################
+if type -p git > /dev/null; then
+	echo_done "Git já instalado!"
+else
+	sudo apt-get install git -y
+fi
+
+#################### Nodejs ####################
+
 #################### Snap ####################
 if type -p snap > /dev/null; then
 	echo_done "Snap já instalado!"
