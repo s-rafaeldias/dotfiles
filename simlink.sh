@@ -11,3 +11,6 @@ ln -sf ~/dotfiles/nvim/coc-settings.json ~/.config/nvim/coc-settings.json
 
 # tmux files
 ln -sf ~/dotfiles/tmux/.tmux.conf ~/.tmux.conf
+
+# Lein settings
+ln -sf ~/dotfiles/lein/profiles.clj ~/.lein/profiles.clj
