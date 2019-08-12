@@ -31,6 +31,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 " Wakatime
 Plug 'wakatime/vim-wakatime'
+Plug 'vim-syntastic/syntastic'
 
 " Dockerfile
 Plug 'ekalinin/Dockerfile.vim'
@@ -43,6 +44,8 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'tpope/vim-fireplace'
 Plug 'guns/vim-clojure-highlight'
 Plug 'guns/vim-clojure-static'
+Plug 'venantius/vim-eastwood'
+Plug 'venantius/vim-cljfmt'
 
 """ Colorscheme
 Plug 'vim-airline/vim-airline'
@@ -54,6 +57,7 @@ call plug#end()
 " }}}
 
 " General Settings ================================================= {{{
+let g:syntastic_clojure_checkers = ['eastwood']
 if has('nvim')
     let g:python3_host_prog = $HOME . '/miniconda3/envs/neovim/bin/python'
     let g:python_host_prog = $HOME . '/miniconda3/envs/neovim2/bin/python'
