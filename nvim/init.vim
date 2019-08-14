@@ -44,7 +44,7 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'tpope/vim-fireplace'
 Plug 'guns/vim-clojure-highlight'
 Plug 'guns/vim-clojure-static'
-Plug 'venantius/vim-eastwood'
+"Plug 'venantius/vim-eastwood'
 Plug 'venantius/vim-cljfmt'
 
 """ Colorscheme
