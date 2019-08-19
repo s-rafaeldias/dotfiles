@@ -10,6 +10,9 @@ Plug 'sodapopcan/vim-twiggy'
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+" Ranger
+Plug 'rbgrouleff/bclose.vim'
+Plug 'francoiscabrol/ranger.vim'
 " displays tags in a window
 Plug 'majutsushi/tagbar'
 " Fades inactive buffers
