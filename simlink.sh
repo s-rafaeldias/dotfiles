@@ -1,8 +1,14 @@
 #!/bin/bash
 # Shell files
-for f in ../shell/*; do
+for f in ./shell/*; do
 	file=$(basename "$f")
 	ln -sf ~/dotfiles/shell/$file ~/.$file
+done
+
+# Ranger files
+for f in ./ranger/*; do
+	file=$(basename "$f")
+	ln -sf ~/dotfiles/ranger/$file ~/.config/ranger/$file
 done
 
 # Nvim files
