@@ -4,6 +4,7 @@ export ZSH=$HOME/.oh-my-zsh
 # Plugins ============================================
 plugins=(
 	docker
+	git-flow-completion
 	kubectl
 	tmuxinator
 	zsh-autosuggestions
