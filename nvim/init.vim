@@ -49,6 +49,9 @@ Plug 'guns/vim-clojure-highlight'
 Plug 'guns/vim-clojure-static'
 "Plug 'venantius/vim-eastwood'
 Plug 'venantius/vim-cljfmt'
+" Javascript
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
 
 """ Colorscheme
 Plug 'vim-airline/vim-airline'
