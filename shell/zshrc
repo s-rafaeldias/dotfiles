@@ -3,6 +3,7 @@ export ZSH=$HOME/.oh-my-zsh
 
 # Plugins ============================================
 plugins=(
+	you-should-use
 	docker
 	git-flow-completion
 	kubectl

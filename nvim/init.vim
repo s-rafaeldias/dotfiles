@@ -93,6 +93,8 @@ set diffopt=vertical
 " Change <Leader> to ','
 let mapleader=","
 
+let g:markdown_folding = 1
+
 " disable continuation of comments to the next line
 autocmd FileType * setlocal formatoptions-=cro
 

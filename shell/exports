@@ -19,3 +19,5 @@ export EDITOR='nvim'
 export PATH="$HOME/.gem/ruby/2.5.0/bin:$PATH"
 # Snap
 export PATH="/snap/bin:$PATH"
+# 'You should use' hardcore mode
+export YSU_HARDCORE=1
