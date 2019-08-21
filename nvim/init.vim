@@ -305,4 +305,5 @@ autocmd FileType json syntax match Comment +\/\/.\+$+
 
 " Language: Markdown ================================================= {{{
 let g:markdown_folding = 1
+let g:markdown_enable_folding = 1
 " }}}
