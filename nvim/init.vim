@@ -302,3 +302,7 @@ autocmd FileType vim set foldmethod=marker
 " Language: Json ================================================= {{{
 autocmd FileType json syntax match Comment +\/\/.\+$+
 " }}}
+
+" Language: Markdown ================================================= {{{
+let g:markdown_folding = 1
+" }}}
