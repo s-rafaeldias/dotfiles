@@ -103,12 +103,17 @@ fi
 # fi
 
 # #################### Ruby ####################
-# if [[ $(ruby -v) ]]; then
-	# echo "Ruby já instalado"
-# else
-	# # sudo snap install ruby --classic
-	# sudo apt install ruby -v
-# fi
+if type -p node > /dev/null; then
+	echo_info "Ruby já instalado"
+else
+	echo_info "Instalando Ruby..."
+	sudo apt install ruby -v > /dev/null
+	if type -p ruby > /dev/null; then
+		echo_done "Ruby instalado com sucesso"
+	else
+		echo_warning "Falha ao instalar Ruby"
+	fi
+fi
 
 # #################### Neovim ####################
 # if [[ $(nvim -v) ]]; then
