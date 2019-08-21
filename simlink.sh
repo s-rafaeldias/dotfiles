@@ -15,8 +15,10 @@ done
 ln -sf ~/dotfiles/nvim/init.vim ~/.config/nvim/init.vim
 ln -sf ~/dotfiles/nvim/coc-settings.json ~/.config/nvim/coc-settings.json
 
-# tmux files
+# tmux/tmuxinator files
 ln -sf ~/dotfiles/tmux/.tmux.conf ~/.tmux.conf
+ln -sf ~/dotfiles/completions/tmuxinator.zsh ~/.completions/tmuxinator.zsh
+
 
 # Lein settings
 ln -sf ~/dotfiles/lein/profiles.clj ~/.lein/profiles.clj

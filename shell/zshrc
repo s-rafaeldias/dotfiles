@@ -24,6 +24,7 @@ source ~/.alias
 source $ZSH/oh-my-zsh.sh
 source ~/.zstyles
 source ~/.purepower
+source ~/.completions/tmuxinator.zsh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
