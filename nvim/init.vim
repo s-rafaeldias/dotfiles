@@ -52,6 +52,8 @@ Plug 'venantius/vim-cljfmt'
 " Javascript
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
+Plug 'jelera/vim-javascript-syntax'
+Plug 'othree/javascript-libraries-syntax.vim'
 
 """ Colorscheme
 Plug 'vim-airline/vim-airline'
@@ -238,7 +240,11 @@ let g:coc_global_extensions = [
             \ 'coc-python',
             \ 'coc-solargraph',
             \ 'coc-yaml',
-            \ 'coc-highlight']
+            \ 'coc-highlight',
+            \ 'coc-tsserver',
+            \ 'coc-html',
+            \ 'coc-css',
+            \ 'coc-emmet']
 
 " Use <C-N> to trigger completion.
 inoremap <silent><expr> <C-N> coc#refresh()

@@ -1,7 +1,14 @@
 {
     // Python
     "python.jediEnabled": true,
-    "python.condaPath": "/home/05018601183/miniconda3/bin/conda",
+    "python.condaPath": "~/miniconda3/bin/conda",
+
+    // Js
+    "javascript.suggest.completeFunctionCalls": false,
+    "typescript.suggest.completeFunctionCalls": false,
+
+    // HTML
+    "emmet.showAbbreviationSuggestions": false,
 
     "languageserver": {
         "golang": {
