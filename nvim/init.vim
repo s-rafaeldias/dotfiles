@@ -37,18 +37,17 @@ Plug 'wakatime/vim-wakatime'
 Plug 'vim-syntastic/syntastic'
 
 " Dockerfile
-Plug 'ekalinin/Dockerfile.vim'
+Plug 'ekalinin/Dockerfile.vim', { 'for': 'dockerfile' }
 " Python
-Plug 'vim-python/python-syntax'
-Plug 'davidhalter/jedi-vim'
+Plug 'vim-python/python-syntax', { 'for': 'python' }
+Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 " Go
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries', 'for': 'go'}
 " Clojure
-Plug 'tpope/vim-fireplace'
-Plug 'guns/vim-clojure-highlight'
-Plug 'guns/vim-clojure-static'
-"Plug 'venantius/vim-eastwood'
-Plug 'venantius/vim-cljfmt'
+Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
+Plug 'guns/vim-clojure-highlight', { 'for': 'clojure' }
+Plug 'guns/vim-clojure-static', { 'for': 'clojure' }
+Plug 'venantius/vim-cljfmt', { 'for': 'clojure' }
 " Javascript
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
