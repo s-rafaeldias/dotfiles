@@ -97,8 +97,6 @@ set diffopt=vertical
 " Change <Leader> to ','
 let mapleader=","
 
-let g:markdown_folding = 1
-
 " disable continuation of comments to the next line
 autocmd FileType * setlocal formatoptions-=cro
 
@@ -272,9 +270,12 @@ nnoremap <Leader>ft :Filetypes<CR>
 autocmd FileType python set ts=4
 autocmd FileType python set expandtab
 autocmd FileType python set shiftwidth=4
+autocmd FileType python set foldmethod=indent
+autocmd FileType python set foldnestmax=2
 
 let g:python_highlight_all=1
 let g:jedi#completions_enabled = 0
+
 " }}}
 
 " Language: Go ================================================= {{{
