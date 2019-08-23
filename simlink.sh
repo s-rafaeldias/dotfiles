@@ -1,24 +1,25 @@
 #!/bin/bash
+WORK_DIR=$(basename $(pwd))
 # Shell files
 for f in ./shell/*; do
 	file=$(basename "$f")
-	ln -sf ~/dotfiles/shell/$file ~/.$file
+	ln -sf ~/$WORK_DIR/shell/$file ~/.$file
 done
 
 # Ranger files
 for f in ./ranger/*; do
 	file=$(basename "$f")
-	ln -sf ~/dotfiles/ranger/$file ~/.config/ranger/$file
+	ln -sf ~/$WORK_DIR/ranger/$file ~/.config/ranger/$file
 done
 
 # Nvim files
-ln -sf ~/dotfiles/nvim/init.vim ~/.config/nvim/init.vim
-ln -sf ~/dotfiles/nvim/coc-settings.json ~/.config/nvim/coc-settings.json
+ln -sf ~/$WORK_DIR/nvim/init.vim ~/.config/nvim/init.vim
+ln -sf ~/$WORK_DIR/nvim/coc-settings.json ~/.config/nvim/coc-settings.json
 
 # tmux/tmuxinator files
-ln -sf ~/dotfiles/tmux/.tmux.conf ~/.tmux.conf
-ln -sf ~/dotfiles/completions/tmuxinator.zsh ~/.completions/tmuxinator.zsh
+ln -sf ~/$WORK_DIR/tmux/.tmux.conf ~/.tmux.conf
+ln -sf ~/$WORK_DIR/completions/tmuxinator.zsh ~/.completions/tmuxinator.zsh
 
 
 # Lein settings
-ln -sf ~/dotfiles/lein/profiles.clj ~/.lein/profiles.clj
+ln -sf ~/$WORK_DIR/lein/profiles.clj ~/.lein/profiles.clj
