@@ -2,3 +2,4 @@
 *.swo
 nvim/.netrwhist
 .nvimlog
+.DS_Store

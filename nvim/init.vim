@@ -77,7 +77,6 @@ set showmatch           " show the matching part of the pair for [] {} and ()
 set scrolloff=10
 set signcolumn=yes      " always show signcolumns
 
-
 set timeoutlen=1000
 set ttimeoutlen=0
 set updatetime=100
@@ -96,6 +95,8 @@ set diffopt=vertical
 
 " Change <Leader> to ','
 let mapleader=","
+
+set directory=.
 
 " disable continuation of comments to the next line
 autocmd FileType * setlocal formatoptions-=cro
