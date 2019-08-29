@@ -1,7 +1,7 @@
 [user]
 	email = rafa197795@gmail.com
 	name = Rafael Dias
-	signingkey = D3645235E2299B87
+	signingkey = 75AFD825AD1CF240
 
 [commit]
 	template = ~/.gitmessage
@@ -20,3 +20,5 @@
 	tool = nvimdiff
 [difftool "nvimdiff"]
 	cmd = nvim -d \"$REMOTE\" \"$LOCAL\"
+[gpg]
+	program = gpg
