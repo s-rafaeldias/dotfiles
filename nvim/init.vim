@@ -40,7 +40,7 @@ Plug 'vim-syntastic/syntastic'
 Plug 'ekalinin/Dockerfile.vim', { 'for': 'dockerfile' }
 " Python
 Plug 'vim-python/python-syntax', { 'for': 'python' }
-Plug 'davidhalter/jedi-vim', { 'for': 'python' }
+Plug 'davidhalter/jedi-vim' ", { 'for': 'python' }
 " Go
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries', 'for': 'go'}
 " Clojure
@@ -53,6 +53,8 @@ Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'othree/javascript-libraries-syntax.vim'
+" Rust
+Plug 'rust-lang/rust.vim'
 
 """ Colorscheme
 Plug 'vim-airline/vim-airline'
