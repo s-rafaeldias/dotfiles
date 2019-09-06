@@ -20,6 +20,8 @@ ln -sf ~/$WORK_DIR/nvim/coc-settings.json ~/.config/nvim/coc-settings.json
 ln -sf ~/$WORK_DIR/tmux/.tmux.conf ~/.tmux.conf
 ln -sf ~/$WORK_DIR/completions/tmuxinator.zsh ~/.completions/tmuxinator.zsh
 
-
 # Lein settings
 ln -sf ~/$WORK_DIR/lein/profiles.clj ~/.lein/profiles.clj
+
+# Git settings
+ln -sf ~/$WORK_DIR/git/.gitmessage  ~/.gitmessage

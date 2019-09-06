@@ -53,6 +53,8 @@ Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'othree/javascript-libraries-syntax.vim'
+" Rust
+Plug 'rust-lang/rust.vim'
 
 """ Colorscheme
 Plug 'vim-airline/vim-airline'
@@ -242,7 +244,8 @@ let g:coc_global_extensions = [
             \ 'coc-tsserver',
             \ 'coc-html',
             \ 'coc-css',
-            \ 'coc-emmet']
+            \ 'coc-emmet',
+            \ 'coc-rls']
 
 " Use <C-N> to trigger completion.
 inoremap <silent><expr> <C-N> coc#refresh()
@@ -319,3 +322,6 @@ let g:markdown_folding = 1
 let g:markdown_enable_folding = 1
 " }}}
 
+" Language: Rust ================================================= {{{
+let g:rustfmt_autosave = 1
+" }}}
