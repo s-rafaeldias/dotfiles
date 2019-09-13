@@ -261,7 +261,6 @@ autocmd BufLeave *.clj execute "silent! CocEnable"
 " }}}
 
 " Plugin: FZF ================================================= {{{
-let $FZF_DEFAULT_COMMAND="find . -path '*node_modules*' -prune -o -path '*/\.*' -type d -prune -o -type f -print -o -type l -print 2> /dev/null | sed s/^..//"
 nnoremap <Leader>t :Files<CR>
 nnoremap <Leader>b :Buffers<CR>
 nnoremap <Leader>gf :GFiles?<CR>
@@ -274,6 +273,7 @@ autocmd FileType python set expandtab
 autocmd FileType python set shiftwidth=4
 autocmd FileType python set foldmethod=indent
 autocmd FileType python set foldnestmax=2
+autocmd FileType python normal zR
 
 let g:python_highlight_all=1
 let g:jedi#completions_enabled = 0
@@ -318,4 +318,8 @@ autocmd FileType json syntax match Comment +\/\/.\+$+
 " Language: Markdown ================================================= {{{
 let g:markdown_folding = 1
 let g:markdown_enable_folding = 1
+" }}}
+
+" Language: Rust ================================================= {{{
+let g:rustfmt_autosave = 1
 " }}}
