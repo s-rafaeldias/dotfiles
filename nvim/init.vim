@@ -34,7 +34,10 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 " Wakatime
 Plug 'wakatime/vim-wakatime'
+" Syntax checking hacks
 Plug 'vim-syntastic/syntastic'
+" Quoting/parenthesizing made simple
+Plug 'tpope/vim-surround'
 
 " Dockerfile
 Plug 'ekalinin/Dockerfile.vim', { 'for': 'dockerfile' }
@@ -49,12 +52,12 @@ Plug 'guns/vim-clojure-highlight', { 'for': 'clojure' }
 Plug 'guns/vim-clojure-static', { 'for': 'clojure' }
 Plug 'venantius/vim-cljfmt', { 'for': 'clojure' }
 " Javascript
-Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
-Plug 'jelera/vim-javascript-syntax'
-Plug 'othree/javascript-libraries-syntax.vim'
+Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
+Plug 'mxw/vim-jsx', { 'for': 'javascript' }
+Plug 'jelera/vim-javascript-syntax', { 'for': 'javascript' }
+Plug 'othree/javascript-libraries-syntax.vim', { 'for': 'javascript' }
 " Rust
-Plug 'rust-lang/rust.vim'
+Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 
 """ Colorscheme
 Plug 'vim-airline/vim-airline'
@@ -277,6 +280,8 @@ autocmd FileType python normal zR
 
 let g:python_highlight_all=1
 let g:jedi#completions_enabled = 0
+let g:syntastic_mode_map = { 'passive_filetypes': ['python'] }
+
 
 " }}}
 
