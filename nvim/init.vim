@@ -286,9 +286,12 @@ autocmd FileType python set foldmethod=indent
 autocmd FileType python set foldnestmax=2
 autocmd FileType python normal zR
 
+autocmd BufWritePre *.py execute ':Black'
+
 let g:python_highlight_all=1
 let g:jedi#completions_enabled = 1
-" let g:syntastic_mode_map = { 'passive_filetypes': ['python'] }
+let g:syntastic_mode_map = { 'passive_filetypes': ['python'] }
+
 
 
 " }}}

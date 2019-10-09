@@ -26,3 +26,6 @@ ln -sf ~/$WORK_DIR/lein/profiles.clj ~/.lein/profiles.clj
 # Git settings
 ln -sf ~/$WORK_DIR/git/.gitmessage  ~/.gitmessage
 ln -sf ~/$WORK_DIR/completions/git-flow.zsh ~/.completions/git-flow.zsh
+
+# Pip
+ln -sf ~/$WORK_DIR/completions/pip.zsh ~/.completions/pip.zsh
