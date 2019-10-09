@@ -5,6 +5,7 @@ alias tmux='TERM=screen-256color tmux -2'
 alias tmuxinator='TERM=screen-256color tmuxinator'
 alias update="sudo apt update && sudo apt upgrade -y"
 alias vim="nvim"
+alias bu="brew upgrade"
 
 if [[ $USER == '05018601183' ]]; then
 	alias ssh_eqana_prod="ssh EQANA@SRVANALYTIC01"

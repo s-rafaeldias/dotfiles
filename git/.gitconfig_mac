@@ -1,0 +1,24 @@
+[user]
+	email = rafa197795@gmail.com
+	name = Rafael Dias
+	signingkey = 75AFD825AD1CF240
+
+[commit]
+	template = ~/.gitmessage
+	gpgsign = true
+
+[merge]
+	tool = vimdiff
+[mergetool]
+	prompt = true
+[mergetool "vimdiff"]
+	cmd = nvim -f -c \"Gdiff\" \"$MERGED\"
+
+[difftool]
+	prompt = true
+[diff]
+	tool = nvimdiff
+[difftool "nvimdiff"]
+	cmd = nvim -d \"$REMOTE\" \"$LOCAL\"
+[gpg]
+	program = gpg

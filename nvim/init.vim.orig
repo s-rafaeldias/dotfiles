@@ -36,15 +36,22 @@ Plug 'junegunn/fzf.vim'
 Plug 'wakatime/vim-wakatime'
 " Syntax checking hacks
 Plug 'vim-syntastic/syntastic'
+<<<<<<< HEAD
 " Quoting/parenthesizing made simple
+=======
+>>>>>>> 2bdf1eae5088baf904d8ddaf0ada15ef87606244
 Plug 'tpope/vim-surround'
 
 " Dockerfile
 Plug 'ekalinin/Dockerfile.vim', { 'for': 'dockerfile' }
 " Python
 Plug 'vim-python/python-syntax', { 'for': 'python' }
+<<<<<<< HEAD
+Plug 'davidhalter/jedi-vim' ", { 'for': 'python' }
 Plug 'psf/black'
+=======
 Plug 'davidhalter/jedi-vim'
+>>>>>>> 2bdf1eae5088baf904d8ddaf0ada15ef87606244
 " Go
 Plug 'fatih/vim-go'
 " Clojure
@@ -53,6 +60,14 @@ Plug 'guns/vim-clojure-highlight', { 'for': 'clojure' }
 Plug 'guns/vim-clojure-static', { 'for': 'clojure' }
 Plug 'venantius/vim-cljfmt', { 'for': 'clojure' }
 " Javascript
+<<<<<<< HEAD
+Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
+Plug 'mxw/vim-jsx', { 'for': 'javascript' }
+Plug 'jelera/vim-javascript-syntax', { 'for': 'javascript' }
+Plug 'othree/javascript-libraries-syntax.vim', { 'for': 'javascript' }
+" Rust
+Plug 'rust-lang/rust.vim', { 'for': 'rust' }
+=======
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'jelera/vim-javascript-syntax'
@@ -64,6 +79,7 @@ Plug 'mattn/emmet-vim'
 " Haskell
 Plug 'neovimhaskell/haskell-vim'
 
+>>>>>>> 2bdf1eae5088baf904d8ddaf0ada15ef87606244
 
 """ Colorscheme
 Plug 'vim-airline/vim-airline'
@@ -336,6 +352,8 @@ let g:markdown_enable_folding = 1
 " Language: Rust ================================================= {{{
 let g:rustfmt_autosave = 1
 " }}}
+<<<<<<< HEAD
+=======
 
 " Language: Javascript ================================================= {{{
 autocmd FileType javascript set ts=2
@@ -357,3 +375,4 @@ let g:haskell_indent_guard = 2
 let g:haskell_indent_case_alternative = 1
 let g:cabal_indent_section = 2
 " }}}
+>>>>>>> 2bdf1eae5088baf904d8ddaf0ada15ef87606244
