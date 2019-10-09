@@ -1,6 +1,7 @@
 export LC_ALL=en_US.UTF-8
 # Yarn
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+export PATH="$(yarn global bin):$PATH"
 # rbenv
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
@@ -14,11 +15,10 @@ export PATH=$PATH:$GOPATH/bin
 export TERM=xterm-256color
 # ~/bin
 export PATH=~/bin:$PATH
+export PATH=/Users/rafael/.local/bin:$PATH
 # Editor
 export EDITOR='nvim'
-# Ruby
-# export PATH="$HOME/.gem/ruby/2.6.0:$PATH"
-# Snap
-export PATH="/snap/bin:$PATH"
 # 'You should use' hardcore mode
 export YSU_HARDCORE=1
+# FZF
+export FZF_DEFAULT_COMMAND="fd --type f --hidden --follow --exclude .git"

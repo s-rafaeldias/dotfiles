@@ -35,12 +35,13 @@ Plug 'junegunn/fzf.vim'
 " Wakatime
 Plug 'wakatime/vim-wakatime'
 Plug 'vim-syntastic/syntastic'
+Plug 'tpope/vim-surround'
 
 " Dockerfile
 Plug 'ekalinin/Dockerfile.vim', { 'for': 'dockerfile' }
 " Python
 Plug 'vim-python/python-syntax', { 'for': 'python' }
-Plug 'davidhalter/jedi-vim', { 'for': 'python' }
+Plug 'davidhalter/jedi-vim'
 " Go
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries', 'for': 'go'}
 " Clojure
@@ -54,7 +55,12 @@ Plug 'mxw/vim-jsx'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'othree/javascript-libraries-syntax.vim'
 " Rust
-Plug 'rust-lang/rust.vim'
+" Plug 'rust-lang/rust.vim'
+" HTML
+Plug 'mattn/emmet-vim'
+" Haskell
+Plug 'neovimhaskell/haskell-vim'
+
 
 """ Colorscheme
 Plug 'vim-airline/vim-airline'
@@ -263,7 +269,6 @@ autocmd BufLeave *.clj execute "silent! CocEnable"
 " }}}
 
 " Plugin: FZF ================================================= {{{
-let $FZF_DEFAULT_COMMAND="find . -path '*/\.*' -type d -prune -o -type f -print -o -type l -print 2> /dev/null | sed s/^..//"
 nnoremap <Leader>t :Files<CR>
 nnoremap <Leader>b :Buffers<CR>
 nnoremap <Leader>gf :GFiles?<CR>
@@ -324,4 +329,25 @@ let g:markdown_enable_folding = 1
 
 " Language: Rust ================================================= {{{
 let g:rustfmt_autosave = 1
+" }}}
+
+" Language: Javascript ================================================= {{{
+autocmd FileType javascript set ts=2
+autocmd FileType javascript set expandtab
+autocmd FileType javascript set shiftwidth=2
+" }}}
+
+" Language: Haskell ================================================= {{{
+let g:haskell_classic_highlighting = 1
+let g:haskell_indent_if = 3
+let g:haskell_indent_case = 2
+let g:haskell_indent_let = 4
+let g:haskell_indent_where = 6
+let g:haskell_indent_before_where = 2
+let g:haskell_indent_after_bare_where = 2
+let g:haskell_indent_do = 3
+let g:haskell_indent_in = 1
+let g:haskell_indent_guard = 2
+let g:haskell_indent_case_alternative = 1
+let g:cabal_indent_section = 2
 " }}}

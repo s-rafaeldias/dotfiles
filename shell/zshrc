@@ -25,9 +25,10 @@ source $ZSH/oh-my-zsh.sh
 source ~/.zstyles
 source ~/.purepower
 source ~/.completions/tmuxinator.zsh
+source ~/.completions/.git-flow-completion.zsh
+
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
 
 eval $(thefuck --alias)
 
