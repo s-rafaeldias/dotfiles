@@ -2,6 +2,7 @@
     // Python
     "python.jediEnabled": true,
     "python.condaPath": "~/miniconda3/bin/conda",
+    "python.formatting.provider": "black",
 
     // Js
     "javascript.suggest.completeFunctionCalls": false,

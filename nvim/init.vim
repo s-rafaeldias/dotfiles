@@ -44,8 +44,9 @@ Plug 'ekalinin/Dockerfile.vim', { 'for': 'dockerfile' }
 " Python
 Plug 'vim-python/python-syntax', { 'for': 'python' }
 Plug 'davidhalter/jedi-vim' ", { 'for': 'python' }
+Plug 'psf/black'
 " Go
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries', 'for': 'go'}
+Plug 'fatih/vim-go'
 " Clojure
 Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 Plug 'guns/vim-clojure-highlight', { 'for': 'clojure' }
@@ -279,8 +280,8 @@ autocmd FileType python set foldnestmax=2
 autocmd FileType python normal zR
 
 let g:python_highlight_all=1
-let g:jedi#completions_enabled = 0
-let g:syntastic_mode_map = { 'passive_filetypes': ['python'] }
+let g:jedi#completions_enabled = 1
+" let g:syntastic_mode_map = { 'passive_filetypes': ['python'] }
 
 
 " }}}
