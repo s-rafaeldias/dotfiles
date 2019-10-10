@@ -1,79 +1,4 @@
-" Plugins ================================================= {{{
-call plug#begin()
-
-""" General plugins
-" Git
-Plug 'airblade/vim-gitgutter'
-Plug 'tpope/vim-fugitive'
-Plug 'sodapopcan/vim-twiggy'
-" NERDTree
-Plug 'scrooloose/nerdtree'
-Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-" Ranger
-Plug 'rbgrouleff/bclose.vim'
-Plug 'francoiscabrol/ranger.vim'
-" displays tags in a window
-Plug 'majutsushi/tagbar'
-" Fades inactive buffers
-Plug 'TaDaa/vimade'
-" Language pack
-Plug 'sheerun/vim-polyglot'
-" Autocomplete
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" Code comments
-Plug 'scrooloose/nerdcommenter'
-" Insert or delete brackets, parens, quotes in pair
-Plug 'jiangmiao/auto-pairs'
-" Color matching (), {}, []
-Plug 'kien/rainbow_parentheses.vim'
-" Show content of registers
-Plug 'junegunn/vim-peekaboo'
-" Fuzzy finder
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-" Wakatime
-Plug 'wakatime/vim-wakatime'
-" Syntax checking hacks
-Plug 'vim-syntastic/syntastic'
-" Quoting/parenthesizing made simple
-Plug 'tpope/vim-surround'
-
-" Dockerfile
-Plug 'ekalinin/Dockerfile.vim', { 'for': 'dockerfile' }
-" Python
-Plug 'vim-python/python-syntax', { 'for': 'python' }
-Plug 'psf/black'
-Plug 'davidhalter/jedi-vim'
-" Go
-Plug 'fatih/vim-go'
-" Clojure
-Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
-Plug 'guns/vim-clojure-highlight', { 'for': 'clojure' }
-Plug 'guns/vim-clojure-static', { 'for': 'clojure' }
-Plug 'venantius/vim-cljfmt', { 'for': 'clojure' }
-" Javascript
-Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
-Plug 'jelera/vim-javascript-syntax'
-Plug 'othree/javascript-libraries-syntax.vim'
-" Rust
-" Plug 'rust-lang/rust.vim'
-" HTML
-Plug 'mattn/emmet-vim'
-" Haskell
-Plug 'neovimhaskell/haskell-vim'
-
-
-""" Colorscheme
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'ryanoasis/vim-devicons'
-Plug 'danilo-augusto/vim-afterglow'
-" Initialize plugin system
-call plug#end()
-" }}}
-
+source $HOME/.config/nvim/plugins.vimrc
 " General Settings ================================================= {{{
 let g:syntastic_clojure_checkers = ['eastwood']
 if has('nvim')
@@ -278,44 +203,10 @@ nnoremap <Leader>gf :GFiles?<CR>
 nnoremap <Leader>ft :Filetypes<CR>
 " }}}
 
-" Language: Python ================================================= {{{
-autocmd FileType python set ts=4
-autocmd FileType python set expandtab
-autocmd FileType python set shiftwidth=4
-autocmd FileType python set foldmethod=indent
-autocmd FileType python set foldnestmax=2
-autocmd FileType python normal zR
-
-autocmd BufWritePre *.py execute ':Black'
-let g:black_linelength = 79
-
-let g:python_highlight_all=1
-let g:jedi#completions_enabled = 1
-" let g:syntastic_mode_map = { 'passive_filetypes': ['python'] }
-" }}}
-
-" Language: Go ================================================= {{{
-let g:go_highlight_extra_types = 1
-let g:go_highlight_space_tab_error = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_functions = 1
-let g:go_highlight_function_parameters = 1
-let g:go_highlight_function_calls = 1
-let g:go_highlight_types = 1
-let g:go_highlight_fields = 1
-let g:go_highlight_build_constraints = 1
-let g:go_highlight_generate_tags = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_structs = 1
-let g:go_highlight_trailing_whitespace_error = 1
-let g:go_auto_sameids = 1
-let g:go_fmt_command = "goimports"
-let g:go_auto_type_info = 1
-let g:go_fmt_fail_silently = 1
-" Error and warning signs.
-"let g:ale_sign_error = '⤫'
-"let g:ale_sign_warning = '⚠'
-" }}}
+source $HOME/.config/nvim/languages/python.vimrc
+source $HOME/.config/nvim/languages/go.vimrc
+source $HOME/.config/nvim/languages/haskell.vimrc
+source $HOME/.config/nvim/languages/js.vimrc
 
 " Language: Vimscript ================================================= {{{
 autocmd FileType vim set expandtab
@@ -325,36 +216,8 @@ autocmd FileType vim set tabstop=4
 autocmd FileType vim set foldmethod=marker
 " }}}
 
-" Language: Json ================================================= {{{
-autocmd FileType json syntax match Comment +\/\/.\+$+
-" }}}
-
 " Language: Markdown ================================================= {{{
 let g:markdown_folding = 1
 let g:markdown_enable_folding = 1
 " }}}
 
-" Language: Rust ================================================= {{{
-let g:rustfmt_autosave = 1
-" }}}
-
-" Language: Javascript ================================================= {{{
-autocmd FileType javascript set ts=2
-autocmd FileType javascript set expandtab
-autocmd FileType javascript set shiftwidth=2
-" }}}
-
-" Language: Haskell ================================================= {{{
-let g:haskell_classic_highlighting = 1
-let g:haskell_indent_if = 3
-let g:haskell_indent_case = 2
-let g:haskell_indent_let = 4
-let g:haskell_indent_where = 6
-let g:haskell_indent_before_where = 2
-let g:haskell_indent_after_bare_where = 2
-let g:haskell_indent_do = 3
-let g:haskell_indent_in = 1
-let g:haskell_indent_guard = 2
-let g:haskell_indent_case_alternative = 1
-let g:cabal_indent_section = 2
-" }}}
