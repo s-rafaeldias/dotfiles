@@ -67,6 +67,8 @@ Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'mattn/emmet-vim'
 " Haskell
 Plug 'neovimhaskell/haskell-vim'
+" Elixir
+Plug 'elixir-editors/vim-elixir'
 
 " Initialize plugin system
 call plug#end()
