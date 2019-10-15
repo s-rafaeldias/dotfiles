@@ -52,7 +52,7 @@ Plug 'vim-python/python-syntax', { 'for': 'python' }
 Plug 'psf/black'
 Plug 'davidhalter/jedi-vim'
 " Go
-Plug 'fatih/vim-go'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 " Clojure
 Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 Plug 'guns/vim-clojure-highlight', { 'for': 'clojure' }

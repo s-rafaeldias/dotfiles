@@ -1,6 +1,5 @@
 source $HOME/.config/nvim/plugins.vimrc
 " General Settings ================================================= {{{
-let g:syntastic_clojure_checkers = ['eastwood']
 if has('nvim')
     let g:python3_host_prog = $HOME . '/miniconda3/envs/neovim/bin/python'
     let g:python_host_prog = $HOME . '/miniconda3/envs/neovim2/bin/python'
@@ -207,6 +206,7 @@ source $HOME/.config/nvim/languages/python.vimrc
 source $HOME/.config/nvim/languages/go.vimrc
 source $HOME/.config/nvim/languages/haskell.vimrc
 source $HOME/.config/nvim/languages/js.vimrc
+source $HOME/.config/nvim/languages/clojure.vimrc
 
 " Language: Vimscript ================================================= {{{
 autocmd FileType vim set expandtab
