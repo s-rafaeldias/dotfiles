@@ -178,7 +178,7 @@ let g:coc_global_extensions = [
             \ 'coc-html',
             \ 'coc-css',
             \ 'coc-emmet',
-            \ 'coc-rls']
+            \ 'coc-elixir']
 
 " Use <C-N> to trigger completion.
 inoremap <silent><expr> <C-N> coc#refresh()
