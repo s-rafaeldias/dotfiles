@@ -59,8 +59,11 @@ if (has("termguicolors"))
     set termguicolors
 endif
 
-let g:afterglow_italic_comments=1
-colorscheme afterglow
+set background=dark
+let g:deepspace_italics=1
+colorscheme deep-space
+" let g:afterglow_italic_comments=1
+" colorscheme afterglow
 "set background=dark " for the dark version
 " }}}
 

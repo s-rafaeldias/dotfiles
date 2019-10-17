@@ -1,7 +1,7 @@
 " Plugins
 call plug#begin()
 
-""" General plugins
+""" General plugins {{{
 " Git
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
@@ -38,13 +38,16 @@ Plug 'wakatime/vim-wakatime'
 Plug 'vim-syntastic/syntastic'
 " Quoting/parenthesizing made simple
 Plug 'tpope/vim-surround'
+" Show indentation line
+Plug 'Yggdroot/indentLine'
 """ Colorscheme
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ryanoasis/vim-devicons'
 Plug 'danilo-augusto/vim-afterglow'
-
-""" Languages
+Plug 'tyrannicaltoucan/vim-deep-space'
+" }}}
+""" Languages {{{
 " Dockerfile
 Plug 'ekalinin/Dockerfile.vim', { 'for': 'dockerfile' }
 " Python
@@ -54,10 +57,10 @@ Plug 'davidhalter/jedi-vim'
 " Go
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 " Clojure
-Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
-Plug 'guns/vim-clojure-highlight', { 'for': 'clojure' }
-Plug 'guns/vim-clojure-static', { 'for': 'clojure' }
-Plug 'venantius/vim-cljfmt', { 'for': 'clojure' }
+" Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
+" Plug 'guns/vim-clojure-highlight', { 'for': 'clojure' }
+" Plug 'guns/vim-clojure-static', { 'for': 'clojure' }
+" Plug 'venantius/vim-cljfmt', { 'for': 'clojure' }
 " Javascript
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
@@ -68,8 +71,9 @@ Plug 'mattn/emmet-vim'
 " Haskell
 Plug 'neovimhaskell/haskell-vim'
 " Elixir
-Plug 'elixir-editors/vim-elixir'
+" Plug 'elixir-editors/vim-elixir'
 Plug 'slashmili/alchemist.vim'
+" }}}
 
 " Initialize plugin system
 call plug#end()
