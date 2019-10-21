@@ -71,7 +71,7 @@ Plug 'mattn/emmet-vim'
 " Haskell
 Plug 'neovimhaskell/haskell-vim'
 " Elixir
-" Plug 'elixir-editors/vim-elixir'
+Plug 'elixir-editors/vim-elixir'
 Plug 'slashmili/alchemist.vim'
 
 " Initialize plugin system
