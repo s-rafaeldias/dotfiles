@@ -323,6 +323,7 @@ let g:haskell_indent_in = 1
 let g:haskell_indent_guard = 2
 let g:haskell_indent_case_alternative = 1
 let g:cabal_indent_section = 2
+autocmd FileType haskell set expandtab
 " }}}
 
 " Language: Javascript/JSON ================================================= {{{
@@ -333,6 +334,11 @@ autocmd FileType json syntax match Comment +\/\/.\+$+
 autocmd FileType javascript set ts=2
 autocmd FileType javascript set expandtab
 autocmd FileType javascript set shiftwidth=2
+
+" Typescript
+autocmd FileType typescript.tsx set ts=2
+autocmd FileType typescript.tsx set expandtab
+autocmd FileType typescript.tsx set shiftwidth=2
 " }}}
 
 " Language: Markdown ================================================= {{{
