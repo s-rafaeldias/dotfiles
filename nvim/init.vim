@@ -73,6 +73,7 @@ Plug 'neovimhaskell/haskell-vim'
 " Elixir
 Plug 'elixir-editors/vim-elixir'
 Plug 'slashmili/alchemist.vim'
+Plug 'tpope/vim-endwise'
 
 " Initialize plugin system
 call plug#end()
@@ -87,7 +88,7 @@ endif
 set relativenumber      " show relative numbers
 set number              " show line numbers
 set cursorline          " show a visual line under the cursor's current line
-" set showmatch           " show the matching part of the pair for [] {} and ()
+set showmatch           " show the matching part of the pair for [] {} and ()
 set scrolloff=10
 set signcolumn=yes      " always show signcolumns
 
@@ -141,6 +142,7 @@ endif
 set background=dark
 let g:deepspace_italics=1
 colorscheme deep-space
+hi MatchParen guibg=#c47ebd guifg=#51617d
 " let g:afterglow_italic_comments=1
 " colorscheme afterglow
 "set background=dark " for the dark version
