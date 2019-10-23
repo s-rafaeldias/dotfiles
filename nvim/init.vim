@@ -286,7 +286,7 @@ nnoremap <Leader>ft :Filetypes<CR>
 
 " Language: Elixir ================================================= {{{
 " Format files on save with 'mix format'
-autocmd BufWritePost *.exs,*.ex silent :!mix format %
+autocmd BufWritePost *.exs,*.ex silent :!mix format
 " }}}
 
 " Language: Golang ================================================= {{{
