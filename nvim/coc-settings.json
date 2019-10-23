@@ -16,6 +16,10 @@
             "command": "gopls",
             "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
             "filetypes": ["go"]
+        },
+        "elixirLS": {
+            "command": "/Users/rafael/.elixir/elixir-ls/rel/language_server.sh",
+            "filetypes": ["elixir", "eelixir"]
         }
     }
 }

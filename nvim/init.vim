@@ -253,14 +253,12 @@ let g:NERDSpaceDelims = 1
 let g:coc_global_extensions = [
             \ 'coc-json',
             \ 'coc-python',
-            \ 'coc-solargraph',
             \ 'coc-yaml',
             \ 'coc-highlight',
             \ 'coc-tsserver',
             \ 'coc-html',
             \ 'coc-css',
-            \ 'coc-emmet',
-            \ 'coc-elixir']
+            \ 'coc-emmet']
 
 " Use <C-N> to trigger completion.
 inoremap <silent><expr> <C-N> coc#refresh()
