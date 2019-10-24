@@ -35,7 +35,8 @@ Plug 'junegunn/fzf.vim'
 " Wakatime
 Plug 'wakatime/vim-wakatime'
 " Syntax checking hacks
-Plug 'vim-syntastic/syntastic'
+" Plug 'vim-syntastic/syntastic'
+Plug 'dense-analysis/ale'
 " Quoting/parenthesizing made simple
 Plug 'tpope/vim-surround'
 " Show indentation line
@@ -221,34 +222,9 @@ let g:airline#extensions#ale#enabled = 1
 let g:airline#extensions#coc#enabled = 1
 " }}}
 
-" Plugin: NERDTree ================================================= {{{
-let g:NERDTreeQuitOnOpen=1
-let g:NERDTreeShowHidden=1
-let g:NERDTreeChDirMode=2
-map <C-D> :NERDTreeToggle<CR>
-" }}}
-
-" Plugin: GitGutter ================================================= {{{
-highlight GitGutterAdd    guifg=#009900 ctermfg=2
-highlight GitGutterChange guifg=#bbbb00 ctermfg=3
-highlight GitGutterDelete guifg=#ff2222 ctermfg=1
-autocmd BufWritePost * GitGutter
-" }}}
-
-" Plugin: Tagbar ================================================= {{{
-nmap <F9> :TagbarToggle<CR>
-" }}}
-
-" Plugin: kien/rainbow_parentheses.vim ================================================= {{{
-autocmd VimEnter * RainbowParenthesesToggle
-autocmd Syntax * RainbowParenthesesLoadRound
-autocmd Syntax * RainbowParenthesesLoadSquare
-autocmd Syntax * RainbowParenthesesLoadBraces
-" }}}
-
-" Plugin: nerdcommenter ================================================= {{{
-" Add spaces after comment delimiters by default
-let g:NERDSpaceDelims = 1
+" Plugin: Ale ================================================= {{{
+let g:ale_sign_error = '⤫'
+let g:ale_sign_warning = '⚠'
 " }}}
 
 " Plugin: Coc ================================================= {{{
@@ -284,6 +260,36 @@ nnoremap <Leader>gf :GFiles?<CR>
 nnoremap <Leader>ft :Filetypes<CR>
 " }}}
 
+" Plugin: GitGutter ================================================= {{{
+highlight GitGutterAdd    guifg=#009900 ctermfg=2
+highlight GitGutterChange guifg=#bbbb00 ctermfg=3
+highlight GitGutterDelete guifg=#ff2222 ctermfg=1
+autocmd BufWritePost * GitGutter
+" }}}
+
+" Plugin: NERDTree ================================================= {{{
+let g:NERDTreeQuitOnOpen=1
+let g:NERDTreeShowHidden=1
+let g:NERDTreeChDirMode=2
+map <C-D> :NERDTreeToggle<CR>
+" }}}
+
+" Plugin: kien/rainbow_parentheses.vim ================================================= {{{
+autocmd VimEnter * RainbowParenthesesToggle
+autocmd Syntax * RainbowParenthesesLoadRound
+autocmd Syntax * RainbowParenthesesLoadSquare
+autocmd Syntax * RainbowParenthesesLoadBraces
+" }}}
+
+" Plugin: nerdcommenter ================================================= {{{
+" Add spaces after comment delimiters by default
+let g:NERDSpaceDelims = 1
+" }}}
+
+" Plugin: Tagbar ================================================= {{{
+nmap <F9> :TagbarToggle<CR>
+" }}}
+
 " Language: Elixir ================================================= {{{
 " Format files on save with 'mix format'
 autocmd BufWritePost *.exs,*.ex silent :!mix format
@@ -307,9 +313,6 @@ let g:go_auto_sameids = 1
 let g:go_fmt_command = "goimports"
 let g:go_auto_type_info = 1
 let g:go_fmt_fail_silently = 1
-" Error and warning signs.
-" let g:ale_sign_error = '⤫'
-" let g:ale_sign_warning = '⚠'
 " }}}
 
 " Language: Haskell ================================================= {{{
