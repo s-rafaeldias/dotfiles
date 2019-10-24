@@ -73,7 +73,7 @@ Plug 'neovimhaskell/haskell-vim'
 " Elixir
 Plug 'elixir-editors/vim-elixir'
 Plug 'slashmili/alchemist.vim'
-Plug 'tpope/vim-endwise'
+" Plug 'tpope/vim-endwise'
 
 " Initialize plugin system
 call plug#end()
@@ -310,11 +310,13 @@ let g:go_fmt_command = "goimports"
 let g:go_auto_type_info = 1
 let g:go_fmt_fail_silently = 1
 " Error and warning signs.
-let g:ale_sign_error = '⤫'
-let g:ale_sign_warning = '⚠'
+" let g:ale_sign_error = '⤫'
+" let g:ale_sign_warning = '⚠'
 " }}}
 
 " Language: Haskell ================================================= {{{
+autocmd FileType haskell set expandtab
+
 let g:haskell_classic_highlighting = 1
 let g:haskell_indent_if = 3
 let g:haskell_indent_case = 2
@@ -327,7 +329,6 @@ let g:haskell_indent_in = 1
 let g:haskell_indent_guard = 2
 let g:haskell_indent_case_alternative = 1
 let g:cabal_indent_section = 2
-autocmd FileType haskell set expandtab
 " }}}
 
 " Language: Javascript/JSON ================================================= {{{
