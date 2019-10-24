@@ -55,7 +55,7 @@ Plug 'vim-python/python-syntax', { 'for': 'python' }
 Plug 'psf/black'
 Plug 'davidhalter/jedi-vim'
 " Go
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries', 'tag': 'v1.20' }
 " Clojure
 " Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 " Plug 'guns/vim-clojure-highlight', { 'for': 'clojure' }
@@ -145,7 +145,7 @@ colorscheme deep-space
 hi MatchParen guibg=#c47ebd guifg=#51617d
 " let g:afterglow_italic_comments=1
 " colorscheme afterglow
-"set background=dark " for the dark version
+" set background=dark " for the dark version
 " }}}
 
 " Fn mappings ================================================= {{{
@@ -255,14 +255,12 @@ let g:NERDSpaceDelims = 1
 let g:coc_global_extensions = [
             \ 'coc-json',
             \ 'coc-python',
-            \ 'coc-solargraph',
             \ 'coc-yaml',
             \ 'coc-highlight',
             \ 'coc-tsserver',
             \ 'coc-html',
             \ 'coc-css',
-            \ 'coc-emmet',
-            \ 'coc-elixir']
+            \ 'coc-emmet']
 
 " Use <C-N> to trigger completion.
 inoremap <silent><expr> <C-N> coc#refresh()
@@ -288,7 +286,7 @@ nnoremap <Leader>ft :Filetypes<CR>
 
 " Language: Elixir ================================================= {{{
 " Format files on save with 'mix format'
-autocmd BufWritePost *.exs,*.ex silent :!mix format %
+autocmd BufWritePost *.exs,*.ex silent :!mix format
 " }}}
 
 " Language: Golang ================================================= {{{
