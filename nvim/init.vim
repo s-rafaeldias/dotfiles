@@ -223,8 +223,20 @@ let g:airline#extensions#coc#enabled = 1
 " }}}
 
 " Plugin: Ale ================================================= {{{
-let g:ale_sign_error = '⤫'
-let g:ale_sign_warning = '⚠'
+let g:ale_linters = {
+\  'elixir': ['elixir-ls'],
+\}
+
+let g:ale_fixers = {
+\  '*': ['remove_trailing_lines', 'trim_whitespace'],
+\  'javascript': ['prettier'],
+\  'elixir': ['mix_format'],
+\}
+
+let g:ale_elixir_elixir_ls_release = $HOME . '/.elixir/elixir-ls/rel'
+
+" let g:ale_sign_error = '⤫'
+" let g:ale_sign_warning = '⚠'
 " }}}
 
 " Plugin: Coc ================================================= {{{
