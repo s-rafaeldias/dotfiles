@@ -55,7 +55,7 @@ Plug 'vim-python/python-syntax', { 'for': 'python' }
 Plug 'psf/black'
 Plug 'davidhalter/jedi-vim'
 " Go
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries', 'tag': 'v1.20' }
 " Clojure
 " Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 " Plug 'guns/vim-clojure-highlight', { 'for': 'clojure' }
@@ -87,7 +87,7 @@ endif
 set relativenumber      " show relative numbers
 set number              " show line numbers
 set cursorline          " show a visual line under the cursor's current line
-" set showmatch           " show the matching part of the pair for [] {} and ()
+set showmatch           " show the matching part of the pair for [] {} and ()
 set scrolloff=10
 set signcolumn=yes      " always show signcolumns
 
@@ -143,7 +143,7 @@ let g:deepspace_italics=1
 colorscheme deep-space
 " let g:afterglow_italic_comments=1
 " colorscheme afterglow
-"set background=dark " for the dark version
+" set background=dark " for the dark version
 " }}}
 
 " Fn mappings ================================================= {{{
