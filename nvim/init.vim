@@ -74,7 +74,8 @@ Plug 'neovimhaskell/haskell-vim'
 " Elixir
 Plug 'elixir-editors/vim-elixir'
 Plug 'slashmili/alchemist.vim'
-" Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-endwise'
+Plug 'mhinz/vim-mix-format'
 
 " Initialize plugin system
 call plug#end()
@@ -304,7 +305,8 @@ nmap <F9> :TagbarToggle<CR>
 
 " Language: Elixir ================================================= {{{
 " Format files on save with 'mix format'
-autocmd BufWritePost *.exs,*.ex silent :!mix format
+" autocmd BufWritePost *.exs,*.ex silent :!mix format %
+let g:mix_format_on_save = 1
 " }}}
 
 " Language: Golang ================================================= {{{
