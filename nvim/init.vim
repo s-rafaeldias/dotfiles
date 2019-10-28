@@ -41,6 +41,8 @@ Plug 'dense-analysis/ale'
 Plug 'tpope/vim-surround'
 " Show indentation line
 Plug 'Yggdroot/indentLine'
+" Plug 'kana/vim-textobj-user'
+
 """ Colorscheme
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -63,10 +65,10 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries', 'tag': 'v1.20' }
 " Plug 'guns/vim-clojure-static', { 'for': 'clojure' }
 " Plug 'venantius/vim-cljfmt', { 'for': 'clojure' }
 " Javascript
-Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
-Plug 'jelera/vim-javascript-syntax'
-Plug 'othree/javascript-libraries-syntax.vim'
+" Plug 'pangloss/vim-javascript'
+" Plug 'mxw/vim-jsx'
+" Plug 'jelera/vim-javascript-syntax'
+" Plug 'othree/javascript-libraries-syntax.vim'
 " HTML
 Plug 'mattn/emmet-vim'
 " Haskell
@@ -214,7 +216,7 @@ vnoremap <Leader>y "+y
 " Plugin: Airline ================================================= {{{
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
-let g:airline_theme='deep_space'
+let g:airline_theme='afterglow'
 let g:hybrid_custom_term_colors = 1
 let g:hybrid_reduced_contrast = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
@@ -354,6 +356,11 @@ autocmd FileType json syntax match Comment +\/\/.\+$+
 autocmd FileType javascript set ts=2
 autocmd FileType javascript set expandtab
 autocmd FileType javascript set shiftwidth=2
+
+" Javascript JSX
+autocmd FileType javascriptreact set ts=2
+autocmd FileType javascriptreact set expandtab
+autocmd FileType javascriptreact set shiftwidth=2
 
 " Typescript
 autocmd FileType typescript.tsx set ts=2
