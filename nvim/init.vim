@@ -277,14 +277,17 @@ autocmd BufWritePost * GitGutter
 let g:NERDTreeQuitOnOpen=1
 let g:NERDTreeShowHidden=1
 let g:NERDTreeChDirMode=2
-map <C-D> :NERDTreeToggle<CR>
+noremap <C-D> :NERDTreeToggle<CR>
 " }}}
 
 " Plugin: kien/rainbow_parentheses.vim ================================================= {{{
-autocmd VimEnter * RainbowParenthesesToggle
-autocmd Syntax * RainbowParenthesesLoadRound
-autocmd Syntax * RainbowParenthesesLoadSquare
-autocmd Syntax * RainbowParenthesesLoadBraces
+augroup RAINBOW_PARENTHESES
+    au!
+    autocmd VimEnter * RainbowParenthesesToggle
+    autocmd Syntax * RainbowParenthesesLoadRound
+    autocmd Syntax * RainbowParenthesesLoadSquare
+    autocmd Syntax * RainbowParenthesesLoadBraces
+augroup END
 " }}}
 
 " Plugin: nerdcommenter ================================================= {{{
@@ -327,6 +330,7 @@ augroup GO_IDE
     autocmd FileType go
         \  nmap <buffer> <LocalLeader>r   <Plug>(go-run)
         \| nmap <buffer> <LocalLeader>b   <Plug>(go-build)
+        \| nmap <buffer> <LocalLeader>tf    <Plug>(go-alternate-vertical)
         \| nmap <buffer> <LocalLeader>t   <Plug>(go-test)
         \| nmap <buffer> <LocalLeader>c   <Plug>(go-coverage)
         \| nmap <buffer> <LocalLeader>gd  <Plug>(go-doc)
