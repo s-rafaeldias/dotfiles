@@ -21,6 +21,14 @@
         "elixirLS": {
             "command": "~/.elixir/elixir-ls/rel/language_server.sh",
             "filetypes": ["elixir", "eelixir"]
+        },
+        "haskell": {
+            "command": "hie-wrapper",
+            "rootPatterns": [".stack.yaml", "cabal.config", "package.yaml"],
+            "filetypes": ["hs", "lhs", "haskell"],
+            "initializationOptions": {
+              "languageServerHaskell": {}
+            }
         }
     }
 }
