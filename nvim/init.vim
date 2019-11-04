@@ -107,8 +107,9 @@ set list
 " Git diff settings
 set diffopt=vertical
 
-" Change <Leader> to ','
+" Change <Leader> to ',' and <LocalLeader> to `;`
 let mapleader=","
+let maplocalleader=";"
 
 set directory=.
 
@@ -149,6 +150,7 @@ hi MatchParen guibg=#c47ebd guifg=#51617d
 
 " Fn mappings ================================================= {{{
 set pastetoggle=<F2>
+nnoremap <F3> :set hlsearch!<CR>
 " }}}
 
 " INSERT MODE mappings ================================================= {{{
@@ -250,13 +252,21 @@ let g:coc_global_extensions = [
 
 " Use <C-N> to trigger completion.
 inoremap <silent><expr> <C-N> coc#refresh()
-" Use <cr> to confirm completion
-inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+" Use <CR> for select completion
+" inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
 " Close the preview window when completion is done.
 autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 
 " Use K to show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
 
 " Disable Coc for clojure files
 autocmd BufNew,BufEnter *.clj  execute "silent! CocDisable"
@@ -281,14 +291,17 @@ autocmd BufWritePost * GitGutter
 let g:NERDTreeQuitOnOpen=1
 let g:NERDTreeShowHidden=1
 let g:NERDTreeChDirMode=2
-map <C-D> :NERDTreeToggle<CR>
+noremap <C-D> :NERDTreeToggle<CR>
 " }}}
 
 " Plugin: kien/rainbow_parentheses.vim ================================================= {{{
-autocmd VimEnter * RainbowParenthesesToggle
-autocmd Syntax * RainbowParenthesesLoadRound
-autocmd Syntax * RainbowParenthesesLoadSquare
-autocmd Syntax * RainbowParenthesesLoadBraces
+augroup RAINBOW_PARENTHESES
+    au!
+    autocmd VimEnter * RainbowParenthesesToggle
+    autocmd Syntax * RainbowParenthesesLoadRound
+    autocmd Syntax * RainbowParenthesesLoadSquare
+    autocmd Syntax * RainbowParenthesesLoadBraces
+augroup END
 " }}}
 
 " Plugin: nerdcommenter ================================================= {{{
@@ -322,8 +335,23 @@ let g:go_highlight_structs = 1
 let g:go_highlight_trailing_whitespace_error = 1
 let g:go_auto_sameids = 1
 let g:go_fmt_command = "goimports"
+let g:go_def_mapping_enabled=1
+let g:go_def_mode='gopls'
 let g:go_auto_type_info = 1
 let g:go_fmt_fail_silently = 1
+augroup GO_IDE
+    au!
+    autocmd FileType go
+        \  nmap <buffer> <LocalLeader>r   <Plug>(go-run)
+        \| nmap <buffer> <LocalLeader>b   <Plug>(go-build)
+        \| nmap <buffer> <LocalLeader>tf    <Plug>(go-alternate-vertical)
+        \| nmap <buffer> <LocalLeader>t   <Plug>(go-test)
+        \| nmap <buffer> <LocalLeader>c   <Plug>(go-coverage)
+        \| nmap <buffer> <LocalLeader>gd  <Plug>(go-doc)
+        \| nmap <buffer> <LocalLeader>gv  <Plug>(go-doc-vertical)
+        \| nmap <buffer> <LocalLeader>s   <Plug>(go-implements)
+        \| nmap <buffer> <LocalLeader>i   <Plug>(go-info)
+augroup END
 " }}}
 
 " Language: Haskell ================================================= {{{
@@ -381,7 +409,6 @@ let g:black_linelength = 79
 
 let g:python_highlight_all=1
 let g:jedi#completions_enabled = 1
-" let g:syntastic_mode_map = { 'passive_filetypes': ['python'] }
 " }}}
 
 " Language: Vimscript ================================================= {{{

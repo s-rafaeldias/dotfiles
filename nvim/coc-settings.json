@@ -8,9 +8,11 @@
     "javascript.suggest.completeFunctionCalls": false,
     "typescript.suggest.completeFunctionCalls": false,
     "tsserver.formatOnType": true,
+    "coc.preferences.formatOnSaveFiletypes": ["css", "Markdown", "javascriptreact", "javascript"],
 
     // HTML
     "emmet.showAbbreviationSuggestions": false,
+    "html.format.enable": true,
 
     "languageserver": {
         "golang": {
@@ -21,6 +23,14 @@
         "elixirLS": {
             "command": "~/.elixir/elixir-ls/rel/language_server.sh",
             "filetypes": ["elixir", "eelixir"]
+        },
+        "haskell": {
+            "command": "hie-wrapper",
+            "rootPatterns": [".stack.yaml", "cabal.config", "package.yaml"],
+            "filetypes": ["hs", "lhs", "haskell"],
+            "initializationOptions": {
+              "languageServerHaskell": {}
+            }
         }
     }
 }
