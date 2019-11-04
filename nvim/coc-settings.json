@@ -8,9 +8,11 @@
     "javascript.suggest.completeFunctionCalls": false,
     "typescript.suggest.completeFunctionCalls": false,
     "tsserver.formatOnType": true,
+    "coc.preferences.formatOnSaveFiletypes": ["css", "Markdown", "javascriptreact", "javascript"],
 
     // HTML
     "emmet.showAbbreviationSuggestions": false,
+    "html.format.enable": true,
 
     "languageserver": {
         "golang": {

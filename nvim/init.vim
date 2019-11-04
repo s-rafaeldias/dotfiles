@@ -145,6 +145,7 @@ hi MatchParen guibg=#c47ebd guifg=#51617d
 
 " Fn mappings ================================================= {{{
 set pastetoggle=<F2>
+nnoremap <F3> :set hlsearch!<CR>
 " }}}
 
 " INSERT MODE mappings ================================================= {{{
@@ -246,13 +247,21 @@ let g:coc_global_extensions = [
 
 " Use <C-N> to trigger completion.
 inoremap <silent><expr> <C-N> coc#refresh()
-" Use <cr> to confirm completion
-inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+" Use <CR> for select completion
+" inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
 " Close the preview window when completion is done.
 autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 
 " Use K to show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
 
 " Disable Coc for clojure files
 autocmd BufNew,BufEnter *.clj  execute "silent! CocDisable"
