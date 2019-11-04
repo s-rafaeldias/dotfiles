@@ -59,11 +59,6 @@ Plug 'psf/black'
 Plug 'davidhalter/jedi-vim'
 " Go
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries', 'tag': 'v1.20' }
-" Clojure
-" Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
-" Plug 'guns/vim-clojure-highlight', { 'for': 'clojure' }
-" Plug 'guns/vim-clojure-static', { 'for': 'clojure' }
-" Plug 'venantius/vim-cljfmt', { 'for': 'clojure' }
 " Javascript
 " Plug 'pangloss/vim-javascript'
 " Plug 'mxw/vim-jsx'
