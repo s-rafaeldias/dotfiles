@@ -72,7 +72,6 @@ Plug 'neovimhaskell/haskell-vim'
 " Elixir
 Plug 'elixir-editors/vim-elixir'
 Plug 'slashmili/alchemist.vim'
-Plug 'tpope/vim-endwise'
 Plug 'mhinz/vim-mix-format'
 
 " Initialize plugin system
@@ -235,9 +234,6 @@ let g:ale_fixers = {
 \}
 
 let g:ale_elixir_elixir_ls_release = $HOME . '/.elixir/elixir-ls/rel'
-
-" let g:ale_sign_error = '⤫'
-" let g:ale_sign_warning = '⚠'
 " }}}
 
 " Plugin: Coc ================================================= {{{
@@ -255,6 +251,8 @@ let g:coc_global_extensions = [
 inoremap <silent><expr> <C-N> coc#refresh()
 " Use <CR> for select completion
 inoremap <expr> <TAB> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+" Make <cr> select the first completion item and confirm completion when no item have selected
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>"
 
 " Close the preview window when completion is done.
 autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
@@ -345,7 +343,7 @@ augroup GO_IDE
     autocmd FileType go
         \  nmap <buffer> <LocalLeader>r   <Plug>(go-run)
         \| nmap <buffer> <LocalLeader>b   <Plug>(go-build)
-        \| nmap <buffer> <LocalLeader>tf    <Plug>(go-alternate-vertical)
+        \| nmap <buffer> <LocalLeader>tf  <Plug>(go-alternate-vertical)
         \| nmap <buffer> <LocalLeader>t   <Plug>(go-test)
         \| nmap <buffer> <LocalLeader>c   <Plug>(go-coverage)
         \| nmap <buffer> <LocalLeader>gd  <Plug>(go-doc)
@@ -356,7 +354,10 @@ augroup END
 " }}}
 
 " Language: Haskell ================================================= {{{
-autocmd FileType haskell set expandtab
+augroup HASKELL_IDE
+    au!
+    autocmd FileType haskell set expandtab
+augroup END
 
 let g:haskell_classic_highlighting = 1
 let g:haskell_indent_if = 3
@@ -373,23 +374,14 @@ let g:cabal_indent_section = 2
 " }}}
 
 " Language: Javascript/JSON ================================================= {{{
-" JSON
-autocmd FileType json syntax match Comment +\/\/.\+$+
-
-" Javascript
-autocmd FileType javascript set ts=2
-autocmd FileType javascript set expandtab
-autocmd FileType javascript set shiftwidth=2
-
-" Javascript JSX
-autocmd FileType javascriptreact set ts=2
-autocmd FileType javascriptreact set expandtab
-autocmd FileType javascriptreact set shiftwidth=2
-
-" Typescript
-autocmd FileType typescript.tsx set ts=2
-autocmd FileType typescript.tsx set expandtab
-autocmd FileType typescript.tsx set shiftwidth=2
+augroup JS_IDE
+    au!
+    autocmd FileType json syntax match Comment +\/\/.\+$+
+    autocmd FileType javascript,javascriptreact,json
+                \  set ts=2
+                \| set expandtab
+                \| set shiftwidth=2
+augroup END
 " }}}
 
 " Language: Markdown ================================================= {{{
@@ -398,24 +390,31 @@ let g:markdown_enable_folding = 1
 " }}}
 
 " Language: Python ================================================= {{{
-autocmd FileType python set ts=4
-autocmd FileType python set expandtab
-autocmd FileType python set shiftwidth=4
-autocmd FileType python set foldmethod=indent
-autocmd FileType python set foldnestmax=2
-autocmd FileType python normal zR
+augroup PYTHON_IDE
+    au!
+    autocmd FileType python
+                \  set ts=4
+                \| set expandtab
+                \| set shiftwidth=4
+                \| set foldmethod=indent
+                \| set foldnestmax=2
+                \| normal zR
+    autocmd BufWritePre *.py execute ':Black'
+augroup END
 
-autocmd BufWritePre *.py execute ':Black'
 let g:black_linelength = 79
-
 let g:python_highlight_all=1
 let g:jedi#completions_enabled = 1
 " }}}
 
 " Language: Vimscript ================================================= {{{
-autocmd FileType vim set expandtab
-autocmd FileType vim set shiftwidth=4
-autocmd FileType vim set softtabstop=4
-autocmd FileType vim set tabstop=4
-autocmd FileType vim set foldmethod=marker
+augroup VIML_IDE
+    au!
+    autocmd FileType vim
+                \  set expandtab
+                \| set shiftwidth=4
+                \| set softtabstop=4
+                \| set tabstop=4
+                \| set foldmethod=marker
+augroup END
 " }}}
