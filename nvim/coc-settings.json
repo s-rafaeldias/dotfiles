@@ -1,6 +1,6 @@
 {
     // Python
-    "python.jediEnabled": true,
+    "python.jediEnabled": false,
     "python.condaPath": "~/miniconda3/bin/conda",
     "python.formatting.provider": "black",
 

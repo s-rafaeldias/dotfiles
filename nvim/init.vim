@@ -58,21 +58,17 @@ Plug 'ekalinin/Dockerfile.vim', { 'for': 'dockerfile' }
 Plug 'vim-python/python-syntax', { 'for': 'python' }
 Plug 'psf/black'
 Plug 'davidhalter/jedi-vim'
+Plug 'fisadev/vim-isort'
 " Go
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries', 'tag': 'v1.20' }
-" Javascript
-" Plug 'pangloss/vim-javascript'
-" Plug 'mxw/vim-jsx'
-" Plug 'jelera/vim-javascript-syntax'
-" Plug 'othree/javascript-libraries-syntax.vim'
 " HTML
 Plug 'mattn/emmet-vim'
 " Haskell
 Plug 'neovimhaskell/haskell-vim'
 " Elixir
-Plug 'elixir-editors/vim-elixir'
-Plug 'slashmili/alchemist.vim'
-Plug 'mhinz/vim-mix-format'
+" Plug 'elixir-editors/vim-elixir'
+" Plug 'slashmili/alchemist.vim'
+" Plug 'mhinz/vim-mix-format'
 
 " Initialize plugin system
 call plug#end()
@@ -248,17 +244,17 @@ let g:coc_global_extensions = [
             \ 'coc-emmet']
 
 " Use <C-N> to trigger completion.
-inoremap <silent><expr> <C-N> coc#refresh()
+inoremap <SILENT><EXPR> <C-N> coc#refresh()
 " Use <CR> for select completion
-inoremap <expr> <TAB> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+inoremap <EXPR> <CR> pumvisible() ? "\<C-Y>" : "\<C-G>u\<CR>"
 " Make <cr> select the first completion item and confirm completion when no item have selected
-inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>"
+inoremap <SILENT><EXPR> <CR> pumvisible() ? coc#_select_confirm() : "\<C-G>u\<CR>"
 
 " Close the preview window when completion is done.
 autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 
 " Use K to show documentation in preview window
-nnoremap <silent> K :call <SID>show_documentation()<CR>
+nnoremap <SILENT> K :call <SID>show_documentation()<CR>
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
     execute 'h '.expand('<cword>')
@@ -404,7 +400,7 @@ augroup END
 
 let g:black_linelength = 79
 let g:python_highlight_all=1
-let g:jedi#completions_enabled = 1
+" let g:jedi#completions_enabled = 1
 " }}}
 
 " Language: Vimscript ================================================= {{{
