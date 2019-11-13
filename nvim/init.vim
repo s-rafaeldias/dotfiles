@@ -250,7 +250,7 @@ let g:coc_global_extensions = [
 " Use <C-N> to trigger completion.
 inoremap <silent><expr> <C-N> coc#refresh()
 " Use <CR> for select completion
-inoremap <expr> <TAB> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 " Make <cr> select the first completion item and confirm completion when no item have selected
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>"
 
