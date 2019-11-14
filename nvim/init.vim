@@ -43,6 +43,7 @@ Plug 'tpope/vim-surround'
 " Show indentation line
 Plug 'Yggdroot/indentLine'
 " Plug 'kana/vim-textobj-user'
+Plug 'Lenovsky/nuake'
 
 """ Colorscheme
 Plug 'vim-airline/vim-airline'
@@ -302,6 +303,15 @@ augroup END
 " Plugin: nerdcommenter ================================================= {{{
 " Add spaces after comment delimiters by default
 let g:NERDSpaceDelims = 1
+" }}}
+
+" Plugin: nuake ================================================= {{{
+augroup NUAKE
+    au!
+    nnoremap <F4> :Nuake<CR>
+    inoremap <F4> <C-\><C-n>:Nuake<CR>
+    tnoremap <F4> <C-\><C-n>:Nuake<CR>
+augroup END
 " }}}
 
 " Plugin: Tagbar ================================================= {{{
