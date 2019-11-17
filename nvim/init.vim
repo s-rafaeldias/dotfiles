@@ -70,6 +70,9 @@ Plug 'neovimhaskell/haskell-vim'
 " Plug 'elixir-editors/vim-elixir'
 " Plug 'slashmili/alchemist.vim'
 " Plug 'mhinz/vim-mix-format'
+" Elm
+" Plug 'elmcast/elm-vim'
+Plug 'andys8/vim-elm-syntax'
 
 " Initialize plugin system
 call plug#end()
@@ -283,13 +286,6 @@ highlight GitGutterDelete guifg=#ff2222 ctermfg=1
 autocmd BufWritePost * GitGutter
 " }}}
 
-" Plugin: NERDTree ================================================= {{{
-let g:NERDTreeQuitOnOpen=1
-let g:NERDTreeShowHidden=1
-let g:NERDTreeChDirMode=2
-noremap <C-D> :NERDTreeToggle<CR>
-" }}}
-
 " Plugin: kien/rainbow_parentheses.vim ================================================= {{{
 augroup RAINBOW_PARENTHESES
     au!
@@ -305,6 +301,13 @@ augroup END
 let g:NERDSpaceDelims = 1
 " }}}
 
+" Plugin: NERDTree ================================================= {{{
+let g:NERDTreeQuitOnOpen=1
+let g:NERDTreeShowHidden=1
+let g:NERDTreeChDirMode=2
+noremap <C-D> :NERDTreeToggle<CR>
+" }}}
+
 " Plugin: nuake ================================================= {{{
 augroup NUAKE
     au!
@@ -314,14 +317,52 @@ augroup NUAKE
 augroup END
 " }}}
 
+" Plugin: polyglot ================================================= {{{
+let g:polyglot_disabled = ['elm']
+" }}}
+
 " Plugin: Tagbar ================================================= {{{
 nmap <F9> :TagbarToggle<CR>
+let g:tagbar_type_elm = {
+      \ 'kinds' : [
+      \ 'f:function:0:0',
+      \ 'm:modules:0:0',
+      \ 'i:imports:1:0',
+      \ 't:types:1:0',
+      \ 'a:type aliases:0:0',
+      \ 'c:type constructors:0:0',
+      \ 'p:ports:0:0',
+      \ 's:functions:0:0',
+      \ ]
+      \}
 " }}}
 
 " Language: Elixir ================================================= {{{
 " Format files on save with 'mix format'
 " autocmd BufWritePost *.exs,*.ex silent :!mix format %
 let g:mix_format_on_save = 1
+" }}}
+
+" Language: Elm ================================================= {{{
+augroup ELM_IDE
+    au!
+    autocmd FileType elm
+                \  set ts=4
+                \| set expandtab
+                \| set shiftwidth=4
+                \| set foldmethod=indent
+                \| set foldnestmax=2
+                \| normal zR
+    nmap <localleader>r <Plug>(coc-rename)
+    nmap <silent> <localleader>s <Plug>(coc-fix-current)
+    nmap <silent> <localleader>S <Plug>(coc-codeaction)
+    nmap <silent> <localleader>a <Plug>(coc-diagnostic-next)
+    nmap <silent> <localleader>A <Plug>(coc-diagnostic-next-error)
+    nmap <silent> <localleader>d <Plug>(coc-definition)
+    nmap <silent> <localleader>g :call CocAction('doHover')<CR>
+    nmap <silent> <localleader>u <Plug>(coc-references)
+    nmap <silent> <localleader>p :call CocActionAsync('format')<CR>
+augroup END
 " }}}
 
 " Language: Golang ================================================= {{{
