@@ -36,7 +36,6 @@ Plug 'junegunn/fzf.vim'
 " Wakatime
 Plug 'wakatime/vim-wakatime'
 " Syntax checking hacks
-" Plug 'vim-syntastic/syntastic'
 Plug 'dense-analysis/ale'
 " Quoting/parenthesizing made simple
 Plug 'tpope/vim-surround'
@@ -65,14 +64,14 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries', 'tag': 'v1.20' }
 " HTML
 Plug 'mattn/emmet-vim'
 " Haskell
-Plug 'neovimhaskell/haskell-vim'
+Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' }
 " Elixir
 " Plug 'elixir-editors/vim-elixir'
 " Plug 'slashmili/alchemist.vim'
 " Plug 'mhinz/vim-mix-format'
 " Elm
 " Plug 'elmcast/elm-vim'
-Plug 'andys8/vim-elm-syntax'
+Plug 'andys8/vim-elm-syntax', { 'for': 'elm' }
 
 " Initialize plugin system
 call plug#end()
@@ -268,8 +267,8 @@ function! s:show_documentation()
 endfunction
 
 " Disable Coc for clojure files
-autocmd BufNew,BufEnter *.clj  execute "silent! CocDisable"
-autocmd BufLeave *.clj execute "silent! CocEnable"
+" autocmd BufNew,BufEnter *.clj  execute "silent! CocDisable"
+" autocmd BufLeave *.clj execute "silent! CocEnable"
 " }}}
 
 " Plugin: FZF ================================================= {{{
