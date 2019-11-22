@@ -16,34 +16,34 @@
 
     "languageserver": {
         "golang": {
-            "command": "gopls",
-            "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
-            "filetypes": ["go"]
+          "command": "gopls",
+          "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
+          "filetypes": ["go"]
         },
         "elixirLS": {
-            "command": "~/.elixir/elixir-ls/rel/language_server.sh",
-            "filetypes": ["elixir", "eelixir"]
+          "command": "~/.elixir/elixir-ls/rel/language_server.sh",
+          "filetypes": ["elixir", "eelixir"]
         },
         "haskell": {
-            "command": "hie-wrapper",
-            "rootPatterns": [".stack.yaml", "cabal.config", "package.yaml"],
-            "filetypes": ["hs", "lhs", "haskell"],
-            "initializationOptions": {
-              "languageServerHaskell": {}
-            }
+          "command": "hie-wrapper",
+          "rootPatterns": [".stack.yaml", "cabal.config", "package.yaml"],
+          "filetypes": ["hs", "lhs", "haskell"],
+          "initializationOptions": {
+            "languageServerHaskell": {}
+          }
         },
         "elmLS": {
-      "command": "elm-language-server",
-      "filetypes": ["elm"],
-      "rootPatterns": ["elm.json"],
-      "trace.server": "verbose",
-      "initializationOptions": {
-        "elmPath": "elm",
-        "elmFormatPath": "elm-format",
-        "elmTestPath": "elm-test",
-        "elmAnalyseTrigger": "change"
-      }
-    }
+          "command": "elm-language-server",
+          "filetypes": ["elm"],
+          "rootPatterns": ["elm.json"],
+          "trace.server": "verbose",
+          "initializationOptions": {
+            "elmPath": "elm",
+            "elmFormatPath": "elm-format",
+            "elmTestPath": "elm-test",
+            "elmAnalyseTrigger": "change"
+          }
+        }
     }
 }
 
