@@ -24,6 +24,7 @@ source ~/.alias
 source $ZSH/oh-my-zsh.sh
 source ~/.zstyles
 source ~/.completions/*
+source ~/.env
 
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
