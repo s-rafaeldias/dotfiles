@@ -6,7 +6,6 @@ call plug#begin()
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 Plug 'sodapopcan/vim-twiggy'
-Plug 'jaxbot/github-issues.vim'
 " NERDTree
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
