@@ -83,21 +83,18 @@ if has('nvim')
     let g:python_host_prog = $HOME . '/miniconda3/envs/neovim2/bin/python'
 endif
 
-set relativenumber      " show relative numbers
-set number              " show line numbers
-set cursorline          " show a visual line under the cursor's current line
-set showmatch           " show the matching part of the pair for [] {} and ()
+set relativenumber          " show relative numbers
+set number                  " show line numbers
+set cursorline              " show a visual line under the cursor's current line
+set showmatch               " show the matching part of the pair for [] {} and ()
 set scrolloff=10
-set signcolumn=yes      " always show signcolumns
-
+set signcolumn=yes          " always show signcolumns
 set timeoutlen=1000
 set ttimeoutlen=0
 set updatetime=100
-
 set completeopt-=preview    " Disable preview for autocomplete
-
-set noerrorbells        " Disable bells
-set novisualbell        " Disable bells
+set noerrorbells            " Disable bells
+set novisualbell            " Disable bells
 
 " White space settings
 set listchars=eol:¬,tab:>\ ,trail:~,extends:>,precedes:<
