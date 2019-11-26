@@ -40,8 +40,8 @@ Plug 'dense-analysis/ale'
 Plug 'tpope/vim-surround'
 " Show indentation line
 Plug 'Yggdroot/indentLine'
-" Plug 'kana/vim-textobj-user'
-Plug 'Lenovsky/nuake'
+" View and search LSP symbols, tags in Vim/NeoVim.
+Plug 'liuchengxu/vista.vim'
 
 """ Colorscheme
 Plug 'vim-airline/vim-airline'
@@ -64,6 +64,7 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries', 'tag': 'v1.20' }
 Plug 'mattn/emmet-vim'
 " Haskell
 Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' }
+Plug 'alx741/vim-hindent'
 " Elixir
 " Plug 'elixir-editors/vim-elixir'
 " Plug 'slashmili/alchemist.vim'
@@ -107,6 +108,7 @@ let mapleader=","
 let maplocalleader=";"
 
 set directory=.
+set tags=./tags,tags;$HOME
 
 " disable continuation of comments to the next line
 autocmd FileType * setlocal formatoptions-=cro
@@ -262,6 +264,7 @@ function! s:show_documentation()
   endif
 endfunction
 
+command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
 " Disable Coc for clojure files
 " autocmd BufNew,BufEnter *.clj  execute "silent! CocDisable"
 " autocmd BufLeave *.clj execute "silent! CocEnable"
@@ -401,6 +404,7 @@ augroup HASKELL_IDE
     autocmd FileType haskell set expandtab
 augroup END
 
+let g:hindent_on_save = 0
 let g:haskell_classic_highlighting = 1
 let g:haskell_indent_if = 3
 let g:haskell_indent_case = 2
