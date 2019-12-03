@@ -319,20 +319,13 @@ augroup END
 let g:polyglot_disabled = ['elm']
 " }}}
 
-" Plugin: Tagbar ================================================= {{{
-nmap <F9> :TagbarToggle<CR>
-let g:tagbar_type_elm = {
-      \ 'kinds' : [
-      \ 'f:function:0:0',
-      \ 'm:modules:0:0',
-      \ 'i:imports:1:0',
-      \ 't:types:1:0',
-      \ 'a:type aliases:0:0',
-      \ 'c:type constructors:0:0',
-      \ 'p:ports:0:0',
-      \ 's:functions:0:0',
-      \ ]
-      \}
+" Plugin: Vista ================================================= {{{
+let g:vista_sidebar_width = 50
+let g:vista_close_on_jump = 1
+" let g:vista_stay_on_open = 0
+let g:vista_default_executive = 'coc'
+nmap <F9> :Vista!!<CR>
+
 " }}}
 
 " Language: Elixir ================================================= {{{
