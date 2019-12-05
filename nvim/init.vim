@@ -42,6 +42,8 @@ Plug 'tpope/vim-surround'
 Plug 'Yggdroot/indentLine'
 " View and search LSP symbols, tags in Vim/NeoVim.
 Plug 'liuchengxu/vista.vim'
+" Script for text filtering and alignment
+Plug 'godlygeek/tabular'
 
 """ Colorscheme
 Plug 'vim-airline/vim-airline'
@@ -55,20 +57,21 @@ Plug 'tyrannicaltoucan/vim-deep-space'
 Plug 'ekalinin/Dockerfile.vim', { 'for': 'dockerfile' }
 " Python
 Plug 'vim-python/python-syntax', { 'for': 'python' }
-Plug 'psf/black'
-Plug 'davidhalter/jedi-vim'
-Plug 'fisadev/vim-isort'
+Plug 'psf/black', { 'for': 'python' }
+Plug 'davidhalter/jedi-vim', { 'for': 'python' }
+Plug 'fisadev/vim-isort', { 'for': 'python' }
+
 " Go
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries', 'tag': 'v1.20' }
 " HTML
 Plug 'mattn/emmet-vim'
 " Haskell
 Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' }
-Plug 'alx741/vim-hindent'
+Plug 'alx741/vim-hindent', { 'for': 'haskell' }
 " Elixir
-" Plug 'elixir-editors/vim-elixir'
-" Plug 'slashmili/alchemist.vim'
-" Plug 'mhinz/vim-mix-format'
+Plug 'elixir-editors/vim-elixir', { 'for': 'elixir' }
+Plug 'slashmili/alchemist.vim', { 'for': 'elixir' }
+Plug 'mhinz/vim-mix-format', { 'for': 'elixir' }
 " Elm
 " Plug 'elmcast/elm-vim'
 Plug 'andys8/vim-elm-syntax', { 'for': 'elm' }
@@ -323,7 +326,7 @@ let g:polyglot_disabled = ['elm']
 let g:vista_sidebar_width = 50
 let g:vista_close_on_jump = 1
 " let g:vista_stay_on_open = 0
-let g:vista_default_executive = 'coc'
+" let g:vista_default_executive = 'coc'
 nmap <F9> :Vista!!<CR>
 
 " }}}
