@@ -44,6 +44,8 @@ Plug 'Yggdroot/indentLine'
 Plug 'liuchengxu/vista.vim'
 " Script for text filtering and alignment
 Plug 'godlygeek/tabular'
+" A Narrow Region Plugin for vim (like Emacs Narrow Region)
+Plug 'chrisbra/NrrwRgn'
 
 """ Colorscheme
 Plug 'vim-airline/vim-airline'
