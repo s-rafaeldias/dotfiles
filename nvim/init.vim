@@ -64,9 +64,10 @@ Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 Plug 'fisadev/vim-isort', { 'for': 'python' }
 
 " Go
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries', 'tag': 'v1.20' }
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' } ", 'tag': 'v1.20' }
 " HTML
 Plug 'mattn/emmet-vim'
+Plug 'cakebaker/scss-syntax.vim'
 " Haskell
 Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' }
 Plug 'alx741/vim-hindent', { 'for': 'haskell' }
@@ -249,6 +250,10 @@ let g:coc_global_extensions = [
             \ 'coc-css',
             \ 'coc-emmet']
 
+let g:coc_filetype_map = {
+    \ 'scss': 'scss',
+\ }
+
 " Use <C-N> to trigger completion.
 inoremap <SILENT><EXPR> <C-N> coc#refresh()
 " Use <CR> for select completion
@@ -415,6 +420,17 @@ let g:haskell_indent_in = 1
 let g:haskell_indent_guard = 2
 let g:haskell_indent_case_alternative = 1
 let g:cabal_indent_section = 2
+" }}}
+
+" Language: HTML/CSS ================================================= {{{
+augroup HTML_CSS_IDE
+    au!
+    autocmd FileType css,scss
+                \  set expandtab
+                \| set ts=2
+                \| set shiftwidth=2
+augroup END
+
 " }}}
 
 " Language: Javascript/JSON ================================================= {{{
