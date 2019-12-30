@@ -32,6 +32,14 @@ There are two things you can do about this warning:
   (package-refresh-contents)
   (package-install 'use-package))
 
+;; Themes
+(use-package spacemacs-theme
+  :defer t
+  :init (load-theme 'spacemacs-dark t))
+;; (use-package spacemacs-theme
+;;   :ensure t)
+;; (load-theme 'spacemacs-dark t)
+
 ;; Wakatime: 
 (use-package wakatime-mode
   :ensure t
@@ -50,6 +58,19 @@ There are two things you can do about this warning:
   :ensure t
   :config
   (evil-mode 1))
+(setq-default display-line-numbers 'visual
+              display-line-numbers-widen t
+              ;; this is the default
+              display-line-numbers-current-absolute t)
+
+(defun noct:relative ()
+  (setq-local display-line-numbers 'visual))
+
+(defun noct:absolute ()
+  (setq-local display-line-numbers t))
+
+(add-hook 'evil-insert-state-entry-hook #'noct:absolute)
+(add-hook 'evil-insert-state-exit-hook #'noct:relative)
 
 ;; Ace-window
 (use-package ace-window
@@ -115,9 +136,6 @@ There are two things you can do about this warning:
   :config (eval-after-load "company"
 	  '(add-to-list 'company-backends 'company-anaconda)))
 
-;; (use-package anaconda-mode
-;;   :ensure t
-;;   :config (add-hook 'python-mode-hook 'anaconda-mode))
 
 
 
@@ -128,9 +146,15 @@ There are two things you can do about this warning:
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(conda-env-home-directory "~/miniconda3")
+ '(custom-safe-themes
+   (quote
+    ("bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" default)))
  '(package-selected-packages
    (quote
-    (conda company-anaconda anaconda-mode company-jedi flycheck counsel consuel company evil company-mode wakatime-mode swiper ace-window helm which-key use-package))))
+    (spacemacs-dark spacemacs-theme conda company-anaconda anaconda-mode company-jedi flycheck counsel consuel company evil company-mode wakatime-mode swiper ace-window helm which-key use-package)))
+ '(wakatime-cli-path "/home/05018601183/miniconda3/bin/wakatime")
+ '(wakatime-python-bin nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
