@@ -38,7 +38,7 @@ There are two things you can do about this warning:
   :defer t
   :init (load-theme 'spacemacs-dark t))
 
-;; Wakatime: 
+;; Wakatime:
 (use-package wakatime-mode
   :ensure t
   :config (global-wakatime-mode))
@@ -109,6 +109,13 @@ There are two things you can do about this warning:
     (global-set-key (kbd "C-S-o") 'counsel-rhythmbox)
     (define-key minibuffer-local-map (kbd "C-r") 'counsel-minibuffer-history)))
 
+(use-package projectile
+  :ensure t
+  :config
+  (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
+  (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
+  (projectile-mode +1))
+
 ;; Company-mode
 (use-package company
   :ensure t
@@ -127,6 +134,10 @@ There are two things you can do about this warning:
   :config
   (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
 
+(use-package flycheck
+  :ensure t
+  :init (global-flycheck-mode))
+
 ;; Python packages
 (use-package company-jedi
   :ensure t)
@@ -144,6 +155,10 @@ There are two things you can do about this warning:
   :config (eval-after-load "company"
 	  '(add-to-list 'company-backends 'company-anaconda)))
 
+;; Haskell packages
+(use-package haskell-mode
+  :ensure t)
+
 ;; Auto generated code
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -156,7 +171,7 @@ There are two things you can do about this warning:
     ("bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" default)))
  '(package-selected-packages
    (quote
-    (rainbow-delimiters highlight-parentheses spacemacs-dark spacemacs-theme conda company-anaconda anaconda-mode company-jedi flycheck counsel consuel company evil company-mode wakatime-mode swiper ace-window helm which-key use-package)))
+    (projectile haskell-mode rainbow-delimiters highlight-parentheses spacemacs-dark spacemacs-theme conda company-anaconda anaconda-mode company-jedi flycheck counsel consuel company evil company-mode wakatime-mode swiper ace-window helm which-key use-package)))
  '(wakatime-cli-path "/home/05018601183/miniconda3/bin/wakatime")
  '(wakatime-python-bin nil))
 (custom-set-faces
