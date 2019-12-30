@@ -36,3 +36,7 @@ ln -sf ~/$WORK_DIR/completions/git-flow.zsh ~/.completions/git-flow.zsh
 
 # Pip
 ln -sf ~/$WORK_DIR/completions/pip.zsh ~/.completions/pip.zsh
+
+# Emacs
+ln -sf ~/$WORK_DIR/emacs/init.el ~/.emacs.d/init.el
+
