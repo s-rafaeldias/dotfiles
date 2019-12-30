@@ -11,7 +11,7 @@ There are two things you can do about this warning:
 2. Remove this warning from your init file so you won't see it again."))
   ;; Comment/uncomment these two lines to enable/disable MELPA and MELPA Stable as desired
   (add-to-list 'package-archives (cons "melpa" (concat proto "://melpa.org/packages/")) t)
-  ;;(add-to-list 'package-archives (cons "melpa-stable" (concat proto "://stable.melpa.org/packages/")) t)
+  (add-to-list 'package-archives (cons "melpa-stable" (concat proto "://stable.melpa.org/packages/")) t)
   (when (< emacs-major-version 24)
     ;; For important compatibility libraries like cl-lib
     (add-to-list 'package-archives (cons "gnu" (concat proto "://elpa.gnu.org/packages/")))))
@@ -26,6 +26,7 @@ There are two things you can do about this warning:
 (setq ido-everywhere t)
 (ido-mode 1)
 (defalias 'list-buffers 'ibuffer)
+(put 'narrow-to-region 'disabled nil)
 
 ;; Packages
 (unless (package-installed-p 'use-package)
@@ -36,9 +37,6 @@ There are two things you can do about this warning:
 (use-package spacemacs-theme
   :defer t
   :init (load-theme 'spacemacs-dark t))
-;; (use-package spacemacs-theme
-;;   :ensure t)
-;; (load-theme 'spacemacs-dark t)
 
 ;; Wakatime: 
 (use-package wakatime-mode
@@ -119,6 +117,16 @@ There are two things you can do about this warning:
     (add-hook 'after-init-hook 'global-company-mode)
     (company-mode 1)))
 
+(use-package highlight-parentheses
+  :ensure t
+  :config
+  (add-hook 'prog-mode-hook #'highlight-parentheses-mode))
+
+(use-package rainbow-delimiters
+  :ensure t
+  :config
+  (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
+
 ;; Python packages
 (use-package company-jedi
   :ensure t)
@@ -136,10 +144,6 @@ There are two things you can do about this warning:
   :config (eval-after-load "company"
 	  '(add-to-list 'company-backends 'company-anaconda)))
 
-
-
-
-
 ;; Auto generated code
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -152,7 +156,7 @@ There are two things you can do about this warning:
     ("bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" default)))
  '(package-selected-packages
    (quote
-    (spacemacs-dark spacemacs-theme conda company-anaconda anaconda-mode company-jedi flycheck counsel consuel company evil company-mode wakatime-mode swiper ace-window helm which-key use-package)))
+    (rainbow-delimiters highlight-parentheses spacemacs-dark spacemacs-theme conda company-anaconda anaconda-mode company-jedi flycheck counsel consuel company evil company-mode wakatime-mode swiper ace-window helm which-key use-package)))
  '(wakatime-cli-path "/home/05018601183/miniconda3/bin/wakatime")
  '(wakatime-python-bin nil))
 (custom-set-faces
