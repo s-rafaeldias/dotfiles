@@ -39,4 +39,5 @@ ln -sf ~/$WORK_DIR/completions/pip.zsh ~/.completions/pip.zsh
 
 # Emacs
 ln -sf ~/$WORK_DIR/emacs/init.el ~/.emacs.d/init.el
+ln -sf ~/$WORK_DIR/emacs/config.org ~/.emacs.d/config.org
 
