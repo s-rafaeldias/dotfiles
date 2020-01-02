@@ -2,6 +2,7 @@
 ** Basic settings
    #+BEGIN_SRC emacs-lisp
      (global-hl-line-mode t)
+     (electric-pair-mode t)
      (setq inhibit-startup-message t)
      (setq backup-directory-alist `(("." . "~/.emacs-backups")))
      (setq mac-command-modifier 'control)
@@ -14,21 +15,19 @@
    #+END_SRC
 ** Themes
    #+BEGIN_SRC emacs-lisp
-    (use-package spacemacs-theme
-	:defer t
-	:ensure t
-	:init (load-theme 'spacemacs-dark t))
+     (use-package spacemacs-theme
+       :defer t
+       :ensure t
+       :init (load-theme 'spacemacs-dark t))
    #+END_SRC
    #+BEGIN_SRC emacs-lisp
-   (use-package highlight-parentheses
-	:ensure t
-	:config
-	(add-hook 'prog-mode-hook #'highlight-parentheses-mode))
+     (use-package highlight-parentheses
+       :ensure t
+       :config (add-hook 'prog-mode-hook #'highlight-parentheses-mode))
 
-   (use-package rainbow-delimiters
-	:ensure t
-	:config
-	(add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
+     (use-package rainbow-delimiters
+       :ensure t
+       :config (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
    #+END_SRC
 * Utilities
   #+BEGIN_SRC emacs-lisp
@@ -114,36 +113,39 @@
 * Programming
 ** General
    #+BEGIN_SRC emacs-lisp
-    (use-package company
-    :ensure t
-    :config
-    (progn
-	(add-hook 'after-init-hook 'global-company-mode)
-	(company-mode 1)))
+     (use-package company
+       :ensure t
+       :config (progn
+		 (add-hook 'after-init-hook 'global-company-mode)
+		 (company-mode 1)))
 
-    (use-package flycheck
-    :ensure t
-    :init (global-flycheck-mode))
+     (use-package flycheck
+       :ensure t
+       :init (global-flycheck-mode))
 
+     (use-package dumb-jump
+       :ensure t
+       :config (setq dumb-jump-selector 'ivy)
+       :bind (("M-]" . dumb-jump-go)))
    #+END_SRC
 ** Python
    #+BEGIN_SRC emacs-lisp
-    (use-package company-jedi
-	:ensure t)
+     (use-package company-jedi
+       :ensure t)
 
-   (use-package conda
-    :ensure t
-    :config
-    (progn
-	(custom-set-variables '(conda-env-home-directory "~/miniconda3"))
-	(conda-env-initialize-interactive-shells)
-	(conda-env-autoactivate-mode t)))
+     (use-package conda
+       :ensure t
+       :config
+       (progn
+	 (custom-set-variables '(conda-env-home-directory "~/miniconda3"))
+	 (conda-env-initialize-interactive-shells)
+	 (conda-env-autoactivate-mode t)))
 
-   (use-package company-anaconda
-   :ensure t
-   :config
-	(eval-after-load "company"
-	'(add-to-list 'company-backends 'company-anaconda)))
+     (use-package company-anaconda
+       :ensure t
+       :config (eval-after-load "company" '(add-to-list 'company-backends 'company-anaconda)))
+
+     (add-hook 'python-mode-hook 'anaconda-mode)
    #+END_SRC
 ** Haskell
    #+BEGIN_SRC emacs-lisp
