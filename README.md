@@ -1,3 +1,5 @@
+[![time tracker](https://wakatime.com/badge/github/s-rafaeldias/dotfiles.svg)](https://wakatime.com/badge/github/s-rafaeldias/dotfiles)
+
 # Dotfiles
 
 ## Scripts
