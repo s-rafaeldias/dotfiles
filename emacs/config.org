@@ -1,124 +1,178 @@
 * My Emacs Config
+** Tracking load time
+#+begin_src emacs-lisp
+    (defconst emacs-start-time (current-time))
+#+end_src
+
 * Basic settings
-** Basic settings
-   #+BEGIN_SRC emacs-lisp
-     ;; (global-hl-line-mode t)
-     (electric-pair-mode t)
-     (setq inhibit-startup-message t)
-     (setq backup-directory-alist `(("." . "~/.emacs-backups")))
-     (setq mac-command-modifier 'control)
-     (setq indo-enable-flex-matching t)
-     (setq ido-everywhere t)
-     (ido-mode 1)
-     (defalias 'list-buffers 'ibuffer)
-     (put 'narrow-to-region 'disabled nil)
-     (setq org-preserve-indentation t)
-   #+END_SRC
+#+begin_src emacs-lisp
+  (fset 'yes-or-no-p 'y-or-n-p)
+  (setq inhibit-startup-message t)
+  (put 'narrow-to-region 'disabled nil)
+  (defalias 'list-buffers 'ibuffer)
+
+  ;; Ask for confirmation before exiting emacs
+  (add-hook 'kill-emacs-query-functions
+	    (lambda () (y-or-n-p "Do you really want to exit Emacs? "))
+	    'append)
+#+end_src
+
+** MacOS
+#+begin_src emacs-lisp
+  (setq mac-command-modifier 'control)
+#+end_src
+
+** Ido mode
+#+BEGIN_SRC emacs-lisp
+  (setq indo-enable-flex-matching t)
+  (setq ido-everywhere t)
+  (ido-mode 1)
+#+END_SRC
+
+** Backup files
+#+begin_src emacs-lisp
+  (setq backup-directory-alist `(("." . "~/.emacs.d/backups"))
+	backup-by-copying t    ; don't delink hardlinks
+	delete-old-versions t  ; automatically delete excess backups
+  )
+#+end_src
 
 * UI
   Let's make this bad boy BEAUTIFUL
 ** Interface
-   #+begin_src emacs-lisp
-     (use-package highlight-parentheses
-       :ensure t
-       :config (add-hook 'prog-mode-hook #'highlight-parentheses-mode))
+#+begin_src emacs-lisp
+  (tool-bar-mode 0)
+  (menu-bar-mode 0)
+  (scroll-bar-mode -1)
+  (set-window-scroll-bars (minibuffer-window) nil nil)
 
-     (use-package rainbow-delimiters
-       :ensure t
-       :config (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
-   #+end_src
+  ;; Highlight current line
+  (global-hl-line-mode t)
+  ;; Toggle automatic parens pairing
+  (electric-pair-mode t)
+
+  (use-package highlight-parentheses
+    :ensure t
+    :config (add-hook 'prog-mode-hook #'highlight-parentheses-mode))
+
+  (use-package rainbow-delimiters
+    :ensure t
+    :config (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
+#+end_src
+
 ** Themes
-    #+begin_src emacs-lisp
-      (use-package spacemacs-theme
-	:defer t
-	:ensure t
-	:init (load-theme 'spacemacs-dark t))
-    #+end_src
+#+begin_src emacs-lisp
+  (use-package spacemacs-theme
+    :defer t
+    :ensure t
+    :init (load-theme 'spacemacs-dark t))
+#+end_src
   
-* Utilities
-  #+BEGIN_SRC emacs-lisp
-    (use-package wakatime-mode
-      :ensure t
-      :config (global-wakatime-mode))
+* Packages
+** Wakatime
+`wakatime-mode` is an automatic time tracking extension for Emacs using WakaTime.
+#+begin_src emacs-lisp
+  (use-package wakatime-mode
+    :ensure t
+    :config (global-wakatime-mode))
+#+end_src
 
-    (use-package try
-      :ensure t)
+** Try
+Try is a package that allows you to try out Emacs packages without installing them.
+#+begin_src emacs-lisp
+  (use-package try
+    :ensure t)
+#+end_src
 
-    (use-package which-key
-      :ensure t
-      :config (which-key-mode))
+** Which-key
+The mode displays the key bindings following your currently entered incomplete command (a prefix) in a popup.
+#+begin_src emacs-lisp
+  (use-package which-key
+    :ensure t
+    :config (which-key-mode))
+#+end_src
 
-    ;; Evil mode
-    (use-package evil
-      :ensure t
-      :config
-      (evil-mode 1))
+** Evil
+Evil is an extensible vi layer for Emacs.
+#+begin_src emacs-lisp
+  (use-package evil
+    :ensure t
+    :config
+    (evil-mode 1))
 
-    (setq-default display-line-numbers 'visual
-		  display-line-numbers-widen t
-		  ;; this is the default
-		  display-line-numbers-current-absolute t)
+  (setq-default display-line-numbers 'visual
+		display-line-numbers-widen t
+		;; this is the default
+		display-line-numbers-current-absolute t)
 
-    (defun noct:relative ()
-      (setq-local display-line-numbers 'visual))
+  (defun noct:relative ()
+    (setq-local display-line-numbers 'visual))
 
-    (defun noct:absolute ()
-      (setq-local display-line-numbers t))
+  (defun noct:absolute ()
+    (setq-local display-line-numbers t))
 
-    (add-hook 'evil-insert-state-entry-hook #'noct:absolute)
-    (add-hook 'evil-insert-state-exit-hook #'noct:relative)
+  (add-hook 'evil-insert-state-entry-hook #'noct:absolute)
+  (add-hook 'evil-insert-state-exit-hook #'noct:relative)
+#+end_src
 
-    ;; Ace-window
-    (use-package ace-window
-      :ensure t
-      :init
-      (progn
-	(global-set-key [remap other-window] 'ace-window)
-	))
+** Ace window
+#+begin_src emacs-lisp
+  (use-package ace-window
+    :ensure t
+    :init (global-set-key [remap other-window] 'ace-window))
+#+end_src
 
-    ;; Ivy/Swiper/Counsel
-    (use-package swiper
-      :ensure t)
+** Ivy/Swiper/Counsel
+#+begin_src emacs-lisp
+  (use-package swiper
+    :ensure t)
 
-    (use-package counsel
-      :ensure t)
+  (use-package counsel
+    :ensure t)
 
-    (use-package ivy
-      :ensure t
-      :config
-      (progn
-	(ivy-mode 1)
-	(setq ivy-use-virtual-buffers t)
-	(setq enable-recursive-minibuffers t)
-	;; enable this if you want `swiper' to use it
-	;; (setq search-default-mode #'char-fold-to-regexp)
-	(global-set-key "\C-s" 'swiper)
-	(global-set-key (kbd "C-c C-r") 'ivy-resume)
-	(global-set-key (kbd "<f6>") 'ivy-resume)
-	(global-set-key (kbd "M-x") 'counsel-M-x)
-	(global-set-key (kbd "C-x C-f") 'counsel-find-file)
-	(global-set-key (kbd "<f1> f") 'counsel-describe-function)
-	(global-set-key (kbd "<f1> v") 'counsel-describe-variable)
-	(global-set-key (kbd "<f1> l") 'counsel-find-library)
-	(global-set-key (kbd "<f2> i") 'counsel-info-lookup-symbol)
-	(global-set-key (kbd "<f2> u") 'counsel-unicode-char)
-	(global-set-key (kbd "C-c g") 'counsel-git)
-	(global-set-key (kbd "C-c j") 'counsel-git-grep)
-	(global-set-key (kbd "C-c k") 'counsel-ag)
-	(global-set-key (kbd "C-x l") 'counsel-locate)
-	(global-set-key (kbd "C-S-o") 'counsel-rhythmbox)
-	(define-key minibuffer-local-map (kbd "C-r") 'counsel-minibuffer-history)))
+  (use-package ivy
+    :ensure t
+    :config
+    (progn
+      (ivy-mode 1)
+      (setq ivy-use-virtual-buffers t)
+      (setq enable-recursive-minibuffers t)
+      ;; enable this if you want `swiper' to use it
+      ;; (setq search-default-mode #'char-fold-to-regexp)
+      (global-set-key "\C-s" 'swiper)
+      (global-set-key (kbd "C-c C-r") 'ivy-resume)
+      (global-set-key (kbd "<f6>") 'ivy-resume)
+      (global-set-key (kbd "M-x") 'counsel-M-x)
+      (global-set-key (kbd "C-x C-f") 'counsel-find-file)
+      (global-set-key (kbd "<f1> f") 'counsel-describe-function)
+      (global-set-key (kbd "<f1> v") 'counsel-describe-variable)
+      (global-set-key (kbd "<f1> l") 'counsel-find-library)
+      (global-set-key (kbd "<f2> i") 'counsel-info-lookup-symbol)
+      (global-set-key (kbd "<f2> u") 'counsel-unicode-char)
+      (global-set-key (kbd "C-c g") 'counsel-git)
+      (global-set-key (kbd "C-c j") 'counsel-git-grep)
+      (global-set-key (kbd "C-c k") 'counsel-ag)
+      (global-set-key (kbd "C-x l") 'counsel-locate)
+      (global-set-key (kbd "C-S-o") 'counsel-rhythmbox)
+      (define-key minibuffer-local-map (kbd "C-r") 'counsel-minibuffer-history)))
+#+end_src
 
-    (use-package projectile
-      :ensure t
-      :config
-      (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
-      (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
-      (projectile-mode 1))
+** Projectile
+#+begin_src emacs-lisp
+  (use-package projectile
+    :ensure t
+    :config
+    (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
+    (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
+    (projectile-mode 1))
+#+end_src
 
-    (use-package iedit
-      :ensure t)
-  #+END_SRC
+** Iedit
+#+begin_src emacs-lisp
+  (use-package iedit
+    :ensure t)
+#+end_src
+
 * Programming
 ** General
    #+BEGIN_SRC emacs-lisp
@@ -162,4 +216,9 @@
 	:ensure t)
    #+END_SRC
    
-
+* Show load time
+#+begin_src emacs-lisp
+  (let ((elapsed (float-time (time-subtract (current-time)
+					    emacs-start-time))))
+    (message "Loaded packages in %.3fs" elapsed))
+#+end_src
