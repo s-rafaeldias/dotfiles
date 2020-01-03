@@ -16,14 +16,33 @@ There are two things you can do about this warning:
 )
 (package-initialize)
 
+(setq vc-follow-symlinks t)
+
 (unless (package-installed-p 'use-package)
     (package-refresh-contents)
     (package-install 'use-package))
 
-;; (setq-default
-;;     use-package-always-defer t
-;;     use-package-always-ensure t)
+(use-package org
+  :ensure org-plus-contrib)
 
-(use-package org :ensure org-plus-contrib)
-(org-babel-load-file (expand-file-name "~/.emacs.d/config.org"))
+(delete-file "~/.emacs.d/config.el")
+(org-babel-load-file (expand-file-name "config.org" user-emacs-directory))
 
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(conda-env-home-directory "~/miniconda3")
+ '(package-selected-packages
+   (quote
+    (dumb-jump iedit which-key wakatime-mode use-package try spacemacs-theme rainbow-delimiters projectile org-plus-contrib highlight-parentheses helm haskell-mode flycheck evil counsel conda company-jedi company-anaconda ace-window)))
+ '(wakatime-cli-path "~/miniconda3/bin/wakatime")
+ '(wakatime-python-bin nil))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
