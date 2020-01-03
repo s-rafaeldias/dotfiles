@@ -38,7 +38,7 @@
 #+end_src
 
 * UI
-  Let's make this bad boy BEAUTIFUL
+  Let's make this bad boy BEAUTIFUL!
 ** Interface
 #+begin_src emacs-lisp
   (tool-bar-mode 0)
