@@ -45,6 +45,8 @@
   (menu-bar-mode 0)
   (scroll-bar-mode -1)
   (set-window-scroll-bars (minibuffer-window) nil nil)
+  
+
 
   ;; Highlight current line
   (global-hl-line-mode t)
@@ -173,14 +175,31 @@ Evil is an extensible vi layer for Emacs.
     :ensure t)
 #+end_src
 
+** Company
+#+begin_src emacs-lisp
+  (use-package company
+    :ensure t
+    :config (progn
+	      (add-hook 'after-init-hook 'global-company-mode)
+	      (company-mode 1)))
+
+  (use-package company-lsp
+    :ensure t
+    :commands company-lsp)
+
+  (use-package lsp-mode
+    :ensure t
+    :hook (prog-mode . lsp)
+    :commands lsp)
+
+  (setq lsp-prefer-flymake :none)
+  (setq lsp-auto-configure nil)
+#+end_src
 * Programming
 ** General
    #+BEGIN_SRC emacs-lisp
-     (use-package company
-       :ensure t
-       :config (progn
-		 (add-hook 'after-init-hook 'global-company-mode)
-		 (company-mode 1)))
+
+
 
      (use-package flycheck
        :ensure t
@@ -212,8 +231,13 @@ Evil is an extensible vi layer for Emacs.
    #+END_SRC
 ** Haskell
    #+BEGIN_SRC emacs-lisp
-    (use-package haskell-mode
-	:ensure t)
+     (use-package haskell-mode
+       :ensure t)
+
+     (use-package lsp-haskell
+       :ensure t)
+     (add-hook 'haskell-mode-hook #'lsp)
+     (setq lsp-haskell-process-path-hie "hie-wrapper")
    #+END_SRC
    
 * Show load time
