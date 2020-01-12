@@ -16,6 +16,7 @@ export TERM=xterm-256color
 # ~/bin
 export PATH=~/bin:$PATH
 export PATH=/Users/rafael/.local/bin:$PATH
+export PATH=~/workspace/go/bin:$PATH
 # Editor
 export EDITOR='nvim'
 # 'You should use' hardcore mode

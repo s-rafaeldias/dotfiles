@@ -37,7 +37,7 @@ There are two things you can do about this warning:
  '(conda-env-home-directory "~/miniconda3")
  '(package-selected-packages
    (quote
-    (all-the-icons ivy-rich alchemist lsp-haskell company-lsp dumb-jump iedit which-key wakatime-mode use-package try spacemacs-theme rainbow-delimiters projectile org-plus-contrib highlight-parentheses helm haskell-mode flycheck evil counsel conda company-jedi company-anaconda ace-window)))
+    (go-mode all-the-icons ivy-rich alchemist lsp-haskell company-lsp dumb-jump iedit which-key wakatime-mode use-package try spacemacs-theme rainbow-delimiters projectile org-plus-contrib highlight-parentheses helm haskell-mode flycheck evil counsel conda company-jedi company-anaconda ace-window)))
  '(wakatime-cli-path "~/miniconda3/bin/wakatime")
  '(wakatime-python-bin nil))
 (custom-set-faces
