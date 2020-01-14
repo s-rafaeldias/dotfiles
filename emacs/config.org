@@ -7,6 +7,7 @@
 ** My functions
 #+begin_src emacs-lisp
 #+end_src
+
 * Basic settings
 #+begin_src emacs-lisp
   (fset 'yes-or-no-p 'y-or-n-p)
@@ -67,7 +68,7 @@
 #+end_src
 
 * UI
-  Let's make this bad boy BEAUTIFUL!
+Let's make this bad boy BEAUTIFUL!
 ** Interface
 #+begin_src emacs-lisp
   (tool-bar-mode 0)
@@ -91,6 +92,23 @@
     :config (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
 #+end_src
 
+** Font
+#+begin_src emacs-lisp
+  (when (eq system-type 'darwin)
+
+      ;; default Latin font (e.g. Consolas)
+      (set-face-attribute 'default nil :family "Hack")
+
+      ;; default font size (point * 10)
+      ;;
+      ;; WARNING!  Depending on the default font,
+      ;; if the size is not supported very well, the frame will be clipped
+      ;; so that the beginning of the buffer may not be visible correctly. 
+      (set-face-attribute 'default nil :height 125)
+
+      ;; you may want to add different for other charset in this way.
+      )
+#+end_src
 ** Themes
 #+begin_src emacs-lisp
   (use-package spacemacs-theme
@@ -104,6 +122,20 @@
   (use-package all-the-icons
     :ensure t)
 #+end_src
+
+** Modeline
+#+begin_src emacs-lisp
+  (use-package doom-modeline
+    :ensure t
+    :hook (after-init . doom-modeline-mode))
+
+  (setq doom-modeline-project-detection 'projectile)
+  (setq doom-modeline-buffer-file-name-style 'relative-from-project)
+  (setq doom-modeline-indent-info t)
+  (setq doom-modeline-lsp t)
+  (setq doom-modeline-icon (display-graphic-p))
+#+end_src
+
 * Packages
 ** Wakatime
 `wakatime-mode` is an automatic time tracking extension for Emacs using WakaTime.
@@ -250,6 +282,7 @@ Evil is an extensible vi layer for Emacs.
 
   (ivy-rich-mode 1)
 #+end_src
+
 ** Projectile
 #+begin_src emacs-lisp
   (use-package projectile
@@ -298,15 +331,16 @@ Evil is an extensible vi layer for Emacs.
 	lsp-ui-imenu-enable t
 	lsp-ui-flycheck-enable t)
 
-  (setq lsp-prefer-flymake :none)
-  ;; (setq lsp-auto-configure nil)
+  (setq lsp-prefer-flymake nil)
 #+end_src
+
+** Magit
+#+begin_src emacs-lisp
+#+end_src
+
 * Programming
 ** General
    #+BEGIN_SRC emacs-lisp
-
-
-
      (use-package flycheck
        :ensure t
        :init (global-flycheck-mode))
@@ -316,35 +350,76 @@ Evil is an extensible vi layer for Emacs.
        :config (setq dumb-jump-selector 'ivy)
        :bind (("M-]" . dumb-jump-go)))
    #+END_SRC
+
+** Git
+*** Git Gutter
+#+begin_src emacs-lisp
+  (use-package git-gutter
+    :ensure t
+    :config (global-git-gutter-mode t))
+#+end_src
+
+*** Magit
+#+begin_src emacs-lisp
+  (use-package magit
+    :ensure t
+    :init
+    (bind-key "C-x g" 'magit-status))
+#+end_src
+
+*** Evil-magit
+#+begin_src emacs-lisp
+  (use-package evil-magit
+    :ensure t)
+#+end_src
+
+** Web mode
+#+begin_src emacs-lisp
+  (use-package web-mode
+    :ensure t
+    :config
+    (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+    (add-to-list 'auto-mode-alist '("\\.vue?\\'" . web-mode))
+    (setq web-mode-engines-alist
+	  '(("go"    . "\\.html\\'")))
+    (setq web-mode-ac-sources-alist
+	  '(("css" . (ac-source-css-property))
+	    ("html" . (ac-source-words-in-buffer ac-source-abbrev))))
+
+  (setq web-mode-enable-auto-closing t))
+  (setq web-mode-enable-auto-quoting t) ; this fixes the quote problem I mentioned
+#+end_src
 ** Python
-   #+BEGIN_SRC emacs-lisp
-     (use-package company-jedi
-       :ensure t)
+#+BEGIN_SRC emacs-lisp
+  (use-package company-jedi
+    :ensure t)
 
-     (use-package conda
-       :ensure t
-       :config
-       (progn
-	 (custom-set-variables '(conda-env-home-directory "~/miniconda3"))
-	 (conda-env-initialize-interactive-shells)
-	 (conda-env-autoactivate-mode t)))
+  (use-package conda
+    :ensure t
+    :config
+    (custom-set-variables '(conda-env-home-directory "~/miniconda3"))
+    (conda-env-initialize-interactive-shells)
+    (conda-env-autoactivate-mode t))
 
-     (use-package company-anaconda
-       :ensure t
-       :config (eval-after-load "company" '(add-to-list 'company-backends 'company-anaconda)))
+  (use-package company-anaconda
+    :ensure t
+    :config
+    (eval-after-load "company" '(add-to-list 'company-backends 'company-anaconda)))
 
-     (add-hook 'python-mode-hook 'anaconda-mode)
-   #+END_SRC
+  (add-hook 'python-mode-hook 'anaconda-mode)
+#+END_SRC
+
 ** Haskell
-   #+BEGIN_SRC emacs-lisp
-     (use-package haskell-mode
-       :ensure t)
+#+BEGIN_SRC emacs-lisp
+  (use-package haskell-mode
+    :ensure t)
 
-     (use-package lsp-haskell
-       :ensure t)
-     (add-hook 'haskell-mode-hook #'lsp)
-     (setq lsp-haskell-process-path-hie "hie-wrapper")
-   #+END_SRC
+  (use-package lsp-haskell
+    :ensure t)
+
+  (add-hook 'haskell-mode-hook #'lsp)
+  (setq lsp-haskell-process-path-hie "hie-wrapper")
+#+END_SRC
    
 ** Elixir
 #+begin_src emacs-lisp
@@ -357,6 +432,7 @@ Evil is an extensible vi layer for Emacs.
   (add-hook 'elixir-mode-hook
 	    (lambda () (add-hook 'before-save-hook 'elixir-format nil t)))
 #+end_src
+
 ** Go
 #+begin_src emacs-lisp
   (use-package go-mode
@@ -366,7 +442,14 @@ Evil is an extensible vi layer for Emacs.
     (add-hook 'before-save-hook #'lsp-format-buffer t t)
     (add-hook 'before-save-hook #'lsp-organize-imports t t))
   (add-hook 'go-mode-hook #'lsp-go-install-save-hooks)
+
+  ;; (use-package flycheck-golangci-lint
+  ;;   :ensure t
+  ;;   :hook (go-mode . flycheck-golangci-lint-setup))
+
+  ;; (setq flycheck-golangci-lint-enable-all t)
 #+end_src
+
 * Show load time
 #+begin_src emacs-lisp
   (let ((elapsed (float-time (time-subtract (current-time)
