@@ -98,20 +98,12 @@ Let's make this bad boy BEAUTIFUL!
 
 ** Font
 #+begin_src emacs-lisp
+  (set-face-attribute 'default nil :family "JetBrains Mono Medium")
   (when (eq system-type 'darwin)
-
-      ;; default Latin font (e.g. Consolas)
-      (set-face-attribute 'default nil :family "JetBrains Mono Medium")
-
-      ;; default font size (point * 10)
-      ;;
-      ;; WARNING!  Depending on the default font,
-      ;; if the size is not supported very well, the frame will be clipped
-      ;; so that the beginning of the buffer may not be visible correctly. 
-      (set-face-attribute 'default nil :height 125)
-
-      ;; you may want to add different for other charset in this way.
-      )
+    ;; WARNING!  Depending on the default font,
+    ;; if the size is not supported very well, the frame will be clipped
+    ;; so that the beginning of the buffer may not be visible correctly. 
+    (set-face-attribute 'default nil :height 125))
 #+end_src
 ** Themes
 #+begin_src emacs-lisp
