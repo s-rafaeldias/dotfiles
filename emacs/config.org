@@ -31,7 +31,7 @@
   (global-set-key (kbd "C-x C-b") 'ibuffer) 
 
   (setq ibuffer-saved-filter-groups
-	'(("home"
+	'(("default"
 	   ("emacs-config" (or (filename . ".emacs.d")
 			       (filename . "emacs-config")
 			       (filename . "config.org")))
@@ -41,15 +41,23 @@
 	   ("Go" (mode . go-mode))
 	   ("Web Dev" (or (mode . html-mode)
 			  (mode . css-mode)))
+	   ("Python" (mode . python-mode))
+	   ("Clojure" (or (mode . clojure-mode)
+			  (name . "^\\cider\\$")))
 	   ("Magit" (name . "\*magit"))
 	   ("ERC" (mode . erc-mode))
+	   ("Emacs" (or
+		     (name . "^\\*scratch\\*$")
+		     (name . "^\\*Messages\\*$")))
 	   ("Help" (or (name . "\*Help\*")
 		       (name . "\*Apropos\*")
 		       (name . "\*info\*"))))))
 
   (add-hook 'ibuffer-mode-hook
 	    '(lambda ()
-	       (ibuffer-switch-to-saved-filter-groups "home")))
+	       (ibuffer-switch-to-saved-filter-groups "default")))
+
+ 
 #+end_src
 
 ** MacOS
@@ -294,6 +302,7 @@ Evil is an extensible vi layer for Emacs.
 
   (add-hook 'evil-insert-state-entry-hook #'noct:absolute)
   (add-hook 'evil-insert-state-exit-hook #'noct:relative)
+  (setq evil-emacs-state-modes (delq 'ibuffer-mode evil-emacs-state-modes))
 #+end_src
 
 ** Ace window
@@ -326,7 +335,8 @@ Evil is an extensible vi layer for Emacs.
     :commands (lsp lsp-deferred)
     :hook ((haskell-mode . lsp-deferred)
 	   (elixir-mode . lsp-deferred)
-	   (go-mode . lsp-deferred)))
+	   (go-mode . lsp-deferred)
+	   (python-mode . lsp-deferred)))
 
   (use-package company-lsp
     :ensure t
@@ -483,6 +493,7 @@ Evil is an extensible vi layer for Emacs.
   ;; Enable smartparens on clojure-mode
   (add-hook 'clojure-mode-hook #'smartparens-strict-mode)
 #+end_src
+
 * Show load time
 #+begin_src emacs-lisp
   (let ((elapsed (float-time (time-subtract (current-time)
