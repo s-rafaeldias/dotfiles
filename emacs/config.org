@@ -311,7 +311,6 @@ Evil is an extensible vi layer for Emacs.
     :init (global-set-key [remap other-window] 'ace-window))
 #+end_src
 
-
 ** Iedit
 #+begin_src emacs-lisp
   (use-package iedit
@@ -495,7 +494,7 @@ Evil is an extensible vi layer for Emacs.
     :ensure t)
 
   ;; Enable smartparens on clojure-mode
-  (add-hook 'clojure-mode-hook #'smartparens-strict-mode)
+  (add-hook 'clojure-mode-hook #'paredit-mode)
 #+end_src
 
 * Show load time
