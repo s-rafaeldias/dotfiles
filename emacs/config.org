@@ -25,6 +25,58 @@
 	    'append)
 #+end_src
 
+** MacOS
+#+begin_src emacs-lisp
+  (setq mac-command-modifier 'control)
+#+end_src
+
+** Ido mode
+#+BEGIN_SRC emacs-lisp
+  (setq indo-enable-flex-matching t)
+  (setq ido-everywhere t)
+  (ido-mode 1)
+#+END_SRC
+
+** Backup files
+#+begin_src emacs-lisp
+  (setq backup-directory-alist `(("." . "~/.emacs.d/backups"))
+	backup-by-copying t    ; don't delink hardlinks
+	delete-old-versions t  ; automatically delete excess backups
+  )
+#+end_src
+
+* UI
+Let's make this bad boy BEAUTIFUL!
+#+begin_src emacs-lisp
+  (tool-bar-mode 0)
+  (menu-bar-mode 0)
+  (scroll-bar-mode -1)
+  (set-window-scroll-bars (minibuffer-window) nil nil)
+
+
+  ;; Highlight current line
+  (global-hl-line-mode t)
+  ;; Toggle automatic parens pairing
+  (electric-pair-mode t)
+
+  (use-package highlight-parentheses
+    :ensure t
+    :config (add-hook 'prog-mode-hook #'highlight-parentheses-mode))
+
+  (use-package rainbow-delimiters
+    :ensure t
+    :config (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
+#+end_src
+
+** Font
+#+begin_src emacs-lisp
+  (set-face-attribute 'default nil :family "JetBrains Mono Medium")
+  (when (eq system-type 'darwin)
+    ;; WARNING!  Depending on the default font,
+    ;; if the size is not supported very well, the frame will be clipped
+    ;; so that the beginning of the buffer may not be visible correctly. 
+    (set-face-attribute 'default nil :height 125))
+#+end_src
 ** Ibuffer
 #+begin_src emacs-lisp
   ;; Use Ibuffer for Buffer List
@@ -60,59 +112,6 @@
  
 #+end_src
 
-** MacOS
-#+begin_src emacs-lisp
-  (setq mac-command-modifier 'control)
-#+end_src
-
-** Ido mode
-#+BEGIN_SRC emacs-lisp
-  (setq indo-enable-flex-matching t)
-  (setq ido-everywhere t)
-  (ido-mode 1)
-#+END_SRC
-
-** Backup files
-#+begin_src emacs-lisp
-  (setq backup-directory-alist `(("." . "~/.emacs.d/backups"))
-	backup-by-copying t    ; don't delink hardlinks
-	delete-old-versions t  ; automatically delete excess backups
-  )
-#+end_src
-
-* UI
-Let's make this bad boy BEAUTIFUL!
-** Interface
-#+begin_src emacs-lisp
-  (tool-bar-mode 0)
-  (menu-bar-mode 0)
-  (scroll-bar-mode -1)
-  (set-window-scroll-bars (minibuffer-window) nil nil)
-
-
-  ;; Highlight current line
-  (global-hl-line-mode t)
-  ;; Toggle automatic parens pairing
-  (electric-pair-mode t)
-
-  (use-package highlight-parentheses
-    :ensure t
-    :config (add-hook 'prog-mode-hook #'highlight-parentheses-mode))
-
-  (use-package rainbow-delimiters
-    :ensure t
-    :config (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
-#+end_src
-
-** Font
-#+begin_src emacs-lisp
-  (set-face-attribute 'default nil :family "JetBrains Mono Medium")
-  (when (eq system-type 'darwin)
-    ;; WARNING!  Depending on the default font,
-    ;; if the size is not supported very well, the frame will be clipped
-    ;; so that the beginning of the buffer may not be visible correctly. 
-    (set-face-attribute 'default nil :height 125))
-#+end_src
 ** Themes
 #+begin_src emacs-lisp
   (use-package spacemacs-theme
@@ -364,10 +363,15 @@ Evil is an extensible vi layer for Emacs.
     :config (global-aggressive-indent-mode 1))
 #+end_src
 
-** Smartparens
+** Paredit
 #+begin_src emacs-lisp
-  (use-package smartparens
-    :ensure t)
+  (use-package paredit
+    :ensure t
+    :config (paredit-mode t))
+
+  (use-package evil-paredit
+    :ensure t
+    :config (evil-paredit-mode t))
 #+end_src
 
 * Programming
