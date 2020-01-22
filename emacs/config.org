@@ -53,19 +53,10 @@ Let's make this bad boy BEAUTIFUL!
   (scroll-bar-mode -1)
   (set-window-scroll-bars (minibuffer-window) nil nil)
 
-
   ;; Highlight current line
   (global-hl-line-mode t)
   ;; Toggle automatic parens pairing
   (electric-pair-mode t)
-
-  (use-package highlight-parentheses
-    :ensure t
-    :config (add-hook 'prog-mode-hook #'highlight-parentheses-mode))
-
-  (use-package rainbow-delimiters
-    :ensure t
-    :config (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
 #+end_src
 
 ** Font
@@ -95,7 +86,7 @@ Let's make this bad boy BEAUTIFUL!
 			  (mode . css-mode)))
 	   ("Python" (mode . python-mode))
 	   ("Clojure" (or (mode . clojure-mode)
-			  (name . "^\\cider\\$")))
+			  (name . "^\\*cider*\\$")))
 	   ("Magit" (name . "\*magit"))
 	   ("ERC" (mode . erc-mode))
 	   ("Emacs" (or
@@ -108,8 +99,6 @@ Let's make this bad boy BEAUTIFUL!
   (add-hook 'ibuffer-mode-hook
 	    '(lambda ()
 	       (ibuffer-switch-to-saved-filter-groups "default")))
-
- 
 #+end_src
 
 ** Themes
@@ -120,6 +109,20 @@ Let's make this bad boy BEAUTIFUL!
     :init (load-theme 'spacemacs-dark t))
 #+end_src
   
+** Highlight-parentheses
+#+begin_src emacs-lisp
+  (use-package highlight-parentheses
+    :ensure t
+    :hook (prog-mode . highlight-parentheses-mode))
+#+end_src
+
+** Rainbow-delimiters
+#+begin_src emacs-lisp
+  (use-package rainbow-delimiters
+    :ensure t
+    :hook (prog-mode . rainbow-delimiters-mode))
+#+end_src
+
 ** All-the-icons
 #+begin_src emacs-lisp
   (use-package all-the-icons
@@ -143,7 +146,7 @@ Let's make this bad boy BEAUTIFUL!
 #+begin_src emacs-lisp
   (use-package all-the-icons-dired
     :ensure t
-    :config (add-hook 'dired-mode-hook 'all-the-icons-dired-mode))
+    :hook (dired-mode . all-the-icons-dired-mode))
 #+end_src
 
 ** Ivy/Swiper/Counsel
@@ -317,44 +320,6 @@ Evil is an extensible vi layer for Emacs.
     :ensure t)
 #+end_src
 
-** Company/LSP
-#+begin_src emacs-lisp
-  (use-package company
-    :ensure t
-    :config  
-    ;; Optionally enable completion-as-you-type behavior.
-    (setq company-idle-delay 0)
-    (setq company-minimum-prefix-length 1) 
-    (add-hook 'after-init-hook 'global-company-mode)
-    (company-mode 1))
-
-  (use-package lsp-mode
-    :ensure t
-    :commands (lsp lsp-deferred)
-    :hook ((haskell-mode . lsp-deferred)
-	   (elixir-mode . lsp-deferred)
-	   (go-mode . lsp-deferred)
-	   (python-mode . lsp-deferred)))
-
-  (use-package company-lsp
-    :ensure t
-    :commands company-lsp)
-  (push 'company-lsp company-backends)
-
-  (use-package lsp-ui
-    :ensure t
-    :commands lsp-ui-mode
-    :init)
-
-  (setq lsp-ui-doc-enable nil
-	lsp-ui-peek-enable t
-	lsp-ui-sideline-enable t
-	lsp-ui-imenu-enable t
-	lsp-ui-flycheck-enable t)
-
-  (setq lsp-prefer-flymake nil)
-#+end_src
-
 ** Aggressive indent
 #+begin_src emacs-lisp
   (use-package aggressive-indent
@@ -375,16 +340,79 @@ Evil is an extensible vi layer for Emacs.
 
 * Programming
 ** General
-#+BEGIN_SRC emacs-lisp
+*** Flycheck
+Flycheck should be enabled for each language specific major mode if I want to use it
+#+begin_src emacs-lisp
   (use-package flycheck
-    :ensure t
-    :init (global-flycheck-mode))
+    :ensure t)
+#+end_src
 
+*** Dumb-jump
+#+BEGIN_SRC emacs-lisp
   (use-package dumb-jump
     :ensure t
     :config (setq dumb-jump-selector 'ivy)
+    ;; TODO: verify this bind later
     :bind (("M-]" . dumb-jump-go)))
 #+END_SRC
+
+*** Web mode
+#+begin_src emacs-lisp
+  (use-package web-mode
+    :ensure t
+    :config
+    (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+    (add-to-list 'auto-mode-alist '("\\.vue?\\'" . web-mode))
+    (setq web-mode-engines-alist
+	  '(("go"    . "\\.html\\'")))
+    (setq web-mode-ac-sources-alist
+	  '(("css" . (ac-source-css-property))
+	    ("html" . (ac-source-words-in-buffer ac-source-abbrev))))
+
+  (setq web-mode-enable-auto-closing t))
+  (setq web-mode-enable-auto-quoting t) ; this fixes the quote problem I mentioned
+#+end_src
+
+*** Company/LSP
+Autocomplete engine and IDE like behavior
+#+begin_src emacs-lisp
+  (use-package company
+    :ensure t
+    :config  
+    ;; Optionally enable completion-as-you-type behavior.
+    (setq company-idle-delay 0)
+    (setq company-minimum-prefix-length 1) 
+    (add-hook 'after-init-hook 'global-company-mode)
+    (company-mode 1))
+
+  (use-package lsp-mode
+    :ensure t
+    :commands (lsp lsp-deferred)
+    :hook ((haskell-mode . lsp-deferred)
+	   (elixir-mode . lsp-deferred)
+	   (go-mode . lsp-deferred)
+	   (python-mode . lsp-deferred)))
+
+  (use-package company-lsp
+    :ensure t
+    :after (lsp-mode)
+    :commands company-lsp)
+  (push 'company-lsp company-backends)
+
+  (use-package lsp-ui
+    :ensure t
+    :after (lsp-mode)
+    :commands lsp-ui-mode
+    :init)
+
+  (setq lsp-ui-doc-enable nil
+	lsp-ui-peek-enable t
+	lsp-ui-sideline-enable t
+	lsp-ui-imenu-enable t
+	lsp-ui-flycheck-enable t)
+
+  (setq lsp-prefer-flymake nil)
+#+end_src
 
 ** Git
 *** Git Gutter
@@ -405,29 +433,16 @@ Evil is an extensible vi layer for Emacs.
 *** Evil-magit
 #+begin_src emacs-lisp
   (use-package evil-magit
-    :ensure t)
-#+end_src
-
-** Web mode
-#+begin_src emacs-lisp
-  (use-package web-mode
     :ensure t
-    :config
-    (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
-    (add-to-list 'auto-mode-alist '("\\.vue?\\'" . web-mode))
-    (setq web-mode-engines-alist
-	  '(("go"    . "\\.html\\'")))
-    (setq web-mode-ac-sources-alist
-	  '(("css" . (ac-source-css-property))
-	    ("html" . (ac-source-words-in-buffer ac-source-abbrev))))
-
-  (setq web-mode-enable-auto-closing t))
-  (setq web-mode-enable-auto-quoting t) ; this fixes the quote problem I mentioned
+    :after (magit))
 #+end_src
-** Python
+
+** Language specifics
+*** Python
 #+BEGIN_SRC emacs-lisp
   (use-package company-jedi
-    :ensure t)
+    :ensure t
+    :after (company))
 
   (use-package conda
     :ensure t
@@ -438,25 +453,29 @@ Evil is an extensible vi layer for Emacs.
 
   (use-package company-anaconda
     :ensure t
+    :after (company)
     :config
     (eval-after-load "company" '(add-to-list 'company-backends 'company-anaconda)))
 
   (add-hook 'python-mode-hook 'anaconda-mode)
+  (setq doom-modeline-env-python-executable conda-env-current-name)
 #+END_SRC
 
-** Haskell
+*** Haskell
 #+BEGIN_SRC emacs-lisp
   (use-package haskell-mode
     :ensure t)
 
   (use-package lsp-haskell
-    :ensure t)
+    :ensure t
+    :after (lsp)
+    :hook (haskell-mode . lsp))
 
-  (add-hook 'haskell-mode-hook #'lsp)
+  ;; (add-hook 'haskell-mode-hook #'lsp)
   (setq lsp-haskell-process-path-hie "hie-wrapper")
 #+END_SRC
    
-** Elixir
+*** Elixir
 #+begin_src emacs-lisp
   (use-package alchemist
     :ensure t)
@@ -468,7 +487,7 @@ Evil is an extensible vi layer for Emacs.
 	    (lambda () (add-hook 'before-save-hook 'elixir-format nil t)))
 #+end_src
 
-** Go
+*** Go
 #+begin_src emacs-lisp
   (use-package go-mode
     :ensure t)
@@ -485,16 +504,18 @@ Evil is an extensible vi layer for Emacs.
   ;; (setq flycheck-golangci-lint-enable-all t)
 #+end_src
 
-** Clojure
+*** Clojure
 #+begin_src emacs-lisp
   (use-package clojure-mode
-    :ensure t)
+    :ensure t
+    :hook (clojure-mode . paredit-mode))
 
   (use-package cider
-    :ensure t)
+    :ensure t
+    :after (clojure-mode))
 
   ;; Enable smartparens on clojure-mode
-  (add-hook 'clojure-mode-hook #'paredit-mode)
+  ;; (add-hook 'clojure-mode-hook #'paredit-mode)
 #+end_src
 
 * Show load time
