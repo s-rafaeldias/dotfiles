@@ -278,9 +278,15 @@ Try is a package that allows you to try out Emacs packages without installing th
 ** Which-key
 The mode displays the key bindings following your currently entered incomplete command (a prefix) in a popup.
 #+begin_src emacs-lisp
-  (use-package which-key
+  ;; (use-package which-key
+  ;;   :ensure t)
+#+end_src
+
+** auto-dim-other-buffers
+#+begin_src emacs-lisp
+  (use-package auto-dim-other-buffers
     :ensure t
-    :config (which-key-mode))
+    :config (auto-dim-other-buffers-mode t))
 #+end_src
 
 ** Evil
@@ -497,11 +503,11 @@ Autocomplete engine and IDE like behavior
     (add-hook 'before-save-hook #'lsp-organize-imports t t))
   (add-hook 'go-mode-hook #'lsp-go-install-save-hooks)
 
-  ;; (use-package flycheck-golangci-lint
-  ;;   :ensure t
-  ;;   :hook (go-mode . flycheck-golangci-lint-setup))
+  (use-package flycheck-golangci-lint
+    :ensure t
+    :hook (go-mode . flycheck-golangci-lint-setup))
 
-  ;; (setq flycheck-golangci-lint-enable-all t)
+  (setq flycheck-golangci-lint-enable-all t)
 #+end_src
 
 *** Clojure
