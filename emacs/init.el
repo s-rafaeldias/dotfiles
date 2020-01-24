@@ -41,7 +41,7 @@ There are two things you can do about this warning:
     ("bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" default)))
  '(package-selected-packages
    (quote
-    (spaceline-segments spaceline spaceline-config yaml-mode auto-dim-other-buffers elpy counsel-projectile smartparens all-the-icons-dired all-the-icons-dired-mode aggressive-indent cider clojure-mode evil-magit flycheck-golangci-lint git-gutter magit doom-modeline go-mode all-the-icons ivy-rich alchemist lsp-haskell company-lsp dumb-jump iedit which-key wakatime-mode use-package try spacemacs-theme rainbow-delimiters projectile org-plus-contrib highlight-parentheses helm haskell-mode flycheck evil counsel conda company-jedi company-anaconda ace-window)))
+    (editorconfig spaceline-segments spaceline spaceline-config yaml-mode auto-dim-other-buffers elpy counsel-projectile smartparens all-the-icons-dired all-the-icons-dired-mode aggressive-indent cider clojure-mode evil-magit flycheck-golangci-lint git-gutter magit doom-modeline go-mode all-the-icons ivy-rich alchemist lsp-haskell company-lsp dumb-jump iedit which-key wakatime-mode use-package try spacemacs-theme rainbow-delimiters projectile org-plus-contrib highlight-parentheses helm haskell-mode flycheck evil counsel conda company-jedi company-anaconda ace-window)))
  '(wakatime-cli-path "~/miniconda3/bin/wakatime")
  '(wakatime-python-bin nil))
 (custom-set-faces

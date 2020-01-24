@@ -427,6 +427,14 @@ Autocomplete engine and IDE like behavior
     :config (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode)))
 #+end_src
 
+*** Editorconfig
+#+begin_src emacs-lisp
+  (use-package editorconfig
+    :ensure t
+    :config
+    (editorconfig-mode 1))
+#+end_src
+
 ** Git
 *** Git Gutter
 #+begin_src emacs-lisp
@@ -467,15 +475,13 @@ Autocomplete engine and IDE like behavior
   (use-package company-anaconda
     :ensure t
     :after (company)
+    :hook (python-mode . anaconda-mode)
     :config
     (eval-after-load "company" '(add-to-list 'company-backends 'company-anaconda)))
 
   (use-package blacken
     :ensure t
     :hook (python-mode . blacken-mode))
-
-  (add-hook 'python-mode-hook 'anaconda-mode)
-  (setq doom-modeline-env-python-executable conda-env-current-name)
 
 
 #+END_SRC
