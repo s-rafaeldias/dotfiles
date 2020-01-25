@@ -6,7 +6,8 @@ alias tmuxinator='TERM=screen-256color tmuxinator'
 alias update="sudo apt update && sudo apt upgrade -y"
 alias vim="nvim"
 alias bu="brew upgrade"
-alias emacs='emacsclient --create-frame --alternate-editor=""'
+
+alias ec='emacsclient --create-frame --alternate-editor=""'
 
 if [[ $USER == '05018601183' ]]; then
 	alias ssh_eqana_prod="ssh EQANA@SRVANALYTIC01"
