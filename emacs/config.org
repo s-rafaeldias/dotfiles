@@ -57,6 +57,9 @@ Let's make this bad boy BEAUTIFUL!
   (global-hl-line-mode t)
   ;; Toggle automatic parens pairing
   (electric-pair-mode t)
+
+
+  (add-to-list 'default-frame-alist '(fullscreen . maximized))
 #+end_src
 
 ** Font
@@ -344,6 +347,16 @@ Evil is an extensible vi layer for Emacs.
     :config (evil-paredit-mode t))
 #+end_src
 
+* Org mode
+#+begin_src emacs-lisp
+  (setq org-indent-mode t)
+#+end_src
+** Org-bullets
+#+begin_src emacs-lisp
+  (use-package org-bullets
+    :ensure t
+    :hook (org-mode . org-bullets-mode))
+#+end_src
 * Programming
 ** General
 *** Flycheck
