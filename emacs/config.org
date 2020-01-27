@@ -6,11 +6,10 @@
 
 ** My functions
 #+begin_src emacs-lisp
-  (defun reload-my-settings ()
+  (defun my/reload-my-settings ()
     (interactive)
     (delete-file "~/.emacs.d/config.el")
-    (org-babel-load-file (expand-file-name "config.org" user-emacs-directory))
-    (load-file "~/.emacs.d/init.el"))
+    (org-babel-load-file (expand-file-name "config.org" user-emacs-directory)))
 #+end_src
 
 * Basic settings
@@ -76,32 +75,24 @@ Let's make this bad boy BEAUTIFUL!
   ;; Use Ibuffer for Buffer List
   (global-set-key (kbd "C-x C-b") 'ibuffer) 
 
-  (setq ibuffer-saved-filter-groups
-	'(("default"
-	   ("emacs-config" (or (filename . ".emacs.d")
-			       (filename . "emacs-config")
-			       (filename . "config.org")))
-	   ("Org" (or (mode . org-mode)
-		      (filename . "OrgMode")))
-	   ("Elixir" (mode . elixir-mode))
-	   ("Go" (mode . go-mode))
-	   ("Web Dev" (or (mode . html-mode)
-			  (mode . css-mode)))
-	   ("Python" (mode . python-mode))
-	   ("Clojure" (or (mode . clojure-mode)
-			  (name . "^\\*cider*\\$")))
-	   ("Magit" (name . "\*magit"))
-	   ("ERC" (mode . erc-mode))
-	   ("Emacs" (or
-		     (name . "^\\*scratch\\*$")
-		     (name . "^\\*Messages\\*$")))
-	   ("Help" (or (name . "\*Help\*")
-		       (name . "\*Apropos\*")
-		       (name . "\*info\*"))))))
+  (use-package ibuffer-projectile
+    :ensure t)
 
-  (add-hook 'ibuffer-mode-hook
-	    '(lambda ()
-	       (ibuffer-switch-to-saved-filter-groups "default")))
+  (add-hook 'ibuffer-hook
+            (lambda ()
+              (ibuffer-projectile-set-filter-groups)
+              (unless (eq ibuffer-sorting-mode 'alphabetic)
+                (ibuffer-do-sort-by-alphabetic))))
+
+  (setq ibuffer-formats
+        '((mark modified read-only " "
+                (name 18 18 :left :elide)
+                " "
+                (size 9 -1 :right)
+                " "
+                (mode 16 16 :left :elide)
+                " "
+                project-relative-file)))
 #+end_src
 
 ** Themes
@@ -409,9 +400,9 @@ Autocomplete engine and IDE like behavior
     :ensure t
     :commands (lsp lsp-deferred)
     :hook ((haskell-mode . lsp-deferred)
-	   (elixir-mode . lsp-deferred)
-	   (go-mode . lsp-deferred)
-	   (python-mode . lsp-deferred)))
+           (elixir-mode . lsp-deferred)
+           (go-mode . lsp-deferred)
+           (python-mode . lsp-deferred)))
 
   (use-package company-lsp
     :ensure t
@@ -426,10 +417,10 @@ Autocomplete engine and IDE like behavior
     :init)
 
   (setq lsp-ui-doc-enable nil
-	lsp-ui-peek-enable t
-	lsp-ui-sideline-enable t
-	lsp-ui-imenu-enable t
-	lsp-ui-flycheck-enable t)
+        lsp-ui-peek-enable t
+        lsp-ui-sideline-enable t
+        lsp-ui-imenu-enable t
+        lsp-ui-flycheck-enable t)
 
   (setq lsp-prefer-flymake nil)
 #+end_src
@@ -496,8 +487,6 @@ Autocomplete engine and IDE like behavior
   (use-package blacken
     :ensure t
     :hook (python-mode . blacken-mode))
-
-
 #+END_SRC
 
 *** Haskell
