@@ -338,6 +338,19 @@ Evil is an extensible vi layer for Emacs.
     :config (evil-paredit-mode t))
 #+end_src
 
+** Ledge
+#+begin_src emacs-lisp
+  (use-package ledger-mode
+    :ensure t
+    :mode ("\\.dat\\'"
+           "\\.ledger\\'")
+    :custom (ledger-clear-whole-transactions t))
+
+  (use-package flycheck-ledger
+    :ensure t
+    :after ledger-mode)
+#+end_src
+
 * Org mode
 #+begin_src emacs-lisp
   (setq org-indent-mode t)
