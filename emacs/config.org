@@ -349,6 +349,11 @@ Evil is an extensible vi layer for Emacs.
   (use-package flycheck-ledger
     :ensure t
     :after ledger-mode)
+
+  (defun my/format-ledger-on-save ()
+    (add-hook 'before-save-hook 'ledger-mode-clean-buffer t)
+    (add-hook 'before-save-hook 'ledger-sort-buffer t))
+  (add-hook 'ledger-mode-hook 'my/format-ledger-on-save)
 #+end_src
 
 * Org mode
