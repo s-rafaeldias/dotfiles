@@ -307,6 +307,22 @@ Evil is an extensible vi layer for Emacs.
   (setq evil-emacs-state-modes (delq 'ibuffer-mode evil-emacs-state-modes))
 #+end_src
 
+*** Evil-matchit
+Press “%” to jump between matched tags in Emacs. For example, in HTML “<div>” and “</div>” are a pair of tags.
+#+begin_src emacs-lisp
+  (use-package evil-matchit
+    :ensure t
+    :config (global-evil-matchit-mode t))
+#+end_src
+
+*** Evil-nerd-commenter
+A Nerd Commenter emulation, help you comment code efficiently. For example, you can press key =,,99j= or 99,ci to comment out 99 lines.
+#+begin_src emacs-lisp
+  (use-package evil-nerd-commenter
+    :ensure t)
+#+end_src
+
+
 ** Ace window
 #+begin_src emacs-lisp
   (use-package ace-window

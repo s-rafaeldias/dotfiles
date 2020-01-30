@@ -39,9 +39,10 @@ There are two things you can do about this warning:
  '(custom-safe-themes
    (quote
     ("7f6d4aebcc44c264a64e714c3d9d1e903284305fd7e319e7cb73345a9994f5ef" "bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" default)))
+ '(ledger-clear-whole-transactions t t)
  '(package-selected-packages
    (quote
-    (ledger-mode flycheck-ledger ibuffer-projectile dashboard org-bullets editorconfig spaceline-segments spaceline spaceline-config yaml-mode auto-dim-other-buffers elpy counsel-projectile smartparens all-the-icons-dired all-the-icons-dired-mode aggressive-indent cider clojure-mode evil-magit flycheck-golangci-lint git-gutter magit doom-modeline go-mode all-the-icons ivy-rich alchemist lsp-haskell company-lsp dumb-jump iedit which-key wakatime-mode use-package try spacemacs-theme rainbow-delimiters projectile org-plus-contrib highlight-parentheses helm haskell-mode flycheck evil counsel conda company-jedi company-anaconda ace-window)))
+    (evil-nerd-commenter evil-matchit ledger-mode flycheck-ledger ibuffer-projectile dashboard org-bullets editorconfig spaceline-segments spaceline spaceline-config yaml-mode auto-dim-other-buffers elpy counsel-projectile smartparens all-the-icons-dired all-the-icons-dired-mode aggressive-indent cider clojure-mode evil-magit flycheck-golangci-lint git-gutter magit doom-modeline go-mode all-the-icons ivy-rich alchemist lsp-haskell company-lsp dumb-jump iedit which-key wakatime-mode use-package try spacemacs-theme rainbow-delimiters projectile org-plus-contrib highlight-parentheses helm haskell-mode flycheck evil counsel conda company-jedi company-anaconda ace-window)))
  '(wakatime-cli-path "~/miniconda3/bin/wakatime")
  '(wakatime-python-bin nil))
 (custom-set-faces
