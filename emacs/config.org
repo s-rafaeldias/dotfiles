@@ -322,7 +322,6 @@ A Nerd Commenter emulation, help you comment code efficiently. For example, you 
     :ensure t)
 #+end_src
 
-
 ** Ace window
 #+begin_src emacs-lisp
   (use-package ace-window
@@ -495,6 +494,14 @@ Autocomplete engine and IDE like behavior
   (use-package evil-magit
     :ensure t
     :after (magit))
+#+end_src
+
+** Docker
+#+begin_src emacs-lisp
+  (use-package dockerfile-mode
+    :ensure t
+    :hook (dockerfile-mode . (lambda ()
+                               (setq-local indent-line-function #'sh-indent-line))))
 #+end_src
 
 ** Language specifics

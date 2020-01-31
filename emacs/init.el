@@ -42,7 +42,7 @@ There are two things you can do about this warning:
  '(ledger-clear-whole-transactions t t)
  '(package-selected-packages
    (quote
-    (evil-nerd-commenter evil-matchit ledger-mode flycheck-ledger ibuffer-projectile dashboard org-bullets editorconfig spaceline-segments spaceline spaceline-config yaml-mode auto-dim-other-buffers elpy counsel-projectile smartparens all-the-icons-dired all-the-icons-dired-mode aggressive-indent cider clojure-mode evil-magit flycheck-golangci-lint git-gutter magit doom-modeline go-mode all-the-icons ivy-rich alchemist lsp-haskell company-lsp dumb-jump iedit which-key wakatime-mode use-package try spacemacs-theme rainbow-delimiters projectile org-plus-contrib highlight-parentheses helm haskell-mode flycheck evil counsel conda company-jedi company-anaconda ace-window)))
+    (dockerfile-mode evil-nerd-commenter evil-matchit ledger-mode flycheck-ledger ibuffer-projectile dashboard org-bullets editorconfig spaceline-segments spaceline spaceline-config yaml-mode auto-dim-other-buffers elpy counsel-projectile smartparens all-the-icons-dired all-the-icons-dired-mode aggressive-indent cider clojure-mode evil-magit flycheck-golangci-lint git-gutter magit doom-modeline go-mode all-the-icons ivy-rich alchemist lsp-haskell company-lsp dumb-jump iedit which-key wakatime-mode use-package try spacemacs-theme rainbow-delimiters projectile org-plus-contrib highlight-parentheses helm haskell-mode flycheck evil counsel conda company-jedi company-anaconda ace-window)))
  '(wakatime-cli-path "~/miniconda3/bin/wakatime")
  '(wakatime-python-bin nil))
 (custom-set-faces
