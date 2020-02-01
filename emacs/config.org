@@ -6,7 +6,7 @@
 
 ** My functions
 #+begin_src emacs-lisp
-  (defun my/reload-my-settings ()
+    (defun my/reload-my-settings ()
     (interactive)
     (delete-file "~/.emacs.d/config.el")
     (org-babel-load-file (expand-file-name "config.org" user-emacs-directory)))
@@ -14,57 +14,56 @@
 
 * Basic settings
 #+begin_src emacs-lisp
-  (fset 'yes-or-no-p 'y-or-n-p)
-  (setq inhibit-startup-message t)
-  (put 'narrow-to-region 'disabled nil)
+    (fset 'yes-or-no-p 'y-or-n-p)
+    (setq inhibit-startup-message t)
+    (put 'narrow-to-region 'disabled nil)
 
-  ;; Ask for confirmation before exiting emacs
-  (add-hook 'kill-emacs-query-functions
-	    (lambda () (y-or-n-p "Do you really want to exit Emacs? "))
-	    'append)
+    ;; Ask for confirmation before exiting emacs
+    (add-hook 'kill-emacs-query-functions
+    (lambda () (y-or-n-p "Do you really want to exit Emacs? "))
+    'append)
 #+end_src
 
 ** MacOS
 #+begin_src emacs-lisp
-  (setq mac-command-modifier 'control)
+    (setq mac-command-modifier 'control)
 #+end_src
 
 ** Ido mode
 #+BEGIN_SRC emacs-lisp
-  (setq indo-enable-flex-matching t)
-  (setq ido-everywhere t)
-  (ido-mode 1)
+    (setq indo-enable-flex-matching t)
+    (setq ido-everywhere t)
+    (ido-mode 1)
 #+END_SRC
 
 ** Backup files
 #+begin_src emacs-lisp
-  (setq backup-directory-alist `(("." . "~/.emacs.d/backups"))
-	backup-by-copying t    ; don't delink hardlinks
-	delete-old-versions t  ; automatically delete excess backups
-  )
+    (setq backup-directory-alist `(("." . "~/.emacs.d/backups"))
+    backup-by-copying t    ; don't delink hardlinks
+    delete-old-versions t  ; automatically delete excess backups
+    )
 #+end_src
 
 * UI
 Let's make this bad boy BEAUTIFUL!
 #+begin_src emacs-lisp
-  (tool-bar-mode 0)
-  (menu-bar-mode 0)
-  (scroll-bar-mode -1)
-  (set-window-scroll-bars (minibuffer-window) nil nil)
+    (tool-bar-mode 0)
+    (menu-bar-mode 0)
+    (scroll-bar-mode -1)
+    (set-window-scroll-bars (minibuffer-window) nil nil)
 
-  ;; Highlight current line
-  (global-hl-line-mode t)
-  ;; Toggle automatic parens pairing
-  (electric-pair-mode t)
+    ;; Highlight current line
+    (global-hl-line-mode t)
+    ;; Toggle automatic parens pairing
+    (electric-pair-mode t)
 
-
-  (add-to-list 'default-frame-alist '(fullscreen . maximized))
+    (add-to-list 'default-frame-alist '(fullscreen . maximized))
 #+end_src
 
 ** Font
 #+begin_src emacs-lisp
-  (set-face-attribute 'default nil :family "JetBrains Mono Medium")
-  (when (eq system-type 'darwin)
+    (set-face-attribute 'default nil :family "JetBrains Mono Medium")
+    (when (eq system-type 'darwin)
     ;; WARNING!  Depending on the default font,
     ;; if the size is not supported very well, the frame will be clipped
     ;; so that the beginning of the buffer may not be visible correctly. 
@@ -72,73 +71,73 @@ Let's make this bad boy BEAUTIFUL!
 #+end_src
 ** Ibuffer
 #+begin_src emacs-lisp
-  ;; Use Ibuffer for Buffer List
-  (global-set-key (kbd "C-x C-b") 'ibuffer) 
+    ;; Use Ibuffer for Buffer List
+    (global-set-key (kbd "C-x C-b") 'ibuffer) 
 
-  (use-package ibuffer-projectile
+    (use-package ibuffer-projectile
     :ensure t)
 
-  (add-hook 'ibuffer-hook
-            (lambda ()
-              (ibuffer-projectile-set-filter-groups)
-              (unless (eq ibuffer-sorting-mode 'alphabetic)
-                (ibuffer-do-sort-by-alphabetic))))
+    (add-hook 'ibuffer-hook
+    (lambda ()
+    (ibuffer-projectile-set-filter-groups)
+    (unless (eq ibuffer-sorting-mode 'alphabetic)
+    (ibuffer-do-sort-by-alphabetic))))
 
-  (setq ibuffer-formats
-        '((mark modified read-only " "
-                (name 18 18 :left :elide)
-                " "
-                (size 9 -1 :right)
-                " "
-                (mode 16 16 :left :elide)
-                " "
-                project-relative-file)))
+    (setq ibuffer-formats
+    '((mark modified read-only " "
+    (name 18 18 :left :elide)
+    " "
+    (size 9 -1 :right)
+    " "
+    (mode 16 16 :left :elide)
+    " "
+    project-relative-file)))
 #+end_src
 
 ** Themes
 #+begin_src emacs-lisp
-  (use-package spacemacs-theme
+    (use-package spacemacs-theme
     :defer t
     :ensure t
     :init (load-theme 'spacemacs-dark t))
 #+end_src
-  
+    
 ** Highlight-parentheses
 #+begin_src emacs-lisp
-  (use-package highlight-parentheses
+    (use-package highlight-parentheses
     :ensure t
     :hook (prog-mode . highlight-parentheses-mode))
 #+end_src
 
 ** Rainbow-delimiters
 #+begin_src emacs-lisp
-  (use-package rainbow-delimiters
+    (use-package rainbow-delimiters
     :ensure t
     :hook (prog-mode . rainbow-delimiters-mode))
 #+end_src
 
 ** All-the-icons
 #+begin_src emacs-lisp
-  (use-package all-the-icons
+    (use-package all-the-icons
     :ensure t)
 #+end_src
 
 ** Modeline
 #+begin_src emacs-lisp
-  (use-package doom-modeline
+    (use-package doom-modeline
     :ensure t
     :hook (after-init . doom-modeline-mode))
 
-  (setq doom-modeline-project-detection 'projectile)
-  (setq doom-modeline-buffer-file-name-style 'relative-from-project)
-  (setq doom-modeline-indent-info t)
-  (setq doom-modeline-lsp t)
-  (setq doom-modeline-icon t)
+    (setq doom-modeline-project-detection 'projectile)
+    (setq doom-modeline-buffer-file-name-style 'relative-from-project)
+    (setq doom-modeline-indent-info t)
+    (setq doom-modeline-lsp t)
+    (setq doom-modeline-icon t)
 #+end_src
 
 ** Dired
 #+begin_src emacs-lisp
-  (use-package all-the-icons-dired
+    (use-package all-the-icons-dired
     :ensure t
     :hook (dired-mode . all-the-icons-dired-mode))
 #+end_src
@@ -146,99 +145,99 @@ Let's make this bad boy BEAUTIFUL!
 ** Ivy/Swiper/Counsel
 Ivy/Swiper/Counsel gives a better way to
 #+begin_src emacs-lisp
-  (use-package swiper
+    (use-package swiper
     :ensure t)
 
-  (use-package counsel
+    (use-package counsel
     :ensure t)
 
-  (use-package ivy
+    (use-package ivy
     :ensure t
     :config
     (progn
-      (ivy-mode 1)
-      (setq ivy-use-virtual-buffers t)
-      (setq enable-recursive-minibuffers t)
-      ;; enable this if you want `swiper' to use it
-      ;; (setq search-default-mode #'char-fold-to-regexp)
-      (global-set-key "\C-s" 'swiper)
-      ;; (global-set-key (kbd "C-c C-r") 'ivy-resume)
-      ;; (global-set-key (kbd "<f6>") 'ivy-resume)
-      (global-set-key (kbd "M-x") 'counsel-M-x)
-      (global-set-key (kbd "C-x C-f") 'counsel-find-file)
-      (global-set-key (kbd "<f1> f") 'counsel-describe-function)
-      (global-set-key (kbd "<f1> v") 'counsel-describe-variable)
-      (global-set-key (kbd "<f1> l") 'counsel-find-library)
-      (global-set-key (kbd "<f2> i") 'counsel-info-lookup-symbol)
-      (global-set-key (kbd "<f2> u") 'counsel-unicode-char)
-      (global-set-key (kbd "C-c g") 'counsel-git)
-      (global-set-key (kbd "C-c j") 'counsel-git-grep)
-      (global-set-key (kbd "C-x l") 'counsel-locate)
-      (global-set-key (kbd "C-S-o") 'counsel-rhythmbox)
-      (define-key minibuffer-local-map (kbd "C-r") 'counsel-minibuffer-history)))
+    (ivy-mode 1)
+    (setq ivy-use-virtual-buffers t)
+    (setq enable-recursive-minibuffers t)
+    ;; enable this if you want `swiper' to use it
+    ;; (setq search-default-mode #'char-fold-to-regexp)
+    (global-set-key "\C-s" 'swiper)
+    ;; (global-set-key (kbd "C-c C-r") 'ivy-resume)
+    ;; (global-set-key (kbd "<f6>") 'ivy-resume)
+    (global-set-key (kbd "M-x") 'counsel-M-x)
+    (global-set-key (kbd "C-x C-f") 'counsel-find-file)
+    (global-set-key (kbd "<f1> f") 'counsel-describe-function)
+    (global-set-key (kbd "<f1> v") 'counsel-describe-variable)
+    (global-set-key (kbd "<f1> l") 'counsel-find-library)
+    (global-set-key (kbd "<f2> i") 'counsel-info-lookup-symbol)
+    (global-set-key (kbd "<f2> u") 'counsel-unicode-char)
+    (global-set-key (kbd "C-c g") 'counsel-git)
+    (global-set-key (kbd "C-c j") 'counsel-git-grep)
+    (global-set-key (kbd "C-x l") 'counsel-locate)
+    (global-set-key (kbd "C-S-o") 'counsel-rhythmbox)
+    (define-key minibuffer-local-map (kbd "C-r") 'counsel-minibuffer-history)))
 #+end_src
 
 ** Ivy-rich
 #+begin_src emacs-lisp
-  (use-package ivy-rich
+    (use-package ivy-rich
     :ensure t)
 
-  (setcdr (assq t ivy-format-functions-alist) #'ivy-format-function-line)
+    (setcdr (assq t ivy-format-functions-alist) #'ivy-format-function-line)
 
-  '(ivy-switch-buffer
+    '(ivy-switch-buffer
     (:columns
-     ((ivy-rich-candidate (:width 30))  ; return the candidate itself
-      (ivy-rich-switch-buffer-size (:width 7))  ; return the buffer size
-      (ivy-rich-switch-buffer-indicators (:width 4 :face error :align right)); return the buffer indicators
-      (ivy-rich-switch-buffer-major-mode (:width 12 :face warning))          ; return the major mode info
-      (ivy-rich-switch-buffer-project (:width 15 :face success))             ; return project name using `projectile'
-      (ivy-rich-switch-buffer-path (:width (lambda (x) (ivy-rich-switch-buffer-shorten-path x (ivy-rich-minibuffer-width 0.3))))))  ; return file path relative to project root or `default-directory' if project is nil
-     :predicate
-     (lambda (cand) (get-buffer cand)))
+    ((ivy-rich-candidate (:width 30))  ; return the candidate itself
+    (ivy-rich-switch-buffer-size (:width 7))  ; return the buffer size
+    (ivy-rich-switch-buffer-indicators (:width 4 :face error :align right)); return the buffer indicators
+    (ivy-rich-switch-buffer-major-mode (:width 12 :face warning))          ; return the major mode info
+    (ivy-rich-switch-buffer-project (:width 15 :face success))             ; return project name using `projectile'
+    (ivy-rich-switch-buffer-path (:width (lambda (x) (ivy-rich-switch-buffer-shorten-path x (ivy-rich-minibuffer-width 0.3))))))  ; return file path relative to project root or `default-directory' if project is nil
+    :predicate
+    (lambda (cand) (get-buffer cand)))
     counsel-M-x
     (:columns
-     ((counsel-M-x-transformer (:width 40))  ; thr original transformer
-      (ivy-rich-counsel-function-docstring (:face font-lock-doc-face))))  ; return the docstring of the command
+    ((counsel-M-x-transformer (:width 40))  ; thr original transformer
+    (ivy-rich-counsel-function-docstring (:face font-lock-doc-face))))  ; return the docstring of the command
     counsel-describe-function
     (:columns
-     ((counsel-describe-function-transformer (:width 40))  ; the original transformer
-      (ivy-rich-counsel-function-docstring (:face font-lock-doc-face))))  ; return the docstring of the function
+    ((counsel-describe-function-transformer (:width 40))  ; the original transformer
+    (ivy-rich-counsel-function-docstring (:face font-lock-doc-face))))  ; return the docstring of the function
     counsel-describe-variable
     (:columns
-     ((counsel-describe-variable-transformer (:width 40))  ; the original transformer
-      (ivy-rich-counsel-variable-docstring (:face font-lock-doc-face))))  ; return the docstring of the variable
+    ((counsel-describe-variable-transformer (:width 40))  ; the original transformer
+    (ivy-rich-counsel-variable-docstring (:face font-lock-doc-face))))  ; return the docstring of the variable
     counsel-recentf
     (:columns
-     ((ivy-rich-candidate (:width 0.8)) ; return the candidate itself
-      (ivy-rich-file-last-modified-time (:face font-lock-comment-face))))) ; return the last modified time of the file
+    ((ivy-rich-candidate (:width 0.8)) ; return the candidate itself
+    (ivy-rich-file-last-modified-time (:face font-lock-comment-face))))) ; return the last modified time of the file
 
-  (defun ivy-rich-switch-buffer-icon (candidate)
+    (defun ivy-rich-switch-buffer-icon (candidate)
     (with-current-buffer
-	(get-buffer candidate)
-      (let ((icon (all-the-icons-icon-for-mode major-mode)))
-	(if (symbolp icon)
-	    (all-the-icons-icon-for-mode 'fundamental-mode)
-	  icon))))
+    (get-buffer candidate)
+    (let ((icon (all-the-icons-icon-for-mode major-mode)))
+    (if (symbolp icon)
+    (all-the-icons-icon-for-mode 'fundamental-mode)
+    icon))))
 
-  (setq ivy-rich--display-transformers-list
-	'(ivy-switch-buffer
-	  (:columns
-	   ((ivy-rich-switch-buffer-icon (:width 2))
-	    (ivy-rich-candidate (:width 30))
-	    (ivy-rich-switch-buffer-size (:width 7))
-	    (ivy-rich-switch-buffer-indicators (:width 4 :face error :align right))
-	    (ivy-rich-switch-buffer-major-mode (:width 12 :face warning))
-	    (ivy-rich-switch-buffer-project (:width 15 :face success))
-	    (ivy-rich-switch-buffer-path (:width (lambda (x) (ivy-rich-switch-buffer-shorten-path x (ivy-rich-minibuffer-width 0.3))))))
-	   :predicate
-	   (lambda (cand) (get-buffer cand)))))
+    (setq ivy-rich--display-transformers-list
+    '(ivy-switch-buffer
+    (:columns
+    ((ivy-rich-switch-buffer-icon (:width 2))
+    (ivy-rich-candidate (:width 30))
+    (ivy-rich-switch-buffer-size (:width 7))
+    (ivy-rich-switch-buffer-indicators (:width 4 :face error :align right))
+    (ivy-rich-switch-buffer-major-mode (:width 12 :face warning))
+    (ivy-rich-switch-buffer-project (:width 15 :face success))
+    (ivy-rich-switch-buffer-path (:width (lambda (x) (ivy-rich-switch-buffer-shorten-path x (ivy-rich-minibuffer-width 0.3))))))
+    :predicate
+    (lambda (cand) (get-buffer cand)))))
 
-  (ivy-rich-mode 1)
+    (ivy-rich-mode 1)
 #+end_src
 
 ** Projectile
 #+begin_src emacs-lisp
-  (use-package projectile
+    (use-package projectile
     :ensure t
     :config
     (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
@@ -248,7 +247,7 @@ Ivy/Swiper/Counsel gives a better way to
 
 ** counsel-projectile
 #+begin_src emacs-lisp
-  (use-package counsel-projectile
+    (use-package counsel-projectile
     :ensure t
     :config (counsel-projectile-mode t))
 #+end_src
@@ -257,7 +256,7 @@ Ivy/Swiper/Counsel gives a better way to
 ** Wakatime
 `wakatime-mode` is an automatic time tracking extension for Emacs using WakaTime.
 #+begin_src emacs-lisp
-  (use-package wakatime-mode
+    (use-package wakatime-mode
     :ensure t
     :config (global-wakatime-mode))
 #+end_src
@@ -265,20 +264,20 @@ Ivy/Swiper/Counsel gives a better way to
 ** Try
 Try is a package that allows you to try out Emacs packages without installing them.
 #+begin_src emacs-lisp
-  (use-package try
+    (use-package try
     :ensure t)
 #+end_src
 
 ** Which-key
 The mode displays the key bindings following your currently entered incomplete command (a prefix) in a popup.
 #+begin_src emacs-lisp
-  ;; (use-package which-key
-  ;;   :ensure t)
+    ;; (use-package which-key
+    ;;   :ensure t)
 #+end_src
 
 ** auto-dim-other-buffers
 #+begin_src emacs-lisp
-  (use-package auto-dim-other-buffers
+    (use-package auto-dim-other-buffers
     :ensure t
     :config (auto-dim-other-buffers-mode t))
 #+end_src
@@ -286,31 +285,31 @@ The mode displays the key bindings following your currently entered incomplete c
 ** Evil
 Evil is an extensible vi layer for Emacs.
 #+begin_src emacs-lisp
-  (use-package evil
+    (use-package evil
     :ensure t
     :config
     (evil-mode 1))
 
-  (setq-default display-line-numbers 'visual
-		display-line-numbers-widen t
-		;; this is the default
-		display-line-numbers-current-absolute t)
+    (setq-default display-line-numbers 'visual
+    display-line-numbers-widen t
+    ;; this is the default
+    display-line-numbers-current-absolute t)
 
-  (defun noct:relative ()
+    (defun noct:relative ()
     (setq-local display-line-numbers 'visual))
 
-  (defun noct:absolute ()
+    (defun noct:absolute ()
     (setq-local display-line-numbers t))
 
-  (add-hook 'evil-insert-state-entry-hook #'noct:absolute)
-  (add-hook 'evil-insert-state-exit-hook #'noct:relative)
-  (setq evil-emacs-state-modes (delq 'ibuffer-mode evil-emacs-state-modes))
+    (add-hook 'evil-insert-state-entry-hook #'noct:absolute)
+    (add-hook 'evil-insert-state-exit-hook #'noct:relative)
+    (setq evil-emacs-state-modes (delq 'ibuffer-mode evil-emacs-state-modes))
 #+end_src
 
 *** Evil-matchit
 Press “%” to jump between matched tags in Emacs. For example, in HTML “<div>” and “</div>” are a pair of tags.
 #+begin_src emacs-lisp
-  (use-package evil-matchit
+    (use-package evil-matchit
     :ensure t
     :config (global-evil-matchit-mode t))
 #+end_src
@@ -318,68 +317,67 @@ Press “%” to jump between matched tags in Emacs. For example, in HTML “<di
 *** Evil-nerd-commenter
 A Nerd Commenter emulation, help you comment code efficiently. For example, you can press key =,,99j= or 99,ci to comment out 99 lines.
 #+begin_src emacs-lisp
-  (use-package evil-nerd-commenter
+    (use-package evil-nerd-commenter
     :ensure t)
 #+end_src
 
-
 ** Ace window
 #+begin_src emacs-lisp
-  (use-package ace-window
+    (use-package ace-window
     :ensure t
     :init (global-set-key [remap other-window] 'ace-window))
 #+end_src
 
 ** Iedit
 #+begin_src emacs-lisp
-  (use-package iedit
+    (use-package iedit
     :ensure t)
 #+end_src
 
 ** Aggressive indent
 #+begin_src emacs-lisp
-  (use-package aggressive-indent
+    (use-package aggressive-indent
     :ensure t
     :config (global-aggressive-indent-mode 1))
 #+end_src
 
 ** Paredit
 #+begin_src emacs-lisp
-  (use-package paredit
+    (use-package paredit
     :ensure t
     :config (paredit-mode t))
 
-  (use-package evil-paredit
+    (use-package evil-paredit
     :ensure t
     :config (evil-paredit-mode t))
 #+end_src
 
 ** Ledge
 #+begin_src emacs-lisp
-  (use-package ledger-mode
+    (use-package ledger-mode
     :ensure t
     :mode ("\\.dat\\'"
-           "\\.ledger\\'")
+    "\\.ledger\\'")
     :custom (ledger-clear-whole-transactions t))
 
-  (use-package flycheck-ledger
+    (use-package flycheck-ledger
     :ensure t
     :after ledger-mode)
 
-  (defun my/format-ledger-on-save ()
+    (defun my/format-ledger-on-save ()
+    (interactive)
     (add-hook 'before-save-hook 'ledger-mode-clean-buffer t)
     (add-hook 'before-save-hook 'ledger-sort-buffer t))
-  (add-hook 'ledger-mode-hook 'my/format-ledger-on-save)
 #+end_src
 
 * Org mode
 #+begin_src emacs-lisp
-  (setq org-indent-mode t)
-  (setq org-startup-indented t)
+    (setq org-indent-mode t)
+    (setq org-startup-indented t)
 #+end_src
 ** Org-bullets
 #+begin_src emacs-lisp
-  (use-package org-bullets
+    (use-package org-bullets
     :ensure t
     :hook (org-mode . org-bullets-mode))
 #+end_src
@@ -388,13 +386,13 @@ A Nerd Commenter emulation, help you comment code efficiently. For example, you 
 *** Flycheck
 Flycheck should be enabled for each language specific major mode if I want to use it
 #+begin_src emacs-lisp
-  (use-package flycheck
+    (use-package flycheck
     :ensure t)
 #+end_src
 
 *** Dumb-jump
 #+BEGIN_SRC emacs-lisp
-  (use-package dumb-jump
+    (use-package dumb-jump
     :ensure t
     :config (setq dumb-jump-selector 'ivy)
     ;; TODO: verify this bind later
@@ -403,25 +401,25 @@ Flycheck should be enabled for each language specific major mode if I want to us
 
 *** Web mode
 #+begin_src emacs-lisp
-  (use-package web-mode
+    (use-package web-mode
     :ensure t
     :config
     (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
     (add-to-list 'auto-mode-alist '("\\.vue?\\'" . web-mode))
     (setq web-mode-engines-alist
-	  '(("go"    . "\\.html\\'")))
+    '(("go"    . "\\.html\\'")))
     (setq web-mode-ac-sources-alist
-	  '(("css" . (ac-source-css-property))
-	    ("html" . (ac-source-words-in-buffer ac-source-abbrev))))
+    '(("css" . (ac-source-css-property))
+    ("html" . (ac-source-words-in-buffer ac-source-abbrev))))
 
-  (setq web-mode-enable-auto-closing t))
-  (setq web-mode-enable-auto-quoting t) ; this fixes the quote problem I mentioned
+    (setq web-mode-enable-auto-closing t))
+    (setq web-mode-enable-auto-quoting t) ; this fixes the quote problem I mentioned
 #+end_src
 
 *** Company/LSP
 Autocomplete engine and IDE like behavior
 #+begin_src emacs-lisp
-  (use-package company
+    (use-package company
     :ensure t
     :config  
     ;; Optionally enable completion-as-you-type behavior.
@@ -430,45 +428,45 @@ Autocomplete engine and IDE like behavior
     (add-hook 'after-init-hook 'global-company-mode)
     (company-mode 1))
 
-  (use-package lsp-mode
+    (use-package lsp-mode
     :ensure t
     :commands (lsp lsp-deferred)
     :hook ((haskell-mode . lsp-deferred)
-           (elixir-mode . lsp-deferred)
-           (go-mode . lsp-deferred)
-           (python-mode . lsp-deferred)))
+    (elixir-mode . lsp-deferred)
+    (go-mode . lsp-deferred)
+    (python-mode . lsp-deferred)))
 
-  (use-package company-lsp
+    (use-package company-lsp
     :ensure t
     :after (lsp-mode)
     :commands company-lsp)
-  (push 'company-lsp company-backends)
+    (push 'company-lsp company-backends)
 
-  (use-package lsp-ui
+    (use-package lsp-ui
     :ensure t
     :after (lsp-mode)
     :commands lsp-ui-mode
     :init)
 
-  (setq lsp-ui-doc-enable nil
-        lsp-ui-peek-enable t
-        lsp-ui-sideline-enable t
-        lsp-ui-imenu-enable t
-        lsp-ui-flycheck-enable t)
+    (setq lsp-ui-doc-enable nil
+    lsp-ui-peek-enable t
+    lsp-ui-sideline-enable t
+    lsp-ui-imenu-enable t
+    lsp-ui-flycheck-enable t)
 
-  (setq lsp-prefer-flymake nil)
+    (setq lsp-prefer-flymake nil)
 #+end_src
 
 *** Yaml mode
 #+begin_src emacs-lisp
-  (use-package yaml-mode
+    (use-package yaml-mode
     :ensure t
     :config (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode)))
 #+end_src
 
 *** Editorconfig
 #+begin_src emacs-lisp
-  (use-package editorconfig
+    (use-package editorconfig
     :ensure t
     :config
     (editorconfig-mode 1))
@@ -477,14 +475,14 @@ Autocomplete engine and IDE like behavior
 ** Git
 *** Git Gutter
 #+begin_src emacs-lisp
-  (use-package git-gutter
+    (use-package git-gutter
     :ensure t
     :config (global-git-gutter-mode t))
 #+end_src
 
 *** Magit
 #+begin_src emacs-lisp
-  (use-package magit
+    (use-package magit
     :ensure t
     :init
     (bind-key "C-x g" 'magit-status))
@@ -492,7 +490,7 @@ Autocomplete engine and IDE like behavior
 
 *** Evil-magit
 #+begin_src emacs-lisp
-  (use-package evil-magit
+    (use-package evil-magit
     :ensure t
     :after (magit))
 #+end_src
@@ -500,89 +498,89 @@ Autocomplete engine and IDE like behavior
 ** Language specifics
 *** Python
 #+BEGIN_SRC emacs-lisp
-  (use-package company-jedi
+    (use-package company-jedi
     :ensure t
     :after (company))
 
-  (use-package conda
+    (use-package conda
     :ensure t
     :config
     (custom-set-variables '(conda-env-home-directory "~/miniconda3"))
     (conda-env-initialize-interactive-shells)
     (conda-env-autoactivate-mode t))
 
-  (use-package company-anaconda
+    (use-package company-anaconda
     :ensure t
     :after (company)
     :hook (python-mode . anaconda-mode)
     :config
     (eval-after-load "company" '(add-to-list 'company-backends 'company-anaconda)))
 
-  (use-package blacken
+    (use-package blacken
     :ensure t
     :hook (python-mode . blacken-mode))
 #+END_SRC
 
 *** Haskell
 #+BEGIN_SRC emacs-lisp
-  (use-package haskell-mode
+    (use-package haskell-mode
     :ensure t)
 
-  (use-package lsp-haskell
+    (use-package lsp-haskell
     :ensure t
     :after (lsp)
     :hook (haskell-mode . lsp))
 
-  ;; (add-hook 'haskell-mode-hook #'lsp)
-  (setq lsp-haskell-process-path-hie "hie-wrapper")
+    ;; (add-hook 'haskell-mode-hook #'lsp)
+    (setq lsp-haskell-process-path-hie "hie-wrapper")
 #+END_SRC
-   
+    
 *** Elixir
 #+begin_src emacs-lisp
-  (use-package alchemist
+    (use-package alchemist
     :ensure t)
 
-  (use-package elixir-mode
+    (use-package elixir-mode
     :ensure t)
 
-  (add-hook 'elixir-mode-hook
-	    (lambda () (add-hook 'before-save-hook 'elixir-format nil t)))
+    (add-hook 'elixir-mode-hook
+    (lambda () (add-hook 'before-save-hook 'elixir-format nil t)))
 #+end_src
 
 *** Go
 #+begin_src emacs-lisp
-  (use-package go-mode
+    (use-package go-mode
     :ensure t)
 
-  (defun lsp-go-install-save-hooks ()
+    (defun lsp-go-install-save-hooks ()
     (add-hook 'before-save-hook #'lsp-format-buffer t t)
     (add-hook 'before-save-hook #'lsp-organize-imports t t))
-  (add-hook 'go-mode-hook #'lsp-go-install-save-hooks)
+    (add-hook 'go-mode-hook #'lsp-go-install-save-hooks)
 
-  (use-package flycheck-golangci-lint
+    (use-package flycheck-golangci-lint
     :ensure t
     :hook (go-mode . flycheck-golangci-lint-setup))
 
-  (setq flycheck-golangci-lint-enable-all t)
+    (setq flycheck-golangci-lint-enable-all t)
 #+end_src
 
 *** Clojure
 #+begin_src emacs-lisp
-  (use-package clojure-mode
+    (use-package clojure-mode
     :ensure t
     :hook (clojure-mode . paredit-mode))
 
-  (use-package cider
+    (use-package cider
     :ensure t
     :after (clojure-mode))
 
-  ;; Enable smartparens on clojure-mode
-  ;; (add-hook 'clojure-mode-hook #'paredit-mode)
+    ;; Enable smartparens on clojure-mode
+    ;; (add-hook 'clojure-mode-hook #'paredit-mode)
 #+end_src
 
 * Show load time
 #+begin_src emacs-lisp
-  (let ((elapsed (float-time (time-subtract (current-time)
-					    emacs-start-time))))
+    (let ((elapsed (float-time (time-subtract (current-time)
+    emacs-start-time))))
     (message "Loaded packages in %.3fs" elapsed))
 #+end_src
