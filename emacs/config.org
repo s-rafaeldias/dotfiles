@@ -372,8 +372,9 @@ A Nerd Commenter emulation, help you comment code efficiently. For example, you 
 
 * Org mode
 #+begin_src emacs-lisp
-    (setq org-indent-mode t)
-    (setq org-startup-indented t)
+  (setq org-indent-mode t)
+  (setq org-startup-indented t)
+  (setq org-src-tab-acts-natively t)
 #+end_src
 ** Org-bullets
 #+begin_src emacs-lisp
@@ -493,6 +494,14 @@ Autocomplete engine and IDE like behavior
     (use-package evil-magit
     :ensure t
     :after (magit))
+#+end_src
+
+** Docker
+#+begin_src emacs-lisp
+  (use-package dockerfile-mode
+    :ensure t
+    :hook (dockerfile-mode . (lambda ()
+                               (setq-local indent-line-function #'sh-indent-line))))
 #+end_src
 
 ** Language specifics
