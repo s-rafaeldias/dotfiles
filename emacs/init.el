@@ -29,31 +29,31 @@ There are two things you can do about this warning:
 (org-babel-load-file (expand-file-name "config.org" user-emacs-directory))
 
 (custom-set-variables
-    ;; custom-set-variables was added by Custom.
-    ;; If you edit it by hand, you could mess it up, so be careful.
-    ;; Your init file should contain only one such instance.
-    ;; If there is more than one, they won't work right.
-    '(cider-inject-dependencies-at-jack-in nil)
-    '(conda-env-home-directory "~/miniconda3")
-    '(custom-safe-themes
-    (quote
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(cider-inject-dependencies-at-jack-in nil)
+ '(conda-env-home-directory "~/miniconda3")
+ '(custom-safe-themes
+   (quote
     ("7f6d4aebcc44c264a64e714c3d9d1e903284305fd7e319e7cb73345a9994f5ef" "bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" default)))
-    '(ledger-clear-whole-transactions t)
-    '(ledger-reports
-    (quote
+ '(ledger-clear-whole-transactions t)
+ '(ledger-reports
+   (quote
     (("bal no equity" "ledger ")
-    ("bal" "%(binary) -f %(ledger-file) bal")
-    ("reg" "%(binary) -f %(ledger-file) reg")
-    ("payee" "%(binary) -f %(ledger-file) reg @%(payee)")
-    ("account" "%(binary) -f %(ledger-file) reg %(account)"))))
-    '(package-selected-packages
-    (quote
-    (evil-nerd-commenter evil-matchit ledger-mode flycheck-ledger ibuffer-projectile dashboard org-bullets editorconfig spaceline-segments spaceline spaceline-config yaml-mode auto-dim-other-buffers elpy counsel-projectile smartparens all-the-icons-dired all-the-icons-dired-mode aggressive-indent cider clojure-mode evil-magit flycheck-golangci-lint git-gutter magit doom-modeline go-mode all-the-icons ivy-rich alchemist lsp-haskell company-lsp dumb-jump iedit which-key wakatime-mode use-package try spacemacs-theme rainbow-delimiters projectile org-plus-contrib highlight-parentheses helm haskell-mode flycheck evil counsel conda company-jedi company-anaconda ace-window)))
-    '(wakatime-cli-path "~/miniconda3/bin/wakatime")
-    '(wakatime-python-bin nil))
+     ("bal" "%(binary) -f %(ledger-file) bal")
+     ("reg" "%(binary) -f %(ledger-file) reg")
+     ("payee" "%(binary) -f %(ledger-file) reg @%(payee)")
+     ("account" "%(binary) -f %(ledger-file) reg %(account)"))))
+ '(package-selected-packages
+   (quote
+    (exec-path-from-shell evil-nerd-commenter evil-matchit ledger-mode flycheck-ledger ibuffer-projectile dashboard org-bullets editorconfig spaceline-segments spaceline spaceline-config yaml-mode auto-dim-other-buffers elpy counsel-projectile smartparens all-the-icons-dired all-the-icons-dired-mode aggressive-indent cider clojure-mode evil-magit flycheck-golangci-lint git-gutter magit doom-modeline go-mode all-the-icons ivy-rich alchemist lsp-haskell company-lsp dumb-jump iedit which-key wakatime-mode use-package try spacemacs-theme rainbow-delimiters projectile org-plus-contrib highlight-parentheses helm haskell-mode flycheck evil counsel conda company-jedi company-anaconda ace-window)))
+ '(wakatime-cli-path "~/miniconda3/bin/wakatime")
+ '(wakatime-python-bin nil))
 (custom-set-faces
-    ;; custom-set-faces was added by Custom.
-    ;; If you edit it by hand, you could mess it up, so be careful.
-    ;; Your init file should contain only one such instance.
-    ;; If there is more than one, they won't work right.
-    )
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )

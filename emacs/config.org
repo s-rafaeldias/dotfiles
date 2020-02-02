@@ -29,6 +29,14 @@
     (setq mac-command-modifier 'control)
 #+end_src
 
+*** exec-path-from-shell
+#+begin_src emacs-lisp
+    (use-package exec-path-from-shell
+    :ensure t
+    :config (when (memq window-system '(mac ns x))
+    (exec-path-from-shell-initialize)))
+#+end_src
+
 ** Ido mode
 #+BEGIN_SRC emacs-lisp
     (setq indo-enable-flex-matching t)
@@ -362,7 +370,8 @@ A Nerd Commenter emulation, help you comment code efficiently. For example, you 
 
     (use-package flycheck-ledger
     :ensure t
-    :after ledger-mode)
+    :after (ledger-mode flycheck)
+    :hook (ledger-mode . flycheck-mode))
 
     (defun my/format-ledger-on-save ()
     (interactive)
@@ -372,9 +381,9 @@ A Nerd Commenter emulation, help you comment code efficiently. For example, you 
 
 * Org mode
 #+begin_src emacs-lisp
-  (setq org-indent-mode t)
-  (setq org-startup-indented t)
-  (setq org-src-tab-acts-natively t)
+    (setq org-indent-mode t)
+    (setq org-startup-indented t)
+    (setq org-src-tab-acts-natively nil)
 #+end_src
 ** Org-bullets
 #+begin_src emacs-lisp
@@ -498,10 +507,10 @@ Autocomplete engine and IDE like behavior
 
 ** Docker
 #+begin_src emacs-lisp
-  (use-package dockerfile-mode
+    (use-package dockerfile-mode
     :ensure t
     :hook (dockerfile-mode . (lambda ()
-                               (setq-local indent-line-function #'sh-indent-line))))
+    (setq-local indent-line-function #'sh-indent-line))))
 #+end_src
 
 ** Language specifics
