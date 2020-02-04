@@ -38,7 +38,7 @@ There are two things you can do about this warning:
  '(custom-safe-themes
    (quote
     ("7f6d4aebcc44c264a64e714c3d9d1e903284305fd7e319e7cb73345a9994f5ef" "bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" default)))
- '(ledger-clear-whole-transactions t)
+ '(ledger-clear-whole-transactions t t)
  '(ledger-reports
    (quote
     (("bal no equity" "ledger ")
