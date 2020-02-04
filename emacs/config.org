@@ -1,3 +1,4 @@
+#+startup: content
 * My Emacs Config
 ** Tracking load time
 #+begin_src emacs-lisp
@@ -381,9 +382,15 @@ A Nerd Commenter emulation, help you comment code efficiently. For example, you 
 
 * Org mode
 #+begin_src emacs-lisp
-    (setq org-indent-mode t)
-    (setq org-startup-indented t)
-    (setq org-src-tab-acts-natively nil)
+  (setq org-indent-mode t)
+  (setq org-startup-indented t)
+  (setq org-src-tab-acts-natively nil)
+
+  ;; Enable languages eval
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '((ledger . t)
+     (shell . t)))
 #+end_src
 ** Org-bullets
 #+begin_src emacs-lisp
@@ -399,7 +406,6 @@ Flycheck should be enabled for each language specific major mode if I want to us
     (use-package flycheck
     :ensure t)
 #+end_src
-
 *** Dumb-jump
 #+BEGIN_SRC emacs-lisp
     (use-package dumb-jump
@@ -481,7 +487,6 @@ Autocomplete engine and IDE like behavior
     :config
     (editorconfig-mode 1))
 #+end_src
-
 ** Git
 *** Git Gutter
 #+begin_src emacs-lisp
