@@ -131,16 +131,26 @@ Let's make this bad boy BEAUTIFUL!
 #+end_src
 
 ** Modeline
+*** Spaceline
 #+begin_src emacs-lisp
-    (use-package doom-modeline
-    :ensure t
-    :hook (after-init . doom-modeline-mode))
+  (use-package spaceline
+    :ensure t)
 
-    (setq doom-modeline-project-detection 'projectile)
-    (setq doom-modeline-buffer-file-name-style 'relative-from-project)
-    (setq doom-modeline-indent-info t)
-    (setq doom-modeline-lsp t)
-    (setq doom-modeline-icon t)
+  (use-package spaceline-all-the-icons 
+    :after spaceline
+    :config (spaceline-all-the-icons-theme))
+#+end_src
+*** Doom modeline
+#+begin_src emacs-lisp
+  ;; (use-package doom-modeline
+  ;; :ensure t
+  ;; :hook (after-init . doom-modeline-mode))
+
+  ;; (setq doom-modeline-project-detection 'projectile)
+  ;; (setq doom-modeline-buffer-file-name-style 'relative-from-project)
+  ;; (setq doom-modeline-indent-info t)
+  ;; (setq doom-modeline-lsp t)
+  ;; (setq doom-modeline-icon t)
 #+end_src
 
 ** Dired
