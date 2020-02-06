@@ -427,6 +427,22 @@ A Nerd Commenter emulation, help you comment code efficiently. For example, you 
     :ensure t
     :hook (org-mode . org-bullets-mode))
 #+end_src
+** Agenda
+#+begin_src emacs-lisp
+  (use-package evil-org
+    :ensure t
+    :after org
+    :config
+    (add-hook 'org-mode-hook 'evil-org-mode)
+    (add-hook 'evil-org-mode-hook
+              (lambda ()
+                (evil-org-set-key-theme)))
+    (require 'evil-org-agenda)
+    (evil-org-agenda-set-keys))
+
+  (setq org-agenda-files (list "~/Dropbox/org-notes/todo.org"))
+  (global-set-key (kbd "C-c a") 'org-agenda)
+#+end_src
 * Programming
 ** General
 *** Flycheck
