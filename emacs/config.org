@@ -1,5 +1,11 @@
-#+startup: content
+#+startup: overview
 * My Emacs Config
+** Use-package
+#+begin_src emacs-lisp
+  (unless (package-installed-p 'use-package)
+      (package-refresh-contents)
+      (package-install 'use-package))
+#+end_src
 ** Tracking load time
 #+begin_src emacs-lisp
     (defconst emacs-start-time (current-time))
@@ -15,14 +21,14 @@
 
 * Basic settings
 #+begin_src emacs-lisp
-    (fset 'yes-or-no-p 'y-or-n-p)
-    (setq inhibit-startup-message t)
-    (put 'narrow-to-region 'disabled nil)
+  (fset 'yes-or-no-p 'y-or-n-p)
+  (setq inhibit-startup-message t)
+  (put 'narrow-to-region 'disabled nil)
 
-    ;; Ask for confirmation before exiting emacs
-    (add-hook 'kill-emacs-query-functions
-    (lambda () (y-or-n-p "Do you really want to exit Emacs? "))
-    'append)
+  ;; Ask for confirmation before exiting emacs
+  (add-hook 'kill-emacs-query-functions
+            (lambda () (y-or-n-p "Do you really want to exit Emacs? "))
+            'append)
 #+end_src
 
 ** MacOS
@@ -158,7 +164,8 @@ Let's make this bad boy BEAUTIFUL!
         (major-mode))))
 
   (setq-default
-   spaceline-highlight-face-func 'spaceline-highlight-face-evil-state)
+   spaceline-highlight-face-func 'spaceline-highlight-face-evil-state
+   powerline-height 24)
 #+end_src
 *** Doom modeline
 #+begin_src emacs-lisp
@@ -294,9 +301,11 @@ Ivy/Swiper/Counsel gives a better way to
 ** Wakatime
 `wakatime-mode` is an automatic time tracking extension for Emacs using WakaTime.
 #+begin_src emacs-lisp
-    (use-package wakatime-mode
+  (use-package wakatime-mode
     :ensure t
     :config (global-wakatime-mode))
+
+  (setq wakatime-cli-path "~/miniconda3/bin/wakatime")
 #+end_src
 
 ** Try
@@ -411,6 +420,10 @@ A Nerd Commenter emulation, help you comment code efficiently. For example, you 
 
 * Org mode
 #+begin_src emacs-lisp
+
+(use-package org
+  :ensure org-plus-contrib)
+
   (setq org-indent-mode t)
   (setq org-startup-indented t)
   (setq org-src-tab-acts-natively nil)
