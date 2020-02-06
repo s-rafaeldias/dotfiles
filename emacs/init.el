@@ -18,15 +18,11 @@ There are two things you can do about this warning:
 
 (setq vc-follow-symlinks t)
 
-(unless (package-installed-p 'use-package)
-    (package-refresh-contents)
-    (package-install 'use-package))
-
-(use-package org
-    :ensure org-plus-contrib)
+(setq custom-file "~/.emacs.d/custom.el")
 
 (delete-file "~/.emacs.d/config.el")
 (org-babel-load-file (expand-file-name "config.org" user-emacs-directory))
+<<<<<<< HEAD
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -57,3 +53,5 @@ There are two things you can do about this warning:
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+=======
+>>>>>>> 4023d7475c2eae3b8cee543c940649996b879de8
