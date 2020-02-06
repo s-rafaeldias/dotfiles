@@ -301,9 +301,11 @@ Ivy/Swiper/Counsel gives a better way to
 ** Wakatime
 `wakatime-mode` is an automatic time tracking extension for Emacs using WakaTime.
 #+begin_src emacs-lisp
-    (use-package wakatime-mode
+  (use-package wakatime-mode
     :ensure t
     :config (global-wakatime-mode))
+
+  (setq wakatime-cli-path "~/miniconda3/bin/wakatime")
 #+end_src
 
 ** Try
