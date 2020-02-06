@@ -1,4 +1,4 @@
-#+startup: overview
+#+startup: content
 * My Emacs Config
 ** Use-package
 #+begin_src emacs-lisp
@@ -67,8 +67,6 @@ Let's make this bad boy BEAUTIFUL!
     (scroll-bar-mode -1)
     (set-window-scroll-bars (minibuffer-window) nil nil)
 
-    ;; Highlight current line
-    (global-hl-line-mode t)
     ;; Toggle automatic parens pairing
     (electric-pair-mode t)
 
@@ -322,11 +320,13 @@ The mode displays the key bindings following your currently entered incomplete c
     ;;   :ensure t)
 #+end_src
 
-** auto-dim-other-buffers
+** Dimmer
 #+begin_src emacs-lisp
-    (use-package auto-dim-other-buffers
+  (use-package dimmer
     :ensure t
-    :config (auto-dim-other-buffers-mode t))
+    :config (dimmer-mode t))
+
+  (setq dimmer-fraction 0.6)
 #+end_src
 
 ** Evil
