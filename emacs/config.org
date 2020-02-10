@@ -138,32 +138,32 @@ Let's make this bad boy BEAUTIFUL!
 ** Modeline
 *** Spaceline
 #+begin_src emacs-lisp
-  (use-package spaceline
-    :ensure t
-    :config (setq-default mode-line-format '("%e" (:eval (spaceline-ml-main)))))
+  ;; (use-package spaceline
+  ;;   :ensure t
+  ;;   :config (setq-default mode-line-format '("%e" (:eval (spaceline-ml-main)))))
 
-  (use-package spaceline-config :ensure spaceline
-    :config
-    (spaceline-install
-      'main
-      '(;; Left side
-        (evil-state :face highlight-face)
-        (buffer-modified)
-        (projectile-root :face highlight-face)
-        ((remote-host buffer-id))
-        (process :when active))
-      ;; Right side
-      '((selection-info :face 'region :when mark-active)
-        ((flycheck-error flycheck-warning flycheck-info) :when active)
-        (which-function)
-        (version-control :when active)
-        (line-column)
-        (global :when active)
-        (major-mode))))
+  ;; (use-package spaceline-config :ensure spaceline
+  ;;   :config
+  ;;   (spaceline-install
+  ;;     'main
+  ;;     '(;; Left side
+  ;;       (evil-state :face highlight-face)
+  ;;       (buffer-modified)
+  ;;       (projectile-root :face highlight-face)
+  ;;       ((remote-host buffer-id))
+  ;;       (process :when active))
+  ;;     ;; Right side
+  ;;     '((selection-info :face 'region :when mark-active)
+  ;;       ((flycheck-error flycheck-warning flycheck-info) :when active)
+  ;;       (which-function)
+  ;;       (version-control :when active)
+  ;;       (line-column)
+  ;;       (global :when active)
+  ;;       (major-mode))))
 
-  (setq-default
-   spaceline-highlight-face-func 'spaceline-highlight-face-evil-state
-   powerline-height 24)
+  ;; (setq-default
+  ;;  spaceline-highlight-face-func 'spaceline-highlight-face-evil-state
+  ;;  powerline-height 24)
 #+end_src
 *** Doom modeline
 #+begin_src emacs-lisp
@@ -320,7 +320,7 @@ The mode displays the key bindings following your currently entered incomplete c
     ;;   :ensure t)
 #+end_src
 
-** COMMENT Dimmer
+** Dimmer
 #+begin_src emacs-lisp
   (use-package dimmer
     :ensure t
