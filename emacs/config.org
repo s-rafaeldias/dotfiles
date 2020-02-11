@@ -324,14 +324,15 @@ The mode displays the key bindings following your currently entered incomplete c
 #+begin_src emacs-lisp
   (use-package dimmer
     :ensure t
-    :config ((dimmer-mode t)
-             (setq dimmer-fraction 0.4)
-             (setq dimmer-configure-hydra t)
-             (setq dimmer-configure-helm t)
-             (setq dimmer-buffer-exclusion-regexps 
-                   '("^\\*[h|H]elm.*\\*" "^\\*Minibuf-[0-9]+\\*"
-                     "^.\\*which-key\\*$" "^*Messages*" "*LV*"
-                     "transient" "^\\*Org Agenda\\*"))))
+    :config (dimmer-mode t))
+
+  (setq dimmer-fraction 0.4)
+  (setq dimmer-configure-hydra t)
+  (setq dimmer-configure-helm t)
+  (setq dimmer-buffer-exclusion-regexps 
+        '("^\\*[h|H]elm.*\\*" "^\\*Minibuf-[0-9]+\\*"
+          "^.\\*which-key\\*$" "^*Messages*" "*LV*"
+          "transient" "^\\*Org Agenda\\*"))
 #+end_src
 
 ** Evil
