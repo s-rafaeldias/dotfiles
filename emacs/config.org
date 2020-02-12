@@ -6,6 +6,11 @@
       (package-refresh-contents)
       (package-install 'use-package))
 #+end_src
+** Diminish.el
+#+begin_src emacs-lisp
+  (use-package diminish
+    :ensure t)
+#+end_src
 ** Tracking load time
 #+begin_src emacs-lisp
     (defconst emacs-start-time (current-time))
@@ -30,27 +35,24 @@
             (lambda () (y-or-n-p "Do you really want to exit Emacs? "))
             'append)
 #+end_src
-
 ** MacOS
 #+begin_src emacs-lisp
     (setq mac-command-modifier 'control)
 #+end_src
-
 *** exec-path-from-shell
 #+begin_src emacs-lisp
-    (use-package exec-path-from-shell
+  (use-package exec-path-from-shell
     :ensure t
+    :diminish
     :config (when (memq window-system '(mac ns x))
-    (exec-path-from-shell-initialize)))
+              (exec-path-from-shell-initialize)))
 #+end_src
-
 ** Ido mode
 #+BEGIN_SRC emacs-lisp
     (setq indo-enable-flex-matching t)
     (setq ido-everywhere t)
     (ido-mode 1)
 #+END_SRC
-
 ** Backup files
 #+begin_src emacs-lisp
     (setq backup-directory-alist `(("." . "~/.emacs.d/backups"))
@@ -58,7 +60,6 @@
     delete-old-versions t  ; automatically delete excess backups
     )
 #+end_src
-
 * UI
 Let's make this bad boy BEAUTIFUL!
 #+begin_src emacs-lisp
@@ -84,27 +85,28 @@ Let's make this bad boy BEAUTIFUL!
 #+end_src
 ** Ibuffer
 #+begin_src emacs-lisp
-    ;; Use Ibuffer for Buffer List
-    (global-set-key (kbd "C-x C-b") 'ibuffer) 
+  ;; Use Ibuffer for Buffer List
+  (global-set-key (kbd "C-x C-b") 'ibuffer) 
 
-    (use-package ibuffer-projectile
+  (use-package ibuffer-projectile
+    :diminish
     :ensure t)
 
-    (add-hook 'ibuffer-hook
-    (lambda ()
-    (ibuffer-projectile-set-filter-groups)
-    (unless (eq ibuffer-sorting-mode 'alphabetic)
-    (ibuffer-do-sort-by-alphabetic))))
+  (add-hook 'ibuffer-hook
+            (lambda ()
+              (ibuffer-projectile-set-filter-groups)
+              (unless (eq ibuffer-sorting-mode 'alphabetic)
+                (ibuffer-do-sort-by-alphabetic))))
 
-    (setq ibuffer-formats
-    '((mark modified read-only " "
-    (name 18 18 :left :elide)
-    " "
-    (size 9 -1 :right)
-    " "
-    (mode 16 16 :left :elide)
-    " "
-    project-relative-file)))
+  (setq ibuffer-formats
+        '((mark modified read-only " "
+                (name 18 18 :left :elide)
+                " "
+                (size 9 -1 :right)
+                " "
+                (mode 16 16 :left :elide)
+                " "
+                project-relative-file)))
 #+end_src
 
 ** Themes
@@ -117,8 +119,9 @@ Let's make this bad boy BEAUTIFUL!
     
 ** Highlight-parentheses
 #+begin_src emacs-lisp
-    (use-package highlight-parentheses
+  (use-package highlight-parentheses
     :ensure t
+    :diminish
     :hook (prog-mode . highlight-parentheses-mode))
 #+end_src
 
@@ -301,6 +304,7 @@ Ivy/Swiper/Counsel gives a better way to
 #+begin_src emacs-lisp
   (use-package wakatime-mode
     :ensure t
+    :diminish
     :config (global-wakatime-mode))
 
   (setq wakatime-cli-path "~/miniconda3/bin/wakatime")
@@ -309,8 +313,9 @@ Ivy/Swiper/Counsel gives a better way to
 ** Try
 Try is a package that allows you to try out Emacs packages without installing them.
 #+begin_src emacs-lisp
-    (use-package try
-    :ensure t)
+  (use-package try
+    :ensure t
+    :diminish)
 #+end_src
 
 ** Which-key
@@ -338,25 +343,27 @@ The mode displays the key bindings following your currently entered incomplete c
 ** Evil
 Evil is an extensible vi layer for Emacs.
 #+begin_src emacs-lisp
-    (use-package evil
+  (use-package evil
     :ensure t
+    :diminish
     :config
     (evil-mode 1))
 
-    (setq-default display-line-numbers 'visual
-    display-line-numbers-widen t
-    ;; this is the default
-    display-line-numbers-current-absolute t)
+  (setq-default display-line-numbers 'visual
+                display-line-numbers-widen t
+                ;; this is the default
+                display-line-numbers-current-absolute t)
 
-    (defun noct:relative ()
+  (defun noct:relative ()
     (setq-local display-line-numbers 'visual))
 
-    (defun noct:absolute ()
+  (defun noct:absolute ()
     (setq-local display-line-numbers t))
 
-    (add-hook 'evil-insert-state-entry-hook #'noct:absolute)
-    (add-hook 'evil-insert-state-exit-hook #'noct:relative)
-    (setq evil-emacs-state-modes (delq 'ibuffer-mode evil-emacs-state-modes))
+  (add-hook 'evil-insert-state-entry-hook #'noct:absolute)
+  (add-hook 'evil-insert-state-exit-hook #'noct:relative)
+
+  (setq evil-emacs-state-modes (delq 'ibuffer-mode evil-emacs-state-modes))
 #+end_src
 
 *** Evil-matchit
@@ -500,8 +507,9 @@ Flycheck should be enabled for each language specific major mode if I want to us
 *** Company/LSP
 Autocomplete engine and IDE like behavior
 #+begin_src emacs-lisp
-    (use-package company
+  (use-package company
     :ensure t
+    :diminish
     :config  
     ;; Optionally enable completion-as-you-type behavior.
     (setq company-idle-delay 0)
@@ -509,33 +517,33 @@ Autocomplete engine and IDE like behavior
     (add-hook 'after-init-hook 'global-company-mode)
     (company-mode 1))
 
-    (use-package lsp-mode
+  (use-package lsp-mode
     :ensure t
     :commands (lsp lsp-deferred)
     :hook ((haskell-mode . lsp-deferred)
-    (elixir-mode . lsp-deferred)
-    (go-mode . lsp-deferred)
-    (python-mode . lsp-deferred)))
+           (elixir-mode . lsp-deferred)
+           (go-mode . lsp-deferred)
+           (python-mode . lsp-deferred)))
 
-    (use-package company-lsp
+  (use-package company-lsp
     :ensure t
     :after (lsp-mode)
     :commands company-lsp)
-    (push 'company-lsp company-backends)
+  (push 'company-lsp company-backends)
 
-    (use-package lsp-ui
+  (use-package lsp-ui
     :ensure t
     :after (lsp-mode)
     :commands lsp-ui-mode
     :init)
 
-    (setq lsp-ui-doc-enable nil
-    lsp-ui-peek-enable t
-    lsp-ui-sideline-enable t
-    lsp-ui-imenu-enable t
-    lsp-ui-flycheck-enable t)
+  (setq lsp-ui-doc-enable nil
+        lsp-ui-peek-enable t
+        lsp-ui-sideline-enable t
+        lsp-ui-imenu-enable t
+        lsp-ui-flycheck-enable t)
 
-    (setq lsp-prefer-flymake nil)
+  (setq lsp-prefer-flymake nil)
 #+end_src
 
 *** Yaml mode
@@ -586,26 +594,30 @@ Autocomplete engine and IDE like behavior
 ** Language specifics
 *** Python
 #+BEGIN_SRC emacs-lisp
-    (use-package company-jedi
+  (use-package company-jedi
     :ensure t
+    :diminish
     :after (company))
 
-    (use-package conda
+  (use-package conda
     :ensure t
+    :diminish
     :config
     (custom-set-variables '(conda-env-home-directory "~/miniconda3"))
     (conda-env-initialize-interactive-shells)
     (conda-env-autoactivate-mode t))
 
-    (use-package company-anaconda
+  (use-package company-anaconda
     :ensure t
     :after (company)
+    :diminish
     :hook (python-mode . anaconda-mode)
-    :config
-    (eval-after-load "company" '(add-to-list 'company-backends 'company-anaconda)))
+    :config (eval-after-load "company"
+              '(add-to-list 'company-backends 'company-anaconda)))
 
-    (use-package blacken
+  (use-package blacken
     :ensure t
+    :diminish
     :hook (python-mode . blacken-mode))
 #+END_SRC
 
