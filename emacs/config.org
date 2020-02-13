@@ -433,8 +433,8 @@ A Nerd Commenter emulation, help you comment code efficiently. For example, you 
 
 * Org mode
 #+begin_src emacs-lisp
-(use-package org
-  :ensure org-plus-contrib)
+  (use-package org
+    :ensure org-plus-contrib)
 
   (setq org-indent-mode t)
   (setq org-startup-indented t)
@@ -457,6 +457,7 @@ A Nerd Commenter emulation, help you comment code efficiently. For example, you 
   (use-package evil-org
     :ensure t
     :after org
+    :diminish
     :config
     (add-hook 'org-mode-hook 'evil-org-mode)
     (add-hook 'evil-org-mode-hook
