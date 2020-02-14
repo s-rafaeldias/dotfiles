@@ -79,8 +79,8 @@ Let's make this bad boy BEAUTIFUL!
 #+end_src
 ** Font
 #+begin_src emacs-lisp
-    (set-face-attribute 'default nil :family "JetBrains Mono Medium")
-    (when (eq system-type 'darwin)
+  (set-face-attribute 'default nil :family "JetBrains Mono Medium")
+  (when (eq system-type 'darwin)
     ;; WARNING!  Depending on the default font,
     ;; if the size is not supported very well, the frame will be clipped
     ;; so that the beginning of the buffer may not be visible correctly. 
@@ -299,6 +299,13 @@ Ivy/Swiper/Counsel gives a better way to
     :ensure t
     :diminish
     :config (counsel-projectile-mode t))
+#+end_src
+** All the icons Ivy-rich
+#+begin_src emacs-lisp
+  ;; (use-package all-the-icons-ivy-rich
+  ;;   :ensure t
+  ;;   :after (ivy-rich)
+  ;;   :config (all-the-icons-ivy-rich-mode 1))
 #+end_src
 * Packages
 ** Wakatime
