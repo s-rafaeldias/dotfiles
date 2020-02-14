@@ -451,6 +451,12 @@ A Nerd Commenter emulation, help you comment code efficiently. For example, you 
    '((ledger . t)
      (shell . t)))
 #+end_src
+** Capture
+#+begin_src emacs-lisp
+  (setq org-capture-templates
+        '(("t" "Todo" entry (file+headline "~/Dropbox/org-notes/todo.org" "Pessoal")
+           "** TODO %?\n %A\n")))
+#+end_src
 ** Org-bullets
 #+begin_src emacs-lisp
   (use-package org-bullets
@@ -472,8 +478,10 @@ A Nerd Commenter emulation, help you comment code efficiently. For example, you 
     (require 'evil-org-agenda)
     (evil-org-agenda-set-keys))
 
+  ;; Setting where are my agenda files
   (setq org-agenda-files (list "~/Dropbox/org-notes/todo.org"
                                "~/Dropbox/org-notes/estudos.org"))
+
 
   (global-set-key (kbd "C-c a") 'org-agenda)
 #+end_src
