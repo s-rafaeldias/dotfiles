@@ -455,8 +455,9 @@ A Nerd Commenter emulation, help you comment code efficiently. For example, you 
 
   (setq org-capture-templates
         '(("t" "Todo" entry (file+headline "~/Dropbox/org-notes/todo.org" "Pessoal")
-           "** TODO %?\n %A\n")
-          ("e" "Vela" entry (file+headline "~/Dropbox/org-notes/todo.org" ""))))
+           "** TODO %?\n:PROPERTY:\n:CATEGORY: %i\n:END:")
+          ("v" "Vela" entry (file+headline "~/Dropbox/org-notes/todo.org" "Vela")
+           "** TODO %?\n:PROPERTY:\n:CATEGORY: Vela\n:END:")))
 #+end_src
 ** Org-bullets
 #+begin_src emacs-lisp
@@ -478,7 +479,11 @@ A Nerd Commenter emulation, help you comment code efficiently. For example, you 
                 (evil-org-set-key-theme)))
     (require 'evil-org-agenda)
     (evil-org-agenda-set-keys)
-    (setq org-agenda-start-on-weekday nil))
+    (setq org-agenda-start-on-weekday nil
+          ;; Show 2 weeks of agenda
+          org-agenda-span 14
+          org-agenda-include-diary t))
+
 
   ;; Setting where are my agenda files
   (setq org-agenda-files (list "~/Dropbox/org-notes/todo.org"
