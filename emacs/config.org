@@ -437,12 +437,11 @@ A Nerd Commenter emulation, help you comment code efficiently. For example, you 
 * Org mode
 #+begin_src emacs-lisp
   (use-package org
-    :ensure org-plus-contrib)
-
-  (setq org-indent-mode t)
-  (setq org-startup-indented t)
-  (setq org-src-tab-acts-natively nil)
-  (setq org-agenda-start-on-weekday nil)
+    :ensure org-plus-contrib
+    :hook (org-mode . org-indent-mode)
+    :config
+    (setq org-startup-indented t
+          org-src-tab-acts-natively nil))
 
   ;; Enable languages eval
   (org-babel-do-load-languages
@@ -452,6 +451,8 @@ A Nerd Commenter emulation, help you comment code efficiently. For example, you 
 #+end_src
 ** Capture
 #+begin_src emacs-lisp
+  (global-set-key (kbd "C-c c") 'org-capture)
+
   (setq org-capture-templates
         '(("t" "Todo" entry (file+headline "~/Dropbox/org-notes/todo.org" "Pessoal")
            "** TODO %?\n %A\n")
@@ -476,7 +477,8 @@ A Nerd Commenter emulation, help you comment code efficiently. For example, you 
               (lambda ()
                 (evil-org-set-key-theme)))
     (require 'evil-org-agenda)
-    (evil-org-agenda-set-keys))
+    (evil-org-agenda-set-keys)
+    (setq org-agenda-start-on-weekday nil))
 
   ;; Setting where are my agenda files
   (setq org-agenda-files (list "~/Dropbox/org-notes/todo.org"
