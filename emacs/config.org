@@ -1,4 +1,4 @@
-#+startup: content
+#+startup: overview
 * My Emacs Config
 ** Use-package
 #+begin_src emacs-lisp
@@ -18,7 +18,6 @@
 #+begin_src emacs-lisp
     (defconst emacs-start-time (current-time))
 #+end_src
-
 ** My functions
 #+begin_src emacs-lisp
     (defun my/reload-my-settings ()
@@ -26,7 +25,6 @@
     (delete-file "~/.emacs.d/config.el")
     (org-babel-load-file (expand-file-name "config.org" user-emacs-directory)))
 #+end_src
-
 * Basic settings
 #+begin_src emacs-lisp
   (fset 'yes-or-no-p 'y-or-n-p)
@@ -302,10 +300,10 @@ Ivy/Swiper/Counsel gives a better way to
 #+end_src
 ** All the icons Ivy-rich
 #+begin_src emacs-lisp
-  ;; (use-package all-the-icons-ivy-rich
-  ;;   :ensure t
-  ;;   :after (ivy-rich)
-  ;;   :config (all-the-icons-ivy-rich-mode 1))
+  (use-package all-the-icons-ivy-rich
+    :ensure t
+    :after (ivy-rich)
+    :config (all-the-icons-ivy-rich-mode 1))
 #+end_src
 * Packages
 ** Wakatime
@@ -444,6 +442,7 @@ A Nerd Commenter emulation, help you comment code efficiently. For example, you 
   (setq org-indent-mode t)
   (setq org-startup-indented t)
   (setq org-src-tab-acts-natively nil)
+  (setq org-agenda-start-on-weekday nil)
 
   ;; Enable languages eval
   (org-babel-do-load-languages
@@ -455,7 +454,8 @@ A Nerd Commenter emulation, help you comment code efficiently. For example, you 
 #+begin_src emacs-lisp
   (setq org-capture-templates
         '(("t" "Todo" entry (file+headline "~/Dropbox/org-notes/todo.org" "Pessoal")
-           "** TODO %?\n %A\n")))
+           "** TODO %?\n %A\n")
+          ("e" "Vela" entry (file+headline "~/Dropbox/org-notes/todo.org" ""))))
 #+end_src
 ** Org-bullets
 #+begin_src emacs-lisp
@@ -529,6 +529,8 @@ Autocomplete engine and IDE like behavior
     (setq company-idle-delay 0)
     (setq company-minimum-prefix-length 1) 
     (add-hook 'after-init-hook 'global-company-mode)
+    (add-hook 'cider-repl-mode-hook #'company-mode)
+    (add-hook 'cider-mode-hook #'company-mode)
     (company-mode 1))
 
   (use-package lsp-mode
@@ -679,11 +681,13 @@ Autocomplete engine and IDE like behavior
 #+begin_src emacs-lisp
   (use-package clojure-mode
     :ensure t
-    :hook (clojure-mode . paredit-mode))
+    :hook ((clojure-mode . paredit-mode)
+           (clojure-mode . cider-mode)))
 
   (use-package cider
     :ensure t
-    :after (clojure-mode))
+    :after (clojure-mode)
+    :pin melpa-stable)
 #+end_src
 * Show load time
 #+begin_src emacs-lisp
