@@ -615,31 +615,37 @@ Autocomplete engine and IDE like behavior
 ** Language specifics
 *** Python
 #+BEGIN_SRC emacs-lisp
-  (use-package company-jedi
-    :ensure t
-    :diminish
-    :after (company))
+  ;; (use-package company-jedi
+  ;;   :ensure t
+  ;;   :diminish
+  ;;   :after (company))
 
-  (use-package conda
-    :ensure t
-    :diminish
-    :config
-    (custom-set-variables '(conda-env-home-directory "~/miniconda3"))
-    (conda-env-initialize-interactive-shells)
-    (conda-env-autoactivate-mode t))
+  ;; (use-package conda
+  ;;   :ensure t
+  ;;   :diminish
+  ;;   :config
+  ;;   (custom-set-variables '(conda-env-home-directory "~/miniconda3"))
+  ;;   (conda-env-initialize-interactive-shells)
+  ;;   (conda-env-autoactivate-mode t))
 
-  (use-package company-anaconda
-    :ensure t
-    :after (company)
-    :diminish
-    :hook (python-mode . anaconda-mode)
-    :config (eval-after-load "company"
-              '(add-to-list 'company-backends 'company-anaconda)))
+  ;; (use-package company-anaconda
+  ;;   :ensure t
+  ;;   :after (company)
+  ;;   :diminish
+  ;;   :hook (python-mode . anaconda-mode)
+  ;;   :config (eval-after-load "company"
+  ;;             '(add-to-list 'company-backends 'company-anaconda)))
 
-  (use-package blacken
+  ;; (use-package blacken
+  ;;   :ensure t
+  ;;   :diminish
+  ;;   :hook (python-mode . blacken-mode))
+  (use-package elpy
     :ensure t
-    :diminish
-    :hook (python-mode . blacken-mode))
+    :init (elpy-enable))
+
+  (setenv "WORKON_HOME" "~/miniconda3/envs")
+  (setq elpy-rpc-virtualenv-path 'current)
 #+END_SRC
 *** Haskell
 #+BEGIN_SRC emacs-lisp
