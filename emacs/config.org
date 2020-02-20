@@ -109,7 +109,6 @@ Let's make this bad boy BEAUTIFUL!
                 " "
                 project-relative-file)))
 #+end_src
-
 ** Themes
 #+begin_src emacs-lisp
   (use-package spacemacs-theme
@@ -179,7 +178,6 @@ Let's make this bad boy BEAUTIFUL!
   (setq doom-modeline-lsp t)
   (setq doom-modeline-icon t)
 #+end_src
-
 ** Dired
 #+begin_src emacs-lisp
   (use-package all-the-icons-dired
@@ -507,41 +505,6 @@ A Nerd Commenter emulation, help you comment code efficiently. For example, you 
 
 
   (global-set-key (kbd "C-c a") 'org-agenda)
-#+end_src
-*** Org Super Agenda
-#+begin_src emacs-lisp
-  (use-package org-super-agenda
-    :ensure t
-    :config (org-super-agenda-mode t)
-    (setq org-super-agenda-groups
-          '(;; Each group has an implicit boolean OR operator between its selectors.
-            (:name "Today"  ; Optionally specify section name
-                   :time-grid t  ; Items that appear on the time grid
-                   :todo "TODAY")  ; Items that have this TODO keyword
-            (:name "Important"
-                   ;; Single arguments given alone
-                   :priority "A")
-            ;; (:name "Backlog"
-            ;;        ;; Single arguments given alone
-            ;;        :todo "TODO"
-            ;; 	 :auto-category t)
-            ;; ;; Groups supply their own section names when none are given
-            (:todo "WAITING" :order 8)  ; Set order of this section
-            (:todo ("SOMEDAY" "TO-READ" "CHECK" "TO-WATCH" "WATCHING")
-                   ;; Show this group at the end of the agenda (since it has the
-                   ;; highest number). If you specified this group last, items
-                   ;; with these todo keywords that e.g. have priority A would be
-                   ;; displayed in that group instead, because items are grouped
-                   ;; out in the order the groups are listed.
-                   :order 9)
-            (:priority<= "B"
-                         ;; Show this section after "Today" and "Important", because
-                         ;; their order is unspecified, defaulting to 0. Sections
-                         ;; are displayed lowest-number-first.
-                         :order 1)
-            ;; After the last group, the agenda will display items that didn't
-            ;; match any of these groups, with the default order position of 99
-            )))
 #+end_src
 * Programming
 ** General
