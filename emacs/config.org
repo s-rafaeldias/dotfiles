@@ -716,6 +716,11 @@ Autocomplete engine and IDE like behavior
     :after (clojure-mode)
     :pin melpa-stable)
 #+end_src
+*** Rust
+#+begin_src emacs-lisp
+  (use-package rustic
+    :ensure t)
+#+end_src
 * Show load time
 #+begin_src emacs-lisp
     (let ((elapsed (float-time (time-subtract (current-time)
