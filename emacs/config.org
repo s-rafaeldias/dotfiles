@@ -1,31 +1,7 @@
 #+startup: overview
-* My Emacs Config
-** Use-package
-#+begin_src emacs-lisp
-  (unless (package-installed-p 'use-package)
-      (package-refresh-contents)
-      (package-install 'use-package))
-#+end_src
-** Diminish.el
-#+begin_src emacs-lisp
-  (use-package diminish
-    :ensure t)
+#+TITLE: My Emacs Config
 
-  (use-package delight
-    :ensure t)
-#+end_src
-** Tracking load time
-#+begin_src emacs-lisp
-    (defconst emacs-start-time (current-time))
-#+end_src
-** My functions
-#+begin_src emacs-lisp
-    (defun my/reload-my-settings ()
-    (interactive)
-    (delete-file "~/.emacs.d/config.el")
-    (org-babel-load-file (expand-file-name "config.org" user-emacs-directory)))
-#+end_src
-* Basic settings
+* Initial setup
 #+begin_src emacs-lisp
   (fset 'yes-or-no-p 'y-or-n-p)
   (setq inhibit-startup-message t)
@@ -40,20 +16,11 @@
 #+begin_src emacs-lisp
     (setq mac-command-modifier 'control)
 #+end_src
-*** exec-path-from-shell
-#+begin_src emacs-lisp
-  (use-package exec-path-from-shell
-    :ensure t
-    :diminish
-    :config (when (memq window-system '(mac ns x))
-              (exec-path-from-shell-initialize)))
-#+end_src
 ** Ido mode
 #+BEGIN_SRC emacs-lisp
-  (setq indo-enable-flex-matching t)
-  (setq ido-everywhere t)
-  (ido-mode 1)
-  (diminish 'ido-mode)
+  ;; (setq indo-enable-flex-matching t)
+  ;; (setq ido-everywhere t)
+  ;; (ido-mode 1)
 #+END_SRC
 ** Backup files
 #+begin_src emacs-lisp
@@ -62,18 +29,48 @@
     delete-old-versions t  ; automatically delete excess backups
     )
 #+end_src
+
+** Use-package
+#+begin_src emacs-lisp
+  (unless (package-installed-p 'use-package)
+    (package-refresh-contents)
+    (package-install 'use-package))
+
+  ;; Always ensure packages are installed
+  (setq use-package-always-ensure t)
+#+end_src
+** Auto package update
+#+begin_src emacs-lisp
+  (use-package auto-package-update)
+#+end_src
+** exec-path-from-shell
+#+begin_src emacs-lisp
+  (use-package exec-path-from-shell
+    :ensure t
+    :diminish
+    :config (when (memq window-system '(mac ns x))
+              (exec-path-from-shell-initialize)))
+#+end_src
 * UI
 Let's make this bad boy BEAUTIFUL!
 #+begin_src emacs-lisp
-    (tool-bar-mode 0)
-    (menu-bar-mode 0)
-    (scroll-bar-mode -1)
-    (set-window-scroll-bars (minibuffer-window) nil nil)
+  (tool-bar-mode 0)
+  (menu-bar-mode 0)
+  (scroll-bar-mode -1)
+  (set-window-scroll-bars (minibuffer-window) nil nil)
 
-    ;; Toggle automatic parens pairing
-    (electric-pair-mode t)
+  ;; Toggle automatic parens pairing
+  (electric-pair-mode t)
 
-    (add-to-list 'default-frame-alist '(fullscreen . maximized))
+  ;; Open emacs in fullscreen
+  (add-to-list 'default-frame-alist '(fullscreen . maximized))
+#+end_src
+** Themes
+#+begin_src emacs-lisp
+  (use-package spacemacs-theme
+    :defer t
+    :ensure t
+    :init (load-theme 'spacemacs-dark t))
 #+end_src
 ** Font
 #+begin_src emacs-lisp
@@ -88,10 +85,6 @@ Let's make this bad boy BEAUTIFUL!
 #+begin_src emacs-lisp
   ;; Use Ibuffer for Buffer List
   (global-set-key (kbd "C-x C-b") 'ibuffer) 
-
-  (use-package ibuffer-projectile
-    :diminish
-    :ensure t)
 
   (add-hook 'ibuffer-hook
             (lambda ()
@@ -109,63 +102,7 @@ Let's make this bad boy BEAUTIFUL!
                 " "
                 project-relative-file)))
 #+end_src
-** Themes
-#+begin_src emacs-lisp
-  (use-package spacemacs-theme
-    :defer t
-    :ensure t
-    :init (load-theme 'spacemacs-dark t))
-#+end_src
-** Highlight-parentheses
-#+begin_src emacs-lisp
- ;; (use-package highlight-parentheses
-  ;;   :ensure t
-  ;;   :diminish
-  ;;   :hook (prog-mode . highlight-parentheses-mode))
-#+end_src
-** Rainbow-delimiters
-#+begin_src emacs-lisp
-  (use-package rainbow-delimiters
-    :ensure t
-    :diminish
-    :hook (prog-mode . rainbow-delimiters-mode))
-#+end_src
-** All-the-icons
-#+begin_src emacs-lisp
-  (use-package all-the-icons
-    :ensure t
-    :diminish)
-#+end_src
 ** Modeline
-*** Spaceline
-#+begin_src emacs-lisp
-  ;; (use-package spaceline
-  ;;   :ensure t
-  ;;   :config (setq-default mode-line-format '("%e" (:eval (spaceline-ml-main)))))
-
-  ;; (use-package spaceline-config :ensure spaceline
-  ;;   :config
-  ;;   (spaceline-install
-  ;;     'main
-  ;;     '(;; Left side
-  ;;       (evil-state :face highlight-face)
-  ;;       (buffer-modified)
-  ;;       (projectile-root :face highlight-face)
-  ;;       ((remote-host buffer-id))
-  ;;       (process :when active))
-  ;;     ;; Right side
-  ;;     '((selection-info :face 'region :when mark-active)
-  ;;       ((flycheck-error flycheck-warning flycheck-info) :when active)
-  ;;       (which-function)
-  ;;       (version-control :when active)
-  ;;       (line-column)
-  ;;       (global :when active)
-  ;;       (major-mode))))
-
-  ;; (setq-default
-  ;;  spaceline-highlight-face-func 'spaceline-highlight-face-evil-state
-  ;;  powerline-height 24)
-#+end_src
 *** Doom modeline
 #+begin_src emacs-lisp
   (use-package doom-modeline
@@ -177,131 +114,6 @@ Let's make this bad boy BEAUTIFUL!
   (setq doom-modeline-indent-info t)
   (setq doom-modeline-lsp t)
   (setq doom-modeline-icon t)
-#+end_src
-** Dired
-#+begin_src emacs-lisp
-  (use-package all-the-icons-dired
-    :ensure t
-    :diminish
-    :hook (dired-mode . all-the-icons-dired-mode))
-#+end_src
-** Ivy/Swiper/Counsel
-Ivy/Swiper/Counsel gives a better way to
-#+begin_src emacs-lisp
-  (use-package swiper
-    :ensure t
-    :diminish)
-
-  (use-package counsel
-    :ensure t
-    :diminish)
-
-  (use-package ivy
-    :ensure t
-    :diminish
-    :config
-    (progn
-      (ivy-mode 1)
-      (setq ivy-use-virtual-buffers t)
-      (setq enable-recursive-minibuffers t)
-      ;; enable this if you want `swiper' to use it
-      ;; (setq search-default-mode #'char-fold-to-regexp)
-      (global-set-key "\C-s" 'swiper)
-      ;; (global-set-key (kbd "C-c C-r") 'ivy-resume)
-      ;; (global-set-key (kbd "<f6>") 'ivy-resume)
-      (global-set-key (kbd "M-x") 'counsel-M-x)
-      (global-set-key (kbd "C-x C-f") 'counsel-find-file)
-      (global-set-key (kbd "<f1> f") 'counsel-describe-function)
-      (global-set-key (kbd "<f1> v") 'counsel-describe-variable)
-      (global-set-key (kbd "<f1> l") 'counsel-find-library)
-      (global-set-key (kbd "<f2> i") 'counsel-info-lookup-symbol)
-      (global-set-key (kbd "<f2> u") 'counsel-unicode-char)
-      (global-set-key (kbd "C-c g") 'counsel-git)
-      (global-set-key (kbd "C-c j") 'counsel-git-grep)
-      (global-set-key (kbd "C-x l") 'counsel-locate)
-      (global-set-key (kbd "C-S-o") 'counsel-rhythmbox)
-      (define-key minibuffer-local-map (kbd "C-r") 'counsel-minibuffer-history)))
-#+end_src
-** Ivy-rich
-#+begin_src emacs-lisp
-  (use-package ivy-rich
-    :ensure t
-    :diminish)
-
-  (setcdr (assq t ivy-format-functions-alist) #'ivy-format-function-line)
-
-  '(ivy-switch-buffer
-    (:columns
-     ((ivy-rich-candidate (:width 30))  ; return the candidate itself
-      (ivy-rich-switch-buffer-size (:width 7))  ; return the buffer size
-      (ivy-rich-switch-buffer-indicators (:width 4 :face error :align right)); return the buffer indicators
-      (ivy-rich-switch-buffer-major-mode (:width 12 :face warning))          ; return the major mode info
-      (ivy-rich-switch-buffer-project (:width 15 :face success))             ; return project name using `projectile'
-      (ivy-rich-switch-buffer-path (:width (lambda (x) (ivy-rich-switch-buffer-shorten-path x (ivy-rich-minibuffer-width 0.3))))))  ; return file path relative to project root or `default-directory' if project is nil
-     :predicate
-     (lambda (cand) (get-buffer cand)))
-    counsel-M-x
-    (:columns
-     ((counsel-M-x-transformer (:width 40))  ; thr original transformer
-      (ivy-rich-counsel-function-docstring (:face font-lock-doc-face))))  ; return the docstring of the command
-    counsel-describe-function
-    (:columns
-     ((counsel-describe-function-transformer (:width 40))  ; the original transformer
-      (ivy-rich-counsel-function-docstring (:face font-lock-doc-face))))  ; return the docstring of the function
-    counsel-describe-variable
-    (:columns
-     ((counsel-describe-variable-transformer (:width 40))  ; the original transformer
-      (ivy-rich-counsel-variable-docstring (:face font-lock-doc-face))))  ; return the docstring of the variable
-    counsel-recentf
-    (:columns
-     ((ivy-rich-candidate (:width 0.8)) ; return the candidate itself
-      (ivy-rich-file-last-modified-time (:face font-lock-comment-face))))) ; return the last modified time of the file
-
-  (defun ivy-rich-switch-buffer-icon (candidate)
-    (with-current-buffer
-        (get-buffer candidate)
-      (let ((icon (all-the-icons-icon-for-mode major-mode)))
-        (if (symbolp icon)
-            (all-the-icons-icon-for-mode 'fundamental-mode)
-          icon))))
-
-  (setq ivy-rich--display-transformers-list
-        '(ivy-switch-buffer
-          (:columns
-           ((ivy-rich-switch-buffer-icon (:width 2))
-            (ivy-rich-candidate (:width 30))
-            (ivy-rich-switch-buffer-size (:width 7))
-            (ivy-rich-switch-buffer-indicators (:width 4 :face error :align right))
-            (ivy-rich-switch-buffer-major-mode (:width 12 :face warning))
-            (ivy-rich-switch-buffer-project (:width 15 :face success))
-            (ivy-rich-switch-buffer-path (:width (lambda (x) (ivy-rich-switch-buffer-shorten-path x (ivy-rich-minibuffer-width 0.3))))))
-           :predicate
-           (lambda (cand) (get-buffer cand)))))
-
-  (ivy-rich-mode 1)
-#+end_src
-** Projectile
-#+begin_src emacs-lisp
-  (use-package projectile
-    :ensure t
-    :config
-    (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
-    (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
-    (projectile-mode 1))
-#+end_src
-** counsel-projectile
-#+begin_src emacs-lisp
-  (use-package counsel-projectile
-    :ensure t
-    :diminish
-    :config (counsel-projectile-mode t))
-#+end_src
-** All the icons Ivy-rich
-#+begin_src emacs-lisp
-  (use-package all-the-icons-ivy-rich
-    :ensure t
-    :after (ivy-rich)
-    :config (all-the-icons-ivy-rich-mode 1))
 #+end_src
 * Packages
 ** Wakatime
@@ -426,11 +238,286 @@ A Nerd Commenter emulation, help you comment code efficiently. For example, you 
     :ensure t
     :after (ledger-mode flycheck)
     :hook (ledger-mode . flycheck-mode))
+#+end_src
+** General usage
+*** Projectile
+#+begin_src emacs-lisp
+  (use-package projectile
+    :config
+    (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
+    (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
+    (projectile-mode 1))
 
-  (defun my/format-ledger-on-save ()
-    (interactive)
-    (add-hook 'before-save-hook 'ledger-mode-clean-buffer t)
-    (add-hook 'before-save-hook 'ledger-sort-buffer t))
+  (use-package ibuffer-projectile)
+
+  (use-package counsel-projectile
+    :after (counsel ivy swiper)
+    :config (counsel-projectile-mode t))
+#+end_src
+*** Rainbow-delimiters
+#+begin_src emacs-lisp
+  (use-package rainbow-delimiters
+    :ensure t
+    :diminish
+    :hook (prog-mode . rainbow-delimiters-mode))
+#+end_src
+*** All the icons
+#+begin_src emacs-lisp
+  (use-package all-the-icons)
+
+  (use-package all-the-icons-dired
+    :hook (dired-mode . all-the-icons-dired-mode))
+
+  (use-package all-the-icons-ivy-rich
+    :ensure t
+    :after (ivy-rich)
+    :config (all-the-icons-ivy-rich-mode 1))
+#+end_src
+*** Ivy/Swiper/Counsel
+Ivy/Swiper/Counsel gives a better way to
+#+begin_src emacs-lisp
+  (use-package swiper)
+
+  (use-package counsel)
+
+  (use-package ivy
+    :config
+    (ivy-mode 1)
+    (setq ivy-use-virtual-buffers t)
+    (setq enable-recursive-minibuffers t)
+    (global-set-key "\C-s" 'swiper)
+    (global-set-key (kbd "M-x") 'counsel-M-x)
+    (global-set-key (kbd "C-x C-f") 'counsel-find-file)
+    (global-set-key (kbd "C-c g") 'counsel-git)
+    (global-set-key (kbd "C-c j") 'counsel-git-grep)
+    (global-set-key (kbd "C-x l") 'counsel-locate)
+    (global-set-key (kbd "C-S-o") 'counsel-rhythmbox)
+    (define-key minibuffer-local-map (kbd "C-r") 'counsel-minibuffer-history))
+#+end_src
+*** Ivy-rich
+#+begin_src emacs-lisp
+  (use-package ivy-rich
+    :ensure t
+    :diminish)
+
+  (setcdr (assq t ivy-format-functions-alist) #'ivy-format-function-line)
+
+  '(ivy-switch-buffer
+    (:columns
+     ((ivy-rich-candidate (:width 30))  ; return the candidate itself
+      (ivy-rich-switch-buffer-size (:width 7))  ; return the buffer size
+      (ivy-rich-switch-buffer-indicators (:width 4 :face error :align right)); return the buffer indicators
+      (ivy-rich-switch-buffer-major-mode (:width 12 :face warning))          ; return the major mode info
+      (ivy-rich-switch-buffer-project (:width 15 :face success))             ; return project name using `projectile'
+      (ivy-rich-switch-buffer-path (:width (lambda (x) (ivy-rich-switch-buffer-shorten-path x (ivy-rich-minibuffer-width 0.3))))))  ; return file path relative to project root or `default-directory' if project is nil
+     :predicate
+     (lambda (cand) (get-buffer cand)))
+    counsel-M-x
+    (:columns
+     ((counsel-M-x-transformer (:width 40))  ; thr original transformer
+      (ivy-rich-counsel-function-docstring (:face font-lock-doc-face))))  ; return the docstring of the command
+    counsel-describe-function
+    (:columns
+     ((counsel-describe-function-transformer (:width 40))  ; the original transformer
+      (ivy-rich-counsel-function-docstring (:face font-lock-doc-face))))  ; return the docstring of the function
+    counsel-describe-variable
+    (:columns
+     ((counsel-describe-variable-transformer (:width 40))  ; the original transformer
+      (ivy-rich-counsel-variable-docstring (:face font-lock-doc-face))))  ; return the docstring of the variable
+    counsel-recentf
+    (:columns
+     ((ivy-rich-candidate (:width 0.8)) ; return the candidate itself
+      (ivy-rich-file-last-modified-time (:face font-lock-comment-face))))) ; return the last modified time of the file
+
+  (defun ivy-rich-switch-buffer-icon (candidate)
+    (with-current-buffer
+        (get-buffer candidate)
+      (let ((icon (all-the-icons-icon-for-mode major-mode)))
+        (if (symbolp icon)
+            (all-the-icons-icon-for-mode 'fundamental-mode)
+          icon))))
+
+  (setq ivy-rich--display-transformers-list
+        '(ivy-switch-buffer
+          (:columns
+           ((ivy-rich-switch-buffer-icon (:width 2))
+            (ivy-rich-candidate (:width 30))
+            (ivy-rich-switch-buffer-size (:width 7))
+            (ivy-rich-switch-buffer-indicators (:width 4 :face error :align right))
+            (ivy-rich-switch-buffer-major-mode (:width 12 :face warning))
+            (ivy-rich-switch-buffer-project (:width 15 :face success))
+            (ivy-rich-switch-buffer-path (:width (lambda (x) (ivy-rich-switch-buffer-shorten-path x (ivy-rich-minibuffer-width 0.3))))))
+           :predicate
+           (lambda (cand) (get-buffer cand)))))
+
+  (ivy-rich-mode 1)
+#+end_src
+** Programming
+*** Flycheck
+Flycheck should be enabled for each language specific major mode if I want to use it
+#+begin_src emacs-lisp
+  (use-package flycheck
+    :config (setq global-flycheck-mode t))
+#+end_src
+*** Dumb-jump
+#+BEGIN_SRC emacs-lisp
+  (use-package dumb-jump
+    :config (setq dumb-jump-selector 'ivy)
+    ;; TODO: verify this bind later
+    :bind (("M-]" . dumb-jump-go)))
+#+END_SRC
+*** Web mode
+#+begin_src emacs-lisp
+  (use-package web-mode
+    :config
+    (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+    (add-to-list 'auto-mode-alist '("\\.vue?\\'" . web-mode))
+    (setq web-mode-engines-alist
+          '(("go"    . "\\.html\\'")))
+    (setq web-mode-ac-sources-alist
+          '(("css" . (ac-source-css-property))
+            ("html" . (ac-source-words-in-buffer ac-source-abbrev))))
+
+    (setq web-mode-enable-auto-closing t))
+  (setq web-mode-enable-auto-quoting t) ; this fixes the quote problem I mentioned
+#+end_src
+*** Company/LSP
+Autocomplete engine and IDE like behavior
+#+begin_src emacs-lisp
+  (use-package company
+    :config  
+    ;; Optionally enable completion-as-you-type behavior.
+    (setq company-idle-delay 0)
+    (setq company-minimum-prefix-length 1) 
+    (add-hook 'after-init-hook 'global-company-mode)
+    (add-hook 'cider-repl-mode-hook #'company-mode)
+    (add-hook 'cider-mode-hook #'company-mode)
+    (company-mode 1))
+
+  (use-package lsp-mode
+    :ensure t
+    :commands (lsp lsp-deferred)
+    :hook ((haskell-mode . lsp-deferred)
+           (elixir-mode . lsp-deferred)
+           (go-mode . lsp-deferred)
+           (python-mode . lsp-deferred)
+           (rust-mode . lsp-deferred)))
+
+  (use-package company-lsp
+    :ensure t
+    :diminish
+    :after (lsp-mode)
+    :commands company-lsp)
+  (push 'company-lsp company-backends)
+
+  (use-package lsp-ui
+    :diminish
+    :ensure t
+    :after (lsp-mode)
+    :commands lsp-ui-mode
+    :init)
+
+  (setq lsp-ui-doc-enable nil
+        lsp-ui-peek-enable t
+        lsp-ui-sideline-enable t
+        lsp-ui-imenu-enable t
+        lsp-ui-flycheck-enable t
+        lsp-enable-snippet nil)
+
+  (setq lsp-prefer-flymake nil)
+#+end_src
+*** Yaml mode
+#+begin_src emacs-lisp
+  (use-package yaml-mode
+    :config (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode)))
+#+end_src
+*** Git
+**** Git Gutter
+#+begin_src emacs-lisp
+  (use-package git-gutter
+    :config (global-git-gutter-mode t))
+#+end_src
+**** Magit
+#+begin_src emacs-lisp
+  (use-package magit
+    :init
+    (bind-key "C-x g" 'magit-status))
+#+end_src
+**** Evil-magit
+#+begin_src emacs-lisp
+  (use-package evil-magit
+    :after (magit))
+#+end_src
+*** Docker
+#+begin_src emacs-lisp
+  (use-package dockerfile-mode
+    :ensure t
+    :hook (dockerfile-mode . (lambda ()
+                               (setq-local indent-line-function #'sh-indent-line))))
+#+end_src
+** Language specifics
+*** Python
+#+BEGIN_SRC emacs-lisp
+  (use-package elpy
+    :init (elpy-enable))
+
+  (setenv "WORKON_HOME" "~/miniconda3/envs")
+  (setq elpy-rpc-virtualenv-path 'current)
+#+END_SRC
+*** Haskell
+#+BEGIN_SRC emacs-lisp
+  (use-package haskell-mode)
+
+  (use-package lsp-haskell
+    :after (lsp)
+    :hook (haskell-mode . lsp))
+
+  ;; (add-hook 'haskell-mode-hook #'lsp)
+  (setq lsp-haskell-process-path-hie "hie-wrapper")
+#+END_SRC
+*** Elixir
+#+begin_src emacs-lisp
+  (use-package alchemist)
+
+  (use-package elixir-mode)
+
+  (add-hook 'elixir-mode-hook
+            (lambda () (add-hook 'before-save-hook 'elixir-format nil t)))
+#+end_src
+*** Go
+#+begin_src emacs-lisp
+  (use-package go-mode)
+
+  (defun lsp-go-install-save-hooks ()
+    (add-hook 'before-save-hook #'lsp-format-buffer t t)
+    (add-hook 'before-save-hook #'lsp-organize-imports t t))
+
+  (add-hook 'go-mode-hook #'lsp-go-install-save-hooks)
+
+  (use-package flycheck-golangci-lint
+    :hook (go-mode . flycheck-golangci-lint-setup))
+
+  (setq flycheck-golangci-lint-enable-all t)
+#+end_src
+*** Clojure
+#+begin_src emacs-lisp
+  (use-package clojure-mode
+    :hook ((clojure-mode . paredit-mode)
+           (clojure-mode . cider-mode))
+    :config
+    (add-hook 'cider-repl-mode-hook #'company-mode)
+    (add-hook 'cider-mode-hook #'company-mode)
+    (add-hook 'cider-mode-hook #'eldoc-mode)
+    (setq cider-repl-use-pretty-printing t)
+    (setq cider-repl-display-help-banner nil))
+
+  (use-package cider
+    :after (clojure-mode)
+    :pin melpa-stable)
+#+end_src
+*** Rust
+#+begin_src emacs-lisp
+  (use-package rustic)
 #+end_src
 * Org mode
 #+begin_src emacs-lisp
@@ -506,224 +593,11 @@ A Nerd Commenter emulation, help you comment code efficiently. For example, you 
 
   (global-set-key (kbd "C-c a") 'org-agenda)
 #+end_src
-* Programming
-** General
-*** Flycheck
-Flycheck should be enabled for each language specific major mode if I want to use it
+* Custom functions
 #+begin_src emacs-lisp
-  (use-package flycheck
-    :ensure t)
-#+end_src
-*** Dumb-jump
-#+BEGIN_SRC emacs-lisp
-  (use-package dumb-jump
-    :ensure t
-    :diminish
-    :config (setq dumb-jump-selector 'ivy)
-    ;; TODO: verify this bind later
-    :bind (("M-]" . dumb-jump-go)))
-#+END_SRC
-*** Web mode
-#+begin_src emacs-lisp
-  (use-package web-mode
-    :ensure t
-    :config
-    (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
-    (add-to-list 'auto-mode-alist '("\\.vue?\\'" . web-mode))
-    (setq web-mode-engines-alist
-          '(("go"    . "\\.html\\'")))
-    (setq web-mode-ac-sources-alist
-          '(("css" . (ac-source-css-property))
-            ("html" . (ac-source-words-in-buffer ac-source-abbrev))))
-
-    (setq web-mode-enable-auto-closing t))
-  (setq web-mode-enable-auto-quoting t) ; this fixes the quote problem I mentioned
-#+end_src
-*** Company/LSP
-Autocomplete engine and IDE like behavior
-#+begin_src emacs-lisp
-  (use-package company
-    :ensure t
-    :diminish
-    :config  
-    ;; Optionally enable completion-as-you-type behavior.
-    (setq company-idle-delay 0)
-    (setq company-minimum-prefix-length 1) 
-    (add-hook 'after-init-hook 'global-company-mode)
-    (add-hook 'cider-repl-mode-hook #'company-mode)
-    (add-hook 'cider-mode-hook #'company-mode)
-    (company-mode 1))
-
-  (use-package lsp-mode
-    :ensure t
-    :commands (lsp lsp-deferred)
-    :hook ((haskell-mode . lsp-deferred)
-           (elixir-mode . lsp-deferred)
-           (go-mode . lsp-deferred)
-           (python-mode . lsp-deferred)))
-
-  (use-package company-lsp
-    :ensure t
-    :diminish
-    :after (lsp-mode)
-    :commands company-lsp)
-  (push 'company-lsp company-backends)
-
-  (use-package lsp-ui
-    :diminish
-    :ensure t
-    :after (lsp-mode)
-    :commands lsp-ui-mode
-    :init)
-
-  (setq lsp-ui-doc-enable nil
-        lsp-ui-peek-enable t
-        lsp-ui-sideline-enable t
-        lsp-ui-imenu-enable t
-        lsp-ui-flycheck-enable t)
-
-  (setq lsp-prefer-flymake nil)
-#+end_src
-*** Yaml mode
-#+begin_src emacs-lisp
-  (use-package yaml-mode
-    :ensure t
-    :config (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode)))
-#+end_src
-*** Editorconfig
-#+begin_src emacs-lisp
-  (use-package editorconfig
-    :ensure t
-    :diminish
-    :config (editorconfig-mode 1))
-#+end_src
-** Git
-*** Git Gutter
-#+begin_src emacs-lisp
-  (use-package git-gutter
-    :ensure t
-    :diminish
-    :config (global-git-gutter-mode t))
-#+end_src
-*** Magit
-#+begin_src emacs-lisp
-  (use-package magit
-    :ensure t
-    :init
-    (bind-key "C-x g" 'magit-status))
-#+end_src
-*** Evil-magit
-#+begin_src emacs-lisp
-  (use-package evil-magit
-    :ensure t
-    :diminish
-    :after (magit))
-#+end_src
-** Docker
-#+begin_src emacs-lisp
-  (use-package dockerfile-mode
-    :ensure t
-    :hook (dockerfile-mode . (lambda ()
-                               (setq-local indent-line-function #'sh-indent-line))))
-#+end_src
-** Language specifics
-*** Python
-#+BEGIN_SRC emacs-lisp
-  ;; (use-package company-jedi
-  ;;   :ensure t
-  ;;   :diminish
-  ;;   :after (company))
-
-  ;; (use-package conda
-  ;;   :ensure t
-  ;;   :diminish
-  ;;   :config
-  ;;   (custom-set-variables '(conda-env-home-directory "~/miniconda3"))
-  ;;   (conda-env-initialize-interactive-shells)
-  ;;   (conda-env-autoactivate-mode t))
-
-  ;; (use-package company-anaconda
-  ;;   :ensure t
-  ;;   :after (company)
-  ;;   :diminish
-  ;;   :hook (python-mode . anaconda-mode)
-  ;;   :config (eval-after-load "company"
-  ;;             '(add-to-list 'company-backends 'company-anaconda)))
-
-  ;; (use-package blacken
-  ;;   :ensure t
-  ;;   :diminish
-  ;;   :hook (python-mode . blacken-mode))
-  (use-package elpy
-    :ensure t
-    :init (elpy-enable))
-
-  (setenv "WORKON_HOME" "~/miniconda3/envs")
-  (setq elpy-rpc-virtualenv-path 'current)
-#+END_SRC
-*** Haskell
-#+BEGIN_SRC emacs-lisp
-    (use-package haskell-mode
-    :ensure t)
-
-    (use-package lsp-haskell
-    :ensure t
-    :after (lsp)
-    :hook (haskell-mode . lsp))
-
-    ;; (add-hook 'haskell-mode-hook #'lsp)
-    (setq lsp-haskell-process-path-hie "hie-wrapper")
-#+END_SRC
-    
-*** Elixir
-#+begin_src emacs-lisp
-    (use-package alchemist
-    :ensure t)
-
-    (use-package elixir-mode
-    :ensure t)
-
-    (add-hook 'elixir-mode-hook
-    (lambda () (add-hook 'before-save-hook 'elixir-format nil t)))
-#+end_src
-
-*** Go
-#+begin_src emacs-lisp
-    (use-package go-mode
-    :ensure t)
-
-    (defun lsp-go-install-save-hooks ()
-    (add-hook 'before-save-hook #'lsp-format-buffer t t)
-    (add-hook 'before-save-hook #'lsp-organize-imports t t))
-    (add-hook 'go-mode-hook #'lsp-go-install-save-hooks)
-
-    (use-package flycheck-golangci-lint
-    :ensure t
-    :hook (go-mode . flycheck-golangci-lint-setup))
-
-    (setq flycheck-golangci-lint-enable-all t)
-#+end_src
-
-*** Clojure
-#+begin_src emacs-lisp
-  (use-package clojure-mode
-    :ensure t
-    :hook ((clojure-mode . paredit-mode)
-           (clojure-mode . cider-mode)))
-
-  (use-package cider
-    :ensure t
-    :after (clojure-mode)
-    :pin melpa-stable)
-#+end_src
-*** Rust
-#+begin_src emacs-lisp
-  (use-package rustic
-    :ensure t)
-#+end_src
-* Show load time
-#+begin_src emacs-lisp
-    (let ((elapsed (float-time (time-subtract (current-time)
-    emacs-start-time))))
-    (message "Loaded packages in %.3fs" elapsed))
+  (defun my/reload-my-settings ()
+    "Reload my config.org file"
+    (interactive)
+    (delete-file "~/.emacs.d/config.el")
+    (org-babel-load-file (expand-file-name "config.org" user-emacs-directory)))
 #+end_src
