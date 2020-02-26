@@ -129,9 +129,7 @@ Let's make this bad boy BEAUTIFUL!
 ** Try
 Try is a package that allows you to try out Emacs packages without installing them.
 #+begin_src emacs-lisp
-  (use-package try
-    :ensure t
-    :diminish)
+  (use-package try)
 #+end_src
 ** Which-key
 The mode displays the key bindings following your currently entered incomplete command (a prefix) in a popup.
@@ -139,11 +137,23 @@ The mode displays the key bindings following your currently entered incomplete c
     ;; (use-package which-key
     ;;   :ensure t)
 #+end_src
-** Dimmer
+** Ledge
+#+begin_src emacs-lisp
+  (use-package ledger-mode
+    :ensure t
+    :mode ("\\.dat\\'"
+           "\\.ledger\\'")
+    :custom (ledger-clear-whole-transactions t))
+
+  (use-package flycheck-ledger
+    :ensure t
+    :after (ledger-mode flycheck)
+    :hook (ledger-mode . flycheck-mode))
+#+end_src
+** General usage
+*** Dimmer
 #+begin_src emacs-lisp
   (use-package dimmer
-    :diminish
-    :ensure t
     :config (dimmer-mode t))
 
   (setq dimmer-fraction 0.4)
@@ -154,7 +164,26 @@ The mode displays the key bindings following your currently entered incomplete c
           "^.\\*which-key\\*$" "^*Messages*" "*LV*"
           "transient" "^\\*Org Agenda\\*"))
 #+end_src
-** Evil
+*** Ace window
+#+begin_src emacs-lisp
+  (use-package ace-window
+    :init (global-set-key [remap other-window] 'ace-window))
+#+end_src
+*** Iedit
+#+begin_src emacs-lisp
+  (use-package iedit)
+#+end_src
+*** Aggressive indent
+#+begin_src emacs-lisp
+  (use-package aggressive-indent
+    :config (global-aggressive-indent-mode 1))
+#+end_src
+*** Paredit
+#+begin_src emacs-lisp
+  (use-package paredit
+    :config (paredit-mode t))
+#+end_src
+*** Evil
 Evil is an extensible vi layer for Emacs.
 #+begin_src emacs-lisp
   (use-package evil
@@ -179,7 +208,7 @@ Evil is an extensible vi layer for Emacs.
 
   (setq evil-emacs-state-modes (delq 'ibuffer-mode evil-emacs-state-modes))
 #+end_src
-*** Evil-matchit
+**** Evil-matchit
 Press “%” to jump between matched tags in Emacs. For example, in HTML “<div>” and “</div>” are a pair of tags.
 #+begin_src emacs-lisp
   (use-package evil-matchit
@@ -187,59 +216,19 @@ Press “%” to jump between matched tags in Emacs. For example, in HTML “<di
     :ensure t
     :config (global-evil-matchit-mode t))
 #+end_src
-*** Evil-nerd-commenter
+**** Evil-nerd-commenter
 A Nerd Commenter emulation, help you comment code efficiently. For example, you can press key =,,99j= or 99,ci to comment out 99 lines.
 #+begin_src emacs-lisp
   (use-package evil-nerd-commenter
     :ensure t
     :diminish)
 #+end_src
-** Ace window
+**** Evil-paredit
 #+begin_src emacs-lisp
-  (use-package ace-window
-    :ensure t
-    :diminish
-    :init (global-set-key [remap other-window] 'ace-window))
-#+end_src
-** Iedit
-#+begin_src emacs-lisp
-  (use-package iedit
-    :diminish
-    :ensure t)
-#+end_src
-** Aggressive indent
-#+begin_src emacs-lisp
-  (use-package aggressive-indent
-    :ensure t
-    :diminish
-    :config (global-aggressive-indent-mode 1))
-#+end_src
-** Paredit
-#+begin_src emacs-lisp
-  (use-package paredit
-    :ensure t
-    :diminish
-    :config (paredit-mode t))
-
   (use-package evil-paredit
-    :ensure t
-    :diminish
+    :after (paredit evil)
     :config (evil-paredit-mode t))
 #+end_src
-** Ledge
-#+begin_src emacs-lisp
-  (use-package ledger-mode
-    :ensure t
-    :mode ("\\.dat\\'"
-           "\\.ledger\\'")
-    :custom (ledger-clear-whole-transactions t))
-
-  (use-package flycheck-ledger
-    :ensure t
-    :after (ledger-mode flycheck)
-    :hook (ledger-mode . flycheck-mode))
-#+end_src
-** General usage
 *** Projectile
 #+begin_src emacs-lisp
   (use-package projectile
@@ -260,18 +249,6 @@ A Nerd Commenter emulation, help you comment code efficiently. For example, you 
     :ensure t
     :diminish
     :hook (prog-mode . rainbow-delimiters-mode))
-#+end_src
-*** All the icons
-#+begin_src emacs-lisp
-  (use-package all-the-icons)
-
-  (use-package all-the-icons-dired
-    :hook (dired-mode . all-the-icons-dired-mode))
-
-  (use-package all-the-icons-ivy-rich
-    :ensure t
-    :after (ivy-rich)
-    :config (all-the-icons-ivy-rich-mode 1))
 #+end_src
 *** Ivy/Swiper/Counsel
 Ivy/Swiper/Counsel gives a better way to
@@ -297,60 +274,70 @@ Ivy/Swiper/Counsel gives a better way to
 *** Ivy-rich
 #+begin_src emacs-lisp
   (use-package ivy-rich
-    :ensure t
-    :diminish)
+    :after (ivy swiper counsel)
+    :config
+    (setcdr (assq t ivy-format-functions-alist) #'ivy-format-function-line)
+    '(ivy-switch-buffer
+      (:columns
+       ((ivy-rich-candidate (:width 30))  ; return the candidate itself
+        (ivy-rich-switch-buffer-size (:width 7))  ; return the buffer size
+        (ivy-rich-switch-buffer-indicators (:width 4 :face error :align right)); return the buffer indicators
+        (ivy-rich-switch-buffer-major-mode (:width 12 :face warning))          ; return the major mode info
+        (ivy-rich-switch-buffer-project (:width 15 :face success))             ; return project name using `projectile'
+        (ivy-rich-switch-buffer-path (:width (lambda (x) (ivy-rich-switch-buffer-shorten-path x (ivy-rich-minibuffer-width 0.3))))))  ; return file path relative to project root or `default-directory' if project is nil
+       :predicate
+       (lambda (cand) (get-buffer cand)))
+      counsel-M-x
+      (:columns
+       ((counsel-M-x-transformer (:width 40))  ; thr original transformer
+        (ivy-rich-counsel-function-docstring (:face font-lock-doc-face))))  ; return the docstring of the command
+      counsel-describe-function
+      (:columns
+       ((counsel-describe-function-transformer (:width 40))  ; the original transformer
+        (ivy-rich-counsel-function-docstring (:face font-lock-doc-face))))  ; return the docstring of the function
+      counsel-describe-variable
+      (:columns
+       ((counsel-describe-variable-transformer (:width 40))  ; the original transformer
+        (ivy-rich-counsel-variable-docstring (:face font-lock-doc-face))))  ; return the docstring of the variable
+      counsel-recentf
+      (:columns
+       ((ivy-rich-candidate (:width 0.8)) ; return the candidate itself
+        (ivy-rich-file-last-modified-time (:face font-lock-comment-face))))) ; return the last modified time of the file
 
-  (setcdr (assq t ivy-format-functions-alist) #'ivy-format-function-line)
+    (defun ivy-rich-switch-buffer-icon (candidate)
+      (with-current-buffer
+          (get-buffer candidate)
+        (let ((icon (all-the-icons-icon-for-mode major-mode)))
+          (if (symbolp icon)
+              (all-the-icons-icon-for-mode 'fundamental-mode)
+            icon))))
 
-  '(ivy-switch-buffer
-    (:columns
-     ((ivy-rich-candidate (:width 30))  ; return the candidate itself
-      (ivy-rich-switch-buffer-size (:width 7))  ; return the buffer size
-      (ivy-rich-switch-buffer-indicators (:width 4 :face error :align right)); return the buffer indicators
-      (ivy-rich-switch-buffer-major-mode (:width 12 :face warning))          ; return the major mode info
-      (ivy-rich-switch-buffer-project (:width 15 :face success))             ; return project name using `projectile'
-      (ivy-rich-switch-buffer-path (:width (lambda (x) (ivy-rich-switch-buffer-shorten-path x (ivy-rich-minibuffer-width 0.3))))))  ; return file path relative to project root or `default-directory' if project is nil
-     :predicate
-     (lambda (cand) (get-buffer cand)))
-    counsel-M-x
-    (:columns
-     ((counsel-M-x-transformer (:width 40))  ; thr original transformer
-      (ivy-rich-counsel-function-docstring (:face font-lock-doc-face))))  ; return the docstring of the command
-    counsel-describe-function
-    (:columns
-     ((counsel-describe-function-transformer (:width 40))  ; the original transformer
-      (ivy-rich-counsel-function-docstring (:face font-lock-doc-face))))  ; return the docstring of the function
-    counsel-describe-variable
-    (:columns
-     ((counsel-describe-variable-transformer (:width 40))  ; the original transformer
-      (ivy-rich-counsel-variable-docstring (:face font-lock-doc-face))))  ; return the docstring of the variable
-    counsel-recentf
-    (:columns
-     ((ivy-rich-candidate (:width 0.8)) ; return the candidate itself
-      (ivy-rich-file-last-modified-time (:face font-lock-comment-face))))) ; return the last modified time of the file
+    (setq ivy-rich--display-transformers-list
+          '(ivy-switch-buffer
+            (:columns
+             ((ivy-rich-switch-buffer-icon (:width 2))
+              (ivy-rich-candidate (:width 30))
+              (ivy-rich-switch-buffer-size (:width 7))
+              (ivy-rich-switch-buffer-indicators (:width 4 :face error :align right))
+              (ivy-rich-switch-buffer-major-mode (:width 12 :face warning))
+              (ivy-rich-switch-buffer-project (:width 15 :face success))
+              (ivy-rich-switch-buffer-path (:width (lambda (x) (ivy-rich-switch-buffer-shorten-path x (ivy-rich-minibuffer-width 0.3))))))
+             :predicate
+             (lambda (cand) (get-buffer cand)))))
 
-  (defun ivy-rich-switch-buffer-icon (candidate)
-    (with-current-buffer
-        (get-buffer candidate)
-      (let ((icon (all-the-icons-icon-for-mode major-mode)))
-        (if (symbolp icon)
-            (all-the-icons-icon-for-mode 'fundamental-mode)
-          icon))))
+    (ivy-rich-mode 1))
+#+end_src
+*** All the icons
+#+begin_src emacs-lisp
+  (use-package all-the-icons)
 
-  (setq ivy-rich--display-transformers-list
-        '(ivy-switch-buffer
-          (:columns
-           ((ivy-rich-switch-buffer-icon (:width 2))
-            (ivy-rich-candidate (:width 30))
-            (ivy-rich-switch-buffer-size (:width 7))
-            (ivy-rich-switch-buffer-indicators (:width 4 :face error :align right))
-            (ivy-rich-switch-buffer-major-mode (:width 12 :face warning))
-            (ivy-rich-switch-buffer-project (:width 15 :face success))
-            (ivy-rich-switch-buffer-path (:width (lambda (x) (ivy-rich-switch-buffer-shorten-path x (ivy-rich-minibuffer-width 0.3))))))
-           :predicate
-           (lambda (cand) (get-buffer cand)))))
+  (use-package all-the-icons-dired
+    :after (all-the-icons)
+    :hook (dired-mode . all-the-icons-dired-mode))
 
-  (ivy-rich-mode 1)
+  (use-package all-the-icons-ivy-rich
+    :after (ivy-rich all-the-icons ivy swiper counsel)
+    :config (all-the-icons-ivy-rich-mode 1))
 #+end_src
 ** Programming
 *** Flycheck
