@@ -116,41 +116,26 @@ Let's make this bad boy BEAUTIFUL!
   (setq doom-modeline-icon t)
 #+end_src
 * Packages
-** Wakatime
-`wakatime-mode` is an automatic time tracking extension for Emacs using WakaTime.
-#+begin_src emacs-lisp
-  (use-package wakatime-mode
-    :ensure t
-    :diminish
-    :config (global-wakatime-mode))
-
-  (setq wakatime-cli-path "~/miniconda3/bin/wakatime")
-#+end_src
-** Try
-Try is a package that allows you to try out Emacs packages without installing them.
-#+begin_src emacs-lisp
-  (use-package try)
-#+end_src
 ** Which-key
 The mode displays the key bindings following your currently entered incomplete command (a prefix) in a popup.
 #+begin_src emacs-lisp
     ;; (use-package which-key
     ;;   :ensure t)
 #+end_src
-** Ledge
-#+begin_src emacs-lisp
-  (use-package ledger-mode
-    :ensure t
-    :mode ("\\.dat\\'"
-           "\\.ledger\\'")
-    :custom (ledger-clear-whole-transactions t))
-
-  (use-package flycheck-ledger
-    :ensure t
-    :after (ledger-mode flycheck)
-    :hook (ledger-mode . flycheck-mode))
-#+end_src
 ** General usage
+*** Wakatime
+`wakatime-mode` is an automatic time tracking extension for Emacs using WakaTime.
+#+begin_src emacs-lisp
+  (use-package wakatime-mode
+    :config (global-wakatime-mode))
+
+  (setq wakatime-cli-path "~/miniconda3/bin/wakatime")
+#+end_src
+*** Try
+Try is a package that allows you to try out Emacs packages without installing them.
+#+begin_src emacs-lisp
+  (use-package try)
+#+end_src
 *** Dimmer
 #+begin_src emacs-lisp
   (use-package dimmer
@@ -338,6 +323,17 @@ Ivy/Swiper/Counsel gives a better way to
   (use-package all-the-icons-ivy-rich
     :after (ivy-rich all-the-icons ivy swiper counsel)
     :config (all-the-icons-ivy-rich-mode 1))
+#+end_src
+*** Ledger
+#+begin_src emacs-lisp
+  (use-package ledger-mode
+    :mode ("\\.dat\\'"
+           "\\.ledger\\'")
+    :custom (ledger-clear-whole-transactions t))
+
+  (use-package flycheck-ledger
+    :after (ledger-mode flycheck)
+    :hook (ledger-mode . flycheck-mode))
 #+end_src
 ** Programming
 *** Flycheck
