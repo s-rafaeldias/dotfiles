@@ -517,10 +517,18 @@ Autocomplete engine and IDE like behavior
   (global-set-key (kbd "C-c c") 'org-capture)
 
   (setq org-capture-templates
-        '(("t" "Todo" entry (file+headline "~/Dropbox/org-notes/todo.org" "Pessoal")
-           "** TODO %?\n:PROPERTY:\n:CATEGORY: %i\n:END:")
+        '(("t" "Task" entry (file+headline "~/Dropbox/org-notes/todo.org" "Pessoal")
+           "** TODO %?")
+          ("c" "Ceub" entry (file+headline "~/Dropbox/org-notes/todo.org" "Ceub")
+           "** TODO %?")
           ("v" "Vela" entry (file+headline "~/Dropbox/org-notes/todo.org" "Vela")
-           "** TODO %?\n:PROPERTY:\n:CATEGORY: Vela\n:END:")))
+           "** TODO %?")
+          ;; Financeiro
+          ("F" "Finanças" entry (file+olp "~/Dropbox/org-notes/todo.org" "Finanças" "Atividades")
+           "** TODO %?\nDEADLINE: %^t")
+          ("f" "Compras" entry (file+olp "~/Dropbox/org-notes/todo.org" "Finanças" "Lista de Compras")
+           "** TODO %?\n:PROPERTIES:\n:Value: %^{Value} \n:Link: %^{Link| } \n:END:")
+          ))
 #+end_src
 ** Org-bullets
 #+begin_src emacs-lisp
