@@ -46,8 +46,6 @@
 ** exec-path-from-shell
 #+begin_src emacs-lisp
   (use-package exec-path-from-shell
-    :ensure t
-    :diminish
     :config (when (memq window-system '(mac ns x))
               (exec-path-from-shell-initialize)))
 #+end_src
@@ -69,7 +67,6 @@ Let's make this bad boy BEAUTIFUL!
 #+begin_src emacs-lisp
   (use-package spacemacs-theme
     :defer t
-    :ensure t
     :init (load-theme 'spacemacs-dark t))
 #+end_src
 ** Font
@@ -106,7 +103,6 @@ Let's make this bad boy BEAUTIFUL!
 *** Doom modeline
 #+begin_src emacs-lisp
   (use-package doom-modeline
-    :ensure t
     :hook (after-init . doom-modeline-mode))
 
   (setq doom-modeline-project-detection 'projectile)
@@ -116,13 +112,12 @@ Let's make this bad boy BEAUTIFUL!
   (setq doom-modeline-icon t)
 #+end_src
 * Packages
-** Which-key
+** General usage
+*** Which-key
 The mode displays the key bindings following your currently entered incomplete command (a prefix) in a popup.
 #+begin_src emacs-lisp
-    ;; (use-package which-key
-    ;;   :ensure t)
+  (use-package which-key)
 #+end_src
-** General usage
 *** Wakatime
 `wakatime-mode` is an automatic time tracking extension for Emacs using WakaTime.
 #+begin_src emacs-lisp
@@ -172,8 +167,6 @@ Try is a package that allows you to try out Emacs packages without installing th
 Evil is an extensible vi layer for Emacs.
 #+begin_src emacs-lisp
   (use-package evil
-    :ensure t
-    :diminish
     :config
     (evil-mode 1))
 
@@ -197,16 +190,12 @@ Evil is an extensible vi layer for Emacs.
 Press “%” to jump between matched tags in Emacs. For example, in HTML “<div>” and “</div>” are a pair of tags.
 #+begin_src emacs-lisp
   (use-package evil-matchit
-    :diminish
-    :ensure t
     :config (global-evil-matchit-mode t))
 #+end_src
 **** Evil-nerd-commenter
 A Nerd Commenter emulation, help you comment code efficiently. For example, you can press key =,,99j= or 99,ci to comment out 99 lines.
 #+begin_src emacs-lisp
-  (use-package evil-nerd-commenter
-    :ensure t
-    :diminish)
+  (use-package evil-nerd-commenter)
 #+end_src
 **** Evil-paredit
 #+begin_src emacs-lisp
@@ -231,8 +220,6 @@ A Nerd Commenter emulation, help you comment code efficiently. For example, you 
 *** Rainbow-delimiters
 #+begin_src emacs-lisp
   (use-package rainbow-delimiters
-    :ensure t
-    :diminish
     :hook (prog-mode . rainbow-delimiters-mode))
 #+end_src
 *** Ivy/Swiper/Counsel
@@ -378,7 +365,6 @@ Autocomplete engine and IDE like behavior
     (company-mode 1))
 
   (use-package lsp-mode
-    :ensure t
     :commands (lsp lsp-deferred)
     :hook ((haskell-mode . lsp-deferred)
            (elixir-mode . lsp-deferred)
@@ -387,15 +373,11 @@ Autocomplete engine and IDE like behavior
            (rust-mode . lsp-deferred)))
 
   (use-package company-lsp
-    :ensure t
-    :diminish
     :after (lsp-mode)
     :commands company-lsp)
   (push 'company-lsp company-backends)
 
   (use-package lsp-ui
-    :diminish
-    :ensure t
     :after (lsp-mode)
     :commands lsp-ui-mode
     :init)
@@ -434,7 +416,6 @@ Autocomplete engine and IDE like behavior
 *** Docker
 #+begin_src emacs-lisp
   (use-package dockerfile-mode
-    :ensure t
     :hook (dockerfile-mode . (lambda ()
                                (setq-local indent-line-function #'sh-indent-line))))
 #+end_src
@@ -544,8 +525,6 @@ Autocomplete engine and IDE like behavior
 ** Org-bullets
 #+begin_src emacs-lisp
   (use-package org-bullets
-    :ensure t
-    :diminish
     :hook (org-mode . org-bullets-mode))
 #+end_src
 ** Agenda
