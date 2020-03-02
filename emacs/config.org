@@ -42,6 +42,11 @@
 ** Auto package update
 #+begin_src emacs-lisp
   (use-package auto-package-update)
+
+  (setq auto-package-update-prompt-before-update t)
+  (setq auto-package-update-delete-old-versions t)
+
+  ;; (auto-package-update-maybe)
 #+end_src
 ** exec-path-from-shell
 #+begin_src emacs-lisp
@@ -320,7 +325,8 @@ Ivy/Swiper/Counsel gives a better way to
 
   (use-package flycheck-ledger
     :after (ledger-mode flycheck)
-    :hook (ledger-mode . flycheck-mode))
+    :hook (ledger-mode . flycheck-mode)
+    :config (flycheck-ledger-executable "/usr/local/bin/ledger"))
 #+end_src
 ** Programming
 *** Flycheck
@@ -476,8 +482,7 @@ Autocomplete engine and IDE like behavior
     (setq cider-repl-display-help-banner nil))
 
   (use-package cider
-    :after (clojure-mode)
-    :pin melpa-stable)
+    :after (clojure-mode))
 #+end_src
 *** Rust
 #+begin_src emacs-lisp
