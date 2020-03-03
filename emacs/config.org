@@ -523,16 +523,16 @@ Autocomplete engine and IDE like behavior
 
   (setq org-capture-templates
         '(("t" "Task" entry (file+headline "~/Dropbox/org-notes/todo.org" "Pessoal")
-           "** TODO %?")
+           "** TODO %?\n")
           ("c" "Ceub" entry (file+headline "~/Dropbox/org-notes/todo.org" "Ceub")
-           "** TODO %?")
+           "** TODO %?\n")
           ("v" "Vela" entry (file+headline "~/Dropbox/org-notes/todo.org" "Vela")
-           "** TODO %?")
+           "** TODO %?\n")
           ;; Financeiro
           ("F" "Finanças" entry (file+olp "~/Dropbox/org-notes/todo.org" "Finanças" "Atividades")
-           "** TODO %?\nDEADLINE: %^t")
+           "** TODO %?\nDEADLINE: %^t\n")
           ("f" "Compras" entry (file+olp "~/Dropbox/org-notes/todo.org" "Finanças" "Lista de Compras")
-           "** TODO %?\n:PROPERTIES:\n:Value: %^{Value} \n:Link: %^{Link| } \n:END:")
+           "** TODO %?\n:PROPERTIES:\n:Value: %^{Value} \n:Link: %^{Link| } \n:END:\n")
           ))
 #+end_src
 ** Org-bullets
