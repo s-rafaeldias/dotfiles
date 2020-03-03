@@ -315,6 +315,11 @@ Ivy/Swiper/Counsel gives a better way to
   (use-package all-the-icons-ivy-rich
     :after (ivy-rich all-the-icons ivy swiper counsel)
     :config (all-the-icons-ivy-rich-mode 1))
+
+  (use-package all-the-icons-ibuffer
+    :init (all-the-icons-ibuffer-mode 1)
+    :config (setq all-the-icons-ibuffer-human-readable-size t))
+
 #+end_src
 *** Ledger
 #+begin_src emacs-lisp
@@ -523,16 +528,16 @@ Autocomplete engine and IDE like behavior
 
   (setq org-capture-templates
         '(("t" "Task" entry (file+headline "~/Dropbox/org-notes/todo.org" "Pessoal")
-           "** TODO %?")
+           "** TODO %?\n")
           ("c" "Ceub" entry (file+headline "~/Dropbox/org-notes/todo.org" "Ceub")
-           "** TODO %?")
+           "** TODO %?\n")
           ("v" "Vela" entry (file+headline "~/Dropbox/org-notes/todo.org" "Vela")
-           "** TODO %?")
+           "** TODO %?\n")
           ;; Financeiro
           ("F" "Finanças" entry (file+olp "~/Dropbox/org-notes/todo.org" "Finanças" "Atividades")
-           "** TODO %?\nDEADLINE: %^t")
+           "** TODO %?\nDEADLINE: %^t\n")
           ("f" "Compras" entry (file+olp "~/Dropbox/org-notes/todo.org" "Finanças" "Lista de Compras")
-           "** TODO %?\n:PROPERTIES:\n:Value: %^{Value} \n:Link: %^{Link| } \n:END:")
+           "** TODO %?\n:PROPERTIES:\n:Value: %^{Value} \n:Link: %^{Link| } \n:END:\n")
           ))
 #+end_src
 ** Org-bullets
