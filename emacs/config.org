@@ -527,11 +527,11 @@ Autocomplete engine and IDE like behavior
   (global-set-key (kbd "C-c c") 'org-capture)
 
   (setq org-capture-templates
-        '(("t" "Task" entry (file+headline "~/Dropbox/org-notes/todo.org" "Pessoal")
+        '(("t" "Task" entry (file+headline "~/Dropbox/org-notes/todo.org" "Tasks")
            "** TODO %?\n")
           ("c" "Ceub" entry (file+headline "~/Dropbox/org-notes/todo.org" "Ceub")
            "** TODO %?\n")
-          ("v" "Vela" entry (file+headline "~/Dropbox/org-notes/todo.org" "Vela")
+          ("v" "Vela" entry (file+olp "~/Dropbox/org-notes/todo.org" "Vela" "Atividades")
            "** TODO %?\n")
           ;; Financeiro
           ("F" "Finanças" entry (file+olp "~/Dropbox/org-notes/todo.org" "Finanças" "Atividades")
