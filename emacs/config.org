@@ -558,8 +558,7 @@ Autocomplete engine and IDE like behavior
     (evil-org-agenda-set-keys)
     (setq org-agenda-start-on-weekday nil
           ;; Show 2 weeks of agenda
-          org-agenda-span 14
-          org-agenda-include-diary t))
+          org-agenda-span 14))
 
 
   ;; Setting where are my agenda files
