@@ -456,6 +456,8 @@ Autocomplete engine and IDE like behavior
 
   (use-package elixir-mode)
 
+  (add-to-list 'exec-path "~/bin/elixir-ls/release")
+
   (add-hook 'elixir-mode-hook
             (lambda () (add-hook 'before-save-hook 'elixir-format nil t)))
 #+end_src
