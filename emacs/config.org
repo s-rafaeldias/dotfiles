@@ -370,6 +370,7 @@ Autocomplete engine and IDE like behavior
     ;; Optionally enable completion-as-you-type behavior.
     (setq company-idle-delay 0)
     (setq company-minimum-prefix-length 1) 
+    (company-tng-configure-default)
     (add-hook 'after-init-hook 'global-company-mode)
     (add-hook 'cider-repl-mode-hook #'company-mode)
     (add-hook 'cider-mode-hook #'company-mode)
