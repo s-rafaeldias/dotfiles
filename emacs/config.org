@@ -530,9 +530,9 @@ Autocomplete engine and IDE like behavior
   (global-set-key (kbd "C-c c") 'org-capture)
 
   (setq org-capture-templates
-        '(("t" "Task" entry (file+headline "~/Dropbox/org-notes/todo.org" "Tasks")
+        '(("t" "Task" entry (file+op "~/Dropbox/org-notes/todo.org" "Tasks")
            "** TODO %?\n")
-          ("c" "Ceub" entry (file+headline "~/Dropbox/org-notes/todo.org" "Ceub")
+          ("c" "Ceub" entry (file+op "~/Dropbox/org-notes/todo.org" "Ceub")
            "** TODO %?\n")
           ("v" "Vela" entry (file+olp "~/Dropbox/org-notes/todo.org" "Vela" "Atividades")
            "** TODO %?\n")
