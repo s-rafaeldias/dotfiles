@@ -579,3 +579,8 @@ Autocomplete engine and IDE like behavior
     (delete-file "~/.emacs.d/config.el")
     (org-babel-load-file (expand-file-name "config.org" user-emacs-directory)))
 #+end_src
+** Keybinds
+A few keybinds used in all Emacs
+#+begin_src emacs-lisp
+  (define-key global-map (kbd "<f5>") 'revert-buffer)
+#+end_src
