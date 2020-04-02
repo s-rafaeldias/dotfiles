@@ -3,8 +3,8 @@ export LC_ALL=en_US.UTF-8
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export PATH="$(yarn global bin):$PATH"
 # rbenv
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
+#export PATH="$HOME/.rbenv/bin:$PATH"
+#eval "$(rbenv init -)"
 # Miniconda path
 export PATH="$HOME/miniconda3/bin:$PATH"
 # Go PATH
@@ -15,6 +15,7 @@ export PATH=$PATH:$GOPATH/bin
 export TERM=xterm-256color
 # ~/bin
 export PATH=~/bin:$PATH
+export PATH=~/lib:$PATH
 export PATH=/Users/rafael/.local/bin:$PATH
 export PATH=~/workspace/go/bin:$PATH
 # Editor

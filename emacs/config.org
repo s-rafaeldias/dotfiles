@@ -71,8 +71,22 @@ Let's make this bad boy BEAUTIFUL!
 ** Themes
 #+begin_src emacs-lisp
   (use-package spacemacs-theme
-    :defer t
-    :init (load-theme 'spacemacs-dark t))
+   :defer t
+   :init (load-theme 'spacemacs-dark t))
+
+
+  ;; use variable-pitch fonts for some headings and titles
+  ;; (setq zenburn-use-variable-pitch t)
+
+  ;; scale headings in org-mode
+  ;; (setq zenburn-scale-org-headlines t)
+
+  ;; scale headings in outline-mode
+  ;; (setq zenburn-scale-outline-headlines t)
+
+  ;; (use-package zenburn-theme
+  ;;   :defer t
+  ;;   :init (load-theme 'zenburn t))
 #+end_src
 ** Font
 #+begin_src emacs-lisp
@@ -118,6 +132,9 @@ Let's make this bad boy BEAUTIFUL!
 #+end_src
 * Packages
 ** General usage
+*** Highlight TODO
+#+begin_src emacs-lisp
+#+end_src
 *** Which-key
 The mode displays the key bindings following your currently entered incomplete command (a prefix) in a popup.
 #+begin_src emacs-lisp
@@ -138,16 +155,16 @@ Try is a package that allows you to try out Emacs packages without installing th
 #+end_src
 *** Dimmer
 #+begin_src emacs-lisp
-  (use-package dimmer
-    :config (dimmer-mode t))
+  ;; (use-package dimmer
+  ;;   :config (dimmer-mode t))
 
-  (setq dimmer-fraction 0.4)
-  (setq dimmer-configure-hydra t)
-  (setq dimmer-configure-helm t)
-  (setq dimmer-buffer-exclusion-regexps 
-        '("^\\*[h|H]elm.*\\*" "^\\*Minibuf-[0-9]+\\*"
-          "^.\\*which-key\\*$" "^*Messages*" "*LV*"
-          "transient" "^\\*Org Agenda\\*"))
+  ;; (setq dimmer-fraction 0.4)
+  ;; (setq dimmer-configure-hydra t)
+  ;; (setq dimmer-configure-helm t)
+  ;; (setq dimmer-buffer-exclusion-regexps 
+  ;;       '("^\\*[h|H]elm.*\\*" "^\\*Minibuf-[0-9]+\\*"
+  ;;         "^.\\*which-key\\*$" "^*Messages*" "*LV*"
+  ;;         "transient" "^\\*Org Agenda\\*"))
 #+end_src
 *** Ace window
 #+begin_src emacs-lisp
@@ -352,6 +369,7 @@ Flycheck should be enabled for each language specific major mode if I want to us
   (use-package web-mode
     :config
     (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+    (add-to-list 'auto-mode-alist '("\\.html.erb\\'" . web-mode))
     (add-to-list 'auto-mode-alist '("\\.vue?\\'" . web-mode))
     (setq web-mode-engines-alist
           '(("go"    . "\\.html\\'")))
@@ -382,7 +400,8 @@ Autocomplete engine and IDE like behavior
            (elixir-mode . lsp-deferred)
            (go-mode . lsp-deferred)
            (python-mode . lsp-deferred)
-           (rust-mode . lsp-deferred)))
+           (rust-mode . lsp-deferred)
+           (ruby-mode . lsp-deferred)))
 
   (use-package company-lsp
     :after (lsp-mode)
@@ -424,6 +443,11 @@ Autocomplete engine and IDE like behavior
 #+begin_src emacs-lisp
   (use-package evil-magit
     :after (magit))
+#+end_src
+**** magit-todos
+#+begin_src emacs-lisp
+  (use-package magit-todos
+    :after magit)
 #+end_src
 *** Docker
 #+begin_src emacs-lisp
