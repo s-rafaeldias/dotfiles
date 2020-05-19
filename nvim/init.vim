@@ -6,6 +6,7 @@ call plug#begin()
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 Plug 'sodapopcan/vim-twiggy'
+Plug 'jreybert/vimagit'
 " NERDTree
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -13,8 +14,6 @@ Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 " Ranger
 Plug 'rbgrouleff/bclose.vim'
 Plug 'francoiscabrol/ranger.vim'
-" displays tags in a window
-Plug 'majutsushi/tagbar'
 " Fades inactive buffers
 Plug 'TaDaa/vimade'
 " Language pack
@@ -29,6 +28,8 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'kien/rainbow_parentheses.vim'
 " Show content of registers
 Plug 'junegunn/vim-peekaboo'
+" Show marks
+Plug 'Yilin-Yang/vim-markbar'
 " Fuzzy finder
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -43,7 +44,6 @@ Plug 'Yggdroot/indentLine'
 " View and search LSP symbols, tags in Vim/NeoVim.
 " Plug 'liuchengxu/vista.vim'
 Plug 'majutsushi/tagbar'
-
 " Script for text filtering and alignment
 Plug 'godlygeek/tabular'
 " A Narrow Region Plugin for vim (like Emacs Narrow Region)
@@ -55,31 +55,10 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'ryanoasis/vim-devicons'
 Plug 'danilo-augusto/vim-afterglow'
 Plug 'tyrannicaltoucan/vim-deep-space'
+Plug 'morhetz/gruvbox'
 
-""" Languages
 " Dockerfile
 Plug 'ekalinin/Dockerfile.vim', { 'for': 'dockerfile' }
-" Python
-Plug 'vim-python/python-syntax', { 'for': 'python' }
-Plug 'psf/black', { 'for': 'python' }
-Plug 'davidhalter/jedi-vim', { 'for': 'python' }
-Plug 'fisadev/vim-isort', { 'for': 'python' }
-
-" Go
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' } ", 'tag': 'v1.20' }
-" HTML
-Plug 'mattn/emmet-vim'
-Plug 'cakebaker/scss-syntax.vim'
-" Haskell
-Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' }
-Plug 'alx741/vim-hindent', { 'for': 'haskell' }
-" Elixir
-Plug 'elixir-editors/vim-elixir', { 'for': 'elixir' }
-Plug 'slashmili/alchemist.vim', { 'for': 'elixir' }
-Plug 'mhinz/vim-mix-format', { 'for': 'elixir' }
-" Elm
-" Plug 'elmcast/elm-vim'
-Plug 'andys8/vim-elm-syntax', { 'for': 'elm' }
 
 " Initialize plugin system
 call plug#end()
@@ -89,6 +68,7 @@ call plug#end()
 if has('nvim')
     let g:python3_host_prog = $HOME . '/miniconda3/envs/neovim/bin/python'
     let g:python_host_prog = $HOME . '/miniconda3/envs/neovim2/bin/python'
+    " let g:ruby_host_prog = $HOME . ''
 endif
 
 set relativenumber          " show relative numbers
@@ -119,7 +99,7 @@ set directory=.
 set tags=./tags,tags;$HOME
 
 " disable continuation of comments to the next line
-autocmd FileType * setlocal formatoptions-=cro
+" autocmd FileType * setlocal formatoptions-=cro
 
 " Disable arrow keys
 noremap  <Up> <NOP>
@@ -145,12 +125,7 @@ if (has("termguicolors"))
 endif
 
 set background=dark
-let g:deepspace_italics=1
-colorscheme deep-space
-hi MatchParen guibg=#c47ebd guifg=#51617d
-" let g:afterglow_italic_comments=1
-" colorscheme afterglow
-" set background=dark " for the dark version
+colorscheme gruvbox
 " }}}
 
 " Fn mappings ================================================= {{{
@@ -218,7 +193,7 @@ vnoremap <Leader>y "+y
 " Plugin: Airline ================================================= {{{
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
-let g:airline_theme='deep_space'
+let g:airline_theme='gruvbox'
 let g:hybrid_custom_term_colors = 1
 let g:hybrid_reduced_contrast = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
@@ -250,7 +225,10 @@ let g:coc_global_extensions = [
             \ 'coc-tsserver',
             \ 'coc-html',
             \ 'coc-css',
-            \ 'coc-emmet']
+            \ 'coc-emmet',
+            \ 'coc-solargraph',
+            \ 'coc-vimlsp'
+            \]
 
 let g:coc_filetype_map = {
     \ 'scss': 'scss',
@@ -258,8 +236,8 @@ let g:coc_filetype_map = {
 
 " Use <C-N> to trigger completion.
 inoremap <SILENT><EXPR> <C-N> coc#refresh()
-" Use <CR> for select completion
-inoremap <EXPR> <CR> pumvisible() ? "\<C-Y>" : "\<C-G>u\<CR>"
+" Use <TAB> for select completion
+inoremap <EXPR> <TAB> pumvisible() ? "\<C-Y>" : "\<C-G>u\<CR>"
 " Make <cr> select the first completion item and confirm completion when no item have selected
 inoremap <SILENT><EXPR> <CR> pumvisible() ? coc#_select_confirm() : "\<C-G>u\<CR>"
 
@@ -298,7 +276,7 @@ autocmd BufWritePost * GitGutter
 
 " Plugin: kien/rainbow_parentheses.vim ================================================= {{{
 augroup RAINBOW_PARENTHESES
-    au!
+    autocmd!
     autocmd VimEnter * RainbowParenthesesToggle
     autocmd Syntax * RainbowParenthesesLoadRound
     autocmd Syntax * RainbowParenthesesLoadSquare
@@ -318,15 +296,6 @@ let g:NERDTreeChDirMode=2
 noremap <C-D> :NERDTreeToggle<CR>
 " }}}
 
-" Plugin: nuake ================================================= {{{
-augroup NUAKE
-    au!
-    nnoremap <F4> :Nuake<CR>
-    inoremap <F4> <C-\><C-n>:Nuake<CR>
-    tnoremap <F4> <C-\><C-n>:Nuake<CR>
-augroup END
-" }}}
-
 " Plugin: polyglot ================================================= {{{
 let g:polyglot_disabled = ['elm']
 " }}}
@@ -337,7 +306,6 @@ let g:polyglot_disabled = ['elm']
 " let g:vista_stay_on_open = 0
 " let g:vista_default_executive = 'coc'
 nmap <F9> :TagbarToggle<CR>
-
 
 let g:tagbar_type_haskell = {
     \ 'ctagsbin'  : 'hasktags',
@@ -375,16 +343,23 @@ let g:tagbar_type_haskell = {
 " }}}
 
 " Language: Elixir ================================================= {{{
+Plug 'elixir-editors/vim-elixir', { 'for': 'elixir' }
+Plug 'slashmili/alchemist.vim', { 'for': 'elixir' }
+Plug 'mhinz/vim-mix-format', { 'for': 'elixir' }
+
 " Format files on save with 'mix format'
 " autocmd BufWritePost *.exs,*.ex silent :!mix format %
 let g:mix_format_on_save = 1
 " }}}
 
 " Language: Elm ================================================= {{{
+" Plug 'elmcast/elm-vim'
+Plug 'andys8/vim-elm-syntax', { 'for': 'elm' }
+
 augroup ELM_IDE
-    au!
+    autocmd!
     autocmd FileType elm
-                \  set ts=4
+                \  set tabstop=4
                 \| set expandtab
                 \| set shiftwidth=4
                 \| set foldmethod=indent
@@ -403,6 +378,8 @@ augroup END
 " }}}
 
 " Language: Golang ================================================= {{{
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' } ", 'tag': 'v1.20' }
+
 let g:go_highlight_extra_types = 1
 let g:go_highlight_space_tab_error = 1
 let g:go_highlight_operators = 1
@@ -422,8 +399,9 @@ let g:go_def_mapping_enabled=1
 let g:go_def_mode='gopls'
 let g:go_auto_type_info = 1
 let g:go_fmt_fail_silently = 1
+
 augroup GO_IDE
-    au!
+    autocmd!
     autocmd FileType go
         \  nmap <buffer> <LocalLeader>r   <Plug>(go-run)
         \| nmap <buffer> <LocalLeader>b   <Plug>(go-build)
@@ -438,8 +416,11 @@ augroup END
 " }}}
 
 " Language: Haskell ================================================= {{{
+Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' }
+Plug 'alx741/vim-hindent', { 'for': 'haskell' }
+
 augroup HASKELL_IDE
-    au!
+    autocmd!
     autocmd FileType haskell set expandtab
 augroup END
 
@@ -459,11 +440,14 @@ let g:cabal_indent_section = 2
 " }}}
 
 " Language: HTML/CSS ================================================= {{{
+Plug 'mattn/emmet-vim'
+Plug 'cakebaker/scss-syntax.vim'
+
 augroup HTML_CSS_IDE
-    au!
+    autocmd!
     autocmd FileType css,scss
                 \  set expandtab
-                \| set ts=2
+                \| set tabstop=2
                 \| set shiftwidth=2
 augroup END
 
@@ -471,31 +455,41 @@ augroup END
 
 " Language: Javascript/JSON ================================================= {{{
 augroup JS_IDE
-    au!
+    autocmd!
     autocmd FileType json syntax match Comment +\/\/.\+$+
     autocmd FileType javascript,javascriptreact,json
-                \  set ts=2
+                \  set tabstop=2
                 \| set expandtab
                 \| set shiftwidth=2
 augroup END
 " }}}
 
 " Language: Markdown ================================================= {{{
+augroup MARKDOWN_IDE
+    autocmd!
+    autocmd FileType markdown normal zR
+augroup END
+
 let g:markdown_folding = 1
 let g:markdown_enable_folding = 1
 " }}}
 
 " Language: Python ================================================= {{{
+Plug 'vim-python/python-syntax', { 'for': 'python' }
+Plug 'psf/black', { 'for': 'python' }
+Plug 'davidhalter/jedi-vim', { 'for': 'python' }
+Plug 'fisadev/vim-isort', { 'for': 'python' }
+
 augroup PYTHON_IDE
-    au!
+    autocmd!
     autocmd FileType python
-                \  set ts=4
+                \  set tabstop=4
                 \| set expandtab
                 \| set shiftwidth=4
                 \| set foldmethod=indent
                 \| set foldnestmax=2
                 \| normal zR
-    autocmd BufWritePre *.py execute ':Black'
+    " autocmd BufWritePre *.py execute ':Black'
 augroup END
 
 let g:black_linelength = 79
@@ -503,9 +497,35 @@ let g:python_highlight_all=1
 " let g:jedi#completions_enabled = 1
 " }}}
 
+" Language: Ruby ================================================= {{{
+Plug 'tpope/vim-haml'
+Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-rails'
+Plug 'tpope/vim-rbenv'
+
+augroup RUBY_IDE
+    autocmd!
+augroup END
+let g:endwise_no_mappings=1
+" }}}
+
+" Language: Rust ================================================= {{{
+Plug 'rust-lang/rust.vim'
+
+augroup RUST_IDE
+    autocmd!
+    autocmd FileType rust
+                \| set foldmethod=syntax
+                \| set foldnestmax=2
+                \| normal zR
+augroup END
+
+let g:rustfmt_autosave = 1
+" }}}
+
 " Language: Vimscript ================================================= {{{
 augroup VIML_IDE
-    au!
+    autocmd!
     autocmd FileType vim
                 \  set expandtab
                 \| set shiftwidth=4

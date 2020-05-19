@@ -155,16 +155,21 @@ Try is a package that allows you to try out Emacs packages without installing th
 #+end_src
 *** Dimmer
 #+begin_src emacs-lisp
-  ;; (use-package dimmer
-  ;;   :config (dimmer-mode t))
+  (use-package dimmer
+    :config (dimmer-mode t))
+
+  (dimmer-configure-which-key)
+  (dimmer-configure-hydra)
+  (dimmer-configure-magit)
+  (dimmer-configure-posframe)
 
   ;; (setq dimmer-fraction 0.4)
   ;; (setq dimmer-configure-hydra t)
   ;; (setq dimmer-configure-helm t)
   ;; (setq dimmer-buffer-exclusion-regexps 
   ;;       '("^\\*[h|H]elm.*\\*" "^\\*Minibuf-[0-9]+\\*"
-  ;;         "^.\\*which-key\\*$" "^*Messages*" "*LV*"
-  ;;         "transient" "^\\*Org Agenda\\*"))
+  ;; 	"^.\\*which-key\\*$" "^*Messages*" "*LV*"
+  ;; 	"transient" "^\\*Org Agenda\\*"))
 #+end_src
 *** Ace window
 #+begin_src emacs-lisp
@@ -178,8 +183,10 @@ Try is a package that allows you to try out Emacs packages without installing th
 *** Aggressive indent
 #+begin_src emacs-lisp
   (use-package aggressive-indent
-    :config (global-aggressive-indent-mode 1))
-#+end_src
+  :config (global-aggressive-indent-mode 1))
+
+  (add-to-list 'aggressive-indent-excluded-modes 'haml-mode)
+  #+end_src
 *** Paredit
 #+begin_src emacs-lisp
   (use-package paredit
@@ -350,6 +357,16 @@ Ivy/Swiper/Counsel gives a better way to
     :hook (ledger-mode . flycheck-mode)
     :config (flycheck-ledger-executable "/usr/local/bin/ledger"))
 #+end_src
+*** highlight-indent-guides
+#+begin_src emacs-lisp
+  (use-package highlight-indent-guides
+    :config
+    (setq highlight-indent-guides-method 'character)
+    (setq highlight-indent-guides-delay 0)
+    (setq highlight-indent-guides-responsive 'top))
+
+  (add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
+#+end_src
 ** Programming
 *** Flycheck
 Flycheck should be enabled for each language specific major mode if I want to use it
@@ -379,6 +396,9 @@ Flycheck should be enabled for each language specific major mode if I want to us
 
     (setq web-mode-enable-auto-closing t))
   (setq web-mode-enable-auto-quoting t) ; this fixes the quote problem I mentioned
+
+  (use-package emmet-mode)
+  (add-hook 'web-mode-hook 'emmet-mode)
 #+end_src
 *** Company/LSP
 Autocomplete engine and IDE like behavior
@@ -519,6 +539,29 @@ Autocomplete engine and IDE like behavior
 *** Rust
 #+begin_src emacs-lisp
   (use-package rustic)
+#+end_src
+*** Ruby
+#+begin_src emacs-lisp
+  (use-package ruby-end)
+
+  (use-package rbenv)
+
+  (use-package haml-mode)
+  (add-hook 'haml-mode-hook
+            (lambda ()
+              (setq indent-tabs-mode nil)
+              (setq tab-width 2)
+              (setq evil-shift-width 2)))
+
+  (add-hook 'ruby-mode-hook
+            (function (lambda ()
+                        (setq evil-shift-width ruby-indent-level))))
+#+end_src
+*** Julia
+*** Arduino
+#+begin_src emacs-lisp
+  (use-package arduino-mode)
+  (use-package company-arduino)
 #+end_src
 * Org mode
 #+begin_src emacs-lisp

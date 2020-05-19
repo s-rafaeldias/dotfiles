@@ -1,6 +1,6 @@
 {
     // Python
-    "python.jediEnabled": true,
+    "python.jediEnabled": false,
     "python.condaPath": "~/miniconda3/bin/conda",
     "python.formatting.provider": "black",
 
@@ -10,10 +10,14 @@
     "tsserver.formatOnType": true,
     "coc.preferences.formatOnSaveFiletypes": ["css", "Markdown", "javascriptreact", "javascript"],
 
+    // Ruby
+    "solargraph.commandPath": "/Users/rafael/.rbenv/shims/solargraph",
+
     // HTML
     "emmet.showAbbreviationSuggestions": false,
     "html.format.enable": true,
 
+    "codeLens.enable": true, 
     "languageserver": {
         "golang": {
           "command": "gopls",
