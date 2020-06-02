@@ -6,14 +6,12 @@ call plug#begin()
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 Plug 'sodapopcan/vim-twiggy'
-Plug 'jreybert/vimagit'
 " NERDTree
-Plug 'scrooloose/nerdtree'
-Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-" Ranger
+" Plug 'scrooloose/nerdtree'
+" Plug 'Xuyuanp/nerdtree-git-plugin'
+" Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+" Closes a buffer without closing the window
 Plug 'rbgrouleff/bclose.vim'
-Plug 'francoiscabrol/ranger.vim'
 " Fades inactive buffers
 Plug 'TaDaa/vimade'
 " Language pack
@@ -42,12 +40,9 @@ Plug 'tpope/vim-surround'
 " Show indentation line
 Plug 'Yggdroot/indentLine'
 " View and search LSP symbols, tags in Vim/NeoVim.
-" Plug 'liuchengxu/vista.vim'
 Plug 'majutsushi/tagbar'
 " Script for text filtering and alignment
 Plug 'godlygeek/tabular'
-" A Narrow Region Plugin for vim (like Emacs Narrow Region)
-Plug 'chrisbra/NrrwRgn'
 
 """ Colorscheme
 Plug 'vim-airline/vim-airline'
@@ -59,6 +54,33 @@ Plug 'morhetz/gruvbox'
 
 " Dockerfile
 Plug 'ekalinin/Dockerfile.vim', { 'for': 'dockerfile' }
+
+" Elixir
+Plug 'elixir-editors/vim-elixir', { 'for': 'elixir' }
+Plug 'slashmili/alchemist.vim', { 'for': 'elixir' }
+Plug 'mhinz/vim-mix-format', { 'for': 'elixir' }
+" Elm
+Plug 'andys8/vim-elm-syntax', { 'for': 'elm' }
+" Go
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' } ", 'tag': 'v1.20' }
+" Haskell
+Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' }
+Plug 'alx741/vim-hindent', { 'for': 'haskell' }
+" HTML/CSS
+Plug 'mattn/emmet-vim'
+Plug 'cakebaker/scss-syntax.vim'
+" Python
+Plug 'vim-python/python-syntax', { 'for': 'python' }
+" Plug 'psf/black', { 'for': 'python' }
+" Plug 'davidhalter/jedi-vim', { 'for': 'python' }
+" Plug 'fisadev/vim-isort', { 'for': 'python' }
+" Ruby
+Plug 'tpope/vim-haml'
+Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-rails'
+Plug 'tpope/vim-rbenv'
+" Rust
+Plug 'rust-lang/rust.vim'
 
 " Initialize plugin system
 call plug#end()
@@ -84,6 +106,11 @@ set completeopt-=preview    " Disable preview for autocomplete
 set noerrorbells            " Disable bells
 set novisualbell            " Disable bells
 
+" set noswapfile              " Don't create .swp files
+" set nobackup
+" set undodir=~/.vim/undodir
+" set undofile
+
 " White space settings
 set listchars=eol:¬,tab:>\ ,trail:~,extends:>,precedes:<
 set list
@@ -99,7 +126,7 @@ set directory=.
 set tags=./tags,tags;$HOME
 
 " disable continuation of comments to the next line
-" autocmd FileType * setlocal formatoptions-=cro
+autocmd FileType * setlocal formatoptions-=cro
 
 " Disable arrow keys
 noremap  <Up> <NOP>
@@ -162,10 +189,7 @@ nnoremap - ddp
 " Move line down
 nnoremap _ ddkP
 " <CR> on normal mode add a new line below cursor
-nnoremap <CR> o<ESC>
-
-" Upper word on normal mode
-nnoremap <C-U> bveUe
+" nnoremap <CR> o<ESC>
 
 " Move to next buffer
 nnoremap <S-TAB> :bn<CR>
@@ -179,6 +203,9 @@ nnoremap <Leader>w :execute ":match Error " . '/\v\s+$/' <CR>
 " Paste clipboard (register *)
 nnoremap <Leader>P "*P
 nnoremap <Leader>p "*p
+" Resize window vertically
+nnoremap <C-+> :vertical resize +10<CR>
+nnoremap <C-->- :vertical resize -10<CR>
 " }}}
 
 " VISUAL MODE mappings ================================================= {{{
@@ -227,7 +254,8 @@ let g:coc_global_extensions = [
             \ 'coc-css',
             \ 'coc-emmet',
             \ 'coc-solargraph',
-            \ 'coc-vimlsp'
+            \ 'coc-vimlsp',
+            \ 'coc-ultisnips'
             \]
 
 let g:coc_filetype_map = {
@@ -239,31 +267,31 @@ inoremap <SILENT><EXPR> <C-N> coc#refresh()
 " Use <TAB> for select completion
 inoremap <EXPR> <TAB> pumvisible() ? "\<C-Y>" : "\<C-G>u\<CR>"
 " Make <cr> select the first completion item and confirm completion when no item have selected
-inoremap <SILENT><EXPR> <CR> pumvisible() ? coc#_select_confirm() : "\<C-G>u\<CR>"
+inoremap <SILENT><EXPR> <TAB> pumvisible() ? coc#_select_confirm() : "\<C-G>u\<CR>"
 
 " Close the preview window when completion is done.
 autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 
 " Use K to show documentation in preview window
-nnoremap <SILENT> K :call <SID>show_documentation()<CR>
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
-endfunction
+" nnoremap <SILENT> K :call <SID>show_documentation()<CR>
+" function! s:show_documentation()
+  " if (index(['vim','help'], &filetype) >= 0)
+    " execute 'h '.expand('<cword>')
+  " else
+    " call CocAction('doHover')
+  " endif
+" endfunction
 
-command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
+" command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
 " Disable Coc for clojure files
 " autocmd BufNew,BufEnter *.clj  execute "silent! CocDisable"
 " autocmd BufLeave *.clj execute "silent! CocEnable"
 " }}}
 
 " Plugin: FZF ================================================= {{{
-nnoremap <Leader>t :Files<CR>
-nnoremap <Leader>b :Buffers<CR>
-nnoremap <Leader>gf :GFiles?<CR>
+nnoremap <C-P> :Files<CR>
+nnoremap <C-B> :Buffers<CR>
+nnoremap <Leader>gf :GFiles<CR>
 nnoremap <Leader>ft :Filetypes<CR>
 " }}}
 
@@ -287,13 +315,6 @@ augroup END
 " Plugin: nerdcommenter ================================================= {{{
 " Add spaces after comment delimiters by default
 let g:NERDSpaceDelims = 1
-" }}}
-
-" Plugin: NERDTree ================================================= {{{
-let g:NERDTreeQuitOnOpen=1
-let g:NERDTreeShowHidden=1
-let g:NERDTreeChDirMode=2
-noremap <C-D> :NERDTreeToggle<CR>
 " }}}
 
 " Plugin: polyglot ================================================= {{{
@@ -343,19 +364,12 @@ let g:tagbar_type_haskell = {
 " }}}
 
 " Language: Elixir ================================================= {{{
-Plug 'elixir-editors/vim-elixir', { 'for': 'elixir' }
-Plug 'slashmili/alchemist.vim', { 'for': 'elixir' }
-Plug 'mhinz/vim-mix-format', { 'for': 'elixir' }
-
 " Format files on save with 'mix format'
-" autocmd BufWritePost *.exs,*.ex silent :!mix format %
+autocmd BufWritePost *.exs,*.ex silent :!mix format %
 let g:mix_format_on_save = 1
 " }}}
 
 " Language: Elm ================================================= {{{
-" Plug 'elmcast/elm-vim'
-Plug 'andys8/vim-elm-syntax', { 'for': 'elm' }
-
 augroup ELM_IDE
     autocmd!
     autocmd FileType elm
@@ -378,8 +392,6 @@ augroup END
 " }}}
 
 " Language: Golang ================================================= {{{
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' } ", 'tag': 'v1.20' }
-
 let g:go_highlight_extra_types = 1
 let g:go_highlight_space_tab_error = 1
 let g:go_highlight_operators = 1
@@ -416,9 +428,6 @@ augroup END
 " }}}
 
 " Language: Haskell ================================================= {{{
-Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' }
-Plug 'alx741/vim-hindent', { 'for': 'haskell' }
-
 augroup HASKELL_IDE
     autocmd!
     autocmd FileType haskell set expandtab
@@ -440,9 +449,6 @@ let g:cabal_indent_section = 2
 " }}}
 
 " Language: HTML/CSS ================================================= {{{
-Plug 'mattn/emmet-vim'
-Plug 'cakebaker/scss-syntax.vim'
-
 augroup HTML_CSS_IDE
     autocmd!
     autocmd FileType css,scss
@@ -475,11 +481,6 @@ let g:markdown_enable_folding = 1
 " }}}
 
 " Language: Python ================================================= {{{
-Plug 'vim-python/python-syntax', { 'for': 'python' }
-Plug 'psf/black', { 'for': 'python' }
-Plug 'davidhalter/jedi-vim', { 'for': 'python' }
-Plug 'fisadev/vim-isort', { 'for': 'python' }
-
 augroup PYTHON_IDE
     autocmd!
     autocmd FileType python
@@ -489,20 +490,14 @@ augroup PYTHON_IDE
                 \| set foldmethod=indent
                 \| set foldnestmax=2
                 \| normal zR
-    " autocmd BufWritePre *.py execute ':Black'
 augroup END
 
-let g:black_linelength = 79
+let g:black_linelength = 100
 let g:python_highlight_all=1
 " let g:jedi#completions_enabled = 1
 " }}}
 
 " Language: Ruby ================================================= {{{
-Plug 'tpope/vim-haml'
-Plug 'tpope/vim-endwise'
-Plug 'tpope/vim-rails'
-Plug 'tpope/vim-rbenv'
-
 augroup RUBY_IDE
     autocmd!
 augroup END
@@ -510,8 +505,6 @@ let g:endwise_no_mappings=1
 " }}}
 
 " Language: Rust ================================================= {{{
-Plug 'rust-lang/rust.vim'
-
 augroup RUST_IDE
     autocmd!
     autocmd FileType rust
