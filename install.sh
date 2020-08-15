@@ -1,5 +1,11 @@
 #!/bin/bash
 
+# install all basic libs
+sudo apt install -y \
+	cmake \
+	git \
+	libtool-bin
+
 # install zsh
 sudo apt install zsh
 chsh -s $(which zsh)
