@@ -8,7 +8,7 @@ chsh -s $(which zsh)
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 # install neovim from source
-git clone git@github.com:neovim/neovim.git ~/tmp/neovim
+git clone https://github.com/neovim/neovim.git ~/tmp/neovim
 cd ~/tmp/neovim
 make
 sudo make install
