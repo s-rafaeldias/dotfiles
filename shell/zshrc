@@ -3,13 +3,13 @@ export ZSH=$HOME/.oh-my-zsh
 
 # Plugins ============================================
 plugins=(
-	you-should-use
+	# you-should-use
 	docker
 	# git
 	# kubectl
 	rbenv
 	tmuxinator
-	zsh-autosuggestions
+	# zsh-autosuggestions
 	zsh-syntax-highlighting
 	poetry
 )
@@ -52,3 +52,8 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+
+# heroku autocomplete setup
+HEROKU_AC_ZSH_SETUP_PATH=/Users/rafael/Library/Caches/heroku/autocomplete/zsh_setup && test -f $HEROKU_AC_ZSH_SETUP_PATH && source $HEROKU_AC_ZSH_SETUP_PATH;
+[ -f "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env" ] && source "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env"
+export PATH="/usr/local/sbin:$PATH"

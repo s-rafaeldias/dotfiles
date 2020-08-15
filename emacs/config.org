@@ -12,6 +12,7 @@
             (lambda () (y-or-n-p "Do you really want to exit Emacs? "))
             'append)
 #+end_src
+
 ** MacOS
 #+begin_src emacs-lisp
     (setq mac-command-modifier 'control)
@@ -70,23 +71,13 @@ Let's make this bad boy BEAUTIFUL!
 #+end_src
 ** Themes
 #+begin_src emacs-lisp
-  (use-package spacemacs-theme
-   :defer t
-   :init (load-theme 'spacemacs-dark t))
+  ;; (use-package spacemacs-theme
+  ;;  :defer t
+  ;;  :init (load-theme 'spacemacs-dark t))
 
-
-  ;; use variable-pitch fonts for some headings and titles
-  ;; (setq zenburn-use-variable-pitch t)
-
-  ;; scale headings in org-mode
-  ;; (setq zenburn-scale-org-headlines t)
-
-  ;; scale headings in outline-mode
-  ;; (setq zenburn-scale-outline-headlines t)
-
-  ;; (use-package zenburn-theme
-  ;;   :defer t
-  ;;   :init (load-theme 'zenburn t))
+  (use-package gruvbox-theme
+    :defer t
+    :init (load-theme 'gruvbox t))
 #+end_src
 ** Font
 #+begin_src emacs-lisp
@@ -95,7 +86,7 @@ Let's make this bad boy BEAUTIFUL!
     ;; WARNING!  Depending on the default font,
     ;; if the size is not supported very well, the frame will be clipped
     ;; so that the beginning of the buffer may not be visible correctly. 
-    (set-face-attribute 'default nil :height 125))
+    (set-face-attribute 'default nil :height 140))
 #+end_src
 ** Ibuffer
 #+begin_src emacs-lisp
@@ -132,21 +123,10 @@ Let's make this bad boy BEAUTIFUL!
 #+end_src
 * Packages
 ** General usage
-*** Highlight TODO
-#+begin_src emacs-lisp
-#+end_src
 *** Which-key
 The mode displays the key bindings following your currently entered incomplete command (a prefix) in a popup.
 #+begin_src emacs-lisp
   (use-package which-key)
-#+end_src
-*** Wakatime
-`wakatime-mode` is an automatic time tracking extension for Emacs using WakaTime.
-#+begin_src emacs-lisp
-  (use-package wakatime-mode
-    :config (global-wakatime-mode))
-
-  (setq wakatime-cli-path "~/miniconda3/bin/wakatime")
 #+end_src
 *** Try
 Try is a package that allows you to try out Emacs packages without installing them.

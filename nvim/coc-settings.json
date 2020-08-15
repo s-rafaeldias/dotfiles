@@ -18,7 +18,7 @@
     "emmet.showAbbreviationSuggestions": false,
     "html.format.enable": true,
 
-    "codeLens.enable": true, 
+    "codeLens.enable": true,
     "languageserver": {
         "golang": {
           "command": "gopls",
@@ -29,25 +29,11 @@
           "command": "~/.elixir/elixir-ls/rel/language_server.sh",
           "filetypes": ["elixir", "eelixir"]
         },
-        "haskell": {
-          "command": "hie-wrapper",
-          "rootPatterns": [".stack.yaml", "cabal.config", "package.yaml"],
-          "filetypes": ["hs", "lhs", "haskell"],
-          "initializationOptions": {
-            "languageServerHaskell": {}
-          }
-        },
-        "elmLS": {
-          "command": "elm-language-server",
-          "filetypes": ["elm"],
-          "rootPatterns": ["elm.json"],
-          "trace.server": "verbose",
-          "initializationOptions": {
-            "elmPath": "elm",
-            "elmFormatPath": "elm-format",
-            "elmTestPath": "elm-test",
-            "elmAnalyseTrigger": "change"
-          }
+        "lua": {
+          "command": "/Users/rafael/tmp/lua-language-server/bin/macOS/lua-language-server",
+          "args": ["-E", "-e", "LANG=en", "/Users/rafael/tmp/lua-language-server/main.lua"],
+          "filetypes": ["lua"],
+          "rootPatterns": [".git/"]
         }
     }
 }

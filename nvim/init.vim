@@ -3,13 +3,9 @@ call plug#begin()
 
 """ General plugins
 " Git
-Plug 'airblade/vim-gitgutter'
+" Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
-Plug 'sodapopcan/vim-twiggy'
-" NERDTree
-" Plug 'scrooloose/nerdtree'
-" Plug 'Xuyuanp/nerdtree-git-plugin'
-" Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+" Plug 'sodapopcan/vim-twiggy'
 " Closes a buffer without closing the window
 Plug 'rbgrouleff/bclose.vim'
 " Fades inactive buffers
@@ -31,56 +27,67 @@ Plug 'Yilin-Yang/vim-markbar'
 " Fuzzy finder
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-" Wakatime
-Plug 'wakatime/vim-wakatime'
 " Syntax checking hacks
 Plug 'dense-analysis/ale'
 " Quoting/parenthesizing made simple
 Plug 'tpope/vim-surround'
 " Show indentation line
 Plug 'Yggdroot/indentLine'
-" View and search LSP symbols, tags in Vim/NeoVim.
-Plug 'majutsushi/tagbar'
 " Script for text filtering and alignment
-Plug 'godlygeek/tabular'
+" Plug 'godlygeek/tabular'
+" Snippets for documentation
+Plug 'kkoomen/vim-doge'
+
+" Vim-sexp brings the Vim philosophy of precision editing to S-expressions.
+Plug 'tpope/vim-repeat'
+Plug 'guns/vim-sexp'
 
 """ Colorscheme
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ryanoasis/vim-devicons'
 Plug 'danilo-augusto/vim-afterglow'
-Plug 'tyrannicaltoucan/vim-deep-space'
-Plug 'morhetz/gruvbox'
+" Plug 'tyrannicaltoucan/vim-deep-space'
+Plug 'gruvbox-community/gruvbox'
 
+"""" Languages
+" Clojure
+Plug 'Olical/conjure', {'tag': 'v4.1.0'}
 " Dockerfile
 Plug 'ekalinin/Dockerfile.vim', { 'for': 'dockerfile' }
-
 " Elixir
-Plug 'elixir-editors/vim-elixir', { 'for': 'elixir' }
-Plug 'slashmili/alchemist.vim', { 'for': 'elixir' }
-Plug 'mhinz/vim-mix-format', { 'for': 'elixir' }
+" Plug 'elixir-editors/vim-elixir', { 'for': 'elixir' }
+" Plug 'slashmili/alchemist.vim', { 'for': 'elixir' }
+" Plug 'mhinz/vim-mix-format', { 'for': 'elixir' }
 " Elm
 Plug 'andys8/vim-elm-syntax', { 'for': 'elm' }
 " Go
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' } ", 'tag': 'v1.20' }
 " Haskell
-Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' }
-Plug 'alx741/vim-hindent', { 'for': 'haskell' }
+" Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' }
+" Plug 'alx741/vim-hindent', { 'for': 'haskell' }
 " HTML/CSS
 Plug 'mattn/emmet-vim'
 Plug 'cakebaker/scss-syntax.vim'
+" Ledger
+Plug 'ledger/vim-ledger'
+" Markdown
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
 " Python
-Plug 'vim-python/python-syntax', { 'for': 'python' }
-" Plug 'psf/black', { 'for': 'python' }
-" Plug 'davidhalter/jedi-vim', { 'for': 'python' }
-" Plug 'fisadev/vim-isort', { 'for': 'python' }
+" Plug 'vim-python/python-syntax', { 'for': 'python' }
+" Semantic highlight for Python
+Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins', 'for': 'python'}
 " Ruby
-Plug 'tpope/vim-haml'
-Plug 'tpope/vim-endwise'
-Plug 'tpope/vim-rails'
-Plug 'tpope/vim-rbenv'
+" Plug 'tpope/vim-haml'
+" Plug 'tpope/vim-endwise', { 'for': 'ruby' }
+" Plug 'tpope/vim-rails', { 'for': 'ruby' }
+" Plug 'tpope/vim-rbenv', { 'for': 'ruby' }
 " Rust
-Plug 'rust-lang/rust.vim'
+Plug 'rust-lang/rust.vim', { 'for': 'rust' }
+
+" Custom
+Plug '~/workspace/projects/nvim-plugins/ledger-ide'
 
 " Initialize plugin system
 call plug#end()
@@ -93,40 +100,50 @@ if has('nvim')
     " let g:ruby_host_prog = $HOME . ''
 endif
 
+" Enable matchit
+runtime macros/matchit.vim
+
+set nowrap
 set relativenumber          " show relative numbers
 set number                  " show line numbers
 set cursorline              " show a visual line under the cursor's current line
 set showmatch               " show the matching part of the pair for [] {} and ()
 set scrolloff=10
 set signcolumn=yes          " always show signcolumns
-set timeoutlen=1000
+set timeoutlen=300
 set ttimeoutlen=0
-set updatetime=100
+set updatetime=40
 set completeopt-=preview    " Disable preview for autocomplete
 set noerrorbells            " Disable bells
 set novisualbell            " Disable bells
+" Split settings
+set splitright
+" set splitbelow
 
-" set noswapfile              " Don't create .swp files
-" set nobackup
-" set undodir=~/.vim/undodir
-" set undofile
+set noswapfile              " Don't create .swp files
+set nobackup
+set undodir=~/.vim/undodir
+set undofile
 
 " White space settings
-set listchars=eol:¬,tab:>\ ,trail:~,extends:>,precedes:<
+set listchars=eol:↵,tab:↦\ ,trail:~,extends:>,precedes:<
 set list
 
 " Git diff settings
 set diffopt=vertical
 
-" Change <Leader> to ',' and <LocalLeader> to `;`
-let mapleader=","
-let maplocalleader=";"
+" Change <Leader> to ' ' and <LocalLeader> to `;`
+let mapleader=" "
+let maplocalleader=","
 
 set directory=.
 set tags=./tags,tags;$HOME
 
 " disable continuation of comments to the next line
 autocmd FileType * setlocal formatoptions-=cro
+
+" Enable highligthing a selection on yank
+ autocmd TextYankPost * silent! lua vim.highlight.on_yank()
 
 " Disable arrow keys
 noremap  <Up> <NOP>
@@ -215,6 +232,8 @@ vnoremap <Leader>' <Esc>`>a'<Esc>`<i'<Esc>
 vnoremap <Leader>" <Esc>`>a"<Esc>`<i"<Esc>
 " Copy selected text to + register (clipboard)
 vnoremap <Leader>y "+y
+
+vnoremap D "_d
 " }}}
 
 " Plugin: Airline ================================================= {{{
@@ -255,7 +274,8 @@ let g:coc_global_extensions = [
             \ 'coc-emmet',
             \ 'coc-solargraph',
             \ 'coc-vimlsp',
-            \ 'coc-ultisnips'
+            \ 'coc-ultisnips',
+            \ 'coc-conjure'
             \]
 
 let g:coc_filetype_map = {
@@ -273,33 +293,28 @@ inoremap <SILENT><EXPR> <TAB> pumvisible() ? coc#_select_confirm() : "\<C-G>u\<C
 autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 
 " Use K to show documentation in preview window
-" nnoremap <SILENT> K :call <SID>show_documentation()<CR>
-" function! s:show_documentation()
-  " if (index(['vim','help'], &filetype) >= 0)
-    " execute 'h '.expand('<cword>')
-  " else
-    " call CocAction('doHover')
-  " endif
-" endfunction
+nnoremap <SILENT> K :call <SID>show_documentation()<CR>
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
 
-" command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
-" Disable Coc for clojure files
-" autocmd BufNew,BufEnter *.clj  execute "silent! CocDisable"
-" autocmd BufLeave *.clj execute "silent! CocEnable"
+augroup COC
+    autocmd!
+    nmap <silent> <Leader>gd <Plug>(coc-definition)
+augroup END
 " }}}
 
 " Plugin: FZF ================================================= {{{
+let g:fzf_layout =  { 'window': { 'width': 0.8, 'height': 0.8 } }
+let $FZF_DEFAULT_OPTS = '--reverse'
 nnoremap <C-P> :Files<CR>
 nnoremap <C-B> :Buffers<CR>
 nnoremap <Leader>gf :GFiles<CR>
 nnoremap <Leader>ft :Filetypes<CR>
-" }}}
-
-" Plugin: GitGutter ================================================= {{{
-highlight GitGutterAdd    guifg=#009900 ctermfg=2
-highlight GitGutterChange guifg=#bbbb00 ctermfg=3
-highlight GitGutterDelete guifg=#ff2222 ctermfg=1
-autocmd BufWritePost * GitGutter
 " }}}
 
 " Plugin: kien/rainbow_parentheses.vim ================================================= {{{
@@ -363,6 +378,10 @@ let g:tagbar_type_haskell = {
 
 " }}}
 
+" Plugin: vim-doge ================================================= {{{
+let g:doge_doc_standard_python = 'numpy'
+" }}}
+
 " Language: Elixir ================================================= {{{
 " Format files on save with 'mix format'
 autocmd BufWritePost *.exs,*.ex silent :!mix format %
@@ -405,7 +424,7 @@ let g:go_highlight_generate_tags = 1
 let g:go_highlight_methods = 1
 let g:go_highlight_structs = 1
 let g:go_highlight_trailing_whitespace_error = 1
-let g:go_auto_sameids = 1
+" let g:go_auto_sameids = 1
 let g:go_fmt_command = "goimports"
 let g:go_def_mapping_enabled=1
 let g:go_def_mode='gopls'
@@ -470,14 +489,35 @@ augroup JS_IDE
 augroup END
 " }}}
 
+" Language: Ledger ================================================= {{{
+augroup LEDGER_IDE
+    autocmd!
+    autocmd BufEnter *.dat setfiletype ledger
+    autocmd FileType ledger
+                \  set tabstop=4
+                \| set expandtab
+                \| set shiftwidth=4
+                " \| autocmd BufWrite * silent :'<,'>LedgerAlign
+augroup END
+" }}}
+
+" Language: Lua ================================================= {{{
+augroup LUA_IDE
+    autocmd!
+    autocmd FileType lua
+                \  set tabstop=4
+                \| set expandtab
+                \| set shiftwidth=4
+augroup END
+" }}}
+
 " Language: Markdown ================================================= {{{
 augroup MARKDOWN_IDE
     autocmd!
     autocmd FileType markdown normal zR
 augroup END
 
-let g:markdown_folding = 1
-let g:markdown_enable_folding = 1
+let g:vim_markdown_conceal = 0
 " }}}
 
 " Language: Python ================================================= {{{
