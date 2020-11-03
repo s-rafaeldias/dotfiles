@@ -57,3 +57,4 @@ unset __conda_setup
 HEROKU_AC_ZSH_SETUP_PATH=/Users/rafael/Library/Caches/heroku/autocomplete/zsh_setup && test -f $HEROKU_AC_ZSH_SETUP_PATH && source $HEROKU_AC_ZSH_SETUP_PATH;
 [ -f "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env" ] && source "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env"
 export PATH="/usr/local/sbin:$PATH"
+export PATH="/usr/local/opt/llvm/bin:$PATH"

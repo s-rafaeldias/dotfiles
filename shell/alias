@@ -1,8 +1,9 @@
 alias shellconfig="nvim ~/dotfiles/shell/."
 alias source_zsh="source ~/.zshrc"
 alias vimconfig="nvim ~/.config/nvim/init.vim"
-alias tmux='TERM=screen-256color tmux -2'
-alias tmuxinator='TERM=screen-256color tmuxinator'
+alias tmux='tmux -2'
+# alias tmux='TERM=screen-256color tmux -2'
+# alias tmuxinator='TERM=screen-256color tmuxinator'
 alias update="sudo apt update && sudo apt upgrade -y"
 alias vim="nvim"
 alias bu="brew upgrade"

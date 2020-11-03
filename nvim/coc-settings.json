@@ -1,18 +1,24 @@
 {
     // Python
-    "python.jediEnabled": false,
+    //"python.jediEnabled": false,
     "python.condaPath": "~/miniconda3/bin/conda",
     "python.formatting.provider": "black",
     "python.sortImports.path": "isort",
 
     // Js
-    "javascript.suggest.completeFunctionCalls": false,
-    "typescript.suggest.completeFunctionCalls": false,
-    "tsserver.formatOnType": true,
+    //"javascript.suggest.completeFunctionCalls": false,
+    //"typescript.suggest.completeFunctionCalls": false,
+    //"tsserver.formatOnType": true,
     "coc.preferences.formatOnSaveFiletypes": ["css", "Markdown", "javascriptreact", "javascript", "python"],
 
     // Ruby
     "solargraph.commandPath": "/Users/rafael/.rbenv/shims/solargraph",
+
+    // CPP
+    "clangd.semanticHighlighting": true,
+
+    // Rust
+    "rust.clippy_preference": "on",
 
     // HTML
     "emmet.showAbbreviationSuggestions": false,
