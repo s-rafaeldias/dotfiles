@@ -1,86 +1,44 @@
 " Plugins ================================================= {{{
 call plug#begin()
 
-""" General plugins
 Plug 'tpope/vim-fugitive'
-" Closes a buffer without closing the window
 Plug 'rbgrouleff/bclose.vim'
-" Fades inactive buffers
-Plug 'TaDaa/vimade'
-" Language pack
 Plug 'sheerun/vim-polyglot'
-" Autocomplete
-" Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" Code comments
 Plug 'scrooloose/nerdcommenter'
-" Insert or delete brackets, parens, quotes in pair
-Plug 'jiangmiao/auto-pairs'
-" Color matching (), {}, []
+" Plug 'jiangmiao/auto-pairs'
 Plug 'kien/rainbow_parentheses.vim'
-" Show content of registers
 Plug 'junegunn/vim-peekaboo'
-" Show marks
 Plug 'Yilin-Yang/vim-markbar'
-" Fuzzy finder
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-" Syntax checking hacks
-Plug 'dense-analysis/ale'
-" Quoting/parenthesizing made simple
 Plug 'tpope/vim-surround'
-" Show indentation line
-Plug 'Yggdroot/indentLine'
-" Script for text filtering and alignment
-" Plug 'godlygeek/tabular'
-" Snippets for documentation
-Plug 'kkoomen/vim-doge'
 Plug 'nathangrigg/vim-beancount'
+" Plug 'tpope/vim-repeat'
+" Plug 'guns/vim-sexp'
+Plug 'ThePrimeagen/vim-be-good'
 
-" Vim-sexp brings the Vim philosophy of precision editing to S-expressions.
-Plug 'tpope/vim-repeat'
-Plug 'guns/vim-sexp'
-
-" LSP
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/completion-nvim'
 
-
-""" Colorscheme
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ryanoasis/vim-devicons'
 Plug 'gruvbox-community/gruvbox'
 
-"""" Languages
-" C++
 Plug 'jackguo380/vim-lsp-cxx-highlight'
-" Clojure
 Plug 'Olical/conjure'
-" Dockerfile
 Plug 'ekalinin/Dockerfile.vim', { 'for': 'dockerfile' }
-" Elixir
-" Go
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' } ", 'tag': 'v1.20' }
-" HTML/CSS
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'mattn/emmet-vim'
 Plug 'cakebaker/scss-syntax.vim'
-" Ledger
-Plug 'ledger/vim-ledger'
-" Markdown
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
-" Python
-" Semantic highlight for Python
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins', 'for': 'python'}
-" Ruby
 Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
 Plug 'tpope/vim-endwise', { 'for': 'ruby' }
-" Rust
 Plug 'rust-lang/rust.vim', { 'for': 'rust' }
-" Swift
 Plug 'keith/swift.vim'
 
-" Initialize plugin system
 call plug#end()
 " }}}
 
@@ -106,9 +64,7 @@ set updatetime=40
 set completeopt-=preview    " Disable preview for autocomplete
 set noerrorbells            " Disable bells
 set novisualbell            " Disable bells
-" Split settings
 set splitright
-" set splitbelow
 set completeopt=menuone,noinsert,noselect
 
 
@@ -124,7 +80,6 @@ set list
 " Git diff settings
 set diffopt=vertical
 
-" Change <Leader> to ' ' and <LocalLeader> to `;`
 let mapleader=" "
 let maplocalleader=","
 
@@ -137,15 +92,15 @@ autocmd FileType * setlocal formatoptions-=cro
 " Enable highligthing a selection on yank
 autocmd TextYankPost * silent! lua vim.highlight.on_yank()
 
-" Disable arrow keys
-noremap  <Up> <NOP>
-noremap! <Up> <Esc>
-noremap  <Down> <NOP>
-noremap! <Down> <Esc>
-noremap  <Left> <NOP>
-noremap! <Left> <Esc>
-noremap  <Right> <NOP>
-noremap! <Right> <Esc>
+" Lets try this touch typing thing
+map j <Left>
+map k <Down>
+map l <Up>
+map ; <Right>
+nnoremap <C-W>j <C-w>h
+nnoremap <C-W>k <c-w>j
+nnoremap <c-w>l <c-w>k
+nnoremap <c-w>; <c-w>l
 " }}}
 
 " Colors ================================================= {{{
@@ -174,10 +129,6 @@ inoremap <C-U> <ESC>bveUea
 " Remap jk and kj for exit Insert mode
 inoremap lk <Esc><Right>
 inoremap kl <Esc><Right>
-" inoremap jk <Esc><Right>
-" inoremap kj <Esc><Right>
-" Disable <Esc> for exit insert mode
-"inoremap <Esc> <NOP>
 " Create new undo block on <CR> in insert mode
 inoremap <CR> <C-G>u<CR>
 " }}}
@@ -187,18 +138,6 @@ inoremap <CR> <C-G>u<CR>
 nnoremap <leader>ev :vsplit $MYVIMRC<CR>
 " Reload vim config
 nnoremap <leader>sv :source $MYVIMRC<CR>
-
-" Let's try this touch typing thing
-nnoremap j h
-nnoremap k j
-nnoremap l k
-nnoremap ; l
-
-" Move between windows
-nnoremap <C-W>j <C-W>h
-nnoremap <C-W>; <C-W>l
-nnoremap <C-W>k <C-W>j
-nnoremap <C-W>l <C-W>k
 
 " Move line up
 nnoremap - ddp
@@ -218,13 +157,6 @@ nnoremap <Leader>p "*p
 " VISUAL MODE mappings ================================================= {{{
 " Copy selected text to + register (clipboard)
 vnoremap <Leader>y "+y
-
-" Let's try this touch typing thing
-nnoremap j h
-vnoremap k j
-vnoremap l k
-vnoremap ; l
-
 vnoremap D "_d
 " }}}
 
@@ -236,16 +168,16 @@ let g:hybrid_custom_term_colors = 1
 let g:hybrid_reduced_contrast = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline#extensions#branch#enabled = 1
-let g:airline#extensions#ale#enabled = 1
-let g:airline#extensions#coc#enabled = 1
 " }}}
 
-" Plugin: Coc ================================================= {{{
-lua << EOF
-
-require'nvim_lsp'.tsserver.setup{on_attach=require'completion'.on_attach}
-
-EOF
+" Plugin: LSP ================================================= {{{
+let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
+lua require'nvim_lsp'.tsserver.setup{on_attach=require'completion'.on_attach}
+lua require'nvim_lsp'.jedi_language_server.setup{on_attach=require'completion'.on_attach}
+lua require'nvim_lsp'.solargraph.setup{on_attach=require'completion'.on_attach}
+lua require'nvim_lsp'.sourcekit.setup{on_attach=require'completion'.on_attach}
+lua require'nvim_lsp'.jdtls.setup{on_attach=require'completion'.on_attach}
+lua require'nvim_lsp'.gopls.setup{on_attach=require'completion'.on_attach}
 
 " let g:coc_global_extensions = [
             " \ 'coc-json',
@@ -297,7 +229,7 @@ EOF
 
 " Plugin: FZF ================================================= {{{
 let g:fzf_layout =  { 'window': { 'width': 0.8, 'height': 0.8 } }
-" let $FZF_DEFAULT_OPTS = '--reverse'
+let $FZF_DEFAULT_OPTS = '--reverse'
 nnoremap <C-P> :Files<CR>
 nnoremap <C-B> :Buffers<CR>
 nnoremap <Leader>gf :GFiles<CR>
@@ -317,10 +249,6 @@ augroup END
 " Plugin: nerdcommenter ================================================= {{{
 " Add spaces after comment delimiters by default
 let g:NERDSpaceDelims = 1
-" }}}
-
-" Plugin: polyglot ================================================= {{{
-" let g:polyglot_disabled = ['elm']
 " }}}
 
 " Language: C/C++ ================================================= {{{
@@ -406,14 +334,6 @@ augroup LUA_IDE
 augroup END
 " }}}
 
-" Language: Markdown ================================================= {{{
-augroup MARKDOWN_IDE
-    autocmd!
-augroup END
-
-let g:vim_markdown_conceal = 0
-" }}}
-
 " Language: Python ================================================= {{{
 augroup PYTHON_IDE
     autocmd!
@@ -430,19 +350,11 @@ let g:black_linelength = 100
 let g:python_highlight_all=1
 " }}}
 
-" Language: Ruby ================================================= {{{
-" let g:endwise_no_mappings=1
-" }}}
-
 " Language: Rust ================================================= {{{
 let g:rustfmt_autosave = 1
 " }}}
 
 " Language: Rust ================================================= {{{
-augroup SWIFT_IDE
-    autocmd!
-augroup END
-
 let g:syntastic_swift_swiftlint_use_defaults = 1 
 let g:syntastic_swift_checkers = ['swiftlint', 'swiftpm'] 
 " }}}
