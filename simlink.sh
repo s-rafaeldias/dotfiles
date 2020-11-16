@@ -13,15 +13,12 @@ for f in ./ranger/*; do
 done
 
 # Nvim files
-for f in ./nvim/languages/*.*; do
-	file=$(basename "$f")
-	ln -sf ~/$WORK_DIR/nvim/languages/$file ~/.config/nvim/languages/$file
-done
 for f in ./nvim/*.*; do
 	file=$(basename "$f")
 	echo $file
 	ln -sf ~/$WORK_DIR/nvim/$file ~/.config/nvim/$file
 done
+ln -sf ~/$WORK_DIR/nvim/lua/init.lua ~/.config/nvim/lua/init.lua
 
 # tmux/tmuxinator files
 ln -sf ~/$WORK_DIR/tmux/.tmux.conf ~/.tmux.conf

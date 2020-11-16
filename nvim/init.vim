@@ -6,19 +6,29 @@ Plug 'rbgrouleff/bclose.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'scrooloose/nerdcommenter'
 Plug 'jiangmiao/auto-pairs'
-Plug 'kien/rainbow_parentheses.vim'
 Plug 'junegunn/vim-peekaboo'
-Plug 'Yilin-Yang/vim-markbar'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
+Plug 'kien/rainbow_parentheses.vim'
+
+" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+" Plug 'junegunn/fzf.vim'
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-lua/telescope.nvim'
+
 Plug 'tpope/vim-surround'
 Plug 'nathangrigg/vim-beancount'
 " Plug 'tpope/vim-repeat'
 " Plug 'guns/vim-sexp'
 Plug 'ThePrimeagen/vim-be-good'
+" Plug 'nvim-treesitter/nvim-treesitter'
+" Plug 'p00f/nvim-ts-rainbow'
 
+Plug 'tjdevries/nlua.nvim'
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/completion-nvim'
+Plug 'euclidianAce/BetterLua.vim'
+Plug 'svermeulen/vimpeccable'
+
 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -31,11 +41,8 @@ Plug 'ekalinin/Dockerfile.vim', { 'for': 'dockerfile' }
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'mattn/emmet-vim'
 Plug 'cakebaker/scss-syntax.vim'
-Plug 'godlygeek/tabular'
-Plug 'plasticboy/vim-markdown'
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins', 'for': 'python'}
 Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
-Plug 'tpope/vim-endwise', { 'for': 'ruby' }
 Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 Plug 'keith/swift.vim'
 
@@ -43,6 +50,7 @@ call plug#end()
 " }}}
 
 " General Settings ================================================= {{{
+
 if has('nvim')
     let g:python3_host_prog = $HOME . '/miniconda3/envs/neovim/bin/python'
     let g:python_host_prog = $HOME . '/miniconda3/envs/neovim2/bin/python'
@@ -54,7 +62,7 @@ runtime macros/matchit.vim
 set nowrap
 set relativenumber          " show relative numbers
 set number                  " show line numbers
-" set cursorline              " show a visual line under the cursor's current line
+set cursorline              " show a visual line under the cursor's current line
 set showmatch               " show the matching part of the pair for [] {} and ()
 set scrolloff=10
 set signcolumn=yes          " always show signcolumns
@@ -172,68 +180,26 @@ let g:airline#extensions#branch#enabled = 1
 
 " Plugin: LSP ================================================= {{{
 let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
-lua require'nvim_lsp'.tsserver.setup{on_attach=require'completion'.on_attach}
-lua require'nvim_lsp'.jedi_language_server.setup{on_attach=require'completion'.on_attach}
-lua require'nvim_lsp'.solargraph.setup{on_attach=require'completion'.on_attach}
-lua require'nvim_lsp'.sourcekit.setup{on_attach=require'completion'.on_attach}
-lua require'nvim_lsp'.jdtls.setup{on_attach=require'completion'.on_attach}
-lua require'nvim_lsp'.gopls.setup{on_attach=require'completion'.on_attach}
 
-" let g:coc_global_extensions = [
-            " \ 'coc-json',
-            " \ 'coc-yaml',
-            " \ 'coc-highlight',
-            " \ 'coc-html',
-            " \ 'coc-css',
-            " \ 'coc-emmet',
-            " \ 'coc-vimlsp',
-            " \ 'coc-ultisnips',
-            " \ 'coc-conjure',
-            " \ 'coc-clangd',
-            " \ 'coc-jedi',
-            " \ 'coc-solargraph',
-            " \ 'coc-rls',
-            " \ 'coc-tsserver'
-            " \]
+lua require'lspconfig'.tsserver.setup{on_attach=require'completion'.on_attach}
+lua require'lspconfig'.pyls.setup{on_attach=require'completion'.on_attach}
+" lua require'lspconfig'.jedi_language_server.setup{on_attach=require'completion'.on_attach}
+"lua require'lspconfig'.solargraph.setup{on_attach=require'completion'.on_attach}
+lua require'lspconfig'.sourcekit.setup{on_attach=require'completion'.on_attach}
+"lua require'lspconfig'.jdtls.setup{on_attach=require'completion'.on_attach}
+"lua require'lspconfig'.gopls.setup{on_attach=require'completion'.on_attach}
+" lua require'nvim_lsp'.sumneko_lua.setup{on_attach=require'completion'.on_attach}
 
-" let g:coc_filetype_map = {
-    " \ 'scss': 'scss',
-" \ }
 
-" " Use <C-N> to trigger completion.
-" inoremap <SILENT><EXPR> <C-N> coc#refresh()
-" " Use <TAB> for select completion
-" inoremap <EXPR> <TAB> pumvisible() ? "\<C-Y>" : "\<C-G>u\<CR>"
-" " Make <cr> select the first completion item and confirm completion when no item have selected
-" inoremap <SILENT><EXPR> <TAB> pumvisible() ? coc#_select_confirm() : "\<C-G>u\<CR>"
-
-" " Close the preview window when completion is done.
-" autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
-
-" " Use K to show documentation in preview window
-" nnoremap <silent> K :call <SID>show_documentation()<CR>
-
-" function! s:show_documentation()
-  " if (index(['vim','help'], &filetype) >= 0)
-    " execute 'h '.expand('<cword>')
-  " else
-    " call CocAction('doHover')
-  " endif
-" endfunction
-
-" augroup COC
-    " autocmd!
-    " nmap <silent> <Leader>gd <Plug>(coc-definition)
-" augroup END
 " }}}
 
 " Plugin: FZF ================================================= {{{
-let g:fzf_layout =  { 'window': { 'width': 0.8, 'height': 0.8 } }
-let $FZF_DEFAULT_OPTS = '--reverse'
-nnoremap <C-P> :Files<CR>
-nnoremap <C-B> :Buffers<CR>
-nnoremap <Leader>gf :GFiles<CR>
-nnoremap <Leader>ft :Filetypes<CR>
+"' let g:fzf_layout =  { 'window': { 'width': 0.8, 'height': 0.8 } }
+" let $FZF_DEFAULT_OPTS = '--reverse'
+" nnoremap <C-P> :Files<CR>
+" nnoremap <C-B> :Buffers<CR>
+" nnoremap <Leader>gf :GFiles<CR>
+" nnoremap <Leader>ft :Filetypes<CR>
 " }}}
 
 " Plugin: kien/rainbow_parentheses.vim ================================================= {{{
@@ -259,12 +225,6 @@ augroup C_IDE
                 \| set tabstop=4
 augroup END
 
-let g:syntastic_cpp_checkers = ['cpplint']
-let g:syntastic_c_checkers = ['cpplint']
-let g:syntastic_cpp_cpplint_exec = 'cpplint'
-" The following two lines are optional. Configure it to your liking!
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
 " }}}
 
 " Language: Golang ================================================= {{{
@@ -370,3 +330,6 @@ augroup VIML_IDE
                 \| set foldmethod=marker
 augroup END
 " }}}
+
+" LUA BABYYYYY
+lua require('init')
