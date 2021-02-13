@@ -1,5 +1,7 @@
 #!/bin/bash
+
 WORK_DIR=$(basename $(pwd))
+
 # Shell files
 for f in ./shell/*; do
 	file=$(basename "$f")
@@ -13,12 +15,14 @@ for f in ./ranger/*; do
 done
 
 # Nvim files
-for f in ./nvim/*.*; do
-	file=$(basename "$f")
-	echo $file
-	ln -sf ~/$WORK_DIR/nvim/$file ~/.config/nvim/$file
+for f in $( find ~/$WORK_DIR/nvim -type f ); do
+    file=$(basename "$f")
+    echo $f
+    echo $file
+    echo
+    # ln -sf ~/$WORK_DIR/nvim/$file ~/.config/nvim/$file
 done
-ln -sf ~/$WORK_DIR/nvim/lua/init.lua ~/.config/nvim/lua/init.lua
+# ln -sf ~/$WORK_DIR/nvim/ ~/.config/nvim/
 
 # tmux/tmuxinator files
 ln -sf ~/$WORK_DIR/tmux/.tmux.conf ~/.tmux.conf

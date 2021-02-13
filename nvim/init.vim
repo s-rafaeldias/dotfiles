@@ -1,13 +1,12 @@
 " Plugins ================================================= {{{
 call plug#begin()
-
 Plug 'tpope/vim-fugitive'
 Plug 'rbgrouleff/bclose.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'scrooloose/nerdcommenter'
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/vim-peekaboo'
-Plug 'kien/rainbow_parentheses.vim'
+" Plug 'kien/rainbow_parentheses.vim'
 
 " Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 " Plug 'junegunn/fzf.vim'
@@ -20,14 +19,13 @@ Plug 'nathangrigg/vim-beancount'
 " Plug 'tpope/vim-repeat'
 " Plug 'guns/vim-sexp'
 Plug 'ThePrimeagen/vim-be-good'
-" Plug 'nvim-treesitter/nvim-treesitter'
-" Plug 'p00f/nvim-ts-rainbow'
 
-Plug 'tjdevries/nlua.nvim'
+" Plug 'tjdevries/nlua.nvim'
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/completion-nvim'
 Plug 'euclidianAce/BetterLua.vim'
 Plug 'svermeulen/vimpeccable'
+" Plug 'nvim-lua/lsp-status.nvim'
 
 
 Plug 'vim-airline/vim-airline'
@@ -35,22 +33,21 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'ryanoasis/vim-devicons'
 Plug 'gruvbox-community/gruvbox'
 
-Plug 'jackguo380/vim-lsp-cxx-highlight'
-Plug 'Olical/conjure'
+" Plug 'jackguo380/vim-lsp-cxx-highlight'
+" Plug 'Olical/conjure'
 Plug 'ekalinin/Dockerfile.vim', { 'for': 'dockerfile' }
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-Plug 'mattn/emmet-vim'
+Plug 'mattn/emmet-vim', { 'for': 'html' }
 Plug 'cakebaker/scss-syntax.vim'
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins', 'for': 'python'}
 Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
+" Plug 'tpope/vim-endwise', { 'for': 'ruby' }
 Plug 'rust-lang/rust.vim', { 'for': 'rust' }
-Plug 'keith/swift.vim'
 
 call plug#end()
 " }}}
 
 " General Settings ================================================= {{{
-
 if has('nvim')
     let g:python3_host_prog = $HOME . '/miniconda3/envs/neovim/bin/python'
     let g:python_host_prog = $HOME . '/miniconda3/envs/neovim2/bin/python'
@@ -59,43 +56,50 @@ endif
 " Enable matchit
 runtime macros/matchit.vim
 
-set nowrap
-set relativenumber          " show relative numbers
-set number                  " show line numbers
-set cursorline              " show a visual line under the cursor's current line
-set showmatch               " show the matching part of the pair for [] {} and ()
-set scrolloff=10
-set signcolumn=yes          " always show signcolumns
-set timeoutlen=300
-set ttimeoutlen=0
-set updatetime=40
-set completeopt-=preview    " Disable preview for autocomplete
-set noerrorbells            " Disable bells
-set novisualbell            " Disable bells
+" set nowrap
+set relativenumber
+set number
+set nohlsearch
+set hidden
+set cursorline
+set showmatch
 set splitright
-set completeopt=menuone,noinsert,noselect
-
-
-set noswapfile              " Don't create .swp files
-set nobackup
-set undodir=~/.vim/undodir
-set undofile
+set incsearch
+set scrolloff=10
+set signcolumn=yes
 
 " White space settings
 set listchars=eol:↵,tab:↦\ ,trail:~,extends:>,precedes:<
 set list
 
+set timeoutlen=300
+set ttimeoutlen=0
+set updatetime=40
+
+set noerrorbells            " Disable bells
+set novisualbell            " Disable bells
+
+set completeopt-=preview
+set completeopt=menuone,noinsert,noselect
+
+set noswapfile
+set nobackup
+set undodir=~/.vim/undodir
+set undofile
+
+" disable continuation of comments to the next line
+autocmd FileType * setlocal formatoptions-=cro
+
 " Git diff settings
 set diffopt=vertical
 
 let mapleader=" "
-let maplocalleader=","
+" let maplocalleader=","
 
 set directory=.
 set tags=./tags,tags;$HOME
 
-" disable continuation of comments to the next line
-autocmd FileType * setlocal formatoptions-=cro
+" autocmd FileType * 
 
 " Enable highligthing a selection on yank
 autocmd TextYankPost * silent! lua vim.highlight.on_yank()
@@ -125,27 +129,24 @@ endif
 
 set background=dark
 colorscheme gruvbox
-" }}}
-
-" Fn mappings ================================================= {{{
-nnoremap <F3> :set hlsearch!<CR>
+" highlight Normal guibg=none
 " }}}
 
 " INSERT MODE mappings ================================================= {{{
 " Upper word on insert mode
-inoremap <C-U> <ESC>bveUea
+" inoremap <C-U> <ESC>bveUea
 " Remap jk and kj for exit Insert mode
-inoremap lk <Esc><Right>
-inoremap kl <Esc><Right>
+inoremap lk <esc><right>
+inoremap kl <esc><right>
 " Create new undo block on <CR> in insert mode
-inoremap <CR> <C-G>u<CR>
+" inoremap <CR> <C-G>u<CR>
 " }}}
 
 " NORMAL MODE mappings ================================================= {{{
 " Open vim config
-nnoremap <leader>ev :vsplit $MYVIMRC<CR>
+" nnoremap <leader>ev :vsplit $MYVIMRC<CR>
 " Reload vim config
-nnoremap <leader>sv :source $MYVIMRC<CR>
+" nnoremap <leader>sv :source $MYVIMRC<CR>
 
 " Move line up
 nnoremap - ddp
@@ -176,55 +177,36 @@ let g:hybrid_custom_term_colors = 1
 let g:hybrid_reduced_contrast = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline#extensions#branch#enabled = 1
+
+" function! LspStatus() abort
+  " if luaeval('#vim.lsp.buf_get_clients() > 0')
+    " return luaeval("require('lsp-status').status()")
+  " endif
+
+  " return ''
+" endfunction
 " }}}
 
 " Plugin: LSP ================================================= {{{
 let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
-
-lua require'lspconfig'.tsserver.setup{on_attach=require'completion'.on_attach}
-lua require'lspconfig'.pyls.setup{on_attach=require'completion'.on_attach}
-" lua require'lspconfig'.jedi_language_server.setup{on_attach=require'completion'.on_attach}
-"lua require'lspconfig'.solargraph.setup{on_attach=require'completion'.on_attach}
-lua require'lspconfig'.sourcekit.setup{on_attach=require'completion'.on_attach}
-"lua require'lspconfig'.jdtls.setup{on_attach=require'completion'.on_attach}
-"lua require'lspconfig'.gopls.setup{on_attach=require'completion'.on_attach}
-" lua require'nvim_lsp'.sumneko_lua.setup{on_attach=require'completion'.on_attach}
-
-
-" }}}
-
-" Plugin: FZF ================================================= {{{
-"' let g:fzf_layout =  { 'window': { 'width': 0.8, 'height': 0.8 } }
-" let $FZF_DEFAULT_OPTS = '--reverse'
-" nnoremap <C-P> :Files<CR>
-" nnoremap <C-B> :Buffers<CR>
-" nnoremap <Leader>gf :GFiles<CR>
-" nnoremap <Leader>ft :Filetypes<CR>
+let g:completion_confirm_key = "\<C-y>"
+let g:completion_matching_ignore_case = 1
+" let g:completion_enable_snippet = ''
 " }}}
 
 " Plugin: kien/rainbow_parentheses.vim ================================================= {{{
-augroup RAINBOW_PARENTHESES
-    autocmd!
-    autocmd VimEnter * RainbowParenthesesToggle
-    autocmd Syntax * RainbowParenthesesLoadRound
-    autocmd Syntax * RainbowParenthesesLoadSquare
-    autocmd Syntax * RainbowParenthesesLoadBraces
-augroup END
+" augroup RAINBOW_PARENTHESES
+    " autocmd!
+    " autocmd VimEnter * RainbowParenthesesToggle
+    " autocmd Syntax * RainbowParenthesesLoadRound
+    " autocmd Syntax * RainbowParenthesesLoadSquare
+    " autocmd Syntax * RainbowParenthesesLoadBraces
+" augroup END
 " }}}
 
 " Plugin: nerdcommenter ================================================= {{{
 " Add spaces after comment delimiters by default
 let g:NERDSpaceDelims = 1
-" }}}
-
-" Language: C/C++ ================================================= {{{
-augroup C_IDE
-    autocmd!
-    autocmd FileType cpp
-                \  set noexpandtab
-                \| set tabstop=4
-augroup END
-
 " }}}
 
 " Language: Golang ================================================= {{{
@@ -251,22 +233,26 @@ let g:go_fmt_fail_silently = 1
 augroup GO_IDE
     autocmd!
     autocmd FileType go
-        \  nmap <buffer> <LocalLeader>r   <Plug>(go-run)
-        \| nmap <buffer> <LocalLeader>b   <Plug>(go-build)
-        \| nmap <buffer> <LocalLeader>tf  <Plug>(go-alternate-vertical)
-        \| nmap <buffer> <LocalLeader>t   <Plug>(go-test)
-        \| nmap <buffer> <LocalLeader>c   <Plug>(go-coverage)
-        \| nmap <buffer> <LocalLeader>gd  <Plug>(go-doc)
-        \| nmap <buffer> <LocalLeader>gv  <Plug>(go-doc-vertical)
-        \| nmap <buffer> <LocalLeader>s   <Plug>(go-implements)
-        \| nmap <buffer> <LocalLeader>i   <Plug>(go-info)
+        \  set tabstop=4
+        \| set shiftwidth=4
+        " \| nmap <buffer> <LocalLeader>r   <Plug>(go-run)
+        " \| nmap <buffer> <LocalLeader>b   <Plug>(go-build)
+        " \| nmap <buffer> <LocalLeader>tf  <Plug>(go-alternate-vertical)
+        " \| nmap <buffer> <LocalLeader>t   <Plug>(go-test)
+        " \| nmap <buffer> <LocalLeader>c   <Plug>(go-coverage)
+        " \| nmap <buffer> <LocalLeader>gd  <Plug>(go-doc)
+        " \| nmap <buffer> <LocalLeader>gv  <Plug>(go-doc-vertical)
+        " \| nmap <buffer> <LocalLeader>s   <Plug>(go-implements)
+        " \| nmap <buffer> <LocalLeader>i   <Plug>(go-info)
 augroup END
 " }}}
 
 " Language: HTML/CSS ================================================= {{{
 augroup HTML_CSS_IDE
+    let g:user_emmet_mode='inv'
+    let g:user_emmet_expandabbr_key='<Tab>'
     autocmd!
-    autocmd FileType css,scss
+    autocmd FileType css,scss,html
                 \  set expandtab
                 \| set tabstop=2
                 \| set shiftwidth=2
@@ -301,22 +287,13 @@ augroup PYTHON_IDE
                 \  set tabstop=4
                 \| set expandtab
                 \| set shiftwidth=4
-                \| set foldmethod=indent
-                \| set foldnestmax=2
-                \| normal zR
+                " \| set foldmethod=indent
+                " \| set foldnestmax=2
+                " \| normal zR
 augroup END
 
 let g:black_linelength = 100
 let g:python_highlight_all=1
-" }}}
-
-" Language: Rust ================================================= {{{
-let g:rustfmt_autosave = 1
-" }}}
-
-" Language: Rust ================================================= {{{
-let g:syntastic_swift_swiftlint_use_defaults = 1 
-let g:syntastic_swift_checkers = ['swiftlint', 'swiftpm'] 
 " }}}
 
 " Language: Vimscript ================================================= {{{

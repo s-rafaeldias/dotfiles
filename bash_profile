@@ -1,0 +1,1 @@
+/Users/rafael/./Users/rafael/.dotfiles/shell/bash_profile

@@ -1,4 +1,5 @@
 export LC_ALL=en_US.UTF-8
+
 # Yarn
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export PATH="$(yarn global bin):$PATH"
@@ -19,6 +20,7 @@ export PATH=~/bin:$PATH
 export PATH=~/lib:$PATH
 export PATH=/Users/rafael/.local/bin:$PATH
 export PATH=~/workspace/go/bin:$PATH
+export PATH=~/workspace/scripts:$PATH
 
 # Editor
 export EDITOR='nvim'

@@ -1,12 +1,11 @@
 alias shellconfig="nvim ~/dotfiles/shell/."
 alias source_zsh="source ~/.zshrc"
 alias vimconfig="nvim ~/.config/nvim/init.vim"
-# alias tmux='tmux -2'
-# alias tmux='TERM=screen-256color tmux -2'
-# alias tmuxinator='TERM=screen-256color tmuxinator'
 alias update="sudo apt update && sudo apt upgrade -y"
 alias vim="nvim"
 alias bu="brew upgrade"
+alias vpn_off="launchctl unload /Library/LaunchAgents/com.paloaltonetworks.gp.pangp*"
+alias vpn_on="launchctl load /Library/LaunchAgents/com.paloaltonetworks.gp.pangp*"
 
 if [[ $USER == '05018601183' ]]; then
 	alias ssh_eqana_prod="ssh EQANA@SRVANALYTIC01"
