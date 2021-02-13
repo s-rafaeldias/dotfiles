@@ -4,6 +4,7 @@ local telescope  = require('telescope.builtin')
 
 require('rds.lsp')
 
+-- switch between `find_files` and `git_files` using the same mapping
 vimp.nnoremap('<C-P>', function()
     -- https://github.com/nvim-telescope/telescope.nvim/blob/master/lua/telescope/builtin/git.lua#L141 
     local cwd = vim.loop.cwd()
