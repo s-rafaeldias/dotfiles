@@ -1,14 +1,14 @@
 require 'pathname'
 
-WORKING_DIR = Dir.pwd
+WORKING_DIR     = Dir.pwd
 XDG_CONFIG_HOME = ENV.fetch 'XDG_CONFIG_HOME', '~/.config'
-NVIM_DIR = "#{WORKING_DIR}/nvim".freeze
+NVIM_DIR        = "#{WORKING_DIR}/nvim".freeze
 
 # Shell files
 Dir.glob("#{WORKING_DIR}/shell/*").each do |f|
-  system "ln -sf ~/.#{f}"
+  file = Pathname.new f
+  system "ln -sf #{f} ~/.#{file.basename}"
 end
-
 
 # Nvim files
 Dir.glob("#{NVIM_DIR}/**/**").each do |f|

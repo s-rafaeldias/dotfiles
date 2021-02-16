@@ -1,8 +1,8 @@
--- local vim        = require('vim')
 local vimp       = require('vimp')
 local telescope  = require('telescope.builtin')
 
 require('rds.lsp')
+require('rds.snippets')
 
 -- switch between `find_files` and `git_files` using the same mapping
 vimp.nnoremap('<C-P>', function()

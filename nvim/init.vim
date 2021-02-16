@@ -19,13 +19,15 @@ Plug 'nathangrigg/vim-beancount'
 " Plug 'tpope/vim-repeat'
 " Plug 'guns/vim-sexp'
 Plug 'ThePrimeagen/vim-be-good'
+Plug 'SirVer/ultisnips'
+
 
 " Plug 'tjdevries/nlua.nvim'
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/completion-nvim'
 Plug 'euclidianAce/BetterLua.vim'
 Plug 'svermeulen/vimpeccable'
-" Plug 'nvim-lua/lsp-status.nvim'
+Plug 'nvim-lua/lsp-status.nvim'
 
 
 Plug 'vim-airline/vim-airline'
@@ -33,7 +35,6 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'ryanoasis/vim-devicons'
 Plug 'gruvbox-community/gruvbox'
 
-" Plug 'jackguo380/vim-lsp-cxx-highlight'
 " Plug 'Olical/conjure'
 Plug 'ekalinin/Dockerfile.vim', { 'for': 'dockerfile' }
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
@@ -68,6 +69,10 @@ set incsearch
 set scrolloff=10
 set signcolumn=yes
 
+set tabstop=4
+set expandtab
+set shiftwidth=4
+
 " White space settings
 set listchars=eol:↵,tab:↦\ ,trail:~,extends:>,precedes:<
 set list
@@ -99,7 +104,6 @@ let mapleader=" "
 set directory=.
 set tags=./tags,tags;$HOME
 
-" autocmd FileType * 
 
 " Enable highligthing a selection on yank
 autocmd TextYankPost * silent! lua vim.highlight.on_yank()
@@ -177,14 +181,6 @@ let g:hybrid_custom_term_colors = 1
 let g:hybrid_reduced_contrast = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline#extensions#branch#enabled = 1
-
-" function! LspStatus() abort
-  " if luaeval('#vim.lsp.buf_get_clients() > 0')
-    " return luaeval("require('lsp-status').status()")
-  " endif
-
-  " return ''
-" endfunction
 " }}}
 
 " Plugin: LSP ================================================= {{{
@@ -209,6 +205,12 @@ let g:completion_matching_ignore_case = 1
 let g:NERDSpaceDelims = 1
 " }}}
 
+" Plugin: utilsnips ================================================= {{{
+let g:UltiSnipsSnippetDirectories=['UltiSnips', 'my_snippets']
+let g:UltiSnipsExpandTrigger='<tab>'
+let g:UltiSnipsJumpForwardTrigger='<c-j>'
+" }}}
+
 " Language: Golang ================================================= {{{
 let g:go_highlight_extra_types = 1
 let g:go_highlight_space_tab_error = 1
@@ -229,22 +231,6 @@ let g:go_def_mapping_enabled=1
 let g:go_def_mode='gopls'
 let g:go_auto_type_info = 1
 let g:go_fmt_fail_silently = 1
-
-augroup GO_IDE
-    autocmd!
-    autocmd FileType go
-        \  set tabstop=4
-        \| set shiftwidth=4
-        " \| nmap <buffer> <LocalLeader>r   <Plug>(go-run)
-        " \| nmap <buffer> <LocalLeader>b   <Plug>(go-build)
-        " \| nmap <buffer> <LocalLeader>tf  <Plug>(go-alternate-vertical)
-        " \| nmap <buffer> <LocalLeader>t   <Plug>(go-test)
-        " \| nmap <buffer> <LocalLeader>c   <Plug>(go-coverage)
-        " \| nmap <buffer> <LocalLeader>gd  <Plug>(go-doc)
-        " \| nmap <buffer> <LocalLeader>gv  <Plug>(go-doc-vertical)
-        " \| nmap <buffer> <LocalLeader>s   <Plug>(go-implements)
-        " \| nmap <buffer> <LocalLeader>i   <Plug>(go-info)
-augroup END
 " }}}
 
 " Language: HTML/CSS ================================================= {{{
@@ -268,32 +254,6 @@ augroup JS_IDE
                 \| set expandtab
                 \| set shiftwidth=2
 augroup END
-" }}}
-
-" Language: Lua ================================================= {{{
-augroup LUA_IDE
-    autocmd!
-    autocmd FileType lua
-                \  set tabstop=4
-                \| set expandtab
-                \| set shiftwidth=4
-augroup END
-" }}}
-
-" Language: Python ================================================= {{{
-augroup PYTHON_IDE
-    autocmd!
-    autocmd FileType python
-                \  set tabstop=4
-                \| set expandtab
-                \| set shiftwidth=4
-                " \| set foldmethod=indent
-                " \| set foldnestmax=2
-                " \| normal zR
-augroup END
-
-let g:black_linelength = 100
-let g:python_highlight_all=1
 " }}}
 
 " Language: Vimscript ================================================= {{{
