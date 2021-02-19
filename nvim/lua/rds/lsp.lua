@@ -2,12 +2,10 @@ local vimp       = require('vimp')
 local lspconfig  = require('lspconfig')
 local completion = require('completion')
 
-local lsp_status = require('lsp-status')
-lsp_status.register_progress()
-
 function custom_attach(client)
+    print('Attaching LSP: ' .. client.name)
+
     completion.on_attach(client)
-    lsp_status.on_attach(client)
 
     -- show documentation
     vimp.nnoremap({'override'}, 'K', function()
@@ -18,9 +16,9 @@ function custom_attach(client)
         vim.lsp.buf.definition()
     end)
 
-    -- show signature
-    vimp.nnoremap({'override'}, '<C-k>', function()
-        vim.lsp.buf.signature_help()
+    -- rename
+    vimp.nnoremap({'override'}, '<leader>rr', function()
+        vim.lsp.buf.rename()
     end)
 end
 
@@ -29,6 +27,5 @@ local servers = { "pyls", "solargraph", "gopls" }
 for _, lsp in ipairs(servers) do
     lspconfig[lsp].setup {
         on_attach = custom_attach,
-        capabilities = lsp_status.capabilities
     }
 end

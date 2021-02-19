@@ -29,6 +29,7 @@ Plug 'euclidianAce/BetterLua.vim'
 Plug 'svermeulen/vimpeccable'
 Plug 'nvim-lua/lsp-status.nvim'
 
+Plug 'mhinz/vim-rfc'
 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
