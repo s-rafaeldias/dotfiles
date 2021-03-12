@@ -6,7 +6,8 @@ Plug 'sheerun/vim-polyglot'
 Plug 'scrooloose/nerdcommenter'
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/vim-peekaboo'
-" Plug 'kien/rainbow_parentheses.vim'
+Plug 'kien/rainbow_parentheses.vim'
+Plug 'TimUntersberger/neogit'
 
 " Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 " Plug 'junegunn/fzf.vim'
@@ -21,6 +22,9 @@ Plug 'nathangrigg/vim-beancount'
 Plug 'ThePrimeagen/vim-be-good'
 Plug 'SirVer/ultisnips'
 
+Plug 'lukas-reineke/indent-blankline.nvim', { 'branch': 'lua' }
+
+Plug 'vimwiki/vimwiki'
 
 " Plug 'tjdevries/nlua.nvim'
 Plug 'neovim/nvim-lspconfig'
@@ -35,8 +39,9 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ryanoasis/vim-devicons'
 Plug 'gruvbox-community/gruvbox'
+Plug 'ayu-theme/ayu-vim'
 
-" Plug 'Olical/conjure'
+Plug 'Olical/conjure'
 Plug 'ekalinin/Dockerfile.vim', { 'for': 'dockerfile' }
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'mattn/emmet-vim', { 'for': 'html' }
@@ -105,7 +110,6 @@ let mapleader=" "
 set directory=.
 set tags=./tags,tags;$HOME
 
-
 " Enable highligthing a selection on yank
 autocmd TextYankPost * silent! lua vim.highlight.on_yank()
 
@@ -139,8 +143,7 @@ colorscheme gruvbox
 
 " INSERT MODE mappings ================================================= {{{
 " Upper word on insert mode
-" inoremap <C-U> <ESC>bveUea
-" Remap jk and kj for exit Insert mode
+" Remap lk and kj for exit Insert mode
 inoremap lk <esc><right>
 inoremap kl <esc><right>
 " Create new undo block on <CR> in insert mode
@@ -151,7 +154,7 @@ inoremap kl <esc><right>
 " Open vim config
 " nnoremap <leader>ev :vsplit $MYVIMRC<CR>
 " Reload vim config
-" nnoremap <leader>sv :source $MYVIMRC<CR>
+nnoremap <leader>sv :source $MYVIMRC<CR>
 
 " Move line up
 nnoremap - ddp
@@ -192,13 +195,13 @@ let g:completion_matching_ignore_case = 1
 " }}}
 
 " Plugin: kien/rainbow_parentheses.vim ================================================= {{{
-" augroup RAINBOW_PARENTHESES
-    " autocmd!
-    " autocmd VimEnter * RainbowParenthesesToggle
-    " autocmd Syntax * RainbowParenthesesLoadRound
-    " autocmd Syntax * RainbowParenthesesLoadSquare
-    " autocmd Syntax * RainbowParenthesesLoadBraces
-" augroup END
+augroup RAINBOW_PARENTHESES
+    autocmd!
+    autocmd VimEnter * RainbowParenthesesToggle
+    autocmd Syntax * RainbowParenthesesLoadRound
+    autocmd Syntax * RainbowParenthesesLoadSquare
+    autocmd Syntax * RainbowParenthesesLoadBraces
+augroup END
 " }}}
 
 " Plugin: nerdcommenter ================================================= {{{
@@ -250,7 +253,7 @@ augroup END
 augroup JS_IDE
     autocmd!
     autocmd FileType json syntax match Comment +\/\/.\+$+
-    autocmd FileType javascript,javascriptreact,json
+    autocmd FileType javascript,javascriptreact,jsontypescript,typescript
                 \  set tabstop=2
                 \| set expandtab
                 \| set shiftwidth=2
