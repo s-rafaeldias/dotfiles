@@ -12,7 +12,7 @@ function custom_attach(client)
         vim.lsp.buf.hover()
     end)
 
-    vimp.nnoremap({'override'}, '<leader>gd', function()
+    vimp.nnoremap({'override'}, '<C-]', function()
         vim.lsp.buf.definition()
     end)
 
