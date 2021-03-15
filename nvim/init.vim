@@ -6,11 +6,13 @@ Plug 'sheerun/vim-polyglot'
 Plug 'scrooloose/nerdcommenter'
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/vim-peekaboo'
-Plug 'kien/rainbow_parentheses.vim'
+" Plug 'kien/rainbow_parentheses.vim'
+Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'TimUntersberger/neogit'
 
 " Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 " Plug 'junegunn/fzf.vim'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-lua/telescope.nvim'
@@ -19,13 +21,12 @@ Plug 'tpope/vim-surround'
 Plug 'nathangrigg/vim-beancount'
 " Plug 'tpope/vim-repeat'
 " Plug 'guns/vim-sexp'
-Plug 'ThePrimeagen/vim-be-good'
+" Plug 'ThePrimeagen/vim-be-good'
 Plug 'SirVer/ultisnips'
 
 Plug 'lukas-reineke/indent-blankline.nvim', { 'branch': 'lua' }
 
-Plug 'vimwiki/vimwiki'
-
+" Plug 'vimwiki/vimwiki'
 " Plug 'tjdevries/nlua.nvim'
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/completion-nvim'
@@ -39,9 +40,8 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ryanoasis/vim-devicons'
 Plug 'gruvbox-community/gruvbox'
-Plug 'ayu-theme/ayu-vim'
 
-Plug 'Olical/conjure'
+" Plug 'Olical/conjure'
 Plug 'ekalinin/Dockerfile.vim', { 'for': 'dockerfile' }
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'mattn/emmet-vim', { 'for': 'html' }
@@ -49,7 +49,7 @@ Plug 'cakebaker/scss-syntax.vim'
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins', 'for': 'python'}
 Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
 " Plug 'tpope/vim-endwise', { 'for': 'ruby' }
-Plug 'rust-lang/rust.vim', { 'for': 'rust' }
+" Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 
 call plug#end()
 " }}}
@@ -195,13 +195,8 @@ let g:completion_matching_ignore_case = 1
 " }}}
 
 " Plugin: kien/rainbow_parentheses.vim ================================================= {{{
-augroup RAINBOW_PARENTHESES
-    autocmd!
-    autocmd VimEnter * RainbowParenthesesToggle
-    autocmd Syntax * RainbowParenthesesLoadRound
-    autocmd Syntax * RainbowParenthesesLoadSquare
-    autocmd Syntax * RainbowParenthesesLoadBraces
-augroup END
+autocmd FileType * RainbowParentheses
+let g:rainbow#pairs = [['(', ')'], ['[', ']'], ['{', '}']]
 " }}}
 
 " Plugin: nerdcommenter ================================================= {{{

@@ -1,14 +1,41 @@
-local vimp       = require 'vimp'
-local telescope  = require 'telescope.builtin'
+-- local vimp       = require 'vimp'
+local telescope_builtin  = require 'telescope.builtin'
+local actions = require 'telescope.actions'
 
-vimp.nnoremap('<C-P>', function() telescope.find_files{
-    prompt_position = 'top',
-    sorting_strategy = 'ascending',
-    color_devicons = true,
-    width = .25,
+require('telescope').setup {
+    defaults = {
+        file_ignore_patterns = {
+            'node_modules/*',
+            '*.pyc',
+        },
+        color_devicons = true,
+        prompt_position = 'top',
+        sorting_strategy = 'ascending',
+        width = .25,
 
-    layout_strategy = 'horizontal',
-    layout_config = {
-        preview_width = .65,
+        layout_strategy = 'horizontal',
+        layout_config = {
+            preview_width = .65,
+        },
+
+        mappings = {
+            i = { ["<C-q>"] = actions.send_to_qflist }
+        }
     }
-} end)
+}
+
+local M = {}
+
+M.search_dotfiles = function()
+    telescope_builtin.find_files {
+        cwd = '~/.dotfiles',
+        prompt_title = '< dotfiles >'
+    }
+end
+
+-- things I usually search/want to search:
+-- TODOs (maybe add then to quicklist)
+
+
+-- vimp.nnoremap('<C-P>', function() telescope_builtin.find_files{} end)
+return M
