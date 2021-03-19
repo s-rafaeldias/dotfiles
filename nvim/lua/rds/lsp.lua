@@ -1,11 +1,12 @@
 local vimp       = require('vimp')
 local lspconfig  = require('lspconfig')
-local completion = require('completion')
+-- local completion = require('completion')
+-- local completion = require('compe')
 
 function custom_attach(client)
     print('Attaching LSP: ' .. client.name)
 
-    completion.on_attach(client)
+    -- completion.on_attach(client)
 
     -- show documentation
     vimp.nnoremap({'override'}, 'K', function()
@@ -23,12 +24,41 @@ function custom_attach(client)
 end
 
 
-local servers = { "pyls", "solargraph", "gopls", "tsserver" }
+local servers = { "pyls", "solargraph", "gopls", "tsserver", "clangd" }
 for _, lsp in ipairs(servers) do
     lspconfig[lsp].setup {
         on_attach = custom_attach,
     }
 end
+
+
+require'compe'.setup {
+  enabled = true;
+  autocomplete = true;
+  debug = false;
+  min_length = 1;
+  preselect = 'enable';
+  throttle_time = 80;
+  source_timeout = 200;
+  incomplete_delay = 400;
+  max_abbr_width = 100;
+  max_kind_width = 100;
+  max_menu_width = 100;
+  documentation = true;
+
+  source = {
+    path = true;
+    buffer = true;
+    calc = true;
+    vsnip = true;
+    nvim_lsp = true;
+    nvim_lua = true;
+    spell = true;
+    tags = true;
+    snippets_nvim = true;
+    treesitter = true;
+  };
+}
 
 
 local system_name

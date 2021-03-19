@@ -9,10 +9,11 @@ Plug 'junegunn/vim-peekaboo'
 " Plug 'kien/rainbow_parentheses.vim'
 Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'TimUntersberger/neogit'
+Plug 'godlygeek/tabular'
 
 " Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 " Plug 'junegunn/fzf.vim'
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+" Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-lua/telescope.nvim'
@@ -30,7 +31,8 @@ Plug 'lukas-reineke/indent-blankline.nvim', { 'branch': 'lua' }
 " Plug 'vimwiki/vimwiki'
 " Plug 'tjdevries/nlua.nvim'
 Plug 'neovim/nvim-lspconfig'
-Plug 'nvim-lua/completion-nvim'
+Plug 'hrsh7th/nvim-compe'
+" Plug 'nvim-lua/completion-nvim'
 Plug 'euclidianAce/BetterLua.vim'
 Plug 'svermeulen/vimpeccable'
 Plug 'nvim-lua/lsp-status.nvim'
@@ -148,7 +150,7 @@ colorscheme gruvbox
 inoremap lk <esc><right>
 inoremap kl <esc><right>
 " Create new undo block on <CR> in insert mode
-" inoremap <CR> <C-G>u<CR>
+inoremap <CR> <C-G>u<CR>
 " }}}
 
 " NORMAL MODE mappings ================================================= {{{

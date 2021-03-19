@@ -8,6 +8,7 @@ require('telescope').setup {
         file_ignore_patterns = {
             'node_modules/*',
             '*.pyc',
+            '.git/*'
         },
         color_devicons = true,
         prompt_position = 'top',
@@ -22,28 +23,20 @@ require('telescope').setup {
         mappings = {
             i = { ["<C-q>"] = actions.send_to_qflist }
         },
-
-        extensions = {
-            fzy_native = {
-                override_generic_sorter = false,
-                override_file_sorter = true,
-            }
-        }
     }
 }
 
-require('telescope').load_extension('fzy_native')
 
 local M = {}
 
 M.search_dotfiles = function()
     telescope_builtin.find_files(themes.get_dropdown({
+        hidden = true,
         layout_strategy = 'center',
 
         cwd = '~/.dotfiles',
         prompt_title = '< dotfiles >'
-        })
-    )
+    }))
 end
 
 -- things I usually search/want to search:

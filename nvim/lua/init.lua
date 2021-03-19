@@ -11,7 +11,8 @@ RELOAD = function(pkg)
 end
 
 -- Mappings {{{
-vimp.nnoremap('<C-P>', function() telescope.find_files{} end)
+vimp.nnoremap('<C-P>', function() telescope.find_files{ hidden = true } end)
+vimp.nnoremap('<Leader>fg', function() telescope.git_files{} end)
 vimp.nnoremap('<C-B>', function() telescope.buffers{} end)
 vimp.nnoremap('<Leader>ev', function() RELOAD('rds.telescope').search_dotfiles() end)
 -- }}}
