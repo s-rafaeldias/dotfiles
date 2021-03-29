@@ -26,7 +26,8 @@ Plug 'nathangrigg/vim-beancount'
 " Plug 'ThePrimeagen/vim-be-good'
 Plug 'SirVer/ultisnips'
 
-Plug 'lukas-reineke/indent-blankline.nvim', { 'branch': 'lua' }
+Plug 'Yggdroot/indentLine'
+" Plug 'lukas-reineke/indent-blankline.nvim', { 'branch': 'lua' }
 
 " Plug 'vimwiki/vimwiki'
 " Plug 'tjdevries/nlua.nvim'
@@ -251,7 +252,7 @@ augroup END
 augroup JS_IDE
     autocmd!
     autocmd FileType json syntax match Comment +\/\/.\+$+
-    autocmd FileType javascript,javascriptreact,jsontypescript,typescript
+    autocmd FileType javascript,javascriptreact,jsontypescript,typescript,typescriptreact
                 \  set tabstop=2
                 \| set expandtab
                 \| set shiftwidth=2

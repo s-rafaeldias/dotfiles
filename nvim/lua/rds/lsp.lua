@@ -13,7 +13,11 @@ function custom_attach(client)
         vim.lsp.buf.hover()
     end)
 
-    vimp.nnoremap({'override'}, '<C-]', function()
+    vimp.nnoremap({'override'}, '<C-K>', function()
+        vim.lsp.buf.signature_help()
+    end)
+
+    vimp.nnoremap({'override'}, 'gd', function()
         vim.lsp.buf.definition()
     end)
 
@@ -36,7 +40,7 @@ require'compe'.setup {
   enabled = true;
   autocomplete = true;
   debug = false;
-  min_length = 1;
+  min_length = 3;
   preselect = 'enable';
   throttle_time = 80;
   source_timeout = 200;
@@ -54,7 +58,7 @@ require'compe'.setup {
     nvim_lsp = true;
     nvim_lua = true;
     spell = true;
-    tags = true;
+    tags = false;
     snippets_nvim = true;
     treesitter = true;
   };
