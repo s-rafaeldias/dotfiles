@@ -2,13 +2,8 @@
 local telescope_builtin = require 'telescope.builtin'
 local themes            = require 'telescope.themes'
 local actions           = require 'telescope.actions'
-local pickers           = require 'telescope.pickers'
-local finder            = require 'telescope.finders'
-local sorter            = require 'telescope.sorters'
-local previewer         = require 'telescope.previewers'
--- local conf = require('telescope.config').values
 
-
+require("telescope").load_extension("git_worktree")
 require('telescope').setup {
     defaults = {
         file_ignore_patterns = {
@@ -46,33 +41,38 @@ M.search_dotfiles = function()
 end
 
 -- things I usually search/want to search:
--- TODOs (maybe add then to quicklist)
+-- TODO: (maybe add then to quicklist)
+M.todos = function()
+    -- search all files looking for `TODO:` and add to quicklist
+    vim.cmd [[ silent vimgrep! /TODO:/j **/*.* ]]
+    telescope_builtin.quickfix()
+end
 
 -- Create a custom find_files
 M.find_files = function(opts)
-    local find_command = {
-        'fd',
-        '--type',
-        'f',
-        '-H',
-        '--no-ignore-vcs',
-        '-E',
-        '.git',
-    }
+  telescope_builtin.find_files(opts)
+  -- local find_command = {
+      -- 'fd',
+      -- '--type',
+      -- 'f',
+      -- '-H',
+      -- '--no-ignore-vcs',
+      -- '-E',
+      -- '.git',
+  -- }
 
-    pickers.new(opts, {
-        prompt_title = 'Find files',
-        finder = finder.new_oneshot_job(find_command, opts),
-        previewer = previewer.vim_buffer_cat.new(opts),
-        sorter = sorter.get_fuzzy_file()
-    }):find()
+  -- pickers.new(opts, {
+      -- prompt_title = 'Find files',
+      -- finder = finder.new_oneshot_job(find_command, opts),
+      -- previewer = previewer.vim_buffer_cat.new(opts),
+      -- sorter = sorter.get_fuzzy_file()
+  -- }):find()
 end
 
 
 M.search_pi = function()
-    local netrw_result = vim.api.nvim_command_output(':Explore scp://pi@192.168.0.23/')
+    local netrw_result = vim.api.nvim_exec(':Explore scp://pi@192.168.0.23/', {})
     print(vim.inspect(netrw_result))
 end
-
 
 return M

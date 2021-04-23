@@ -2,22 +2,23 @@
 call plug#begin()
 Plug 'tpope/vim-fugitive'
 Plug 'rbgrouleff/bclose.vim'
-Plug 'sheerun/vim-polyglot'
 Plug 'scrooloose/nerdcommenter'
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/vim-peekaboo'
-" Plug 'kien/rainbow_parentheses.vim'
 Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'TimUntersberger/neogit'
 Plug 'godlygeek/tabular'
 
-" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-" Plug 'junegunn/fzf.vim'
-" Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-lua/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
+
+Plug 'ThePrimeagen/git-worktree.nvim'
+Plug 'ThePrimeagen/harpoon'
+
 
 Plug 'tpope/vim-surround'
 Plug 'nathangrigg/vim-beancount'
@@ -29,7 +30,6 @@ Plug 'SirVer/ultisnips'
 Plug 'Yggdroot/indentLine'
 " Plug 'lukas-reineke/indent-blankline.nvim', { 'branch': 'lua' }
 
-" Plug 'vimwiki/vimwiki'
 " Plug 'tjdevries/nlua.nvim'
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/nvim-compe'
@@ -38,20 +38,31 @@ Plug 'euclidianAce/BetterLua.vim'
 Plug 'svermeulen/vimpeccable'
 Plug 'nvim-lua/lsp-status.nvim'
 
-Plug 'mhinz/vim-rfc'
+" Plug 'mhinz/vim-rfc'
 
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+" Plug 'vim-airline/vim-airline'
+" Plug 'vim-airline/vim-airline-themes'
 Plug 'ryanoasis/vim-devicons'
 Plug 'gruvbox-community/gruvbox'
+
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
+Plug 'junegunn/goyo.vim'
 
 " Plug 'Olical/conjure'
 Plug 'ekalinin/Dockerfile.vim', { 'for': 'dockerfile' }
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'mattn/emmet-vim', { 'for': 'html' }
 Plug 'cakebaker/scss-syntax.vim'
+" Python
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins', 'for': 'python'}
+
 Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
+
+Plug 'prettier/vim-prettier', {
+  \ 'do': 'yarn install',
+  \ 'for': ['javascript', 'typescript', 'json', 'typescriptreact', 'javascriptreact'] }
+Plug 'jose-elias-alvarez/nvim-lsp-ts-utils'
 " Plug 'tpope/vim-endwise', { 'for': 'ruby' }
 " Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 
@@ -155,8 +166,6 @@ inoremap <CR> <C-G>u<CR>
 " }}}
 
 " NORMAL MODE mappings ================================================= {{{
-" Open vim config
-" nnoremap <leader>ev :vsplit $MYVIMRC<CR>
 " Reload vim config
 nnoremap <leader>sv :source $MYVIMRC<CR>
 
@@ -173,6 +182,8 @@ nnoremap <S-TAB> :bn<CR>
 " Paste clipboard (register *)
 nnoremap <Leader>P "*P
 nnoremap <Leader>p "*p
+
+nnoremap <F2> :Goyo<CR>
 " }}}
 
 " VISUAL MODE mappings ================================================= {{{
@@ -189,6 +200,10 @@ let g:hybrid_custom_term_colors = 1
 let g:hybrid_reduced_contrast = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline#extensions#branch#enabled = 1
+" }}}
+
+" Plugin: Goyg ================================================= {{{
+let g:goyo_width = 120
 " }}}
 
 " Plugin: LSP ================================================= {{{
@@ -257,6 +272,11 @@ augroup JS_IDE
                 \| set expandtab
                 \| set shiftwidth=2
 augroup END
+" }}}
+
+" Language: Markdown ================================================= {{{
+let g:vim_markdown_conceal = 0
+let g:vim_markdown_conceal_code_blocks = 0
 " }}}
 
 " Language: Vimscript ================================================= {{{

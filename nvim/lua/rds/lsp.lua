@@ -13,10 +13,6 @@ function custom_attach(client)
         vim.lsp.buf.hover()
     end)
 
-    vimp.nnoremap({'override'}, '<C-K>', function()
-        vim.lsp.buf.signature_help()
-    end)
-
     vimp.nnoremap({'override'}, 'gd', function()
         vim.lsp.buf.definition()
     end)
@@ -40,7 +36,7 @@ require'compe'.setup {
   enabled = true;
   autocomplete = true;
   debug = false;
-  min_length = 3;
+  min_length = 1;
   preselect = 'enable';
   throttle_time = 80;
   source_timeout = 200;
