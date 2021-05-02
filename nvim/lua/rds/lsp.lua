@@ -1,36 +1,5 @@
 local vimp       = require('vimp')
 local lspconfig  = require('lspconfig')
--- local completion = require('completion')
--- local completion = require('compe')
-
-function custom_attach(client)
-    print('Attaching LSP: ' .. client.name)
-
-    -- completion.on_attach(client)
-
-    -- show documentation
-    vimp.nnoremap({'override'}, 'K', function()
-        vim.lsp.buf.hover()
-    end)
-
-    vimp.nnoremap({'override'}, 'gd', function()
-        vim.lsp.buf.definition()
-    end)
-
-    -- rename
-    vimp.nnoremap({'override'}, '<leader>rr', function()
-        vim.lsp.buf.rename()
-    end)
-end
-
-
-local servers = { "pyls", "solargraph", "gopls", "tsserver", "clangd" }
-for _, lsp in ipairs(servers) do
-    lspconfig[lsp].setup {
-        on_attach = custom_attach,
-    }
-end
-
 
 require'compe'.setup {
   enabled = true;
@@ -59,6 +28,45 @@ require'compe'.setup {
     treesitter = true;
   };
 }
+
+-- Use <CR> for snippets on insert mode
+vim.cmd [[ inoremap <silent><expr> <CR> compe#confirm('<CR>') ]]
+
+function custom_attach(client)
+    print('Attaching LSP: ' .. client.name)
+
+    if client.name == "tsserver" then
+        local ts_utils = require("nvim-lsp-ts-utils")
+        ts_utils.setup{}
+    end
+
+    -- show documentation
+    vimp.nnoremap({'override'}, 'K', function()
+        vim.lsp.buf.hover()
+    end)
+
+    vimp.nnoremap({'override'}, 'gd', function()
+        vim.lsp.buf.definition()
+    end)
+
+    -- rename
+    vimp.nnoremap({'override'}, '<leader>rr', function()
+        vim.lsp.buf.rename()
+    end)
+
+    vimp.nnoremap({'override'}, 'ga', function()
+        vim.lsp.buf.code_action()
+    end)
+end
+
+
+local servers = { "pyls", "solargraph", "gopls", "tsserver", "clangd", "rust_analyzer" }
+for _, lsp in ipairs(servers) do
+    lspconfig[lsp].setup {
+        on_attach = custom_attach,
+    }
+end
+
 
 
 local system_name

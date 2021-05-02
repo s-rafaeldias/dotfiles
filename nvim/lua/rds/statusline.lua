@@ -7,6 +7,26 @@
 -- enconding (?)
 -- LSP erros and warnings
 
+-- local function harpoon_status()
+    -- return ""
+-- end
+
+local function lsp_status()
+    local errors = vim.lsp.diagnostic.get_count(0, "Error")
+    local warnings = vim.lsp.diagnostic.get_count(0, "Warning")
+    local hints = vim.lsp.diagnostic.get_count(0, "Hint")
+    return string.format("%%-20.20(|LSP E:%s W:%s H:%s%%)", errors, warnings, hints)
+end
+
+local function harpoon_status()
+    local status = require("harpoon.mark").status()
+    if #status == 0 then
+        status = "-"
+    end
+
+    return string.format("%%(|Harpoon: %s%%)", status)
+end
+
 function Statusline()
     local git_branch = vim.fn["fugitive#head"]()
 
@@ -14,11 +34,11 @@ function Statusline()
         git_branch = "no-git"
     end
 
-    local git_str = string.format("%%-20.20((%s)%%)", git_branch)
+    local git_str = string.format("%%-20.20(|(%s)%%)", git_branch)
 
-    local file_str = "|%-10.100f"
+    local file_str = "|%-60.130f"
 
-    return git_str..file_str
+    return git_str..file_str..lsp_status()..harpoon_status()
 end
 
 vim.o.statusline = "%!v:lua.Statusline()"

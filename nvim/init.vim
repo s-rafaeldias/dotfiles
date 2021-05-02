@@ -33,6 +33,7 @@ Plug 'Yggdroot/indentLine'
 " Plug 'tjdevries/nlua.nvim'
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/nvim-compe'
+Plug 'nvim-lua/lsp_extensions.nvim'
 " Plug 'nvim-lua/completion-nvim'
 Plug 'euclidianAce/BetterLua.vim'
 Plug 'svermeulen/vimpeccable'
@@ -184,12 +185,17 @@ nnoremap <Leader>P "*P
 nnoremap <Leader>p "*p
 
 nnoremap <F2> :Goyo<CR>
+nnoremap <F3> :luafile %<CR>
 " }}}
 
 " VISUAL MODE mappings ================================================= {{{
 " Copy selected text to + register (clipboard)
 vnoremap <Leader>y "+y
 vnoremap D "_d
+" }}}
+
+" TERMINAL mappings ================================================= {{{
+tnoremap <Esc> <C-\><C-n>
 " }}}
 
 " Plugin: Airline ================================================= {{{

@@ -5,7 +5,7 @@ local mark = require 'harpoon.mark'
 
 require('harpoon').setup ({
     projects = {
-        ["$HOME/workspace/ceub/tcc/Backpacker-API/"] = {
+        ["$HOME/workspace/ceub/tcc/Backpacker-API/{}"] = {
             term = {
                 cmds = {
                     "npm run start:dev\n",
@@ -13,6 +13,11 @@ require('harpoon').setup ({
                 }
             }
         },
+        ["$HOME/.dotfiles"] = {
+            term = {
+                cmds = { "ruby setup.rb\n" }
+            }
+        }
     }
 })
 
@@ -26,5 +31,8 @@ vimp.nnoremap({'override'}, '<Leader>l', function() ui.nav_file(3) end)
 vimp.nnoremap({'override'}, '<Leader>;', function() ui.nav_file(4) end)
 
 
-vimp.nnoremap({'override'}, '<C-J>', function() term.sendCommand(1, 1) end)
+vimp.nnoremap({'override'}, '<C-J>', function()
+    term.sendCommand(1, 1)
+    -- term.gotoTerminal(1)
+end)
 vimp.nnoremap({'override'}, '<C-K>', function() term.sendCommand(2, 2) end)
