@@ -17,8 +17,8 @@ Plug 'nvim-lua/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
 
 Plug 'ThePrimeagen/git-worktree.nvim'
+" Plug '/Users/rafael/workspace/projects/git-worktree.nvim'
 Plug 'ThePrimeagen/harpoon'
-
 
 Plug 'tpope/vim-surround'
 Plug 'nathangrigg/vim-beancount'
@@ -39,11 +39,7 @@ Plug 'euclidianAce/BetterLua.vim'
 Plug 'svermeulen/vimpeccable'
 Plug 'nvim-lua/lsp-status.nvim'
 
-" Plug 'mhinz/vim-rfc'
 
-" Plug 'vim-airline/vim-airline'
-" Plug 'vim-airline/vim-airline-themes'
-Plug 'ryanoasis/vim-devicons'
 Plug 'gruvbox-community/gruvbox'
 
 Plug 'godlygeek/tabular'
@@ -52,9 +48,10 @@ Plug 'junegunn/goyo.vim'
 
 " Plug 'Olical/conjure'
 Plug 'ekalinin/Dockerfile.vim', { 'for': 'dockerfile' }
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-Plug 'mattn/emmet-vim', { 'for': 'html' }
-Plug 'cakebaker/scss-syntax.vim'
+" Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+" Plug 'mattn/emmet-vim', { 'for': 'html' }
+" Plug 'cakebaker/scss-syntax.vim'
+
 " Python
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins', 'for': 'python'}
 
@@ -65,7 +62,7 @@ Plug 'prettier/vim-prettier', {
   \ 'for': ['javascript', 'typescript', 'json', 'typescriptreact', 'javascriptreact'] }
 Plug 'jose-elias-alvarez/nvim-lsp-ts-utils'
 " Plug 'tpope/vim-endwise', { 'for': 'ruby' }
-" Plug 'rust-lang/rust.vim', { 'for': 'rust' }
+Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 
 call plug#end()
 " }}}

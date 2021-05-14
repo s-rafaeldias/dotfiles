@@ -24,7 +24,7 @@ local function harpoon_status()
         status = "-"
     end
 
-    return string.format("%%(|Harpoon: %s%%)", status)
+    return string.format("%%-15.15(|Harpoon: %s%%)", status)
 end
 
 function Statusline()
@@ -34,11 +34,11 @@ function Statusline()
         git_branch = "no-git"
     end
 
-    local git_str = string.format("%%-20.20(|(%s)%%)", git_branch)
+    local git_str = string.format("%%-10.20(|(%s)%%)", git_branch)
 
-    local file_str = "|%-60.130f"
+    local file_str = "|%-60.110f"
 
-    return git_str..file_str..lsp_status()..harpoon_status()
+    return git_str..lsp_status()..harpoon_status()..file_str
 end
 
 vim.o.statusline = "%!v:lua.Statusline()"

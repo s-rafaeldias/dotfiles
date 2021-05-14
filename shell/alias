@@ -1,10 +1,14 @@
 alias shellconfig="nvim ~/dotfiles/shell/."
 alias source_zsh="source ~/.zshrc"
 alias vimconfig="nvim ~/.config/nvim/init.vim"
+
 alias update="sudo apt update && sudo apt upgrade -y"
 alias bu="brew upgrade"
+
 alias vim="nvim"
 alias vi="nvim"
 
 alias vpn_off="launchctl unload /Library/LaunchAgents/com.paloaltonetworks.gp.pangp*"
 alias vpn_on="launchctl load /Library/LaunchAgents/com.paloaltonetworks.gp.pangp*"
+
+alias inflate='ruby -r zlib -e "STDOUT.write Zlib::Inflate.inflate(STDIN.read)"'

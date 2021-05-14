@@ -17,7 +17,7 @@ end
 
 -- TODO: put treesitter config on its own module
 treesitter.setup {
-    ensure_installed = { 'lua', 'javascript', 'python', 'bash', 'beancount', 'c', 'cpp', 'go', 'ruby', 'tsx', 'typescript', 'comment', 'json', 'toml' };
+    ensure_installed = { 'lua', 'javascript', 'python', 'bash', 'beancount', 'c', 'cpp', 'ruby', 'tsx', 'typescript', 'comment', 'json', 'toml' };
     highlight = {
         enable = true
     }

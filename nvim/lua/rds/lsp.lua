@@ -1,6 +1,8 @@
 local vimp       = require('vimp')
 local lspconfig  = require('lspconfig')
 
+vim.lsp.set_log_level("debug")
+
 require'compe'.setup {
   enabled = true;
   autocomplete = true;
@@ -60,7 +62,7 @@ function custom_attach(client)
 end
 
 
-local servers = { "pyls", "solargraph", "gopls", "tsserver", "clangd", "rust_analyzer" }
+local servers = { "pyright", "solargraph", "gopls", "tsserver", "clangd", "rust_analyzer" }
 for _, lsp in ipairs(servers) do
     lspconfig[lsp].setup {
         on_attach = custom_attach,
