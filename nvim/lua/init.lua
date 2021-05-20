@@ -23,6 +23,11 @@ treesitter.setup {
     }
 }
 
+neogit.setup {}
+
+vim.g.git_worktree_log_level = 'trace'
+
+
 
 -- Mappings {{{
 vimp.nnoremap({'override'}, '<C-P>', function() RELOAD('rds.telescope').find_files{} end)
@@ -34,6 +39,6 @@ vimp.nnoremap({'override'}, '<Leader>tt', function() RELOAD('rds.telescope').tod
 vimp.nnoremap({'override'}, '<Leader>m', function() telescope_builtin.keymaps{} end)
 
 -- Git stuff
-vimp.nnoremap({'override'}, '<Leader>g', function() neogit.status.create('split') end)
+vimp.nnoremap({'override'}, '<Leader>g', function() neogit.open({ kind = "split" }) end)
 vimp.nnoremap({'override'}, '<Leader>G', function() require('telescope').extensions.git_worktree.git_worktrees() end)
 -- }}}

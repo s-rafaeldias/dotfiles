@@ -34,6 +34,8 @@ require'compe'.setup {
 -- Use <CR> for snippets on insert mode
 vim.cmd [[ inoremap <silent><expr> <CR> compe#confirm('<CR>') ]]
 
+require('rust-tools').setup{}
+
 function custom_attach(client)
     print('Attaching LSP: ' .. client.name)
 

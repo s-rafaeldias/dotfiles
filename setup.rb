@@ -10,6 +10,9 @@ Dir.glob("#{WORKING_DIR}/shell/*").each do |f|
   system "ln -sf #{f} ~/.#{file.basename}"
 end
 
+# Fish
+system "ln -sf #{WORKING_DIR}/fish/config.fish #{XDG_CONFIG_HOME}/fish/config.fish"
+
 # Nvim files
 Dir.glob("#{NVIM_DIR}/**/**").each do |f|
   file = Pathname.new f

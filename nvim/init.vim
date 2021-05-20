@@ -1,68 +1,59 @@
-" Plugins ================================================= {{{
+" Plugins: ================================================= {{{
 call plug#begin()
-Plug 'tpope/vim-fugitive'
+" Essentials
 Plug 'rbgrouleff/bclose.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/vim-peekaboo'
 Plug 'junegunn/rainbow_parentheses.vim'
-Plug 'TimUntersberger/neogit'
 Plug 'godlygeek/tabular'
-
-
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-lua/telescope.nvim'
-Plug 'nvim-telescope/telescope-fzy-native.nvim'
-
-Plug 'ThePrimeagen/git-worktree.nvim'
-" Plug '/Users/rafael/workspace/projects/git-worktree.nvim'
 Plug 'ThePrimeagen/harpoon'
-
 Plug 'tpope/vim-surround'
-Plug 'nathangrigg/vim-beancount'
-" Plug 'tpope/vim-repeat'
-" Plug 'guns/vim-sexp'
-" Plug 'ThePrimeagen/vim-be-good'
-Plug 'SirVer/ultisnips'
-
 Plug 'Yggdroot/indentLine'
-" Plug 'lukas-reineke/indent-blankline.nvim', { 'branch': 'lua' }
+Plug 'godlygeek/tabular'
+Plug 'svermeulen/vimpeccable'
+Plug 'gruvbox-community/gruvbox'
 
-" Plug 'tjdevries/nlua.nvim'
+" Git
+Plug 'tpope/vim-fugitive'
+Plug 'TimUntersberger/neogit'
+Plug 'sindrets/diffview.nvim'
+Plug 'ThePrimeagen/git-worktree.nvim'
+
+" LSP
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/nvim-compe'
 Plug 'nvim-lua/lsp_extensions.nvim'
-" Plug 'nvim-lua/completion-nvim'
-Plug 'euclidianAce/BetterLua.vim'
-Plug 'svermeulen/vimpeccable'
-Plug 'nvim-lua/lsp-status.nvim'
 
+" Telescope
+Plug 'nvim-lua/telescope.nvim'
+Plug 'nvim-telescope/telescope-fzy-native.nvim'
 
-Plug 'gruvbox-community/gruvbox'
+" Debug
+Plug 'puremourning/vimspector'
+" Plug 'mfussenegger/nvim-dap'
 
-Plug 'godlygeek/tabular'
-Plug 'plasticboy/vim-markdown'
-Plug 'junegunn/goyo.vim'
-
+" Languages
 " Plug 'Olical/conjure'
-Plug 'ekalinin/Dockerfile.vim', { 'for': 'dockerfile' }
 " Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 " Plug 'mattn/emmet-vim', { 'for': 'html' }
 " Plug 'cakebaker/scss-syntax.vim'
-
-" Python
+Plug 'euclidianAce/BetterLua.vim'
+Plug 'nathangrigg/vim-beancount'
+Plug 'plasticboy/vim-markdown'
+Plug 'junegunn/goyo.vim'
+Plug 'ekalinin/Dockerfile.vim', { 'for': 'dockerfile' }
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins', 'for': 'python'}
-
 Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
-
 Plug 'prettier/vim-prettier', {
   \ 'do': 'yarn install',
   \ 'for': ['javascript', 'typescript', 'json', 'typescriptreact', 'javascriptreact'] }
 Plug 'jose-elias-alvarez/nvim-lsp-ts-utils'
-" Plug 'tpope/vim-endwise', { 'for': 'ruby' }
 Plug 'rust-lang/rust.vim', { 'for': 'rust' }
+Plug 'simrat39/rust-tools.nvim'
 
 call plug#end()
 " }}}
@@ -224,12 +215,12 @@ let g:rainbow#pairs = [['(', ')'], ['[', ']'], ['{', '}']]
 " Plugin: nerdcommenter ================================================= {{{
 " Add spaces after comment delimiters by default
 let g:NERDSpaceDelims = 1
+let g:NERDCustomDelimiters = { 'fish': { 'left': '#' } }
+
 " }}}
 
-" Plugin: utilsnips ================================================= {{{
-let g:UltiSnipsSnippetDirectories=['UltiSnips', 'my_snippets']
-let g:UltiSnipsExpandTrigger='<tab>'
-let g:UltiSnipsJumpForwardTrigger='<c-j>'
+" Plugin: vimspector ================================================= {{{
+let g:vimspector_enable_mappings = 'HUMAN'
 " }}}
 
 " Language: Golang ================================================= {{{
@@ -293,6 +284,7 @@ augroup VIML_IDE
                 \| set foldmethod=marker
 augroup END
 " }}}
+
 
 " LUA BABYYYYY
 lua require('init')

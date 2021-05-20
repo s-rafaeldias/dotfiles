@@ -19,13 +19,10 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 POWERLEVEL9K_MODE='nerdfont-complete'
 COMPLETION_WAITING_DOTS="true"
 
-# Sources ==============================================
-source ~/.exports
-source ~/.alias
-source $ZSH/oh-my-zsh.sh
-source ~/.zstyles
-source ~/.completions/*
-source ~/.env
+# Setups ==============================================
+export NVM_DIR="$HOME/.nvm"
+[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
@@ -48,7 +45,6 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
-
 # heroku autocomplete setup
 HEROKU_AC_ZSH_SETUP_PATH=/Users/rafael/Library/Caches/heroku/autocomplete/zsh_setup && test -f $HEROKU_AC_ZSH_SETUP_PATH && source $HEROKU_AC_ZSH_SETUP_PATH;
 
@@ -56,3 +52,12 @@ export PATH="/usr/local/sbin:$PATH"
 export PATH="/usr/local/opt/llvm/bin:$PATH"
 
 fpath=(~/.zsh.d/ $fpath)
+
+
+# Sources ==============================================
+source ~/.exports
+source ~/.alias
+source $ZSH/oh-my-zsh.sh
+source ~/.zstyles
+source ~/.completions/*
+source ~/.env

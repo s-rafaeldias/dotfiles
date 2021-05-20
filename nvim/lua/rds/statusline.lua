@@ -34,7 +34,7 @@ function Statusline()
         git_branch = "no-git"
     end
 
-    local git_str = string.format("%%-10.20(|(%s)%%)", git_branch)
+    local git_str = string.format("%%-10.25(|(%s)%%)", git_branch)
 
     local file_str = "|%-60.110f"
 
