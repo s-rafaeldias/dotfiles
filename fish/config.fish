@@ -4,27 +4,34 @@ set -Ux EDITOR nvim
 set -Ux TERM xterm-256color
 set -Ux FZF_DEFAULT_COMMAND "fd --type f --hidden --follow --exclude .git"
 
-set -Ux PATH $PATH $HOME/bin
-set -Ux PATH $PATH $HOME/lib
-set -Ux PATH $PATH $HOME/.local/bin
-set -Ux PATH $PATH $HOME/.cargo/bin
-set -Ux PATH $PATH $HOME/workspace/scripts
+fish_add_path $HOME/bin
+fish_add_path $HOME/lib
+fish_add_path $HOME/.local/bin
+fish_add_path $HOME/.cargo/bin
+fish_add_path $HOME/workspace/scripts
 # Python
-set -Ux PATH $PATH $HOME/miniconda3/bin
-set -Ux PATH $PATH $HOME/.poetry/bin
+fish_add_path $HOME/miniconda3/bin
+fish_add_path $HOME/.poetry/bin
+# LLVM
+fish_add_path /usr/local/opt/llvm/bin
+set -gx LDFLAGS "-L/usr/local/opt/llvm/lib"
+set -gx CPPFLAGS "-I/usr/local/opt/llvm/include"
 # Ruby
 set -Ux fish_user_paths $HOME/.rbenv/bin $fish_user_paths
 status --is-interactive; and source (rbenv init -|psub)
 # Lua
-set -Ux PATH $PATH $HOME/.luarocks/bin
+fish_add_path $HOME/.luarocks/bin
 # Go
-set -Ux PATH $PATH /usr/local/go/bin
+fish_add_path /usr/local/go/bin
 set -Ux GOPATH $HOME/workspace/go
-set -Ux PATH $PATH $GOPATH/bin
+fish_add_path $GOPATH/bin
 # Yarn
-set -Ux PATH $PATH $HOME/.yarn/bin
-set -Ux PATH $PATH $HOME/.config/yarn/global/node_modules/.bin
-
+fish_add_path $HOME/.yarn/bin
+fish_add_path $HOME/.config/yarn/global/node_modules/.bin
+# Android
+set -Ux ANDROID_SDK /Users/rafael/Library/Android/sdk
+# Perl
+# eval "(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib=$HOME/perl5)"
 # Alias =======================================
 abbr -a bu brew upgrade
 abbr -a vi nvim
@@ -54,17 +61,42 @@ function inflate
     command ruby -r zlib -e "STDOUT.write Zlib::Inflate.inflate(STDIN.read)"
 end
 
+function source_config
+    source $HOME/.config/fish/config.fish
+end
+
+# Prompt =======================================
 # Setting up prompt
-# function fish_prompt
-    # set -l last_status $status
-    # if set -q CONDA_LEFT_PROMPT
-        # __conda_add_prompt
-    # end
+function fish_prompt
+    set_color yellow
+    printf '%s' $USER
+    set_color normal
+    printf ' at '
 
-    # return_last_status $last_status
-    # __fish_prompt_orig
-# end
+    set_color magenta
+    echo -n (prompt_hostname)
+    set_color normal
+    printf ' in '
 
+    # pwd
+    set_color $fish_color_cwd
+    set -g fish_prompt_pwd_dir_length 0
+    printf '%s' (prompt_pwd)
+    set_color normal
+
+    # git configs
+    set_color green
+    printf '%s' (fish_git_prompt)
+
+    # Line 2
+    echo
+    set_color normal
+    printf '↪ '
+    set_color normal
+end
+
+function fish_right_prompt
+end
 
 
 # >>> conda initialize >>>

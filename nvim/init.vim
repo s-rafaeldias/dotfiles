@@ -102,6 +102,8 @@ set nobackup
 set undodir=~/.vim/undodir
 set undofile
 
+set nofoldenable
+
 " disable continuation of comments to the next line
 autocmd FileType * setlocal formatoptions-=cro
 
