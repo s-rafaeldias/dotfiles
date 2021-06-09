@@ -61,8 +61,16 @@ function inflate
     command ruby -r zlib -e "STDOUT.write Zlib::Inflate.inflate(STDIN.read)"
 end
 
+function ports
+    command lsof -P -i TCP -s TCP:LISTEN
+end
+
 function source_config
     source $HOME/.config/fish/config.fish
+end
+
+function md -d "mkdir -p"
+    command mkdir -p $argv
 end
 
 # Prompt =======================================
@@ -79,20 +87,22 @@ function fish_prompt
     printf ' in '
 
     # pwd
-    set_color $fish_color_cwd
+    set_color green
     set -g fish_prompt_pwd_dir_length 0
     printf '%s' (prompt_pwd)
     set_color normal
 
     # git configs
-    set_color green
-    printf '%s' (fish_git_prompt)
+    echo
+    set -g __fish_git_prompt_showcolorhints true
+    set -g __fish_git_prompt_show_informative_status true
+    set -g __fish_git_prompt_showupstream informative
+    # set_color green
+    printf '%s ' (fish_git_prompt)
 
     # Line 2
-    echo
     set_color normal
     printf '↪ '
-    set_color normal
 end
 
 function fish_right_prompt

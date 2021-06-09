@@ -13,9 +13,10 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'ThePrimeagen/harpoon'
 Plug 'tpope/vim-surround'
 Plug 'Yggdroot/indentLine'
-Plug 'godlygeek/tabular'
+" Plug 'godlygeek/tabular'
 Plug 'svermeulen/vimpeccable'
 Plug 'gruvbox-community/gruvbox'
+Plug 'szw/vim-maximizer'
 
 " Git
 Plug 'tpope/vim-fugitive'
@@ -27,6 +28,9 @@ Plug 'ThePrimeagen/git-worktree.nvim'
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/nvim-compe'
 Plug 'nvim-lua/lsp_extensions.nvim'
+Plug 'ray-x/lsp_signature.nvim'
+Plug 'ray-x/guihua.lua', {'do': 'cd lua/fzy && make' }
+Plug 'ray-x/navigator.lua'
 
 " Telescope
 Plug 'nvim-lua/telescope.nvim'
@@ -51,7 +55,7 @@ Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
 Plug 'prettier/vim-prettier', {
   \ 'do': 'yarn install',
   \ 'for': ['javascript', 'typescript', 'json', 'typescriptreact', 'javascriptreact'] }
-Plug 'jose-elias-alvarez/nvim-lsp-ts-utils'
+" Plug 'jose-elias-alvarez/nvim-lsp-ts-utils'
 Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 Plug 'simrat39/rust-tools.nvim'
 
@@ -82,6 +86,7 @@ set signcolumn=yes
 set tabstop=4
 set expandtab
 set shiftwidth=4
+set softtabstop=4
 
 " White space settings
 set listchars=eol:↵,tab:↦\ ,trail:~,extends:>,precedes:<
@@ -102,6 +107,7 @@ set nobackup
 set undodir=~/.vim/undodir
 set undofile
 
+ set wildignore+=*/node_modules/*,_site,*/__pycache__/,*/venv/*,*/target/*,*/.vim$,\~$,*/.log,*/.aux,*/.cls,*/.aux,*/.bbl,*/.blg,*/.fls,*/.fdb*/,*/.toc,*/.out,*/.glo,*/.log,*/.ist,*/.fdb_latexmk
 set nofoldenable
 
 " disable continuation of comments to the next line
@@ -174,8 +180,7 @@ nnoremap <S-TAB> :bn<CR>
 nnoremap <Leader>P "*P
 nnoremap <Leader>p "*p
 
-nnoremap <F2> :Goyo<CR>
-nnoremap <F3> :luafile %<CR>
+nnoremap <F2> :luafile %<CR>
 " }}}
 
 " VISUAL MODE mappings ================================================= {{{
@@ -221,39 +226,12 @@ let g:NERDCustomDelimiters = { 'fish': { 'left': '#' } }
 
 " }}}
 
-" Plugin: vimspector ================================================= {{{
-let g:vimspector_enable_mappings = 'HUMAN'
-" }}}
-
-" Language: Golang ================================================= {{{
-let g:go_highlight_extra_types = 1
-let g:go_highlight_space_tab_error = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_functions = 1
-let g:go_highlight_function_parameters = 1
-let g:go_highlight_function_calls = 1
-let g:go_highlight_types = 1
-let g:go_highlight_fields = 1
-let g:go_highlight_build_constraints = 1
-let g:go_highlight_generate_tags = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_structs = 1
-let g:go_highlight_trailing_whitespace_error = 1
-" let g:go_auto_sameids = 1
-let g:go_fmt_command = "goimports"
-let g:go_def_mapping_enabled=1
-let g:go_def_mode='gopls'
-let g:go_auto_type_info = 1
-let g:go_fmt_fail_silently = 1
-" }}}
-
 " Language: HTML/CSS ================================================= {{{
 augroup HTML_CSS_IDE
     let g:user_emmet_mode='inv'
     let g:user_emmet_expandabbr_key='<Tab>'
     autocmd!
     autocmd FileType css,scss,html
-                \  set expandtab
                 \| set tabstop=2
                 \| set shiftwidth=2
 augroup END
@@ -265,7 +243,6 @@ augroup JS_IDE
     autocmd FileType json syntax match Comment +\/\/.\+$+
     autocmd FileType javascript,javascriptreact,jsontypescript,typescript,typescriptreact
                 \  set tabstop=2
-                \| set expandtab
                 \| set shiftwidth=2
 augroup END
 " }}}
@@ -279,10 +256,6 @@ let g:vim_markdown_conceal_code_blocks = 0
 augroup VIML_IDE
     autocmd!
     autocmd FileType vim
-                \  set expandtab
-                \| set shiftwidth=4
-                \| set softtabstop=4
-                \| set tabstop=4
                 \| set foldmethod=marker
 augroup END
 " }}}

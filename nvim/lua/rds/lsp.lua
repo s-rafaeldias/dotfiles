@@ -20,14 +20,14 @@ require'compe'.setup {
   source = {
     path = true;
     buffer = true;
-    calc = true;
-    vsnip = true;
+    calc = false;
+    vsnip = false;
     nvim_lsp = true;
     nvim_lua = true;
     spell = true;
     tags = false;
     snippets_nvim = true;
-    treesitter = true;
+    treesitter = false;
   };
 }
 
@@ -39,10 +39,10 @@ require('rust-tools').setup{}
 function custom_attach(client)
     print('Attaching LSP: ' .. client.name)
 
-    if client.name == "tsserver" then
-        local ts_utils = require("nvim-lsp-ts-utils")
-        ts_utils.setup{}
-    end
+    -- if client.name == "tsserver" then
+        -- local ts_utils = require("nvim-lsp-ts-utils")
+        -- ts_utils.setup{}
+    -- end
 
     -- show documentation
     vimp.nnoremap({'override'}, 'K', function()
