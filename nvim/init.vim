@@ -34,7 +34,7 @@ Plug 'ray-x/navigator.lua'
 
 " Telescope
 Plug 'nvim-lua/telescope.nvim'
-Plug 'nvim-telescope/telescope-fzy-native.nvim'
+Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 
 " Debug
 Plug 'puremourning/vimspector'
@@ -107,7 +107,7 @@ set nobackup
 set undodir=~/.vim/undodir
 set undofile
 
- set wildignore+=*/node_modules/*,_site,*/__pycache__/,*/venv/*,*/target/*,*/.vim$,\~$,*/.log,*/.aux,*/.cls,*/.aux,*/.bbl,*/.blg,*/.fls,*/.fdb*/,*/.toc,*/.out,*/.glo,*/.log,*/.ist,*/.fdb_latexmk
+set wildignore+=*/node_modules/*,_site,*/__pycache__/,*/venv/*,*/target/*,*/.vim$,\~$,*/.log,*/.aux,*/.cls,*/.aux,*/.bbl,*/.blg,*/.fls,*/.fdb*/,*/.toc,*/.out,*/.glo,*/.log,*/.ist,*/.fdb_latexmk
 set nofoldenable
 
 " disable continuation of comments to the next line
@@ -193,15 +193,6 @@ vnoremap D "_d
 tnoremap <Esc> <C-\><C-n>
 " }}}
 
-" Plugin: Airline ================================================= {{{
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_powerline_fonts = 1
-let g:airline_theme='gruvbox'
-let g:hybrid_custom_term_colors = 1
-let g:hybrid_reduced_contrast = 1
-let g:airline#extensions#tabline#formatter = 'unique_tail'
-let g:airline#extensions#branch#enabled = 1
-" }}}
 
 " Plugin: Goyg ================================================= {{{
 let g:goyo_width = 120
@@ -223,7 +214,6 @@ let g:rainbow#pairs = [['(', ')'], ['[', ']'], ['{', '}']]
 " Add spaces after comment delimiters by default
 let g:NERDSpaceDelims = 1
 let g:NERDCustomDelimiters = { 'fish': { 'left': '#' } }
-
 " }}}
 
 " Language: HTML/CSS ================================================= {{{

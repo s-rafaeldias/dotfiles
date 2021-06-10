@@ -1,13 +1,7 @@
 local vimp              = require 'vimp'
-local telescope_builtin = require 'telescope.builtin'
 local neogit            = require 'neogit'
 local treesitter        = require 'nvim-treesitter.configs'
 
-require 'rds.lsp'
-require 'rds.telescope'
-require 'rds.statusline'
-require 'rds.harpoon'
-require 'rds.worktree'
 
 -- TODO: create a utils module later
 RELOAD = function(pkg)
@@ -26,13 +20,11 @@ treesitter.setup {
 
 neogit.setup {}
 
-
--- Mappings {{{
-vimp.nnoremap({'override'}, '<C-P>', function() RELOAD('rds.telescope').find_files{
-   find_command = { 'fd', '--type', 'f', '--hidden', '--exclude', '.git' }
-} end)
-vimp.nnoremap({'override'}, '<C-B>', function() telescope_builtin.buffers{} end)
-vimp.nnoremap({'override'}, '<Leader>ev', function() RELOAD('rds.telescope').search_dotfiles{} end)
+require 'rds.lsp'
+require 'rds.telescope'
+require 'rds.statusline'
+require 'rds.harpoon'
+require 'rds.worktree'
 
 -- Git stuff
 vimp.nnoremap({'override'}, '<Leader>g', function() neogit.open({ kind = "split" }) end)

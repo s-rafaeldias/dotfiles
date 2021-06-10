@@ -1,22 +1,24 @@
--- local vimp       = require 'vimp'
 local telescope_builtin = require 'telescope.builtin'
 local themes            = require 'telescope.themes'
 local actions           = require 'telescope.actions'
+local vimp              = require 'vimp'
 
-require("telescope").load_extension("git_worktree")
 require('telescope').setup {
     defaults = {
         file_ignore_patterns = {
             'node_modules/*',
-            '*.pyc',
-            '.git/*'
+            '*.pyc'
         },
-        color_devicons = true,
         prompt_position = 'top',
         sorting_strategy = 'ascending',
-        width = .25,
 
-        layout_strategy = 'horizontal',
+        fzf = {
+            fuzzy = true,
+            override_generic_sorter = false, -- override the generic sorter
+            override_file_sorter = true,     -- override the file sorter
+            case_mode = "smart_case",        -- or "ignore_case" or "respect_case"
+        },
+
         layout_config = {
             preview_width = .65,
         },
@@ -27,10 +29,11 @@ require('telescope').setup {
     }
 }
 
+require("telescope").load_extension("git_worktree")
+require('telescope').load_extension('fzf')
 
-local M = {}
 
-M.search_dotfiles = function()
+local search_dotfiles = function()
     telescope_builtin.find_files(themes.get_dropdown({
         hidden = true,
         layout_strategy = 'center',
@@ -40,39 +43,11 @@ M.search_dotfiles = function()
     }))
 end
 
--- things I usually search/want to search:
--- TODO: (maybe add then to quicklist)
-M.todos = function()
-    -- search all files looking for `TODO:` and add to quicklist
-    vim.cmd [[ silent vimgrep! /TODO:/j **/*.* ]]
-    telescope_builtin.quickfix()
-end
 
--- Create a custom find_files
-M.find_files = function(opts)
-  telescope_builtin.find_files(opts)
-  -- local find_command = {
-      -- 'fd',
-      -- '--type',
-      -- 'f',
-      -- '-H',
-      -- '--no-ignore-vcs',
-      -- '-E',
-      -- '.git',
-  -- }
+vimp.nnoremap({'override'}, '<C-P>', function() telescope_builtin.find_files{hidden = true} end)
+vimp.nnoremap({'override'}, '<C-B>', function() telescope_builtin.buffers{} end)
+vimp.nnoremap({'override'}, '<Leader>ev', function() search_dotfiles() end)
 
-  -- pickers.new(opts, {
-      -- prompt_title = 'Find files',
-      -- finder = finder.new_oneshot_job(find_command, opts),
-      -- previewer = previewer.vim_buffer_cat.new(opts),
-      -- sorter = sorter.get_fuzzy_file()
-  -- }):find()
-end
-
-
-M.search_pi = function()
-    local netrw_result = vim.api.nvim_exec(':Explore scp://pi@192.168.0.23/', {})
-    print(vim.inspect(netrw_result))
-end
-
-return M
+-- Quick actions for `file_browser`:
+-- <C-E> creates a new file
+vimp.nnoremap({'override'}, '<Leader>fb', function() telescope_builtin.file_browser() end)
