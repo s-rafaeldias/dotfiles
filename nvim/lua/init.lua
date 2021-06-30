@@ -12,10 +12,27 @@ end
 
 -- TODO: put treesitter config on its own module
 treesitter.setup {
-    ensure_installed = { 'lua', 'javascript', 'python', 'bash', 'beancount', 'c', 'cpp', 'ruby', 'tsx', 'typescript', 'comment', 'json', 'toml', 'jsonc' };
+    ensure_installed = {
+        'lua',
+        'javascript',
+        'python',
+        'bash',
+        'beancount',
+        'c',
+        'cpp',
+        'ruby',
+        'tsx',
+        'typescript',
+        'comment',
+        'json',
+        'toml',
+        'jsonc',
+        'go',
+        'gomod'
+    },
     highlight = {
         enable = true
-    }
+    },
 }
 
 neogit.setup {}
@@ -25,8 +42,14 @@ require 'rds.telescope'
 require 'rds.statusline'
 require 'rds.harpoon'
 require 'rds.worktree'
+require 'rds.dap'
 
 -- Git stuff
 vimp.nnoremap({'override'}, '<Leader>g', function() neogit.open({ kind = "split" }) end)
 vimp.nnoremap({'override'}, '<Leader>G', function() require('telescope').extensions.git_worktree.git_worktrees() end)
 -- }}}
+
+vimp.nnoremap({'override'}, '<Leader>sv', function()
+    require('nvim-reload').Reload()
+    print("Nvim config reloaded!")
+end)

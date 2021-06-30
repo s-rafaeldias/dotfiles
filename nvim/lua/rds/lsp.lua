@@ -24,7 +24,7 @@ require'compe'.setup {
     vsnip = false;
     nvim_lsp = true;
     nvim_lua = true;
-    spell = true;
+    spell = false;
     tags = false;
     snippets_nvim = true;
     treesitter = false;
@@ -38,7 +38,7 @@ require('rust-tools').setup{}
 
 function custom_attach(client)
     print('Attaching LSP: ' .. client.name)
-
+    require'lsp_signature'.on_attach()
     -- if client.name == "tsserver" then
         -- local ts_utils = require("nvim-lsp-ts-utils")
         -- ts_utils.setup{}
@@ -72,7 +72,6 @@ for _, lsp in ipairs(servers) do
 end
 
 
-
 local system_name
 if vim.fn.has("mac") == 1 then
   system_name = "macOS"
@@ -83,10 +82,19 @@ elseif vim.fn.has('win32') == 1 then
 else
   print("Unsupported system for sumneko")
 end
-
--- set the path to the sumneko installation; if you previously installed via the now deprecated :LspInstall, use
 local sumneko_root_path = vim.fn.stdpath('cache')..'/lspconfig/sumneko_lua/lua-language-server'
 local sumneko_binary = sumneko_root_path.."/bin/"..system_name.."/lua-language-server"
+
+-- require('nlua.lsp.nvim').setup(require('lspconfig'), {
+  -- on_attach = custom_attach,
+  -- -- Include globals you want to tell the LSP are real :)
+  -- globals = {
+    -- -- Colorbuddy
+    -- "Color", "c", "Group", "g", "s",
+  -- }
+-- })
+
+-- -- set the path to the sumneko installation; if you previously installed via the now deprecated :LspInstall, use
 
 lspconfig.sumneko_lua.setup {
   cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"},

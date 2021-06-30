@@ -6,17 +6,20 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/vim-peekaboo'
 Plug 'junegunn/rainbow_parentheses.vim'
-Plug 'godlygeek/tabular'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'ThePrimeagen/harpoon'
 Plug 'tpope/vim-surround'
 Plug 'Yggdroot/indentLine'
-" Plug 'godlygeek/tabular'
 Plug 'svermeulen/vimpeccable'
 Plug 'gruvbox-community/gruvbox'
 Plug 'szw/vim-maximizer'
+Plug 'famiu/nvim-reload'
+
+"Plug 'tpope/vim-commentary'
+"Plug 'JoosepAlviste/nvim-ts-context-commentstring'
+
 
 " Git
 Plug 'tpope/vim-fugitive'
@@ -37,8 +40,11 @@ Plug 'nvim-lua/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 
 " Debug
-Plug 'puremourning/vimspector'
-" Plug 'mfussenegger/nvim-dap'
+" Plug 'puremourning/vimspector'
+Plug 'mfussenegger/nvim-dap'
+Plug 'rcarriga/nvim-dap-ui'
+
+Plug '/Users/rafael/workspace/projects/nvim-remote-container'
 
 " Languages
 " Plug 'Olical/conjure'
@@ -50,8 +56,8 @@ Plug 'nathangrigg/vim-beancount'
 Plug 'plasticboy/vim-markdown'
 Plug 'junegunn/goyo.vim'
 Plug 'ekalinin/Dockerfile.vim', { 'for': 'dockerfile' }
-Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins', 'for': 'python'}
-Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
+" Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins', 'for': 'python'}
+" Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
 Plug 'prettier/vim-prettier', {
   \ 'do': 'yarn install',
   \ 'for': ['javascript', 'typescript', 'json', 'typescriptreact', 'javascriptreact'] }
@@ -160,11 +166,12 @@ inoremap lk <esc><right>
 inoremap kl <esc><right>
 " Create new undo block on <CR> in insert mode
 inoremap <CR> <C-G>u<CR>
+inoremap <silent><expr> <CR> compe#confirm('<CR>')
 " }}}
 
 " NORMAL MODE mappings ================================================= {{{
 " Reload vim config
-nnoremap <leader>sv :source $MYVIMRC<CR>
+" nnoremap <leader>sv :source $MYVIMRC<CR>
 
 " Move line up
 nnoremap - ddp
@@ -191,16 +198,16 @@ vnoremap D "_d
 
 " TERMINAL mappings ================================================= {{{
 tnoremap <Esc> <C-\><C-n>
+tnoremap <C-C> <C-\><C-n>
 " }}}
 
-
-" Plugin: Goyg ================================================= {{{
-let g:goyo_width = 120
-" }}}
+nnoremap <leader>m :MaximizerToggle!<CR>
+let g:maximizer_set_default_mapping = 0
+let g:NERDSpaceDelims = 1
+let g:NERDCustomDelimiters = { 'fish': { 'left': '#' } }
 
 " Plugin: LSP ================================================= {{{
 let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
-let g:completion_confirm_key = "\<C-y>"
 let g:completion_matching_ignore_case = 1
 " let g:completion_enable_snippet = ''
 " }}}
@@ -210,10 +217,11 @@ autocmd FileType * RainbowParentheses
 let g:rainbow#pairs = [['(', ')'], ['[', ']'], ['{', '}']]
 " }}}
 
-" Plugin: nerdcommenter ================================================= {{{
-" Add spaces after comment delimiters by default
-let g:NERDSpaceDelims = 1
-let g:NERDCustomDelimiters = { 'fish': { 'left': '#' } }
+" Language: Go ================================================= {{{
+augroup GO_IDE
+    autocmd!
+    autocmd FileType go setlocal noexpandtab
+augroup END
 " }}}
 
 " Language: HTML/CSS ================================================= {{{
@@ -232,7 +240,7 @@ augroup JS_IDE
     autocmd!
     autocmd FileType json syntax match Comment +\/\/.\+$+
     autocmd FileType javascript,javascriptreact,jsontypescript,typescript,typescriptreact
-                \  set tabstop=2
+                \| set tabstop=2
                 \| set shiftwidth=2
 augroup END
 " }}}

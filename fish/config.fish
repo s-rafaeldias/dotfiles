@@ -106,6 +106,10 @@ function fish_prompt
 end
 
 function fish_right_prompt
+    set_color magenta
+    printf 'k8:'
+    echo -n (kubectl config current-context)
+    set_color normal
 end
 
 
