@@ -28,7 +28,8 @@ treesitter.setup {
         'toml',
         'jsonc',
         'go',
-        'gomod'
+        'gomod',
+        'elixir'
     },
     highlight = {
         enable = true

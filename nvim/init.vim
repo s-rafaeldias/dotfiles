@@ -217,6 +217,8 @@ autocmd FileType * RainbowParentheses
 let g:rainbow#pairs = [['(', ')'], ['[', ']'], ['{', '}']]
 " }}}
 
+let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+
 " Language: Go ================================================= {{{
 augroup GO_IDE
     autocmd!

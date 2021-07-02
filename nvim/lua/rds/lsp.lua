@@ -71,6 +71,11 @@ for _, lsp in ipairs(servers) do
     }
 end
 
+lspconfig.elixirls.setup {
+    on_attach = custom_attach,
+    cmd = { "/Users/rafael/tmp/elixir-ls/language_server.sh" }
+}
+
 
 local system_name
 if vim.fn.has("mac") == 1 then

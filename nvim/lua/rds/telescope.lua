@@ -9,8 +9,9 @@ require('telescope').setup {
             'node_modules/*',
             '*.pyc'
         },
-        prompt_position = 'top',
         sorting_strategy = 'ascending',
+
+        width = 0.8,
 
         fzf = {
             fuzzy = true,
@@ -20,7 +21,8 @@ require('telescope').setup {
         },
 
         layout_config = {
-            preview_width = .65,
+            width = 0.65,
+            prompt_position = 'top',
         },
 
         mappings = {
