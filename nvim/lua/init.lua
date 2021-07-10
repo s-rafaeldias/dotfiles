@@ -36,6 +36,7 @@ treesitter.setup {
     },
 }
 
+
 neogit.setup {}
 
 require 'rds.lsp'

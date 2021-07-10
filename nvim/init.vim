@@ -114,7 +114,6 @@ set undodir=~/.vim/undodir
 set undofile
 
 set wildignore+=*/node_modules/*,_site,*/__pycache__/,*/venv/*,*/target/*,*/.vim$,\~$,*/.log,*/.aux,*/.cls,*/.aux,*/.bbl,*/.blg,*/.fls,*/.fdb*/,*/.toc,*/.out,*/.glo,*/.log,*/.ist,*/.fdb_latexmk
-set nofoldenable
 
 " disable continuation of comments to the next line
 autocmd FileType * setlocal formatoptions-=cro

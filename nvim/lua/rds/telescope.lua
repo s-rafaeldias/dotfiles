@@ -11,8 +11,6 @@ require('telescope').setup {
         },
         sorting_strategy = 'ascending',
 
-        width = 0.8,
-
         fzf = {
             fuzzy = true,
             override_generic_sorter = false, -- override the generic sorter
