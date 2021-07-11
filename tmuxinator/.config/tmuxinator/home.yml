@@ -1,0 +1,7 @@
+# /Users/rafael/.config/tmuxinator/home.yml
+
+name: home
+root: ~/
+
+windows:
+  - terminal: clear

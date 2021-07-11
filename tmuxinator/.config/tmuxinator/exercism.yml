@@ -1,0 +1,8 @@
+# /Users/rafael/.config/tmuxinator/exercism.yml
+
+name: exercism-<%= @args[0] %>
+root: ~/workspace/exercism/<%= @args[0] %>
+
+windows:
+  - editor: clear
+  - terminal: clear

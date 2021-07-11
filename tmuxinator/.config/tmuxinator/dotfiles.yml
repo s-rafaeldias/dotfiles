@@ -1,0 +1,8 @@
+# /Users/rafael/.config/tmuxinator/dotfiles.yml
+
+name: dotfiles
+root: ~/.dotfiles
+
+windows:
+  - editor: clear
+  - console: clear
