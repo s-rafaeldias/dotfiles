@@ -52,16 +52,11 @@ Plug '/Users/rafael/workspace/projects/nvim-remote-container'
 " Plug 'mattn/emmet-vim', { 'for': 'html' }
 " Plug 'cakebaker/scss-syntax.vim'
 Plug 'euclidianAce/BetterLua.vim'
-Plug 'nathangrigg/vim-beancount'
+" Plug 'nathangrigg/vim-beancount'
 Plug 'plasticboy/vim-markdown'
-Plug 'junegunn/goyo.vim'
 Plug 'ekalinin/Dockerfile.vim', { 'for': 'dockerfile' }
 " Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins', 'for': 'python'}
 " Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
-Plug 'prettier/vim-prettier', {
-  \ 'do': 'yarn install',
-  \ 'for': ['javascript', 'typescript', 'json', 'typescriptreact', 'javascriptreact'] }
-" Plug 'jose-elias-alvarez/nvim-lsp-ts-utils'
 Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 Plug 'simrat39/rust-tools.nvim'
 
