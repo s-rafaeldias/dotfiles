@@ -1,67 +1,68 @@
 " Plugins: ================================================= {{{
-call plug#begin()
-" Essentials
-Plug 'rbgrouleff/bclose.vim'
-Plug 'scrooloose/nerdcommenter'
-Plug 'jiangmiao/auto-pairs'
-Plug 'junegunn/vim-peekaboo'
-Plug 'junegunn/rainbow_parentheses.vim'
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'nvim-lua/popup.nvim'
-Plug 'nvim-lua/plenary.nvim'
-Plug 'ThePrimeagen/harpoon'
-Plug 'tpope/vim-surround'
-Plug 'Yggdroot/indentLine'
-Plug 'svermeulen/vimpeccable'
-Plug 'gruvbox-community/gruvbox'
-Plug 'szw/vim-maximizer'
-Plug 'famiu/nvim-reload'
+" call plug#begin()
+" " Essentials
+" Plug 'rbgrouleff/bclose.vim'
+" Plug 'scrooloose/nerdcommenter'
+" Plug 'jiangmiao/auto-pairs'
+" Plug 'junegunn/vim-peekaboo'
+" Plug 'junegunn/rainbow_parentheses.vim'
+" Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+" Plug 'nvim-lua/popup.nvim'
+" Plug 'nvim-lua/plenary.nvim'
+" Plug 'ThePrimeagen/harpoon'
+" Plug 'tpope/vim-surround'
+" Plug 'Yggdroot/indentLine'
+" Plug 'svermeulen/vimpeccable'
+" Plug 'gruvbox-community/gruvbox'
+" Plug 'szw/vim-maximizer'
+" Plug 'famiu/nvim-reload'
 
-"Plug 'tpope/vim-commentary'
-"Plug 'JoosepAlviste/nvim-ts-context-commentstring'
+" "Plug 'tpope/vim-commentary'
+" "Plug 'JoosepAlviste/nvim-ts-context-commentstring'
 
 
-" Git
-Plug 'tpope/vim-fugitive'
-Plug 'TimUntersberger/neogit'
-Plug 'sindrets/diffview.nvim'
-Plug 'ThePrimeagen/git-worktree.nvim'
+" " Git
+" Plug 'tpope/vim-fugitive'
+" Plug 'TimUntersberger/neogit'
+" Plug 'sindrets/diffview.nvim'
+" Plug 'ThePrimeagen/git-worktree.nvim'
 
-" LSP
-Plug 'neovim/nvim-lspconfig'
-Plug 'hrsh7th/nvim-compe'
-Plug 'nvim-lua/lsp_extensions.nvim'
-Plug 'ray-x/lsp_signature.nvim'
-Plug 'ray-x/guihua.lua', {'do': 'cd lua/fzy && make' }
-Plug 'ray-x/navigator.lua'
+" " LSP
+" Plug 'neovim/nvim-lspconfig'
+" Plug 'hrsh7th/nvim-compe'
+" Plug 'nvim-lua/lsp_extensions.nvim'
+" Plug 'ray-x/lsp_signature.nvim'
+" Plug 'ray-x/guihua.lua', {'do': 'cd lua/fzy && make' }
+" Plug 'ray-x/navigator.lua'
 
-" Telescope
-Plug 'nvim-lua/telescope.nvim'
-Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
+" " Telescope
+" Plug 'nvim-lua/telescope.nvim'
+" Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 
-" Debug
-" Plug 'puremourning/vimspector'
-Plug 'mfussenegger/nvim-dap'
-Plug 'rcarriga/nvim-dap-ui'
+" " Debug
+" " Plug 'puremourning/vimspector'
+" Plug 'mfussenegger/nvim-dap'
+" Plug 'rcarriga/nvim-dap-ui'
 
-Plug '/Users/rafael/workspace/projects/nvim-remote-container'
+" Plug '/Users/rafael/workspace/projects/nvim-remote-container'
 
-" Languages
-" Plug 'Olical/conjure'
-" Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-" Plug 'mattn/emmet-vim', { 'for': 'html' }
-" Plug 'cakebaker/scss-syntax.vim'
-Plug 'euclidianAce/BetterLua.vim'
-" Plug 'nathangrigg/vim-beancount'
-Plug 'plasticboy/vim-markdown'
-Plug 'ekalinin/Dockerfile.vim', { 'for': 'dockerfile' }
-" Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins', 'for': 'python'}
-" Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
-Plug 'rust-lang/rust.vim', { 'for': 'rust' }
-Plug 'simrat39/rust-tools.nvim'
+" " Languages
+" " Plug 'Olical/conjure'
+" " Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+" " Plug 'mattn/emmet-vim', { 'for': 'html' }
+" " Plug 'cakebaker/scss-syntax.vim'
+" Plug 'euclidianAce/BetterLua.vim'
+" " Plug 'nathangrigg/vim-beancount'
+" Plug 'plasticboy/vim-markdown'
+" Plug 'ekalinin/Dockerfile.vim', { 'for': 'dockerfile' }
+" " Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins', 'for': 'python'}
+" " Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
+" Plug 'rust-lang/rust.vim', { 'for': 'rust' }
+" Plug 'simrat39/rust-tools.nvim'
 
-call plug#end()
+" call plug#end()
 " }}}
+lua require('rds.packer')
 
 " General Settings ================================================= {{{
 if has('nvim')
@@ -207,7 +208,7 @@ let g:completion_matching_ignore_case = 1
 " }}}
 
 " Plugin: kien/rainbow_parentheses.vim ================================================= {{{
-autocmd FileType * RainbowParentheses
+"autocmd FileType * RainbowParentheses
 let g:rainbow#pairs = [['(', ')'], ['[', ']'], ['{', '}']]
 " }}}
 
