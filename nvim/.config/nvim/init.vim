@@ -63,65 +63,66 @@
 " call plug#end()
 " }}}
 lua require('rds.packer')
+lua require('rds.globals')
 
 " General Settings ================================================= {{{
-if has('nvim')
-    let g:python3_host_prog = $HOME . '/miniconda3/envs/neovim/bin/python'
-    let g:python_host_prog = $HOME . '/miniconda3/envs/neovim2/bin/python'
-endif
+" if has('nvim')
+    " let g:python3_host_prog = $HOME . '/miniconda3/envs/neovim/bin/python'
+    " let g:python_host_prog = $HOME . '/miniconda3/envs/neovim2/bin/python'
+" endif
 
 " Enable matchit
-runtime macros/matchit.vim
+" runtime macros/matchit.vim
 
 " set nowrap
-set relativenumber
-set number
-set nohlsearch
-set hidden
-set cursorline
-set showmatch
-set splitright
-set incsearch
-set scrolloff=10
-set signcolumn=yes
+" set relativenumber
+" set number
+" set nohlsearch
+" set hidden
+" set cursorline
+" set showmatch
+" set splitright
+" set incsearch
+" set scrolloff=10
+" set signcolumn=yes
 
-set tabstop=4
-set expandtab
-set shiftwidth=4
-set softtabstop=4
+" set tabstop=4
+" set expandtab
+" set shiftwidth=4
+" set softtabstop=4
 
 " White space settings
-set listchars=eol:↵,tab:↦\ ,trail:~,extends:>,precedes:<
-set list
+" set listchars=eol:↵,tab:↦\ ,trail:~,extends:>,precedes:<
+" set list
 
-set timeoutlen=300
-set ttimeoutlen=0
-set updatetime=40
+" set timeoutlen=300
+" set ttimeoutlen=0
+" set updatetime=40
 
-set noerrorbells            " Disable bells
-set novisualbell            " Disable bells
+" set noerrorbells            " Disable bells
+" set novisualbell            " Disable bells
 
-set completeopt-=preview
-set completeopt=menuone,noinsert,noselect
+" set completeopt-=preview
+" set completeopt=menuone,noinsert,noselect
 
-set noswapfile
-set nobackup
-set undodir=~/.vim/undodir
-set undofile
+" set noswapfile
+" set nobackup
+" set undodir=~/.vim/undodir
+" set undofile
 
-set wildignore+=*/node_modules/*,_site,*/__pycache__/,*/venv/*,*/target/*,*/.vim$,\~$,*/.log,*/.aux,*/.cls,*/.aux,*/.bbl,*/.blg,*/.fls,*/.fdb*/,*/.toc,*/.out,*/.glo,*/.log,*/.ist,*/.fdb_latexmk
+" set wildignore+=*/node_modules/*,_site,*/__pycache__/,*/venv/*,*/target/*,*/.vim$,\~$,*/.log,*/.aux,*/.cls,*/.aux,*/.bbl,*/.blg,*/.fls,*/.fdb*/,*/.toc,*/.out,*/.glo,*/.log,*/.ist,*/.fdb_latexmk
 
 " disable continuation of comments to the next line
-autocmd FileType * setlocal formatoptions-=cro
+" autocmd FileType * setlocal formatoptions-=cro
 
 " Git diff settings
-set diffopt=vertical
+" set diffopt=vertical
 
-let mapleader=" "
+" let mapleader=" "
 " let maplocalleader=","
 
-set directory=.
-set tags=./tags,tags;$HOME
+" set directory=.
+" set tags=./tags,tags;$HOME
 
 " Enable highligthing a selection on yank
 autocmd TextYankPost * silent! lua vim.highlight.on_yank()
@@ -138,19 +139,19 @@ nnoremap <c-w>; <c-w>l
 " }}}
 
 " Colors ================================================= {{{
-syntax enable
+" syntax enable
 
-if (has("nvim"))
-    "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
-    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-endif
+" if (has("nvim"))
+    " "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
+    " let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+" endif
 
-if (has("termguicolors"))
-    set termguicolors
-endif
+" if (has("termguicolors"))
+    " set termguicolors
+" endif
 
-set background=dark
-colorscheme gruvbox
+" set background=dark
+" colorscheme gruvbox
 " highlight Normal guibg=none
 " }}}
 
