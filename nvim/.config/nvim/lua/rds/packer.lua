@@ -25,8 +25,7 @@ return require('packer').startup(function (use)
     use 'szw/vim-maximizer'
     -- Git
     use 'tpope/vim-fugitive'
-    use 'TimUntersberger/neogit'
-    use 'sindrets/diffview.nvim'
+    use { 'TimUntersberger/neogit', requires = { 'sindrets/diffview.nvim' } }
     use 'ThePrimeagen/git-worktree.nvim'
     -- Comments
     use 'scrooloose/nerdcommenter'
@@ -36,6 +35,7 @@ return require('packer').startup(function (use)
     use 'gruvbox-community/gruvbox'
     -- Treesitter
     use { 'nvim-treesitter/nvim-treesitter', run = ":TSUpdate"}
+    use { 'nvim-treesitter/playground', run = ":TSInstall query" }
     -- LSP
     use 'neovim/nvim-lspconfig'
     use 'hrsh7th/nvim-compe'
@@ -54,4 +54,6 @@ return require('packer').startup(function (use)
     use 'ekalinin/Dockerfile.vim'
     use 'rust-lang/rust.vim'
     use 'simrat39/rust-tools.nvim'
+
+    use '~/workspace/projects/ipython-nvim'
 end)

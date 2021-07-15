@@ -20,7 +20,10 @@ set -gx CPPFLAGS "-I/usr/local/opt/llvm/include"
 set -Ux fish_user_paths $HOME/.rbenv/bin $fish_user_paths
 status --is-interactive; and source (rbenv init -|psub)
 # Lua
+fish_add_path /usr/local/opt/lua@5.3/bin
 fish_add_path $HOME/.luarocks/bin
+set -gx LDFLAGS "-L/usr/local/opt/lua@5.3/lib"
+set -gx CPPFLAGS "-I/usr/local/opt/lua@5.3/include"
 # Go
 fish_add_path /usr/local/go/bin
 set -Ux GOPATH $HOME/workspace/go

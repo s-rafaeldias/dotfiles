@@ -19,7 +19,7 @@ require'compe'.setup {
 
   source = {
     path = true;
-    buffer = true;
+    buffer = false;
     calc = false;
     vsnip = false;
     nvim_lsp = true;

@@ -9,35 +9,53 @@ RELOAD = function(pkg)
     return require(pkg)
 end
 
+-- TODO: REMOVER depois
+RELOAD("ipython")
+
 
 -- TODO: put treesitter config on its own module
 treesitter.setup {
     ensure_installed = {
         'lua',
-        'javascript',
         'python',
         'bash',
-        'beancount',
         'c',
         'cpp',
         'ruby',
-        'tsx',
+        'javascript',
         'typescript',
         'comment',
         'json',
-        'toml',
         'jsonc',
+        'toml',
         'go',
         'gomod',
-        'elixir'
+        'elixir',
+        'query',
+        'fish'
     },
+
     highlight = {
         enable = true
     },
+
+    playgroud = {
+        enable = true
+    }
 }
 
 
-neogit.setup {}
+require'diffview'.setup {
+    file_panel = {
+        use_icons = false
+    }
+}
+
+neogit.setup {
+    integrations = {
+        diffview = true
+    }
+}
 
 require 'rds.lsp'
 require 'rds.telescope'
