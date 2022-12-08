@@ -1,0 +1,33 @@
+[aws]
+disabled = true
+
+[directory]
+truncate_to_repo = true
+truncation_length = 10
+
+[docker_context]
+disabled = true
+
+[gcloud]
+disabled = true
+
+[git_branch]
+symbol = " "
+
+[nix_shell]
+symbol = " "
+
+[package]
+disabled = true
+
+[python]
+disabled = true
+
+[elixir]
+disabled = true
+
+[scala]
+disabled = true
+
+[character]
+vicmd_symbol = "[V](bold green) "

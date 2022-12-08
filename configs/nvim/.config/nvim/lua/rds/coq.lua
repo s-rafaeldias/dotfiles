@@ -1,0 +1,14 @@
+-- vim.g.coq_settings = {
+-- ["auto_start"] = true,
+-- ["clients.tree_sitter.enabled"] = false,
+-- ["clients.buffer.enabled"] = false,
+-- ["clients.tmux.enabled"] = false,
+-- -- keymap = {
+-- -- recommended = false
+-- -- }
+-- }
+
+-- require "coq_3p" {
+-- { src = "nvimlua", short_name = "nLUA", conf_only = true },
+-- { src = "orgmode", short_name = "ORG" },
+-- }

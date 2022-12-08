@@ -1,0 +1,16 @@
+repos:
+- repo: https://github.com/JohnnyMorganz/StyLua
+  rev: v0.13.0
+  hooks:
+    - id: stylua # or stylua-system / stylua-github
+- repo: https://github.com/zricethezav/gitleaks
+  rev: v8.11.2
+  hooks:
+    - id: gitleaks
+- repo: https://github.com/pre-commit/pre-commit-hooks
+  rev: v3.2.0
+  hooks:
+  - id: trailing-whitespace
+  - id: end-of-file-fixer
+  - id: check-yaml
+  - id: check-added-large-files

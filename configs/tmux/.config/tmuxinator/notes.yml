@@ -1,0 +1,7 @@
+# /Users/rafael/.config/tmuxinator/notes.yml
+
+name: notes
+root: ~/workspace/notes
+
+windows:
+  - editor: vi .

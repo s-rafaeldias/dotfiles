@@ -1,0 +1,26 @@
+#!/bin/bash
+set -euo pipefail
+IFS=$'\n\t'
+
+# Get URL
+URL=$1
+# echo $URL
+
+# remove .git from name
+BASENAME=${URL##*/}
+# echo $BASENAME
+
+NAME=${BASENAME%.*}
+# echo $NAME
+
+# clone bare using name without .git
+git clone --bare "$URL" "$NAME"
+
+pushd "$NAME"
+
+git config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
+git fetch origin
+
+mkdir branches
+
+popd "$NAME"

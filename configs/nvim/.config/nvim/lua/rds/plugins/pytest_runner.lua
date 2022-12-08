@@ -1,0 +1,14 @@
+-- Things I want to do:
+-- Run a single test case
+-- Run a single test case considering `pytest-describe`
+-- Run the full file
+-- Run all test cases
+--
+-- Things I want see:
+-- Failed tests (diagnostics)
+-- Buffer with failed tests (to be able to jump to failed test case)
+-- Failed tests cases on quicklist
+--
+-- UI things (zero priority):
+-- Quick overview of the results
+-- Full list of all passed/failed tests (like vscode?) -> Do I really need/want this?

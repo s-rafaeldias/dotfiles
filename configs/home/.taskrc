@@ -1,0 +1,30 @@
+# vim: ft=conf
+data.location=~/.task
+dateformat=D-M-YTH:N
+news.version=0
+default.command = next
+
+# Basic report
+report.list.sort    = depends+,order-,card-,brainpower-,priority-,urgency-
+report.list.labels  = ID,Active,Jira Card,order,Project,Tag,Description,Brainpower
+report.list.columns = id,start.age,card,order,project,tags,description,brainpower
+
+# Custom UDAs
+uda.brainpower.type=string
+uda.brainpower.label=Brainpower
+uda.brainpower.values=H,M,L,?
+uda.brainpower.default=?
+
+# TODO: pick a better name
+# Order
+uda.order.type=string
+uda.order.label=order
+uda.order.values=next,after,?
+uda.order.default=?
+
+color.uda.order.next = blue
+color.uda.order.after = yellow
+color.uda.order.? = white
+
+uda.card.type=numeric
+uda.card.label=Jira Card

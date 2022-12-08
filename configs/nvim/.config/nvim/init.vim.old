@@ -1,0 +1,102 @@
+lua require('rds.packer')
+lua require('rds.opts')
+
+" Enable highligthing a selection on yank
+autocmd TextYankPost * silent! lua vim.highlight.on_yank()
+
+" Lets try this touch typing thing
+map j <Left>
+map k <Down>
+map l <Up>
+map ; <Right>
+nnoremap <C-W>j <C-w>h
+nnoremap <C-W>k <c-w>j
+nnoremap <c-w>l <c-w>k
+nnoremap <c-w>; <c-w>l
+
+" Remap lk and kj for exit Insert mode
+inoremap lk <esc><right>
+inoremap kl <esc><right>
+" Create new undo block on <CR> in insert mode
+inoremap <CR> <C-G>u<CR>
+
+" Move line up
+nnoremap - ddp
+" Move line down
+nnoremap _ ddkP
+" <CR> on normal mode add a new line below cursor
+" nnoremap <CR> o<ESC>
+
+" Move to next buffer
+nnoremap <S-TAB> :bn<CR>
+
+" Paste clipboard (register *)
+nnoremap <Leader>P "*P
+nnoremap <Leader>p "*p
+
+nnoremap <F2> :luafile %<CR>
+nnoremap <leader>m :MaximizerToggle!<CR>
+
+" Copy selected text to + register (clipboard)
+vnoremap <Leader>y "+y
+vnoremap D "_d
+
+tnoremap <Esc> <C-\><C-n>
+
+
+"let g:maximizer_set_default_mapping = 0
+"let g:NERDSpaceDelims = 1
+"let g:NERDCustomDelimiters = { 'fish': { 'left': '#' } }
+
+let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
+let g:completion_matching_ignore_case = 1
+
+"let g:AutoPairs = {'(':')', '[':']', '{':'}'}
+
+
+"let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+
+"let g:doge_mapping = '<Leader>D'
+"let g:doge_doc_standard_python = 'numpy'
+
+let g:vim_markdown_conceal = 0
+let g:vim_markdown_conceal_code_blocks = 0
+
+augroup VIML_IDE
+    autocmd!
+    autocmd FileType vim
+                \| set foldmethod=marker
+augroup END
+
+augroup LUA_IDE
+    autocmd!
+    autocmd FileType lua
+                \| set tabstop=2
+                \| set shiftwidth=2
+                \| set softtabstop =2
+augroup END
+
+augroup JS_IDE
+    autocmd!
+    autocmd FileType json syntax match Comment +\/\/.\+$+
+    autocmd FileType javascript,javascriptreact,jsontypescript,typescript,typescriptreact
+                \| set tabstop=2
+                \| set shiftwidth=2
+augroup END
+
+augroup GO_IDE
+    autocmd!
+    autocmd FileType go setlocal noexpandtab
+augroup END
+
+augroup HTML_CSS_IDE
+    let g:user_emmet_mode='inv'
+    let g:user_emmet_expandabbr_key='<Tab>'
+    autocmd!
+    autocmd FileType css,scss,html
+                \| set tabstop=2
+                \| set shiftwidth=2
+augroup END
+
+" LUA BABYYYYY
+lua require('init')

@@ -1,0 +1,87 @@
+env:
+  TERM: xterm-256color
+
+live_config_reload: true
+
+window:
+  dynamic_padding: true
+  startup_mode: "Fullscreen"
+
+use_thin_strokes: false
+draw_bold_text_with_bright_colors: true
+
+mouse:
+  hide_when_typing: true
+
+font:
+  size: 14.5
+  offset:
+    y: 1
+
+  normal:
+    family: JetBrainsMono Nerd Font
+    style: Regular
+
+colors:
+  cursor:
+    cursor: "#c7c7c7"
+
+  # Default colors
+  primary:
+    background: '#101421'
+    foreground: '#fffbf6'
+
+ # Normal colors
+  normal:
+    black:   '#2e2e2e'
+    red:     '#eb4129'
+    green:   '#abe047'
+    yellow:  '#f6c744'
+    blue:    '#47a0f3'
+    magenta: '#7b5cb0'
+    cyan:    '#64dbed'
+    white:   '#e5e9f0'
+
+ # Bright colors
+  bright:
+    black:   '#565656'
+    red:     '#ec5357'
+    green:   '#c0e17d'
+    yellow:  '#f9da6a'
+    blue:    '#49a4f8'
+    magenta: '#a47de9'
+    cyan:    '#99faf2'
+    white:   '#ffffff'
+
+key_bindings:
+  - { key: V, mods: Control, action: Paste }
+  - { key: C, mods: Control, action: Copy }
+  # Use Command instead of Control
+  # https://github.com/alacritty/alacritty/issues/62#issuecomment-720860598
+  - { key: A, mods: Command, chars: "\x01" }
+  - { key: B, mods: Command, chars: "\x02" }
+  - { key: C, mods: Command, chars: "\x03" }
+  - { key: D, mods: Command, chars: "\x04" }
+  - { key: E, mods: Command, chars: "\x05" }
+  - { key: F, mods: Command, chars: "\x06" }
+  - { key: G, mods: Command, chars: "\x07" }
+  - { key: H, mods: Command, chars: "\x08" }
+  - { key: I, mods: Command, chars: "\x09" }
+  - { key: J, mods: Command, chars: "\x0a" }
+  - { key: K, mods: Command, chars: "\x0b" }
+  - { key: L, mods: Command, chars: "\x0c" }
+  - { key: M, mods: Command, chars: "\x0d" }
+  - { key: N, mods: Command, chars: "\x0e" }
+  - { key: O, mods: Command, chars: "\x0f" }
+  - { key: P, mods: Command, chars: "\x10" }
+  - { key: Q, mods: Command, chars: "\x11" }
+  - { key: R, mods: Command, chars: "\x12" }
+  - { key: S, mods: Command, chars: "\x13" }
+  - { key: T, mods: Command, chars: "\x14" }
+  - { key: U, mods: Command, chars: "\x15" }
+  - { key: V, mods: Command, chars: "\x16" }
+  - { key: W, mods: Command, chars: "\x17" }
+  - { key: X, mods: Command, chars: "\x18" }
+  - { key: Y, mods: Command, chars: "\x19" }
+  - { key: Z, mods: Command, chars: "\x1a" }
+  # TODO: add other combinations

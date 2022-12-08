@@ -1,0 +1,10 @@
+# /Users/THW9714/.config/tmuxinator/fdp.yml
+
+name: fdp
+root: ~/workspace/fdp/
+
+windows:
+  - terminal: cd repos
+  - ingestion: cd repos/fst-falconforce-fdp-event-ingestion && conda activate $(basename $(pwd)) && vim
+  - transformation: cd repos/fst-falconforce-fdp-transformation && conda activate $(basename $(pwd)) && vim
+  - producer: cd repos/fst-falconforce-poc-event-producer && conda activate $(basename $(pwd)) && vim

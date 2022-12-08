@@ -1,0 +1,8 @@
+# /Users/rafael/.config/tmuxinator/basic.yml
+
+name: <%= @args[0] or File.basename(Dir.pwd) %>
+root: <%= Dir.pwd %>
+
+windows:
+  - editor: clear
+  - terminal: clear

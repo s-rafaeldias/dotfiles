@@ -1,0 +1,29 @@
+[user]
+    name = Rafael Dias
+    email = s.rafaeldias@protonmail.com
+    signingkey = s.rafaeldias@protonmail.com
+
+[core]
+    editor = nvim
+
+[commit]
+    gpgsign = true
+    template = ~/.gitmessage
+
+[init]
+    defaultbranch = main
+
+[push]
+    default = current
+
+[pull]
+    default = current
+
+[gpg]
+    program = gpg
+
+[alias]
+    recent = branch --sort=-committerdate --format='%(committerdate:relative)%09%(refname:short)'
+    p = pull
+    P = push
+    clbare = clone --bare

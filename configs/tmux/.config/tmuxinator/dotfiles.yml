@@ -1,0 +1,7 @@
+# /Users/rafael/.config/tmuxinator/dotfiles.yml
+
+name: dotfiles
+root: ~/.config/nixpkgs
+
+windows:
+  - home: clear

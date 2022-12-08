@@ -1,0 +1,23 @@
+# Focus on display. My main screen is the monitor
+# and the Mac stays on my left side, so it makes more
+# sense to use 1 to move to the left most display, and 2
+# to the right most display
+# Focus on notebook
+hyper - 1 : yabai -m display --focus 2
+# Focus on monitor
+hyper - 2 : yabai -m display --focus 1
+
+# Move between windows
+hyper - h : yabai -m window --focus west
+hyper - j : yabai -m window --focus south
+hyper - k : yabai -m window --focus north
+hyper - l : yabai -m window --focus east
+
+# Fullscreen (just for current window)
+hyper - o : yabai -m window --toggle zoom-fullscreen
+
+# Flip the tree horizontally
+hyper - u : yabai -m space --mirror x-axis
+
+# Flip the tree vertically
+hyper - i : yabai -m space --mirror y-axis
