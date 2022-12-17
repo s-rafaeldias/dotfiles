@@ -9,7 +9,7 @@ local sumneko_root_path = vim.fn.stdpath "cache" .. "/lspconfig/sumneko_lua/lua-
 local sumneko_binary = sumneko_root_path .. "/bin/macOS/lua-language-server"
 
 lspconfig.sumneko_lua.setup {
-  cmd = { sumneko_binary, "-E", sumneko_root_path .. "/main.lua" },
+  -- cmd = { sumneko_binary, "-E", sumneko_root_path .. "/main.lua" },
   on_attach = lsp.custom_attach,
   settings = {
     Lua = {

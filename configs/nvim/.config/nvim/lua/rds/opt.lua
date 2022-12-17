@@ -23,7 +23,12 @@ set.ignorecase = true
 set.smartindent = true
 
 -- folding
-set.foldmethod = "marker"
+-- set.foldmethod = "marker"
+vim.cmd [[
+set foldmethod=expr
+set foldexpr=nvim_treesitter#foldexpr()
+set nofoldenable
+]]
 
 set.listchars = {
   tab = "↦ ",

@@ -22,6 +22,10 @@ lspconfig["pylsp"].setup {
         },
         flake8 = {
           maxLineLength = 100,
+          enabled = false,
+        },
+        ruff = {
+          enabled = true,
         },
       },
     },

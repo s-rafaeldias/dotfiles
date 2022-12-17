@@ -35,10 +35,12 @@ require("packer").startup(function(use)
       -- "shumphrey/fugitive-gitlab.vim",
     },
   }
-  -- use "TimUntersberger/neogit"
+  use "TimUntersberger/neogit"
   use "ThePrimeagen/git-worktree.nvim"
-  -- use "~/workspace/nvim/git-worktree.nvim"
-  -- use "lewis6991/gitsigns.nvim"
+  use {
+    "akinsho/git-conflict.nvim",
+    tag = "*",
+  }
   -- }}}
 
   -- Debugging {{{
@@ -103,4 +105,5 @@ require("packer").startup(function(use)
   --   },
   -- }
   -- }}}
+  use { "williamboman/mason.nvim" }
 end)
