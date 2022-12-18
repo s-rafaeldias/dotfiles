@@ -9,6 +9,8 @@ function M.print_tbl(v)
   print(vim.inspect(v))
 end
 
+---@param prompt string
+---@return string
 function M.input(prompt)
   local result
   vim.ui.input({ prompt = prompt }, function(input)
@@ -17,12 +19,16 @@ function M.input(prompt)
   return result
 end
 
+---@param prompt string
+---@param default_value string
+---@return string
 function M.input_with_default(prompt, default_value)
   local result = M.input(prompt)
 
   return result or default_value
 end
 
+---@return boolean
 function M.is_working_machine()
   return vim.env["WORKING_MACHINE"] ~= nil
 end

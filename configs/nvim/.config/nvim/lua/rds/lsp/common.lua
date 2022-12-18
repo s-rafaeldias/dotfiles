@@ -13,4 +13,15 @@ function M.custom_attach(client, bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, "n", "<Leader>ff", "<Cmd>lua vim.lsp.buf.format { async=true }<CR>", opts)
 end
 
+M.lsp_servers = {
+  "clangd",
+  "jsonls",
+  "gopls",
+  "terraformls",
+  "elixirls",
+  "pylsp",
+  "rust_analyzer",
+  "sumneko_lua"
+}
+
 return M

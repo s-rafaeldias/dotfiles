@@ -1,8 +1,9 @@
 require "rds.autocmd"
 
+-- Install most things needed 
+-- for code only (LSP setup will be at `rds.lsp`)
 require "rds.mason"
 
--- require "rds.utils"
 require "rds.treesitter"
 require "rds.snippets"
 require "rds.cmp"

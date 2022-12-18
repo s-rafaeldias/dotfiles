@@ -39,7 +39,7 @@ alias vim='nvim'
 
 alias br='brew uninstall'
 alias bu='brew upgrade'
-alias bb='brew bundle --file=$HOME/.config/nixpkgs/Brewfile'
+alias bb='brew bundle --file=$HOME/.dotfiles/Brewfile'
 alias bv='brew uninstall neovim && brew install neovim --HEAD'
 
 # Disable for now. One day I want to go back to NixOS

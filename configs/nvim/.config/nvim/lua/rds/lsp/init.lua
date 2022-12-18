@@ -1,7 +1,7 @@
 local lspconfig = require "lspconfig"
 local null_ls = require "null-ls"
 local lsp_common = require "rds.lsp.common"
--- local lsp_status = require "lsp-status"
+local mason_lspconfig = require "mason-lspconfig"
 
 -- require("lsp_signature").setup {
 --   bind = true,
@@ -11,19 +11,15 @@ local lsp_common = require "rds.lsp.common"
 --   hint_prefix = "🐍 ",
 -- }
 
--- lsp_status.register_progress()
+mason_lspconfig.setup {
+  ensure_installed = lsp_common.lsp_servers,
+}
 
-local servers = { "clangd", "jsonls", "gopls", "terraformls" }
-for _, lsp in ipairs(servers) do
+for _, lsp in ipairs(lsp_common.lsp_servers) do
   lspconfig[lsp].setup {
     on_attach = lsp_common.custom_attach,
   }
 end
-
-require("lspconfig").elixirls.setup {
-  cmd = { "/Users/rafael/.local/bin/elixir-ls/language_server.sh" },
-  on_attach = lsp_common.custom_attach,
-}
 
 require("rust-tools").setup {
   dap = {

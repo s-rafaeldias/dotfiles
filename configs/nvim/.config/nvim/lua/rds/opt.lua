@@ -1,5 +1,8 @@
 local set = vim.opt
 
+-- Testing this
+set.guicursor="a:block"
+
 set.relativenumber = true
 set.number = true
 set.hlsearch = false

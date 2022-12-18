@@ -11,7 +11,7 @@ vim.keymap.set("t", "<Esc>", "<C-\\><C-n>")
 
 -- Reload config
 vim.keymap.set("n", "<Leader>sv", "<Cmd>luafile $MYVIMRC<CR>")
-vim.keymap.set("n", "<Leader><Leader>s", function()
+vim.keymap.set("n", "<Leader>s", function()
   vim.cmd "so %"
   vim.notify "File sourced!"
 end)
