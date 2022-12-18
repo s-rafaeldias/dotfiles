@@ -38,6 +38,7 @@ alias vi='nvim'
 alias vim='nvim'
 
 alias br='brew uninstall'
+alias bi='brew install'
 alias bu='brew upgrade'
 alias bb='brew bundle --file=$HOME/.dotfiles/Brewfile'
 alias bv='brew uninstall neovim && brew install neovim --HEAD'
@@ -63,9 +64,9 @@ alias th='tmuxinator start home'
 alias d='tmuxinator start dotfiles'
 
 # Taskwarrior + GTD
-alias in='task add +in'
-alias next='task modify -in +next -maybe'
-alias maybe='task modify -in -next +maybe'
+# alias in='task add +in'
+# alias next='task modify -in +next -maybe'
+# alias maybe='task modify -in -next +maybe'
 
 alias ca='conda activate $(basename $(pwd))'
 
@@ -84,6 +85,7 @@ create_conda_env() {
     conda create -n $conda_env python=3.10 --yes
 
     cat << EOF >> $envrc_path
+# vim: ft=sh
 . "$HOME/miniconda3/etc/profile.d/conda.sh"
 conda activate $conda_env
 EOF
