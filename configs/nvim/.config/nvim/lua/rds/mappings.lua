@@ -18,8 +18,6 @@ end)
 
 vim.keymap.set("n", "<Leader>e", "<Cmd>Ex!<CR>")
 
-vim.keymap.set("n", "<leader>wd", "<cmd>VimwikiIndex1<cr>")
-
 vim.keymap.set("n", "<leader>q", rds_utils.toggle_qflist)
 
 vim.keymap.set("n", "<C-D>", "<C-D>zz")

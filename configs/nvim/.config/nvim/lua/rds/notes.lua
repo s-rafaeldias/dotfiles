@@ -1,4 +1,6 @@
-vim.g.vimwiki_list = {
-  { path = "~/workspace/notes/", links_space_char = "-", diary_frequency = "weekly" },
-  { path = "~/workspace/work/" },
-}
+-- Semi plugin for note taking
+-- Goals:
+-- Simple to use
+-- Markdown based
+-- No bells and whistles (like vim-wiki, neorg)
+-- Focus on note taking only: no tasks, calendars and so on
