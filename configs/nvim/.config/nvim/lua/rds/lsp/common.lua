@@ -21,7 +21,8 @@ M.lsp_servers = {
   "elixirls",
   "pylsp",
   "rust_analyzer",
-  "sumneko_lua"
+  "sumneko_lua",
+  "marksman"
 }
 
 return M
