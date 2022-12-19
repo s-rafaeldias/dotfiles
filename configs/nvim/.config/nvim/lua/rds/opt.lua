@@ -1,7 +1,7 @@
 local set = vim.opt
 
 -- Testing this
-set.guicursor="a:block"
+set.guicursor = "a:block"
 
 set.relativenumber = true
 set.number = true
@@ -25,8 +25,9 @@ set.autoindent = true
 set.ignorecase = true
 set.smartindent = true
 
--- folding
+-- By default, uses `marker` for folding
 set.foldmethod = "marker"
+-- To use treesitter folding, just add the `vim.cmd` bellow on `after/ftplugin/[lang].vim
 -- vim.cmd [[
 -- set foldmethod=expr
 -- set foldexpr=nvim_treesitter#foldexpr()
