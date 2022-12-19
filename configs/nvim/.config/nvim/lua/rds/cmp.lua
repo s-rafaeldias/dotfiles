@@ -70,7 +70,7 @@ cmp.setup {
         nvim_lua = "[NVIM_LUA]",
         path = "[Path]",
         luasnip = "[Snip]",
-        nvim_lsp_signature_help = "[Args]",
+        nvim_lsp_signature_help = "🐍",
       })[entry.source.name]
 
       return vim_item
