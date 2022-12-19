@@ -1,5 +1,5 @@
 # .dotfiles
-> ~/ sweet /~
+> ~/ sweet ~/
 This is mine dotfiles setup.
 
 ## Setting up
