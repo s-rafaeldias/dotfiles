@@ -9,8 +9,7 @@ local neogit = require "neogit"
 
 local create_git_worktree = function()
   local branch = utils.input "Branch name: "
-  local commit_ish = utils.input_with_default "Commit-ish: ", ""
-  Worktree.create_worktree("branches/" .. branch, branch, "origin", { commit_ish = commit_ish })
+  Worktree.create_worktree("branches/" .. branch, branch, "origin")
 end
 
 local group = vim.api.nvim_create_augroup("git", { clear = true })
@@ -32,15 +31,11 @@ vim.api.nvim_create_autocmd("BufEnter", {
   end,
 })
 
-neogit.setup {
-  kind = "tab",
-}
-
 -- Git
-vim.keymap.set("n", "<Leader>gg", neogit.open)
--- vim.keymap.set("n", "<Leader>gg", "<Cmd>G<CR>")
--- vim.keymap.set("n", "<Leader>gp", "<Cmd>G pull<CR>")
--- vim.keymap.set("n", "<Leader>gP", "<Cmd>G push<CR>")
+-- vim.keymap.set("n", "<Leader>gg", neogit.open)
+vim.keymap.set("n", "<Leader>gg", "<Cmd>G<CR>")
+vim.keymap.set("n", "<Leader>gp", "<Cmd>G pull<CR>")
+vim.keymap.set("n", "<Leader>gP", "<Cmd>G push<CR>")
 -- Git worktree extension
 vim.keymap.set("n", "<Leader>gl", "<Cmd>lua require('telescope').extensions.git_worktree.git_worktrees()<CR>")
 vim.keymap.set("n", "<Leader>ga", "<Cmd>lua require('telescope').extensions.git_worktree.create_git_worktree()<CR>")

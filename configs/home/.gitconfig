@@ -27,3 +27,5 @@
     p = pull
     P = push
     clbare = clone --bare
+[fetch]
+	prune = true
