@@ -6,7 +6,7 @@ plugins=(
     poetry
     tmuxinator
     zsh-syntax-highlighting
-    vi-mode
+    # vi-mode
     docker
 )
 
