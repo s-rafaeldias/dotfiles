@@ -19,10 +19,10 @@ M.lsp_servers = {
   "gopls",
   "terraformls",
   "elixirls",
-  "pylsp",
+  -- "pylsp",
   "rust_analyzer",
   "sumneko_lua",
-  "marksman"
+  "marksman",
 }
 
 return M

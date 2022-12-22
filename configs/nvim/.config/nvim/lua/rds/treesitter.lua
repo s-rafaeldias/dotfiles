@@ -32,6 +32,9 @@ treesitter.setup {
     "http",
     "rust",
   },
+  indent = {
+    enable = false,
+  },
   highlight = {
     enable = true,
   },

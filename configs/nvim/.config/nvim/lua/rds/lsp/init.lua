@@ -42,9 +42,7 @@ null_ls.setup {
     null_ls.builtins.formatting.rustfmt,
     null_ls.builtins.formatting.mix,
     null_ls.builtins.formatting.terraform_fmt,
-    null_ls.builtins.formatting.jq.with {
-      args = { "--indent", "2" },
-    },
+    null_ls.builtins.formatting.jq,
     null_ls.builtins.code_actions.shellcheck,
     null_ls.builtins.diagnostics.shellcheck,
   },
