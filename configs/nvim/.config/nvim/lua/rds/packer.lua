@@ -23,7 +23,7 @@ require("packer").startup(function(use)
   use "junegunn/vim-peekaboo"
   -- Super duper plugin to help surrounding text-objects
   use "tpope/vim-surround"
-  -- use { "vimwiki/vimwiki", branch = "dev" }
+  use { "vimwiki/vimwiki", branch = "dev" }
   -- use "nvim-neorg/neorg"
 
   -- Git stuff {{{

@@ -11,4 +11,5 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   group = rds_group,
   desc = "Highlight yank",
 })
+
 -- }}}
