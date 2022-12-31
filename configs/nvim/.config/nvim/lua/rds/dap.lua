@@ -57,7 +57,7 @@ vim.keymap.set("n", "<Leader>dc", function()
   dap.run_to_cursor()
 end)
 vim.keymap.set("n", "<Leader>dq", function()
-  dapui.close()
+  dapui.close {}
 end)
 vim.keymap.set("n", "<Leader>dt", function()
   local ft = vim.bo.filetype
@@ -69,7 +69,7 @@ vim.keymap.set("n", "<Leader>dt", function()
 end)
 
 dap.listeners.after.event_initialized["dapui_config"] = function()
-  dapui.open()
+  dapui.open {}
 end
 dap.listeners.before.event_terminated["dapui_config"] = function()
   -- dapui.close()

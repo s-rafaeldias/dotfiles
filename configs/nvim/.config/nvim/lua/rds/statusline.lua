@@ -23,7 +23,7 @@ local branch_color = function(section)
 end
 
 require("lualine").setup {
-  options = { theme = "onedark" },
+  options = { theme = "catppuccin" },
   extensions = { "quickfix", "fugitive" },
   sections = {
     lualine_b = {

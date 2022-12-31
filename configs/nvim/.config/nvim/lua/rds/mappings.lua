@@ -11,10 +11,9 @@ vim.keymap.set("t", "<Esc>", "<C-\\><C-n>")
 
 -- Reload config
 vim.keymap.set("n", "<Leader>sv", "<Cmd>luafile $MYVIMRC<CR>")
-vim.keymap.set("n", "<Leader>s", function()
-  vim.cmd "so %"
-  vim.notify "File sourced!"
-end)
+
+-- Switch between related files. See `tpope/vim-projectionist`
+vim.keymap.set("n", "<Leader>s", "<Cmd>AV<CR>")
 
 vim.keymap.set("n", "<Leader>e", "<Cmd>Ex!<CR>")
 
@@ -46,3 +45,17 @@ vim.keymap.set("n", "j", function()
 end, {
   expr = true,
 })
+
+-- Git {{{
+-- vim.keymap.set("n", "<Leader>gg", neogit.open)
+vim.keymap.set("n", "<Leader>gg", "<Cmd>G<CR>")
+vim.keymap.set("n", "<Leader>gp", "<Cmd>G pull<CR>")
+vim.keymap.set("n", "<Leader>gP", "<Cmd>G push<CR>")
+-- Git worktree extension
+vim.keymap.set("n", "<Leader>gl", "<Cmd>lua require('telescope').extensions.git_worktree.git_worktrees()<CR>")
+vim.keymap.set("n", "<Leader>ga", "<Cmd>lua require('telescope').extensions.git_worktree.create_git_worktree()<CR>")
+vim.keymap.set("n", "<Leader>gn", require("rds.git").create_git_worktree)
+-- }}}
+
+-- DAP {{{
+-- }}}

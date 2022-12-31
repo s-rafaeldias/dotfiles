@@ -6,25 +6,44 @@ require("packer").startup(function(use)
   use "kyazdani42/nvim-web-devicons"
   use "lewis6991/impatient.nvim"
 
+  use "tpope/vim-projectionist"
+  use "tpope/vim-speeddating"
+  -- Super duper plugin to help surrounding text-objects
+  use "tpope/vim-surround"
+  -- Show macros and registers
+  use "junegunn/vim-peekaboo"
+  use { "vimwiki/vimwiki", branch = "dev" }
+  use "ThePrimeagen/harpoon"
+
   -- Theme
   -- use "gruvbox-community/gruvbox"
   use "joshdick/onedark.vim"
+  use {
+    "catppuccin/nvim",
+    as = "catppuccin",
+    config = function()
+      require("catppuccin").setup {
+        integrations = {
+          vimwiki = true,
+          harpoon = true,
+          dap = {
+            enabled = true,
+            enable_ui = true,
+          },
+        },
+      }
+    end,
+  }
+
   -- statusline
   use "nvim-lualine/lualine.nvim"
 
-  use "ThePrimeagen/harpoon"
   use {
     "numToStr/Comment.nvim",
     config = function()
       require("Comment").setup()
     end,
   }
-  -- Show macros and registers
-  use "junegunn/vim-peekaboo"
-  -- Super duper plugin to help surrounding text-objects
-  use "tpope/vim-surround"
-  use { "vimwiki/vimwiki", branch = "dev" }
-  -- use "nvim-neorg/neorg"
 
   -- Git stuff {{{
   use {
