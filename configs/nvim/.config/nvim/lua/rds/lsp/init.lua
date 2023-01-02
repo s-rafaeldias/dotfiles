@@ -39,8 +39,8 @@ require("rust-tools").setup {
 null_ls.setup {
   sources = {
     -- python
-    null_ls.builtins.formatting.isort,
-    null_ls.builtins.formatting.black,
+    -- null_ls.builtins.formatting.isort,
+    -- null_ls.builtins.formatting.black,
     -- lua
     null_ls.builtins.formatting.stylua,
     -- null_ls.builtins.formatting.blue,
