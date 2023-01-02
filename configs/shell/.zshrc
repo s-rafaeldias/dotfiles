@@ -57,10 +57,13 @@ alias l='ls -alFh'
 alias la='ls -Ah'
 alias ll='ls -CFh'
 
-alias t='tmuxinator'
+# alias t='tmuxinator'
 alias tm='tmux'
 alias tb='tmuxinator start basic'
-alias th='tmuxinator start home'
+# First deactivate conda env to make sure
+# `pip` will use the correct bin (from current activated env)
+# https://github.com/conda/conda/issues/7173#issuecomment-1053848539
+alias t='conda deactivate && tmuxinator start home'
 alias d='tmuxinator start dotfiles'
 
 # Taskwarrior + GTD
@@ -79,16 +82,6 @@ complete -o nospace -C /usr/local/bin/terraform terraform
 # Functions ============================================ {{{
 # Create basic `.envrc` file for python projects using conda
 create_conda_env() {
-    envrc_path=$(pwd)/.envrc
-    conda_env=$(basename $(pwd))
-
-    conda create -n $conda_env python=3.10 --yes
-
-    cat << EOF >> $envrc_path
-# vim: ft=sh
-. "$HOME/miniconda3/etc/profile.d/conda.sh"
-conda activate $conda_env
-EOF
 }
 alias np='create_conda_env'
 
@@ -113,16 +106,15 @@ alias ds='docker-setup'
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/$HOME/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+__conda_setup="$('/Users/rafael/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/$HOME/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/$HOME/miniconda3/etc/profile.d/conda.sh"
+    if [ -f "/Users/rafael/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/Users/rafael/miniconda3/etc/profile.d/conda.sh"
     else
-        export PATH="/$HOME/miniconda3/bin:$PATH"
+        export PATH="/Users/rafael/miniconda3/bin:$PATH"
     fi
 fi
 unset __conda_setup
 # <<< conda initialize <<<
-conda activate base

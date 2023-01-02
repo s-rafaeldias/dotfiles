@@ -21,6 +21,11 @@ for _, lsp in ipairs(lsp_common.lsp_servers) do
   }
 end
 
+require "rds.lsp.python"
+require "rds.lsp.lua"
+require "rds.lsp.arduino"
+require "rds.lsp.scala"
+
 require("rust-tools").setup {
   dap = {
     adapter = require("rust-tools.dap").get_codelldb_adapter(
@@ -49,8 +54,3 @@ null_ls.setup {
     null_ls.builtins.diagnostics.shellcheck,
   },
 }
-
-require "rds.lsp.python"
-require "rds.lsp.lua"
-require "rds.lsp.arduino"
-require "rds.lsp.scala"

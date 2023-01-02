@@ -20,7 +20,7 @@ M.lsp_servers = {
   "terraformls",
   "elixirls",
   -- "pylsp",
-  "rust_analyzer",
+  -- "rust_analyzer",
   "sumneko_lua",
   "marksman",
 }

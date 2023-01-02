@@ -1,0 +1,44 @@
+#!/bin/bash
+set -euo pipefail
+IFS=$'\n\t'
+
+# Check if conda env exists for that repo/dir
+conda_env=$(basename "$(pwd)")
+envs=$(conda env list | awk '{print $1}')
+conda_env_exists=0
+
+for env in $envs; do
+    if [[ $env == "$conda_env" ]]; then
+        conda_env_exists=1
+    fi
+done
+
+if [[ $conda_env_exists -eq 1 ]]; then
+    echo "Found it! Nothing to do here"
+    exit
+fi
+
+echo "404: Not Found"
+envrc_path=$(pwd)/.envrc
+
+echo "Creating a new conda env..."
+conda create -n "$conda_env" python=3.10 --yes
+
+echo "Creating .envrc file"
+cat << EOF >> "$envrc_path"
+# vim: ft=sh
+. "$HOME/miniconda3/etc/profile.d/conda.sh"
+conda activate $conda_env
+EOF
+
+echo "Allowing direnv"
+direnv allow .
+
+echo "Installing basic dev tools..."
+"$HOME"/miniconda3/envs/"$conda_env"/bin/pip install \
+    python-lsp-ruff \
+    pylsp-mypy \
+    pylsp-rope \
+    pyls-isort \
+    python-lsp-black \
+    "python-lsp-server[all]"

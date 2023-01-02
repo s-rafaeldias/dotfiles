@@ -7,6 +7,8 @@ export COMPLETION_WAITING_DOTS="true"
 export FZF_DEFAULT_COMMAND="fd --type f --hidden --follow --exclude .git"
 export RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
 
+export PYTHONNOUSERSITE=1
+
 export PAGER=/usr/bin/less
 
 export ZSH=$HOME/.oh-my-zsh
