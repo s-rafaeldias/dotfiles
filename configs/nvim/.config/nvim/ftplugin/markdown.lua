@@ -2,3 +2,7 @@
 -- if require("zk.util").notebook_root(vim.fn.expand "%:p") ~= nil then
 --   vim.keymap.set("n", "gd", vim.lsp.buf.definition)
 -- end
+--
+vim.cmd [[
+setlocal spell spelllang=en_us
+]]

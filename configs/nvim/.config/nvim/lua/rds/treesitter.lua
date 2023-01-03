@@ -2,7 +2,7 @@ local treesitter = require "nvim-treesitter.configs"
 
 treesitter.setup {
   ensure_installed = {
-    -- "scala",
+    "scala",
     "sql",
     "elixir",
     "ruby",
@@ -11,12 +11,12 @@ treesitter.setup {
     "lua",
     "python",
     "bash",
-    -- "nix",
+    "nix",
     "c",
     "cpp",
     "cmake",
     "dockerfile",
-    -- "javascript",
+    "javascript",
     "json",
     -- "comment",
     -- "jsonc",
@@ -28,6 +28,7 @@ treesitter.setup {
     "yaml",
     -- "tsx",
     -- "typescript",
+    "terraform",
     "toml",
     "http",
     "rust",

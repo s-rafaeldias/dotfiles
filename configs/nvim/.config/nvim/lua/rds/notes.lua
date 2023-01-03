@@ -9,11 +9,6 @@ vim.g.vimwiki_list = {
   { path = "~/workspace/notes/", links_space_char = "_" },
 }
 
-local notes_group = vim.api.nvim_create_augroup("RDSNotes", {})
-
-vim.api.nvim_create_autocmd({ "BufLeave", "BufDelete", "InsertLeave" }, {
-  pattern = "*.wiki",
-  command = "write",
-  group = notes_group,
-  desc = "Save wiki notes after leaving",
-})
+-- require("hologram").setup {
+--   auto_display = true, -- WIP automatic markdown image display, may be prone to breaking
+-- }

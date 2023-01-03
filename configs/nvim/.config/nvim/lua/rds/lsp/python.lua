@@ -27,7 +27,7 @@ lspconfig["pylsp"].setup {
           lineLength = 100,
         },
         rope_autoimport = {
-          enabled = true,
+          enabled = false,
         },
       },
     },

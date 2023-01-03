@@ -12,8 +12,13 @@ require("packer").startup(function(use)
   use "tpope/vim-surround"
   -- Show macros and registers
   use "junegunn/vim-peekaboo"
+
   use { "vimwiki/vimwiki", branch = "dev" }
+  use "mattdibi/incolla.nvim"
+  use "edluffy/hologram.nvim"
+
   use "ThePrimeagen/harpoon"
+  use "mbbill/undotree"
 
   -- Theme
   -- use "gruvbox-community/gruvbox"
