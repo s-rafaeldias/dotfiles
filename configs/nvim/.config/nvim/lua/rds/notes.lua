@@ -6,7 +6,11 @@
 -- Focus on note taking only: no tasks, calendars and so on
 
 vim.g.vimwiki_list = {
-  { path = "~/workspace/notes/", links_space_char = "_" },
+  {
+    path = "~/workspace/notes/",
+    links_space_char = "_",
+    auto_header = 1,
+  },
 }
 
 -- require("hologram").setup {
