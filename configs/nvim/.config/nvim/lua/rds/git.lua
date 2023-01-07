@@ -1,7 +1,7 @@
 local Worktree = require "git-worktree"
 -- local Job = require "plenary.job"
 local utils = require "rds.utils"
-local neogit = require "neogit"
+-- local neogit = require "neogit"
 
 -- require("gitsigns").setup {
 --   keymaps = {},

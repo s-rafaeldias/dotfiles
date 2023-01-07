@@ -22,7 +22,7 @@ require("packer").startup(function(use)
 
   -- Theme
   -- use "gruvbox-community/gruvbox"
-  use "joshdick/onedark.vim"
+  -- use "joshdick/onedark.vim"
   use {
     "catppuccin/nvim",
     as = "catppuccin",
@@ -60,7 +60,7 @@ require("packer").startup(function(use)
       -- "shumphrey/fugitive-gitlab.vim",
     },
   }
-  use "TimUntersberger/neogit"
+  -- use "TimUntersberger/neogit"
   use "ThePrimeagen/git-worktree.nvim"
   use {
     "akinsho/git-conflict.nvim",
@@ -84,7 +84,7 @@ require("packer").startup(function(use)
   use "j-hui/fidget.nvim"
   -- use "ray-x/lsp_signature.nvim"
   use "simrat39/rust-tools.nvim"
-  use "scalameta/nvim-metals"
+  -- use "scalameta/nvim-metals"
   -- }}}
 
   -- Auto complete stuff {{{
@@ -112,7 +112,7 @@ require("packer").startup(function(use)
   use "nvim-treesitter/nvim-treesitter-context"
   use "p00f/nvim-ts-rainbow"
 
-  use "Afourcat/treesitter-terraform-doc.nvim"
+  -- use "Afourcat/treesitter-terraform-doc.nvim"
   -- }}}
 
   -- Telescope {{{
