@@ -13,11 +13,13 @@
 [init]
     defaultbranch = main
 
+[branch]
+    autoSetupMerge = always
+
 [push]
     default = current
-
 [pull]
-    default = current
+    default = matching
 
 [gpg]
     program = gpg
@@ -26,6 +28,7 @@
     recent = branch --sort=-committerdate --format='%(committerdate:relative)%09%(refname:short)'
     p = pull
     P = push
-    clbare = clone --bare
+    s = status
+
 [fetch]
-	prune = true
+    prune = true
