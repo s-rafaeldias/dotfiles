@@ -3,14 +3,6 @@ local null_ls = require "null-ls"
 local lsp_common = require "rds.lsp.common"
 local mason_lspconfig = require "mason-lspconfig"
 
--- require("lsp_signature").setup {
---   bind = true,
---   doc_lines = 0,
---   hint_enable = true,
---   floating_window = false,
---   hint_prefix = "🐍 ",
--- }
-
 mason_lspconfig.setup {
   ensure_installed = lsp_common.lsp_servers,
 }
@@ -25,6 +17,7 @@ require "rds.lsp.python"
 require "rds.lsp.lua"
 require "rds.lsp.arduino"
 require "rds.lsp.scala"
+require "rds.lsp.markdown"
 
 require("rust-tools").setup {
   dap = {

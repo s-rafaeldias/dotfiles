@@ -4,12 +4,14 @@
 -- Markdown based
 -- No bells and whistles (like vim-wiki, neorg)
 -- Focus on note taking only: no tasks, calendars and so on
+vim.g.vimwiki_global_ext = 0
 
 vim.g.vimwiki_list = {
   {
     path = "~/workspace/notes/",
     links_space_char = "_",
     auto_header = 1,
+    syntax = "markdown",
   },
 }
 
