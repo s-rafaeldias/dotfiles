@@ -16,7 +16,15 @@ brew "zk"
 brew "koekeishiya/formulae/skhd"
 brew "koekeishiya/formulae/yabai", args: ["HEAD"]
 
-brew "neovim", args: ["HEAD"], greedy: true
+#brew "neovim", args: ["HEAD"], greedy: true
+# Deps for building neovim
+brew "ninja"
+brew "libtool"
+brew "automake"
+brew "cmake"
+brew "pkg-config"
+brew "gettext"
+
 brew "universal-ctags"
 
 cask "alacritty"
@@ -63,6 +71,7 @@ brew "stow"
 # Parse image formats
 brew "imagemagick"
 brew "pandoc"
+
 brew "pipx"
 brew "node"
 brew "shellcheck"
