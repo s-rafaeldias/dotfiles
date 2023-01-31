@@ -1,3 +1,4 @@
+.luarc.json
 packer_compiled.lua
 Brewfile.lock.json
 tmp/
