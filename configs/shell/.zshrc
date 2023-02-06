@@ -66,10 +66,11 @@ alias tb='tmuxinator start basic'
 alias t='conda deactivate && tmuxinator start home'
 alias d='tmuxinator start dotfiles'
 
-# Taskwarrior + GTD
-# alias in='task add +in'
-# alias next='task modify -in +next -maybe'
-# alias maybe='task modify -in -next +maybe'
+# Git alias
+alias gst='git status'
+alias gco='git checkout -b'
+alias gp='git pull'
+alias gps='git push'
 
 alias ca='conda activate $(basename $(pwd))'
 

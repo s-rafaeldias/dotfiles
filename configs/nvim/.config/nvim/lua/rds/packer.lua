@@ -14,8 +14,8 @@ require("packer").startup(function(use)
   use "junegunn/vim-peekaboo"
 
   use { "vimwiki/vimwiki", branch = "dev" }
-  use "mattdibi/incolla.nvim"
-  use "edluffy/hologram.nvim"
+  -- use "mattdibi/incolla.nvim"
+  -- use "edluffy/hologram.nvim"
 
   use "ThePrimeagen/harpoon"
   use "mbbill/undotree"
@@ -55,17 +55,17 @@ require("packer").startup(function(use)
     "tpope/vim-fugitive",
     requires = {
       -- GBrowse for GitHub
-      "tpope/vim-rhubarb",
+      -- "tpope/vim-rhubarb",
       -- GBrowse for GitLab
       -- "shumphrey/fugitive-gitlab.vim",
     },
   }
   -- use "TimUntersberger/neogit"
   use "ThePrimeagen/git-worktree.nvim"
-  use {
-    "akinsho/git-conflict.nvim",
-    tag = "*",
-  }
+  -- use {
+  --   "akinsho/git-conflict.nvim",
+  --   tag = "*",
+  -- }
   -- }}}
 
   -- Debugging {{{
