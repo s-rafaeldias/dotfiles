@@ -1,11 +1,5 @@
 local Worktree = require "git-worktree"
--- local Job = require "plenary.job"
 local utils = require "rds.utils"
--- local neogit = require "neogit"
-
--- require("gitsigns").setup {
---   keymaps = {},
--- }
 
 local create_git_worktree = function()
   local branch = utils.input "Branch name: "
@@ -13,6 +7,7 @@ local create_git_worktree = function()
 end
 
 local group = vim.api.nvim_create_augroup("git", { clear = true })
+
 vim.api.nvim_create_autocmd("BufEnter", {
   group = group,
   desc = "Autocmd to block code changes on main branch (because I always forget this xD)",
@@ -31,6 +26,10 @@ vim.api.nvim_create_autocmd("BufEnter", {
   end,
 })
 
-return {
-  create_git_worktree = create_git_worktree,
-}
+vim.keymap.set("n", "<Leader>gg", "<Cmd>G<CR>")
+vim.keymap.set("n", "<Leader>gp", "<Cmd>G pull<CR>")
+vim.keymap.set("n", "<Leader>gP", "<Cmd>G push<CR>")
+-- Git worktree extension
+vim.keymap.set("n", "<Leader>gl", "<Cmd>lua require('telescope').extensions.git_worktree.git_worktrees()<CR>")
+vim.keymap.set("n", "<Leader>ga", "<Cmd>lua require('telescope').extensions.git_worktree.create_git_worktree()<CR>")
+vim.keymap.set("n", "<Leader>gn", create_git_worktree)

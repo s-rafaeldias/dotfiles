@@ -131,7 +131,12 @@ require("packer").startup(function(use)
   -- }
   -- }}}
 
-  use "williamboman/mason.nvim"
+  use {
+    "williamboman/mason.nvim",
+    config = function()
+      require("mason").setup {}
+    end,
+  }
   use "williamboman/mason-lspconfig.nvim"
   use "WhoIsSethDaniel/mason-tool-installer.nvim"
 end)

@@ -61,17 +61,3 @@ vim.keymap.set("n", "j", function()
 end, {
   expr = true,
 })
-
--- Git {{{
--- vim.keymap.set("n", "<Leader>gg", neogit.open)
-vim.keymap.set("n", "<Leader>gg", "<Cmd>G<CR>")
-vim.keymap.set("n", "<Leader>gp", "<Cmd>G pull<CR>")
-vim.keymap.set("n", "<Leader>gP", "<Cmd>G push<CR>")
--- Git worktree extension
-vim.keymap.set("n", "<Leader>gl", "<Cmd>lua require('telescope').extensions.git_worktree.git_worktrees()<CR>")
-vim.keymap.set("n", "<Leader>ga", "<Cmd>lua require('telescope').extensions.git_worktree.create_git_worktree()<CR>")
-vim.keymap.set("n", "<Leader>gn", require("rds.git").create_git_worktree)
--- }}}
-
--- DAP {{{
--- }}}
