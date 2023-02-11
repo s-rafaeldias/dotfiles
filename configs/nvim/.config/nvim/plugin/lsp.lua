@@ -109,20 +109,20 @@ lspconfig["sumneko_lua"].setup {
 -- }}}
 
 -- Arduino {{{
-lspconfig["arduino_language_server"].setup {
-  on_attach = custom_attach,
-  cmd = {
-    "arduino-language-server",
-    "-cli-config",
-    "/Users/rafael/Library/Arduino15/arduino-cli.yaml",
-    "-fqbn",
-    "esp8266:esp8266:nodemcu",
-    "-cli",
-    "arduino-cli",
-    "-clangd",
-    "clangd",
-  },
-}
+-- lspconfig["arduino_language_server"].setup {
+--   on_attach = custom_attach,
+--   cmd = {
+--     "arduino-language-server",
+--     "-cli-config",
+--     "/Users/rafael/Library/Arduino15/arduino-cli.yaml",
+--     "-fqbn",
+--     "esp8266:esp8266:nodemcu",
+--     "-cli",
+--     "arduino-cli",
+--     "-clangd",
+--     "clangd",
+--   },
+-- }
 -- }}}
 
 -- Markdown {{{
@@ -133,15 +133,15 @@ lspconfig["marksman"].setup {
 -- }}}
 
 -- Rust {{{
-require("rust-tools").setup {
-  dap = {
-    adapter = require("rust-tools.dap").get_codelldb_adapter(
-      "/Users/rafael/workspace/nvim/codelldb/extension/adapter/codelldb",
-      "/Users/rafael/workspace/nvim/codelldb/extension/lldb/lib/liblldb.dylib"
-    ),
-  },
-  server = { on_attach = custom_attach },
-}
+-- require("rust-tools").setup {
+--   dap = {
+--     adapter = require("rust-tools.dap").get_codelldb_adapter(
+--       "/Users/rafael/workspace/nvim/codelldb/extension/adapter/codelldb",
+--       "/Users/rafael/workspace/nvim/codelldb/extension/lldb/lib/liblldb.dylib"
+--     ),
+--   },
+--   server = { on_attach = custom_attach },
+-- }
 -- }}}
 
 -- Null-ls {{{

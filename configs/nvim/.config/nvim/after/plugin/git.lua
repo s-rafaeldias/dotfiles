@@ -28,7 +28,7 @@ vim.api.nvim_create_autocmd("BufEnter", {
 
 vim.keymap.set("n", "<Leader>gg", "<Cmd>G<CR>")
 vim.keymap.set("n", "<Leader>gp", "<Cmd>G pull<CR>")
-vim.keymap.set("n", "<Leader>gP", "<Cmd>G push<CR>")
+vim.keymap.set("n", "<Leader>gP", "<Cmd>G push -u origin<CR>")
 -- Git worktree extension
 vim.keymap.set("n", "<Leader>gl", "<Cmd>lua require('telescope').extensions.git_worktree.git_worktrees()<CR>")
 vim.keymap.set("n", "<Leader>ga", "<Cmd>lua require('telescope').extensions.git_worktree.create_git_worktree()<CR>")
