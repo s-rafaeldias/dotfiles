@@ -1,4 +1,4 @@
-require("luasnip/loaders/from_vscode").load()
+-- require("luasnip/loaders/from_vscode").load()
 -- require("cmp_git").setup()
 
 local cmp = require "cmp"
