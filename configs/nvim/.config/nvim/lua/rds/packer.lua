@@ -13,7 +13,22 @@ require("packer").startup(function(use)
   -- Show macros and registers
   use "junegunn/vim-peekaboo"
 
-  use { "vimwiki/vimwiki", branch = "dev" }
+  use {
+    "vimwiki/vimwiki",
+    branch = "dev",
+    config = function()
+      vim.g.vimwiki_global_ext = 0
+
+      vim.g.vimwiki_list = {
+        {
+          path = "~/workspace/notes/",
+          links_space_char = "_",
+          auto_header = 1,
+          syntax = "markdown",
+        },
+      }
+    end,
+  }
   -- use "mattdibi/incolla.nvim"
   -- use "edluffy/hologram.nvim"
 
