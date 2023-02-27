@@ -17,9 +17,12 @@
     autoSetupMerge = always
 
 [push]
-    default = current
+    default = matching
 [pull]
     default = matching
+
+[rerere]
+    enabled = true
 
 [gpg]
     program = gpg

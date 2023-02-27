@@ -46,6 +46,14 @@ treesitter.setup {
   --   enable = true,
   --   extended_mode = true,
   -- },
+  refactor = {
+    highlight_definitions = {
+      enable = true,
+      -- Set to false if you have an `updatetime` of ~100.
+      clear_on_cursor_move = false,
+    },
+  },
+
   textobjects = {
     select = {
       enable = true,

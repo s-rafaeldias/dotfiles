@@ -2,6 +2,8 @@
 set -euo pipefail
 IFS=$'\n\t'
 
+python_env="3.10"
+
 # Check if conda env exists for that repo/dir
 conda_env=$(basename "$(pwd)")
 envs=$(conda env list | awk '{print $1}')
@@ -22,7 +24,7 @@ echo "404: Not Found"
 envrc_path=$(pwd)/.envrc
 
 echo "Creating a new conda env..."
-conda create -n "$conda_env" python=3.10 --yes
+conda create -n "$conda_env" python="$python_env" --yes
 
 echo "Creating .envrc file"
 cat << EOF >> "$envrc_path"
