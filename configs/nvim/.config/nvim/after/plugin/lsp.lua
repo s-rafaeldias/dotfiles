@@ -6,8 +6,15 @@ local custom_attach = function(client, bufnr)
   vim.notify("Attaching LSP: " .. client.name)
   local opts = { noremap = true }
 
+  local function definition_split()
+    -- TODO: check how many splits we have and add some smart logic here
+    vim.cmd "vs"
+    vim.lsp.buf.definition()
+  end
+
   vim.api.nvim_buf_set_keymap(bufnr, "n", "K", "<Cmd>lua vim.lsp.buf.hover()<CR>", opts)
   vim.api.nvim_buf_set_keymap(bufnr, "n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
+  vim.api.nvim_buf_set_keymap(bufnr, "n", "gD", "", { callback = definition_split, noremap = true })
   vim.api.nvim_buf_set_keymap(bufnr, "n", "gr", "<Cmd>lua vim.lsp.buf.references()<CR>", opts)
   vim.api.nvim_buf_set_keymap(bufnr, "n", "gs", "<Cmd>lua require'telescope.builtin'.lsp_document_symbols{}<CR>", opts)
   vim.api.nvim_buf_set_keymap(bufnr, "n", "<Leader>rr", "<Cmd>lua vim.lsp.buf.rename()<CR>", opts)
@@ -159,4 +166,15 @@ null_ls.setup {
     null_ls.builtins.diagnostics.shellcheck,
   },
 }
+-- }}}
+
+-- Custom lsp handlers {{{
+-- local defintion_handler = vim.lsp.handlers["textDocument/definition"]
+--
+-- local function new_handler(err, result, ctx, config)
+--   vim.cmd "vs"
+--   defintion_handler(err, result, ctx, config)
+-- end
+--
+-- vim.lsp.handlers["textDocument/definition"] = new_handler
 -- }}}
