@@ -26,13 +26,13 @@ set.ignorecase = true
 set.smartindent = true
 
 -- By default, uses `marker` for folding
-set.foldmethod = "marker"
+-- set.foldmethod = "marker"
 -- To use treesitter folding, just add the `vim.cmd` bellow on `after/ftplugin/[lang].vim
--- vim.cmd [[
--- set foldmethod=expr
--- set foldexpr=nvim_treesitter#foldexpr()
--- set nofoldenable
--- ]]
+vim.cmd [[
+  set foldmethod=expr
+  set foldexpr=nvim_treesitter#foldexpr()
+  set nofoldenable
+]]
 
 set.listchars = {
   tab = "↦ ",
