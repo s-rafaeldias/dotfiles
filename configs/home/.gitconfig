@@ -17,9 +17,9 @@
     autoSetupMerge = always
 
 [push]
-    default = matching
+    default = current
 [pull]
-    default = matching
+    default = current
 
 [rerere]
     enabled = true
