@@ -35,6 +35,7 @@ local lsp_servers = {
   -- "sumneko_lua",
   "marksman",
   "powershell_es",
+  "bashls",
 }
 
 mason_lspconfig.setup {
