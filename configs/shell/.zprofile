@@ -3,3 +3,6 @@
 #     . "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"
 # fi
 
+
+# Created by `pipx` on 2023-04-08 22:48:22
+export PATH="$PATH:/Users/rafael/.local/bin"

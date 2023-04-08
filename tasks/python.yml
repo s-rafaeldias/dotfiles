@@ -1,0 +1,12 @@
+- name: Download miniconda3
+  get_url:
+    url: https://repo.anaconda.com/miniconda/Miniconda3-py310_23.1.0-1-MacOSX-x86_64.sh
+    dest: /tmp/miniconda3
+    checksum: sha256:bfb81814e16eb450b1dbde7b4ecb9ebc5186834cb4ede5926c699762ca69953b
+  tags:
+    - python
+
+- name: Install miniconda3
+  shell: /bin/bash /tmp/miniconda3 -b
+  tags:
+    - python

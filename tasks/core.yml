@@ -1,0 +1,16 @@
+- name: Create workspace dir
+  file:
+    path: ~/workspace
+    state: directory
+  tags:
+    - core
+- name: Create work dir
+  file:
+    path: ~/work
+    state: directory
+  tags:
+    - core
+- name: Install Homebrew
+  shell: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  tags:
+    - core

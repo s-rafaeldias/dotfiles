@@ -1,0 +1,18 @@
+- name: Clone dotfiles repo
+  git:
+    repo: https://github.com/s-rafaeldias/dotfiles
+    dest: ~/.dotfiles
+  tags:
+    - dotfile
+
+- name: Setup dotfiles
+  shell:
+    cmd: ./setup.sh -f
+    chdir: ~/.dotfiles/configs/
+  tags:
+    - dotfile
+
+- name: Install brew deps
+  shell: brew bundle --file=$HOME/.dotfiles/Brewfile
+  tags:
+    - dotfiles

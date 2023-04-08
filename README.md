@@ -5,6 +5,11 @@
 This is mine dotfiles setup.
 
 ## Setting up
+```bash
+ansible-playbook playbook.yml --ask-become-pass
+```
+
+### Dotfiles only
 `stow` is used to symlink everything in place.
 For making things easier, the `./configs/setup.sh` is a convient script to run `stow`:
 ```bash
