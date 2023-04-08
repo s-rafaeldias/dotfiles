@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# set -euo pipefail
-# IFS=$'\n\t'
+set -euo pipefail
+IFS=$'\n\t'
 
 # Inspired (and I mean copy-pasted hehe) from https://github.com/ThePrimeagen/.dotfiles/blob/master/bin/.local/bin/tmux-sessionizer
 # I hope to update/change this to my needs some day
