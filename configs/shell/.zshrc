@@ -81,11 +81,6 @@ autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/local/bin/terraform terraform
 
 # Functions ============================================ {{{
-# Create basic `.envrc` file for python projects using conda
-create_conda_env() {
-}
-alias np='create_conda_env'
-
 timer() {
     # https://github.com/trehn/termdown
     # pipx install termdown

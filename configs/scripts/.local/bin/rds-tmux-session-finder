@@ -1,7 +1,0 @@
-#!/bin/bash
-set -euo pipefail
-IFS=$'\n\t'
-
-selected_session=$(tmux list-sessions -F '#{session_name}' | fzf)
-
-tmux switch-client -t "$selected_session"
