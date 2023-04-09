@@ -10,3 +10,8 @@
   shell: /bin/bash /tmp/miniconda3 -b
   tags:
     - python
+
+- name: Install poetry
+  shell: pipx install poetry
+  tags:
+    - python
