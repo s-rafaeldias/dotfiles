@@ -7,8 +7,8 @@
 
 - name: Setup dotfiles
   shell:
-    cmd: ./setup.sh -f
-    chdir: ~/.dotfiles/configs/
+    cmd: make stow
+    chdir: ~/.dotfiles/
   tags:
     - dotfile
 
