@@ -3,5 +3,6 @@
   # become: true
   tasks:
     - include_tasks: tasks/core.yml
+    - include_tasks: tasks/zsh.yml
     - include_tasks: tasks/dotfiles.yml
     - include_tasks: tasks/python.yml

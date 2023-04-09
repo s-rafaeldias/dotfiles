@@ -13,9 +13,9 @@ ansible-pull -U https://github.com/s-rafaeldias/dotfiles --ask-become-pass
 
 ### Dotfiles only
 `stow` is used to symlink everything in place.
-For making things easier, the `./configs/setup.sh` is a convient script to run `stow`:
+To setup everything in place:
 ```bash
-cd ./configs && ./setup.sh
+make stow
 ```
 
 ## nvim setup

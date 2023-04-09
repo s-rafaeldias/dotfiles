@@ -4,7 +4,7 @@ plugins=(
     zsh-z
     taskwarrior
     poetry
-    tmuxinator
+    # tmuxinator
     zsh-syntax-highlighting
     # vi-mode
     docker
@@ -24,6 +24,8 @@ source ~/.zstyles
 # Colors for ls
 source "$HOME/.local/share/lscolors.sh"
 
+. "$HOME/.cargo/env"
+
 eval "$(starship init zsh)"
 eval "$(direnv hook zsh)"
 # }}}
@@ -31,7 +33,6 @@ eval "$(direnv hook zsh)"
 # Alias ============================================ {{{
 alias tf='terraform'
 
-alias c='cheat'
 alias q='exit'
 
 alias vi='nvim'
@@ -89,15 +90,6 @@ timer() {
         -title 'Work is DONE!' \
         -sound Crystal
 }
-
-docker-setup() {
-    colima start
-    pushd ~/workspace/projects/docker-images/
-    make start
-    popd
-}
-
-alias ds='docker-setup'
 # }}}
 
 # >>> conda initialize >>>
@@ -114,6 +106,3 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
-
-# Created by `pipx` on 2023-04-08 22:48:22
-export PATH="$PATH:/Users/rafael/.local/bin"

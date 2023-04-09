@@ -1,0 +1,18 @@
+- name: Install Oh My ZSH
+  shell: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+  tags:
+    - zsh
+
+- name: Install zsh-syntax-highlighting
+  git:
+    repo: https://github.com/zsh-users/zsh-syntax-highlighting.git
+    dest: ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+  tags:
+    - zsh
+
+- name: Install zsh-z
+  git:
+    repo: git clone https://github.com/agkozak/zsh-z
+    dest: ~/.oh-my-zsh/custom/plugins/zsh-z
+  tags:
+    - zsh
