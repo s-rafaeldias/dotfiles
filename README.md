@@ -7,6 +7,8 @@ This is mine dotfiles setup.
 ## Setting up
 ```bash
 ansible-playbook playbook.yml --ask-become-pass
+# or
+ansible-pull -U https://github.com/s-rafaeldias/dotfiles --ask-become-pass
 ```
 
 ### Dotfiles only
