@@ -1,4 +1,5 @@
-- hosts: localhost
+- name: Capotes' Dev Environment
+  hosts: localhost
   # become: true
   tasks:
     - include_tasks: tasks/core.yml
