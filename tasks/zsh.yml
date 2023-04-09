@@ -12,7 +12,7 @@
 
 - name: Install zsh-z
   git:
-    repo: git clone https://github.com/agkozak/zsh-z
+    repo: https://github.com/agkozak/zsh-z
     dest: ~/.oh-my-zsh/custom/plugins/zsh-z
   tags:
     - zsh

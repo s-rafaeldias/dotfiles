@@ -16,3 +16,10 @@
   shell: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   tags:
     - core
+
+- name: Install JetBrains Fonts
+  homebrew:
+    name: homebrew/cask-fonts/font-JetBrainsMono-nerd-font
+    state: latest
+  tags:
+    - core
