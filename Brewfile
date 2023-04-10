@@ -71,6 +71,8 @@ brew "stow"
 # Parse image formats
 brew "imagemagick"
 brew "pandoc"
+# GNU awk
+brew "gawk"
 
 brew "pipx"
 brew "node"
