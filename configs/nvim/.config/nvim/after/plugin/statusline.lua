@@ -13,7 +13,9 @@ end
 local branch_color = function(section)
   local branch = require("lualine.components.branch.git_branch").get_branch()
 
-  if branch == "main" then
+  local block_main_flag = vim.env["BLOCK_MAIN"]
+
+  if branch == "main" and block_main_flag then
     return { bg = "red" }
   elseif branch == "dev" or branch == "develop" then
     return { bg = "blue" }
