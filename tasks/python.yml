@@ -15,3 +15,8 @@
   shell: pipx install poetry
   tags:
     - python
+
+- name: Install termdown
+  shell: pipx install termdown
+  tags:
+    - python

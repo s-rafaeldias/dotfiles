@@ -4,6 +4,7 @@
 export TERM="xterm-256color"
 export COMPLETION_WAITING_DOTS="true"
 export FZF_DEFAULT_COMMAND="fd --type f --hidden --follow --exclude .git"
+export FZF_DEFAULT_OPTS="--layout=reverse"
 export RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
 
 export PYTHONNOUSERSITE=1
