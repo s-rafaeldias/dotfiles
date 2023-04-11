@@ -14,7 +14,7 @@ vim.g.vimwiki_folding = "expr:quick"
 vim.g.vimwiki_auto_header = 1
 vim.g.vimwiki_list = {
   {
-    path = "~/workspace/notes/",
+    path = "~/personal/notes/",
     links_space_char = "_",
     syntax = "markdown",
   },
