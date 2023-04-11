@@ -146,8 +146,8 @@ lspconfig["marksman"].setup {
 -- require("rust-tools").setup {
 --   dap = {
 --     adapter = require("rust-tools.dap").get_codelldb_adapter(
---       "/Users/rafael/workspace/nvim/codelldb/extension/adapter/codelldb",
---       "/Users/rafael/workspace/nvim/codelldb/extension/lldb/lib/liblldb.dylib"
+--       "/Users/rafael/personal/nvim/codelldb/extension/adapter/codelldb",
+--       "/Users/rafael/personal/nvim/codelldb/extension/lldb/lib/liblldb.dylib"
 --     ),
 --   },
 --   server = { on_attach = custom_attach },
@@ -168,15 +168,4 @@ null_ls.setup {
     null_ls.builtins.diagnostics.shellcheck,
   },
 }
--- }}}
-
--- Custom lsp handlers {{{
--- local defintion_handler = vim.lsp.handlers["textDocument/definition"]
---
--- local function new_handler(err, result, ctx, config)
---   vim.cmd "vs"
---   defintion_handler(err, result, ctx, config)
--- end
---
--- vim.lsp.handlers["textDocument/definition"] = new_handler
 -- }}}

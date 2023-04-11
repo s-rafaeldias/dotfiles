@@ -3,7 +3,7 @@ local utils = require "rds.utils"
 
 local create_git_worktree = function()
   local branch = utils.input "Branch name: "
-  Worktree.create_worktree("branches/" .. branch, branch, "origin")
+  Worktree.create_worktree(branch, branch, "origin")
 end
 
 local group = vim.api.nvim_create_augroup("git", { clear = true })
