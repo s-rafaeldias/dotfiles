@@ -1,3 +1,5 @@
+local actions = require "telescope.actions"
+
 require("telescope").setup {
   defaults = {
     file_ignore_patterns = {
@@ -18,7 +20,7 @@ require("telescope").setup {
     },
 
     mappings = {
-      i = { ["<C-q>"] = require("telescope.actions").send_to_qflist },
+      i = { ["<C-q>"] = actions.send_to_qflist },
     },
   },
 
