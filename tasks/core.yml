@@ -17,9 +17,14 @@
   tags:
     - core
 
+- name: Brew tap nerd-fonts
+  shell: brew tap homebrew/cask-fonts
+  tags:
+    - core
+
 - name: Install JetBrains Fonts
   homebrew:
-    name: homebrew/cask-fonts/font-JetBrainsMono-nerd-font
+    name: cask-fonts/font-JetBrainsMono-nerd-font
     state: latest
   tags:
     - core
