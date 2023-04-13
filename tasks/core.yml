@@ -24,7 +24,7 @@
 
 - name: Install JetBrains Fonts
   homebrew_cask:
-    name: font-JetBrainsMono-nerd-font
+    name: font-jetbrains-mono-nerd-font
     state: latest
   tags:
     - core
