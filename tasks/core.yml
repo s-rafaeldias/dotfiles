@@ -17,17 +17,14 @@
   tags:
     - core
 
-- name: Eval Homebrew
-  shell: eval "$(/opt/homebrew/bin/brew shellenv)"
-
 - name: Brew tap nerd-fonts
   shell: brew tap homebrew/cask-fonts
   tags:
     - core
 
 - name: Install JetBrains Fonts
-  homebrew:
-    name: cask-fonts/font-JetBrainsMono-nerd-font
+  homebrew_cask:
+    name: font-JetBrainsMono-nerd-font
     state: latest
   tags:
     - core
