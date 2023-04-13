@@ -17,6 +17,12 @@ require("packer").startup(function(use)
     "vimwiki/vimwiki",
     branch = "dev",
   }
+  use {
+    "aspeddro/slides.nvim",
+    config = function()
+      require("slides").setup {}
+    end,
+  }
 
   -- use "mattdibi/incolla.nvim"
   -- use "edluffy/hologram.nvim"

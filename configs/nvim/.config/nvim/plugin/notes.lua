@@ -16,6 +16,6 @@ vim.g.vimwiki_list = {
   {
     path = "~/personal/notes/",
     links_space_char = "_",
-    syntax = "markdown",
+    -- syntax = "markdown",
   },
 }
