@@ -1,6 +1,6 @@
-- name: Create workspace dir
+- name: Create personal dir
   file:
-    path: ~/workspace
+    path: ~/personal
     state: directory
   tags:
     - core
