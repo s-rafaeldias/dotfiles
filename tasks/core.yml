@@ -12,10 +12,10 @@
   tags:
     - core
 
-- name: Install Homebrew
-  shell: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-  tags:
-    - core
+# - name: Install Homebrew
+#   shell: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+#   tags:
+#     - core
 
 - name: Brew tap nerd-fonts
   shell: brew tap homebrew/cask-fonts
