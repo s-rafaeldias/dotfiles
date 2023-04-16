@@ -21,4 +21,11 @@ vim.api.nvim_create_autocmd({ "BufLeave", "BufDelete", "InsertLeave" }, {
   group = notes_group,
   desc = "Save wiki notes after leaving",
 })
+
+vim.api.nvim_create_autocmd({ "BufWrite" }, {
+  pattern = "*.wiki",
+  command = "VimwikiTOC",
+  group = notes_group,
+  desc = "Update Table Of Contents (TOC) for wiki page",
+})
 -- }}}
