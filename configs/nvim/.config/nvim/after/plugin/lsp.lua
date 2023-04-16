@@ -12,6 +12,13 @@ local custom_attach = function(client, bufnr)
     vim.lsp.buf.definition()
   end
 
+  require("lsp_signature").on_attach({
+    bind = true,
+    hint_prefix = "🐍 ",
+    doc_lines = 0,
+    floating_window = false,
+  }, bufnr)
+
   vim.api.nvim_buf_set_keymap(bufnr, "n", "K", "<Cmd>lua vim.lsp.buf.hover()<CR>", opts)
   vim.api.nvim_buf_set_keymap(bufnr, "n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
   vim.api.nvim_buf_set_keymap(bufnr, "n", "gD", "", { callback = definition_split, noremap = true })
@@ -36,7 +43,7 @@ local lsp_servers = {
   "marksman",
   "powershell_es",
   "bashls",
-  "metals"
+  "metals",
 }
 
 mason_lspconfig.setup {

@@ -17,13 +17,6 @@ require("packer").startup(function(use)
     "vimwiki/vimwiki",
     branch = "dev",
   }
-  use {
-    "aspeddro/slides.nvim",
-    config = function()
-      require("slides").setup {}
-    end,
-  }
-
   -- use "mattdibi/incolla.nvim"
   -- use "edluffy/hologram.nvim"
 
@@ -81,7 +74,7 @@ require("packer").startup(function(use)
   -- Debugging {{{
   use "mfussenegger/nvim-dap"
   use "rcarriga/nvim-dap-ui"
-  use "leoluz/nvim-dap-go"
+  -- use "leoluz/nvim-dap-go"
   use "mfussenegger/nvim-dap-python"
   -- }}}
 
@@ -92,7 +85,7 @@ require("packer").startup(function(use)
   -- use "nvim-lua/lsp-status.nvim"
   use "jose-elias-alvarez/null-ls.nvim"
   use "j-hui/fidget.nvim"
-  -- use "ray-x/lsp_signature.nvim"
+  use "ray-x/lsp_signature.nvim"
   use "simrat39/rust-tools.nvim"
   -- use "scalameta/nvim-metals"
   -- }}}
@@ -101,7 +94,7 @@ require("packer").startup(function(use)
   use {
     "hrsh7th/nvim-cmp",
     requires = {
-      "hrsh7th/cmp-nvim-lsp-signature-help",
+      -- "hrsh7th/cmp-nvim-lsp-signature-help",
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-nvim-lua",
       "hrsh7th/cmp-path",
