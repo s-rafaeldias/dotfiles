@@ -2,7 +2,7 @@
 set -euo pipefail
 IFS=$'\n\t'
 
-python_env="3.10"
+python_env="3.11"
 
 # Check if conda env exists for that repo/dir
 conda_env=$(basename "$(pwd)")

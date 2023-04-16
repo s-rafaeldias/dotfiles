@@ -41,9 +41,24 @@ local pytest = s(
   )
 )
 
+local main_py = s(
+  "main",
+  fmt(
+    [[
+    if __name__ == "__main__":
+        {}
+    ]],
+    { i(1) }
+  )
+)
+
+local lambda_py = s("lambda", fmt("lambda {}: {}", { i(1), i(2) }))
+
 ls.add_snippets("python", {
   pytest,
   todo,
+  main_py,
+  lambda_py
 })
 
 ls.add_snippets("sh", {

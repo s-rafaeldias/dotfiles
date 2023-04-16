@@ -36,6 +36,7 @@ local lsp_servers = {
   "marksman",
   "powershell_es",
   "bashls",
+  "metals"
 }
 
 mason_lspconfig.setup {
