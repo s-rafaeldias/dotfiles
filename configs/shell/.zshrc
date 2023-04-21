@@ -75,6 +75,8 @@ alias l='ls -alFh'
 alias la='ls -Ah'
 alias ll='ls -CFh'
 
+alias n='nnn'
+
 # alias t='tmuxinator'
 alias tm='tmux'
 alias tb='tmuxinator start basic'
