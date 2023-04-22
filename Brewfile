@@ -37,19 +37,16 @@ brew "ack"
 brew "fd"
 brew "fzf"
 brew "ripgrep"
-
 # task
 brew "task"
 brew "taskd"
 brew "tasksh"
-
 
 # git stuff
 brew "gh"
 brew "pre-commit"
 brew "gnupg"
 brew "git-secret"
-
 
 # Tmux
 brew "tmux"
@@ -73,6 +70,7 @@ brew "imagemagick"
 brew "pandoc"
 # GNU awk
 brew "gawk"
+brew "nnn"
 
 brew "pipx"
 brew "node"
