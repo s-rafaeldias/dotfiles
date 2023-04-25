@@ -35,7 +35,6 @@ local lsp_servers = {
   "jsonls",
   "gopls",
   "terraformls",
-  -- "elixirls",
   -- "pylsp",
   -- "rust_analyzer",
   "lua_ls",
@@ -46,9 +45,9 @@ local lsp_servers = {
   "metals",
 }
 
-mason_lspconfig.setup {
-  ensure_installed = lsp_servers,
-}
+-- mason_lspconfig.setup {
+--   ensure_installed = lsp_servers,
+-- }
 
 for _, lsp in ipairs(lsp_servers) do
   lspconfig[lsp].setup {

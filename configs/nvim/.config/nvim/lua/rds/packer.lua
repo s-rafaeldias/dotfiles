@@ -114,6 +114,7 @@ require("packer").startup(function(use)
   use "nvim-treesitter/nvim-treesitter-textobjects"
   use "nvim-treesitter/nvim-treesitter-context"
   use "nvim-treesitter/nvim-treesitter-refactor"
+  use "NoahTheDuke/vim-just"
   -- use "p00f/nvim-ts-rainbow"
 
   -- use "Afourcat/treesitter-terraform-doc.nvim"

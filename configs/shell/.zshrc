@@ -51,6 +51,8 @@ alias tf='terraform'
 
 alias q='exit'
 
+alias j='just'
+
 alias v='nvim'
 alias vi='nvim'
 alias vim='nvim'
