@@ -150,15 +150,15 @@ lspconfig["marksman"].setup {
 -- }}}
 
 -- Rust {{{
--- require("rust-tools").setup {
---   dap = {
---     adapter = require("rust-tools.dap").get_codelldb_adapter(
---       "/Users/rafael/personal/nvim/codelldb/extension/adapter/codelldb",
---       "/Users/rafael/personal/nvim/codelldb/extension/lldb/lib/liblldb.dylib"
---     ),
---   },
---   server = { on_attach = custom_attach },
--- }
+require("rust-tools").setup {
+  -- dap = {
+  --   adapter = require("rust-tools.dap").get_codelldb_adapter(
+  --     "/Users/rafael/personal/nvim/codelldb/extension/adapter/codelldb",
+  --     "/Users/rafael/personal/nvim/codelldb/extension/lldb/lib/liblldb.dylib"
+  --   ),
+  -- },
+  server = { on_attach = custom_attach },
+}
 -- }}}
 
 -- Null-ls {{{

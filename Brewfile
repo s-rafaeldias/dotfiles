@@ -74,6 +74,7 @@ brew "nnn"
 
 brew "pipx"
 brew "node"
+brew "just"
 
 # Network
 brew "wget"
