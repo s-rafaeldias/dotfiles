@@ -103,6 +103,10 @@ alias pywatch='fswatch -o **/*.py | xargs -n1 -I {} make test'
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/local/bin/terraform terraform
 
+# Bindkeys ============================================ {{{
+bindkey -s '\C-f' '~/.local/bin/rds-tmux-create-session\r'
+# }}}
+
 # Functions ============================================ {{{
 timer() {
     # https://github.com/trehn/termdown

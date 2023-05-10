@@ -43,6 +43,7 @@ local lsp_servers = {
   "powershell_es",
   "bashls",
   "metals",
+  "zls"
 }
 
 -- mason_lspconfig.setup {
