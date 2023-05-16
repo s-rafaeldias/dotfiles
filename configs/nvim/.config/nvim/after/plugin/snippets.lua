@@ -12,7 +12,7 @@ local i = ls.insert_node
 -- local ai = require "luasnip.nodes.absolute_indexer"
 local fmt = require("luasnip.extras.fmt").fmt
 
--- Snippets
+-- Snippets setup {{{
 vim.keymap.set({ "i", "s" }, "<C-k>", function()
   if ls.expand_or_jumpable() then
     ls.expand_or_jump()
@@ -27,39 +27,17 @@ vim.keymap.set({ "i", "s" }, "<C-j>", function()
 end, {
   silent = true,
 })
+--- }}}
 
+--- Global snippets {{{
 local todo = s("todo", t { "# TODO: " }, i(1))
+--- }}}
 
-local pytest = s(
-  "test",
-  fmt(
-    [[
-      def test_{}():
-          {}
-    ]],
-    { i(1), i(2) }
-  )
-)
+local global_snips = { todo }
 
-local main_py = s(
-  "main",
-  fmt(
-    [[
-    if __name__ == "__main__":
-        {}
-    ]],
-    { i(1) }
-  )
-)
-
-local lambda_py = s("lambda", fmt("lambda {}: {}", { i(1), i(2) }))
-
-ls.add_snippets("python", {
-  pytest,
-  todo,
-  main_py,
-  lambda_py,
-})
+local py_snips = require "rds.snippets.python"
+vim.list_extend(py_snips, global_snips)
+ls.add_snippets("python", py_snips)
 
 ls.add_snippets("sh", {
   s(
