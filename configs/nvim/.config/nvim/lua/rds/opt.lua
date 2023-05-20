@@ -73,4 +73,5 @@ vim.g.loaded_perl_provider = 0
 -- vim.g.vim_json_conceal = 0
 
 -- Colorscheme
-vim.cmd [[ colorscheme catppuccin-macchiato ]]
+-- vim.cmd [[ colorscheme catppuccin-macchiato ]]
+vim.cmd [[ colorscheme kiss ]]
