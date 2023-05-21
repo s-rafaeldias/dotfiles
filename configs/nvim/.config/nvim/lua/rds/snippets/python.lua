@@ -7,13 +7,24 @@ return {
   s("lambda", fmt("lambda {}: {}", { i(1), i(2) })),
   s("fromi", fmt("from {} import {}", { i(1), i(2) })),
   s(
+    "desc",
+    fmt(
+      [[
+      def describe_{}():
+          def test_{}():
+              {}
+    ]],
+      { i(1), i(2), i(3, "assert True") }
+    )
+  ),
+  s(
     "test",
     fmt(
       [[
       def test_{}():
           {}
     ]],
-      { i(1), i(2) }
+      { i(1), i(2, "assert True") }
     )
   ),
   s(

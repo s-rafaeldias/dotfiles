@@ -3,7 +3,7 @@ local null_ls = require "null-ls"
 local mason_lspconfig = require "mason-lspconfig"
 
 local custom_attach = function(client, bufnr)
-  vim.notify("Attaching LSP: " .. client.name)
+  -- vim.notify("Attaching LSP: " .. client.name)
   local opts = { noremap = true }
 
   local function definition_split()
@@ -43,7 +43,7 @@ local lsp_servers = {
   "powershell_es",
   "bashls",
   "metals",
-  "zls"
+  "zls",
 }
 
 -- mason_lspconfig.setup {
