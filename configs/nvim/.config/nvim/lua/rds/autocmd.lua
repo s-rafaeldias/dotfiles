@@ -29,3 +29,45 @@ vim.api.nvim_create_autocmd({ "BufLeave", "BufDelete", "InsertLeave" }, {
 --   desc = "Update Table Of Contents (TOC) for wiki page",
 -- })
 -- }}}
+
+-- Sessions {{{
+local session_filename = "Session.vim"
+local sessions_group = vim.api.nvim_create_augroup("RDSession", {})
+
+local function persist_session()
+  local git_path = vim.fn.system "git rev-parse --git-common-dir"
+  git_path = string.gsub(git_path, "%s+", "")
+
+  -- don't create session file for non-git folders
+  if vim.v.shell_error then
+    return
+  end
+
+  if git_path == "." or git_path == ".git" then
+    vim.cmd [[ mks! ]]
+    return
+  end
+
+  local cmd = "mks! " .. git_path .. "/" .. session_filename
+  vim.cmd(cmd)
+end
+
+vim.api.nvim_create_autocmd("VimLeave", {
+  pattern = "*",
+  callback = persist_session,
+  group = sessions_group,
+  desc = "Create session file before leaving",
+})
+
+vim.api.nvim_create_autocmd("VimEnter", {
+  pattern = "*",
+  callback = function()
+    if vim.fn.findfile(session_filename) ~= "" then
+      local cmd = "so " .. session_filename
+      vim.cmd(cmd)
+    end
+  end,
+  group = sessions_group,
+  desc = "Load session file if it exists",
+})
+-- }}}
