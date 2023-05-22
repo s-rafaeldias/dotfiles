@@ -1,9 +1,8 @@
 local lspconfig = require "lspconfig"
 local null_ls = require "null-ls"
-local mason_lspconfig = require "mason-lspconfig"
 
 local custom_attach = function(client, bufnr)
-  -- vim.notify("Attaching LSP: " .. client.name)
+  vim.notify("Attaching LSP: " .. client.name)
   local opts = { noremap = true }
 
   local function definition_split()
@@ -42,7 +41,7 @@ local lsp_servers = {
   "marksman",
   "powershell_es",
   "bashls",
-  "metals",
+  -- "metals",
   "zls",
 }
 
@@ -160,6 +159,26 @@ require("rust-tools").setup {
   -- },
   server = { on_attach = custom_attach },
 }
+-- }}}
+
+-- Metals {{{
+local metals_config = require("metals").bare_config()
+metals_config.capabilities = require("cmp_nvim_lsp").default_capabilities()
+metals_config.on_attach = custom_attach
+metals_config.init_options.statusBarProvider = "on"
+
+
+local nvim_metals_group = vim.api.nvim_create_augroup("nvim-metals", { clear = true })
+vim.api.nvim_create_autocmd("FileType", {
+  -- NOTE: You may or may not want java included here. You will need it if you
+  -- want basic Java support but it may also conflict if you are using
+  -- something like nvim-jdtls which also works on a java filetype autocmd.
+  pattern = { "scala", "sbt" },
+  callback = function()
+    require("metals").initialize_or_attach(metals_config)
+  end,
+  group = nvim_metals_group,
+})
 -- }}}
 
 -- Null-ls {{{

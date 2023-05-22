@@ -87,7 +87,7 @@ require("packer").startup(function(use)
   use "j-hui/fidget.nvim"
   use "ray-x/lsp_signature.nvim"
   use "simrat39/rust-tools.nvim"
-  -- use "scalameta/nvim-metals"
+  use "scalameta/nvim-metals"
   -- }}}
 
   -- Auto complete stuff {{{
