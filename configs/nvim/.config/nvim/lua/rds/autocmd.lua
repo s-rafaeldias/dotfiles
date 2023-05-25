@@ -41,7 +41,7 @@ local function persist_session()
   git_path = string.gsub(git_path, "%s+", "")
 
   -- don't create session file for non-git folders
-  if vim.v.shell_error then
+  if vim.v.shell_error ~= 0 then
     return
   end
 
