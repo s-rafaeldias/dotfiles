@@ -28,6 +28,8 @@ source "$HOME/.local/share/lscolors.sh"
 
 eval "$(starship init zsh)"
 eval "$(direnv hook zsh)"
+# eval "$(opam env)"
+[[ ! -r /Users/rafael/.opam/opam-init/init.zsh ]] || source /Users/rafael/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
 
 
 # >>> conda initialize >>>

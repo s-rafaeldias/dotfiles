@@ -14,8 +14,8 @@ vim.keymap.set("t", "<Esc>", "<C-\\><C-n>")
 vim.keymap.set("n", "<Leader>sv", "<Cmd>luafile $MYVIMRC<CR>")
 
 -- Switch between related files. See `tpope/vim-projectionist`
-vim.keymap.set("n", "<Leader>s", "<Cmd>AV<CR>")
-vim.keymap.set("n", "<Leader>S", "<Cmd>A<CR>")
+vim.keymap.set("n", "<Leader>s", "<Cmd>A<CR>")
+vim.keymap.set("n", "<Leader>S", "<Cmd>AV<CR>")
 
 vim.keymap.set("n", "<Leader>e", "<Cmd>Ex!<CR>")
 
