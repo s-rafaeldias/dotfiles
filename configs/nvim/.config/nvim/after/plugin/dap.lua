@@ -50,12 +50,14 @@ end)
 vim.keymap.set("n", "<Leader>do", function()
   dap.step_out()
 end)
+
 vim.keymap.set("n", "<Leader>dr", function()
   dap.repl.open()
 end)
 vim.keymap.set("n", "<Leader>dc", function()
   dap.run_to_cursor()
 end)
+
 vim.keymap.set("n", "<Leader>dq", function()
   dapui.close {}
 end)
@@ -63,8 +65,8 @@ vim.keymap.set("n", "<Leader>dt", function()
   local ft = vim.bo.filetype
   if ft == "python" then
     dap_python.test_method()
-  -- elseif ft == "go" then
-  --   dap_go.debug_test()
+    -- elseif ft == "go" then
+    --   dap_go.debug_test()
   end
 end)
 
