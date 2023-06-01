@@ -32,6 +32,10 @@ treesitter.setup {
     "toml",
     "http",
     "rust",
+    "git_config",
+    "git_rebase",
+    "gitcommit",
+    "gitignore",
   },
   indent = {
     enable = false,
