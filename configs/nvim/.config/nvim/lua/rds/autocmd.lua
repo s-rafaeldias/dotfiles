@@ -9,7 +9,6 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   group = rds_group,
   desc = "Highlight yank",
 })
-
 -- }}}
 
 -- Notes {{{
@@ -32,7 +31,6 @@ vim.api.nvim_create_autocmd({ "BufLeave", "BufDelete", "InsertLeave" }, {
 
 -- Sessions {{{
 local session_filename = "Session.vim"
-local sessions_group = vim.api.nvim_create_augroup("RDSession", {})
 
 local function persist_session()
   -- cannot use `show-toplevel` because some repos I work on are bare repos
@@ -54,22 +52,5 @@ local function persist_session()
   vim.cmd(cmd)
 end
 
-vim.api.nvim_create_autocmd("VimLeave", {
-  pattern = "*",
-  callback = persist_session,
-  group = sessions_group,
-  desc = "Create session file before leaving",
-})
-
-vim.api.nvim_create_autocmd("VimEnter", {
-  pattern = "*",
-  callback = function()
-    if vim.fn.findfile(session_filename) ~= "" then
-      local cmd = "so " .. session_filename
-      vim.cmd(cmd)
-    end
-  end,
-  group = sessions_group,
-  desc = "Load session file if it exists",
-})
+vim.api.nvim_create_user_command("Mks", persist_session, {})
 -- }}}

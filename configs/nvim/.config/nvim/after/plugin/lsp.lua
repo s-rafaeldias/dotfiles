@@ -44,6 +44,8 @@ local lsp_servers = {
   -- "metals",
   "zls",
   "ocamllsp",
+  "tsserver",
+  "prismals",
 }
 
 -- mason_lspconfig.setup {
@@ -188,6 +190,7 @@ null_ls.setup {
     null_ls.builtins.formatting.rustfmt,
     -- null_ls.builtins.formatting.mix,
     null_ls.builtins.formatting.terraform_fmt,
+    null_ls.builtins.formatting.prettier,
     null_ls.builtins.formatting.jq.with {
       args = { "--indent", "2" },
     },
