@@ -82,7 +82,7 @@ require("packer").startup(function(use)
   -- use "folke/trouble.nvim"
   use "neovim/nvim-lspconfig"
   use "nvim-lua/lsp_extensions.nvim"
-  -- use "nvim-lua/lsp-status.nvim"
+  use "nvim-lua/lsp-status.nvim"
   use "jose-elias-alvarez/null-ls.nvim"
   use "j-hui/fidget.nvim"
   use "ray-x/lsp_signature.nvim"

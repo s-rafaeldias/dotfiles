@@ -10,7 +10,7 @@ local python_env = function()
   return ""
 end
 
-local branch_color = function(section)
+local branch_color = function()
   local branch = require("lualine.components.branch.git_branch").get_branch()
 
   local block_main_flag = vim.env["BLOCK_MAIN"]
@@ -46,7 +46,8 @@ require("lualine").setup {
     },
 
     lualine_x = {
-      "encoding",
+      "require'lsp-status'.status()",
+      -- "encoding",
       "require('harpoon.mark').status()",
       "filetype",
     },

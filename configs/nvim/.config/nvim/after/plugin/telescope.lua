@@ -7,6 +7,7 @@ require("telescope").setup {
       "*.pyc",
       ".mypy_cache/*",
       ".pytest_cache/*",
+      "**/__pycache__/*",
     },
     sorting_strategy = "ascending",
 

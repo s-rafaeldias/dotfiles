@@ -1,15 +1,12 @@
 local lspconfig = require "lspconfig"
 local null_ls = require "null-ls"
+local lsp_status = require "lsp-status"
+
+lsp_status.register_progress()
 
 local custom_attach = function(client, bufnr)
-  vim.notify("Attaching LSP: " .. client.name)
+  -- vim.notify("Attaching LSP: " .. client.name)
   local opts = { noremap = true }
-
-  local function definition_split()
-    -- TODO: check how many splits we have and add some smart logic here
-    vim.cmd "vs"
-    vim.lsp.buf.definition()
-  end
 
   require("lsp_signature").on_attach({
     bind = true,
@@ -17,6 +14,14 @@ local custom_attach = function(client, bufnr)
     doc_lines = 0,
     floating_window = false,
   }, bufnr)
+
+  lsp_status.on_attach(client)
+
+  local function definition_split()
+    -- TODO: check how many splits we have and add some smart logic here
+    vim.cmd "vs"
+    vim.lsp.buf.definition()
+  end
 
   vim.api.nvim_buf_set_keymap(bufnr, "n", "K", "<Cmd>lua vim.lsp.buf.hover()<CR>", opts)
   vim.api.nvim_buf_set_keymap(bufnr, "n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
@@ -46,6 +51,7 @@ local lsp_servers = {
   "ocamllsp",
   "tsserver",
   "prismals",
+  "elmls",
 }
 
 -- mason_lspconfig.setup {
