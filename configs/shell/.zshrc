@@ -92,14 +92,17 @@ alias d='tmuxinator start dotfiles'
 
 # Git alias
 alias gst='git status'
-alias gco='git checkout -b'
+alias gcb='git checkout -b'
+alias gcm='git checkout main'
 alias gp='git pull'
 alias gps='git push'
+alias grm='git rebase --interactive main'
 
 # alias ca='conda activate $(basename $(pwd))'
 alias np='rds-setup-python-env'
 
 alias pywatch='fswatch -o **/*.py | xargs -n1 -I {} make test'
+
 # }}}
 
 autoload -U +X bashcompinit && bashcompinit

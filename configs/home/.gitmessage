@@ -6,9 +6,6 @@
 #     <footer>
 # 
 # Please note that:
-#  - The HEADER is a single line of max. 50 characters that         
-#    contains a succinct description of the change. It contains a   
-#    type, an optional scope, and a subject
 #       + <type> describes the kind of change that this commit is   
 #                providing. Allowed types are:
 #             * feat (feature)
@@ -18,6 +15,7 @@
 #             * refactor
 #             * test (when adding missing tests)
 #             * chore (maintain)
+#             * ci
 #       + <scope> can be anything specifying the place of the commit    
 #                 change
 #       + <subject> is a very short description of the change, in   
