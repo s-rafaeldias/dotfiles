@@ -93,6 +93,7 @@ alias d='tmuxinator start dotfiles'
 # Git alias
 alias gst='git status'
 alias gcb='git checkout -b'
+alias gsb='git switch'
 alias gcm='git checkout main'
 alias gp='git pull'
 alias gps='git push'
