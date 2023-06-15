@@ -1,4 +1,4 @@
-require("fidget").setup {}
+-- require("fidget").setup {}
 
 vim.o.winbar = "%=%m %f"
 

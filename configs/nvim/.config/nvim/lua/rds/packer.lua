@@ -84,7 +84,7 @@ require("packer").startup(function(use)
   use "nvim-lua/lsp_extensions.nvim"
   use "nvim-lua/lsp-status.nvim"
   use "jose-elias-alvarez/null-ls.nvim"
-  use "j-hui/fidget.nvim"
+  -- use "j-hui/fidget.nvim"
   use "ray-x/lsp_signature.nvim"
   use "simrat39/rust-tools.nvim"
   use "scalameta/nvim-metals"
