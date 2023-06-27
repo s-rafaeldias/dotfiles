@@ -24,8 +24,7 @@ vim.keymap.set("n", "<leader>q", rds_utils.toggle_qflist)
 vim.keymap.set("n", "<C-D>", "<C-D>zz")
 vim.keymap.set("n", "<C-U>", "<C-U>zz")
 
--- undo tree
-vim.keymap.set("n", "<leader>u", "<Cmd>UndotreeToggle<CR>")
+-- vim.keymap.set("n", "<leader>u", "<Cmd>UndotreeToggle<CR>")
 vim.keymap.set("n", "<Leader>a", "<Cmd>lua require'harpoon.mark'.add_file()<CR>")
 vim.keymap.set("n", "<Leader>h", "<Cmd>lua require'harpoon.ui'.toggle_quick_menu()<CR>")
 

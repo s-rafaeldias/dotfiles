@@ -21,7 +21,7 @@ require("packer").startup(function(use)
   -- use "edluffy/hologram.nvim"
 
   use "ThePrimeagen/harpoon"
-  use "mbbill/undotree"
+  -- use "mbbill/undotree"
 
   -- Theme
   -- use "gruvbox-community/gruvbox"
@@ -105,7 +105,7 @@ require("packer").startup(function(use)
   }
   -- snippets
   use { "L3MON4D3/LuaSnip", rtp = "." }
-  use "rafamadriz/friendly-snippets"
+  -- use "rafamadriz/friendly-snippets"
   -- }}}
 
   -- Treesitter {{{
@@ -115,7 +115,6 @@ require("packer").startup(function(use)
   use "nvim-treesitter/nvim-treesitter-context"
   use "nvim-treesitter/nvim-treesitter-refactor"
   use "NoahTheDuke/vim-just"
-  -- use "p00f/nvim-ts-rainbow"
 
   -- use "Afourcat/treesitter-terraform-doc.nvim"
   -- }}}
