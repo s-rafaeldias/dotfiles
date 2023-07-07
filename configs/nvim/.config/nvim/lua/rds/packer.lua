@@ -1,7 +1,6 @@
 require("packer").startup(function(use)
   -- Essentials {{{
   use "wbthomason/packer.nvim"
-  use "lewis6991/impatient.nvim"
   use "tpope/vim-projectionist"
   use "tpope/vim-speeddating"
   -- Super duper plugin to help surrounding text-objects
@@ -70,9 +69,9 @@ require("packer").startup(function(use)
 
   -- Language specifics {{{
   use "NoahTheDuke/vim-just"
-  use "fatih/vim-go"
-  use "simrat39/rust-tools.nvim"
-  use "scalameta/nvim-metals"
+  -- use "fatih/vim-go"
+  -- use "simrat39/rust-tools.nvim"
+  -- use "scalameta/nvim-metals"
 
   -- Debugging {{{2
   use "mfussenegger/nvim-dap"
@@ -107,6 +106,6 @@ require("packer").startup(function(use)
   -- Utils {{{
   use "nvim-lua/plenary.nvim"
   use "nvim-lua/popup.nvim"
-  use "kyazdani42/nvim-web-devicons"
+  -- use "kyazdani42/nvim-web-devicons"
   -- }}}
 end)

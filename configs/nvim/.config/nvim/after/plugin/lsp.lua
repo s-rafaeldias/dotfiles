@@ -49,10 +49,10 @@ local lsp_servers = {
   -- "metals",
   "zls",
   "ocamllsp",
-  "tsserver",
+  -- "tsserver",
   "prismals",
   "elmls",
-  "tailwindcss"
+  "tailwindcss",
 }
 
 -- mason_lspconfig.setup {
@@ -64,6 +64,12 @@ for _, lsp in ipairs(lsp_servers) do
     on_attach = custom_attach,
   }
 end
+
+-- JS {{{
+lspconfig["tsserver"].setup {
+  on_attach = custom_attach,
+}
+-- }}}
 
 -- Python {{{
 lspconfig["pylsp"].setup {
@@ -160,15 +166,15 @@ lspconfig["marksman"].setup {
 -- }}}
 
 -- Rust {{{
-require("rust-tools").setup {
-  -- dap = {
-  --   adapter = require("rust-tools.dap").get_codelldb_adapter(
-  --     "/Users/rafael/personal/nvim/codelldb/extension/adapter/codelldb",
-  --     "/Users/rafael/personal/nvim/codelldb/extension/lldb/lib/liblldb.dylib"
-  --   ),
-  -- },
-  server = { on_attach = custom_attach },
-}
+-- require("rust-tools").setup {
+--   -- dap = {
+--   --   adapter = require("rust-tools.dap").get_codelldb_adapter(
+--   --     "/Users/rafael/personal/nvim/codelldb/extension/adapter/codelldb",
+--   --     "/Users/rafael/personal/nvim/codelldb/extension/lldb/lib/liblldb.dylib"
+--   --   ),
+--   -- },
+--   server = { on_attach = custom_attach },
+-- }
 -- }}}
 
 -- Metals (scala) {{{
@@ -197,7 +203,7 @@ null_ls.setup {
     null_ls.builtins.formatting.rustfmt,
     -- null_ls.builtins.formatting.mix,
     null_ls.builtins.formatting.terraform_fmt,
-    null_ls.builtins.formatting.prettier,
+    -- null_ls.builtins.formatting.prettier,
     null_ls.builtins.formatting.jq.with {
       args = { "--indent", "2" },
     },

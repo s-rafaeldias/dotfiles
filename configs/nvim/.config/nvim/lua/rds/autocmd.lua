@@ -12,14 +12,14 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 -- }}}
 
 -- Notes {{{
-local notes_group = vim.api.nvim_create_augroup("RDSNotes", {})
-
-vim.api.nvim_create_autocmd({ "BufLeave", "BufDelete", "InsertLeave" }, {
-  pattern = "*.wiki",
-  command = "write",
-  group = notes_group,
-  desc = "Save wiki notes after leaving",
-})
+-- local notes_group = vim.api.nvim_create_augroup("RDSNotes", {})
+--
+-- vim.api.nvim_create_autocmd({ "BufLeave", "BufDelete", "InsertLeave" }, {
+--   pattern = "*.wiki",
+--   command = "write",
+--   group = notes_group,
+--   desc = "Save wiki notes after leaving",
+-- })
 
 -- vim.api.nvim_create_autocmd({ "BufWrite" }, {
 --   pattern = "*.wiki",
