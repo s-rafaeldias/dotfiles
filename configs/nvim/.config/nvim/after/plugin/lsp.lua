@@ -52,6 +52,7 @@ local lsp_servers = {
   "tsserver",
   "prismals",
   "elmls",
+  "tailwindcss"
 }
 
 -- mason_lspconfig.setup {

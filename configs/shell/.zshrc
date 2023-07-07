@@ -79,7 +79,8 @@ alias l='ls -alFh'
 alias la='ls -Ah'
 alias ll='ls -CFh'
 
-alias n='nnn -H -d -i'
+alias nnn='nnn -H -d -i'
+alias n='pnpm'
 
 # alias t='tmuxinator'
 alias tm='tmux'

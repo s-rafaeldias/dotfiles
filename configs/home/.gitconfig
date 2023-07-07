@@ -17,8 +17,13 @@
 [branch]
     autoSetupMerge = always
 
+[rebase]
+    autosquash = true
+    autoStash = true
+
 [push]
     default = current
+
 [pull]
     default = current
 
@@ -30,9 +35,11 @@
 
 [alias]
     recent = branch --sort=-committerdate --format='%(committerdate:relative)%09%(refname:short)'
-    p = pull
-    P = push
+    pl = pull
+    ps = push
     s = status
+    new = log main..HEAD
+    missing = log HEAD..main
 
 [fetch]
     prune = true
