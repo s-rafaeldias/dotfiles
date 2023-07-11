@@ -13,8 +13,8 @@ tap "universal-ctags/universal-ctags"
 tap "xwmx/taps"
 brew "gcc"
 brew "zk"
-brew "koekeishiya/formulae/skhd"
-brew "koekeishiya/formulae/yabai", args: ["HEAD"]
+# brew "koekeishiya/formulae/skhd"
+# brew "koekeishiya/formulae/yabai", args: ["HEAD"]
 
 brew "neovim", args: ["HEAD"], greedy: true
 # Deps for building neovim

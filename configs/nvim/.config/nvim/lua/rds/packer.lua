@@ -4,6 +4,7 @@ require("packer").startup(function(use)
   use "tpope/vim-projectionist"
   use "tpope/vim-speeddating"
   -- Super duper plugin to help surrounding text-objects
+  use "kyazdani42/nvim-web-devicons"
   use "tpope/vim-surround"
   -- Show macros and registers
   use "junegunn/vim-peekaboo"
@@ -72,6 +73,12 @@ require("packer").startup(function(use)
   -- use "fatih/vim-go"
   -- use "simrat39/rust-tools.nvim"
   -- use "scalameta/nvim-metals"
+  use {
+    "mattn/emmet-vim",
+    config = function()
+      vim.g.user_emmet_leader_key = "<C-Z>"
+    end,
+  }
 
   -- Debugging {{{2
   use "mfussenegger/nvim-dap"
