@@ -1,1 +1,1 @@
-require "rds.plugins.nextjs"
+-- require "rds.plugins.nextjs"

@@ -71,7 +71,7 @@ require("packer").startup(function(use)
   -- Language specifics {{{
   use "NoahTheDuke/vim-just"
   -- use "fatih/vim-go"
-  -- use "simrat39/rust-tools.nvim"
+  use "simrat39/rust-tools.nvim"
   -- use "scalameta/nvim-metals"
   use {
     "mattn/emmet-vim",
