@@ -3,43 +3,32 @@ set -euo pipefail
 IFS=$'\n\t'
 
 # python_env="3.11"
-python_env=${1:-"3.11"}
-echo "Using python version $python_env"
+python_version=${1:-"3.11"}
+echo "Using python version $python_version"
 
-# Check if conda env exists for that repo/dir
-conda_env=$(basename "$(pwd)")
-envs=$(conda env list | awk '{print $1}')
-conda_env_exists=0
+python_cmd="python$python_version"
 
-for env in $envs; do
-    if [[ $env == "$conda_env" ]]; then
-        conda_env_exists=1
-    fi
-done
-
-if [[ $conda_env_exists -eq 1 ]]; then
-    echo "Found it! Nothing to do here"
-    exit
+# Check if python version is installed
+if ! type "$python_cmd" &> /dev/null; then
+    echo "Please install version of Python"
+    exit 1
 fi
 
-echo "404: Not Found"
-
-echo "Creating a new conda env..."
-conda create -n "$conda_env" python="$python_env" --yes
+echo "Creating a new virtual env..."
+$python_cmd -m venv .venv
 
 echo "Creating .envrc file"
 envrc_path=$(pwd)/.envrc
 cat << EOF >> "$envrc_path"
 # vim: ft=sh
-. "$HOME/miniconda3/etc/profile.d/conda.sh"
-conda activate $conda_env
+source ./.venv/bin/activate
 EOF
 
 echo "Allowing direnv"
 direnv allow .
 
 echo "Installing basic dev tools..."
-"$HOME"/miniconda3/envs/"$conda_env"/bin/pip install \
+./.venv/bin/pip install \
     python-lsp-ruff \
     pylsp-mypy \
     pylsp-rope \

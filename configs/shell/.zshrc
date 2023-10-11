@@ -50,15 +50,12 @@ unset __conda_setup
 
 # Alias ============================================ {{{
 alias tf='terraform'
-
 alias q='exit'
-
 alias j='just'
-
 alias v='nvim'
 alias vi='nvim'
 alias vim='nvim'
-
+alias k='kubectl'
 alias br='brew uninstall'
 alias bi='brew install'
 alias bu='brew upgrade'
@@ -104,6 +101,7 @@ alias grm='git rebase --interactive main'
 alias np='rds-setup-python-env'
 
 alias pywatch='fswatch -o **/*.py | xargs -n1 -I {} make test'
+alias pyig='wget https://raw.githubusercontent.com/github/gitignore/main/Python.gitignore -O .gitignore'
 
 # }}}
 
