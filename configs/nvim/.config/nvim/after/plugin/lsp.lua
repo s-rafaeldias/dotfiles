@@ -49,7 +49,7 @@ local lsp_servers = {
   -- "metals",
   "zls",
   "ocamllsp",
-  -- "tsserver",
+  "tsserver",
   "prismals",
   "elmls",
   "tailwindcss",

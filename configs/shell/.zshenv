@@ -19,6 +19,8 @@ export CC=gcc
 export CXX=g++
 
 export DOCKER_BUILDKIT=0
+# Remove this if I stop using colima for docker
+export DOCKER_HOST="unix://$HOME/.colima/docker.sock"
 
 export PATH=/usr/local/sbin:$PATH
 export PATH=/usr/local/opt/llvm/bin:$PATH
@@ -32,5 +34,6 @@ export PATH=$HOME/workspace/scripts:$PATH
 export PATH="$HOME/Library/Application Support/Coursier/bin:$PATH"
 
 export EDITOR='nvim'
+
 
 # export ZK_NOTEBOOK_DIR=$HOME/workspace/zk/

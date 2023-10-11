@@ -5,6 +5,7 @@ require("telescope").setup {
     file_ignore_patterns = {
       "node_modules/*",
       "*.pyc",
+      ".venv/*",
       ".mypy_cache/*",
       ".pytest_cache/*",
       "**/__pycache__/*",
