@@ -25,6 +25,8 @@ set.autoindent = true
 set.ignorecase = true
 set.smartindent = true
 
+set.mouse = ""
+
 -- By default, uses `marker` for folding
 set.foldmethod = "marker"
 -- To use treesitter folding, just add the `vim.cmd` bellow on `after/ftplugin/[lang].vim
