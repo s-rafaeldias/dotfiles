@@ -3,6 +3,7 @@
 vim.o.winbar = "%=%m %f"
 
 local python_env = function()
+  -- TODO: remove conda usage (now is all via venv)
   local env = vim.env.CONDA_DEFAULT_ENV
   if env ~= nil then
     return "(" .. env .. ")"

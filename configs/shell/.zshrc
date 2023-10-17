@@ -30,22 +30,6 @@ eval "$(starship init zsh)"
 eval "$(direnv hook zsh)"
 # eval "$(opam env)"
 [[ ! -r /Users/rafael/.opam/opam-init/init.zsh ]] || source /Users/rafael/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
-
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('$HOME/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "$HOME/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "$HOME/miniconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="$HOME/miniconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
 # }}}
 
 # Alias ============================================ {{{
@@ -85,7 +69,7 @@ alias tb='tmuxinator start basic'
 # First deactivate conda env to make sure
 # `pip` will use the correct bin (from current activated env)
 # https://github.com/conda/conda/issues/7173#issuecomment-1053848539
-alias t='conda deactivate && tmuxinator start home'
+alias t='tmuxinator start home'
 alias d='tmuxinator start dotfiles'
 
 # Git alias
@@ -99,6 +83,8 @@ alias grm='git rebase --interactive main'
 
 # alias ca='conda activate $(basename $(pwd))'
 alias np='rds-setup-python-env'
+alias python='python3'
+alias p='python'
 
 alias pywatch='fswatch -o **/*.py | xargs -n1 -I {} make test'
 alias pyig='wget https://raw.githubusercontent.com/github/gitignore/main/Python.gitignore -O .gitignore'
@@ -120,12 +106,5 @@ timer() {
         terminal-notifier -message 'Pomodoro' \
         -title 'Work is DONE!' \
         -sound Crystal
-}
-
-ca() {
-    selected=$(conda env list | awk '! /#/ && NF > 0 { print $1 }' | fzf)
-    if [[ ! -z "$selected" ]] then;
-        conda activate "$selected"
-    fi
 }
 # }}}

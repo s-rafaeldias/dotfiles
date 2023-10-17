@@ -69,5 +69,6 @@ yabai -m rule --add app="^Preview$" manage=off
 yabai -m rule --add app="^Microsoft Outlook$" manage=off
 yabai -m rule --add app="Emacs" manage=on
 yabai -m rule --add app="^zathura$" manage=on
+yabai -m rule --add app="^Kindle$" manage=off
 
 echo "yabai configuration loaded.."

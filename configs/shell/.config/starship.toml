@@ -20,9 +20,6 @@ symbol = " "
 [package]
 disabled = true
 
-[python]
-disabled = true
-
 [elixir]
 disabled = true
 
