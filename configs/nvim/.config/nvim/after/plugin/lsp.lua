@@ -2,6 +2,8 @@ local lspconfig = require "lspconfig"
 local null_ls = require "null-ls"
 local lsp_status = require "lsp-status"
 
+require("neodev").setup()
+
 lsp_status.register_progress()
 
 local custom_attach = function(client, bufnr)

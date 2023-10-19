@@ -11,6 +11,8 @@ require("packer").startup(function(use)
   use "junegunn/vim-peekaboo"
   -- Easier navigation between marked files
   use "ThePrimeagen/harpoon"
+  -- Neovim lua setup
+  use "folke/neodev.nvim"
   -- plugin for comments
   use {
     "numToStr/Comment.nvim",
