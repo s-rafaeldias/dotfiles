@@ -53,7 +53,7 @@ local lsp_servers = {
   "prismals",
   "elmls",
   "tailwindcss",
-  "astro"
+  "astro",
 }
 
 -- mason_lspconfig.setup {
@@ -63,6 +63,7 @@ local lsp_servers = {
 for _, lsp in ipairs(lsp_servers) do
   lspconfig[lsp].setup {
     on_attach = custom_attach,
+    capabilities = require("cmp_nvim_lsp").default_capabilities(),
   }
 end
 
