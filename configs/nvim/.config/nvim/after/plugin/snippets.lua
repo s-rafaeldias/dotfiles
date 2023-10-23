@@ -29,16 +29,10 @@ end, {
 })
 --- }}}
 
---- Global snippets {{{
-local todo = s("todo", t { "# TODO: " }, i(1))
---- }}}
-
-local global_snips = { todo }
-
 local py_snips = require "rds.snippets.python"
-vim.list_extend(py_snips, global_snips)
 ls.add_snippets("python", py_snips)
 
+-- bash {{{
 ls.add_snippets("sh", {
   s(
     "bash",
@@ -49,3 +43,33 @@ ls.add_snippets("sh", {
     }
   ),
 })
+-- }}}
+
+-- Go {{{
+ls.add_snippets("go", {
+  s("todo", t { "// TODO: " }, i(1)),
+  s(
+    "handler",
+    fmt(
+      [[
+      func {}(w http.ResponseWriter, r *http.Request) {{
+      	{}
+      }}
+      ]],
+      { i(1), i(2) }
+    )
+  ),
+  s(
+    "err",
+    fmt(
+      [[
+      if err != nil {{
+      	{}
+      }}
+      {}
+      ]],
+      { i(1, "panic(err)"), i(2) }
+    )
+  ),
+})
+--- }}}

@@ -2,8 +2,10 @@ local ls = require "luasnip"
 local s = ls.snippet
 local i = ls.insert_node
 local fmt = require("luasnip.extras.fmt").fmt
+local t = ls.text_node
 
 return {
+  s("todo", t { "# TODO: " }, i(1)),
   s("lambda", fmt("lambda {}: {}", { i(1), i(2) })),
   s("fromi", fmt("from {} import {}", { i(1), i(2) })),
   s(
@@ -13,7 +15,7 @@ return {
       def describe_{}():
           def test_{}():
               {}
-    ]],
+      ]],
       { i(1), i(2), i(3, "assert True") }
     )
   ),
@@ -23,7 +25,7 @@ return {
       [[
       def test_{}():
           {}
-    ]],
+      ]],
       { i(1), i(2, "assert True") }
     )
   ),
@@ -31,12 +33,12 @@ return {
     "main",
     fmt(
       [[
-    def main():
-        {}
+      def main():
+          {}
 
-    if __name__ == "__main__":
-        main()
-    ]],
+      if __name__ == "__main__":
+          main()
+      ]],
       { i(1) }
     )
   ),
@@ -44,9 +46,9 @@ return {
     "def",
     fmt(
       [[
-    def {}({}) -> {}:
-        {}
-    ]],
+      def {}({}) -> {}:
+          {}
+      ]],
       { i(1), i(2), i(3, "None"), i(4) }
     )
   ),
