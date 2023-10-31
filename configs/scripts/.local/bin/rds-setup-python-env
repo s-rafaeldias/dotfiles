@@ -35,6 +35,8 @@ echo "Installing basic dev tools..."
     python-lsp-ruff \
     pylsp-mypy \
     pylsp-rope \
-    pyls-isort \
-    python-lsp-black \
+    ruff-lsp \
     "python-lsp-server[all]"
+    # pyls-isort \
+    # python-lsp-black \
+    # "python-lsp-server[all]"

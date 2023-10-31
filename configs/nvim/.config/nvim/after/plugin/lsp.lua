@@ -56,6 +56,7 @@ local lsp_servers = {
   "elmls",
   "tailwindcss",
   "astro",
+  "ruff_lsp",
 }
 
 -- mason_lspconfig.setup {
@@ -81,8 +82,10 @@ lspconfig["pylsp"].setup {
   settings = {
     pylsp = {
       plugins = {
+        -- TODO: remove this after formatter is added to ruff-lsp
         black = {
           enabled = true,
+          line_length = 80,
         },
         mypy = {
           enabled = true,
@@ -92,16 +95,25 @@ lspconfig["pylsp"].setup {
         },
         pycodestyle = {
           ignore = { "E501" },
-          maxLineLength = 100,
+          maxLineLength = 80,
         },
         flake8 = {
           enabled = false,
         },
         ruff = {
           enabled = true,
-          lineLength = 100,
+          lineLength = 80,
+        },
+        autopep = {
+          enabled = false,
         },
         rope_autoimport = {
+          enabled = false,
+        },
+        pyflakes = {
+          enabled = false,
+        },
+        mccabe = {
           enabled = false,
         },
       },
@@ -203,14 +215,20 @@ require("rust-tools").setup {
 -- Null-ls {{{
 null_ls.setup {
   sources = {
+    -- Python
+    -- null_ls.builtins.formatting.ruff,
+    -- null_ls.builtins.diagnostics.ruff,
+    -- Lua
     null_ls.builtins.formatting.stylua,
+    -- Rust
     null_ls.builtins.formatting.rustfmt,
-    -- null_ls.builtins.formatting.mix,
+    -- TF
     null_ls.builtins.formatting.terraform_fmt,
-    -- null_ls.builtins.formatting.prettier,
+    -- JSON
     null_ls.builtins.formatting.jq.with {
       args = { "--indent", "2" },
     },
+    -- Bash
     null_ls.builtins.code_actions.shellcheck,
     null_ls.builtins.diagnostics.shellcheck,
   },

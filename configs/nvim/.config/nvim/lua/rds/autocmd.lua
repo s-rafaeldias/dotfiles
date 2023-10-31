@@ -10,6 +10,13 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   desc = "Highlight yank",
 })
 -- }}}
+--
+vim.api.nvim_create_autocmd({ "BufEnter" }, {
+  pattern = "*.gohtml",
+  command = "set filetype=html",
+  group = rds_group,
+  desc = "Set Go HTML template filetype as HTML",
+})
 
 -- Notes {{{
 -- local notes_group = vim.api.nvim_create_augroup("RDSNotes", {})
