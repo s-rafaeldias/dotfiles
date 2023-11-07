@@ -2,14 +2,14 @@
 
 vim.o.winbar = "%=%m %f"
 
-local python_env = function()
-  -- TODO: remove conda usage (now is all via venv)
-  local env = vim.env.CONDA_DEFAULT_ENV
-  if env ~= nil then
-    return "(" .. env .. ")"
-  end
-  return ""
-end
+-- local python_env = function()
+--   -- TODO: remove conda usage (now is all via venv)
+--   local env = vim.env.CONDA_DEFAULT_ENV
+--   if env ~= nil then
+--     return "(" .. env .. ")"
+--   end
+--   return ""
+-- end
 
 local branch_color = function()
   local branch = require("lualine.components.branch.git_branch").get_branch()
@@ -38,7 +38,6 @@ require("lualine").setup {
       "diagnostics",
     },
     lualine_c = {
-      python_env,
       {
         "filename",
         file_status = true, -- displays file status (readonly status, modified status)
