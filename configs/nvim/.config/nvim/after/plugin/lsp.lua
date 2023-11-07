@@ -59,10 +59,6 @@ local lsp_servers = {
   "ruff_lsp",
 }
 
--- mason_lspconfig.setup {
---   ensure_installed = lsp_servers,
--- }
-
 for _, lsp in ipairs(lsp_servers) do
   lspconfig[lsp].setup {
     on_attach = custom_attach,

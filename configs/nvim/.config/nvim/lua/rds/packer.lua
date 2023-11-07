@@ -4,7 +4,7 @@ require("packer").startup(function(use)
   use "tpope/vim-projectionist"
   -- make `C-x` and `C-a` work with dates
   use "tpope/vim-speeddating"
-  use "kyazdani42/nvim-web-devicons"
+  -- use "kyazdani42/nvim-web-devicons"
   -- Super duper plugin to help surrounding text-objects
   use "tpope/vim-surround"
   -- Show macros and registers
@@ -45,8 +45,8 @@ require("packer").startup(function(use)
       require("mason").setup {}
     end,
   }
-  use "williamboman/mason-lspconfig.nvim"
-  use "WhoIsSethDaniel/mason-tool-installer.nvim"
+  -- use "williamboman/mason-lspconfig.nvim"
+  -- use "WhoIsSethDaniel/mason-tool-installer.nvim"
 
   -- Snippets engine
   use { "L3MON4D3/LuaSnip", rtp = "." }
