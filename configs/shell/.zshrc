@@ -10,13 +10,9 @@ plugins=(
     docker
 )
 
-# Setups ==============================================
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-[ -f ~/.env ] && source ~/.env
-
+# Sources ============================================== {{{
 fpath=(~/.zsh/{completion,plugin} $fpath)
 
-# Sources ============================================== {{{
 source $ZSH/oh-my-zsh.sh
 
 source ~/.zstyles
@@ -29,7 +25,10 @@ source "$HOME/.local/share/lscolors.sh"
 eval "$(starship init zsh)"
 eval "$(direnv hook zsh)"
 # eval "$(opam env)"
-[[ ! -r /Users/rafael/.opam/opam-init/init.zsh ]] || source /Users/rafael/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
+# [[ ! -r /Users/rafael/.opam/opam-init/init.zsh ]] || source /Users/rafael/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f ~/.env ] && source ~/.env
 # }}}
 
 # Alias ============================================ {{{
