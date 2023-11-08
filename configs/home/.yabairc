@@ -71,5 +71,7 @@ yabai -m rule --add app="Emacs" manage=on
 yabai -m rule --add app="^zathura$" manage=on
 yabai -m rule --add app="^Kindle$" manage=off
 yabai -m rule --add app="^TickTick$" manage=off
+yabai -m rule --add app="^Sublime$" manage=off
+yabai -m rule --add app="^Keymapp$" manage=off
 
 echo "yabai configuration loaded.."
