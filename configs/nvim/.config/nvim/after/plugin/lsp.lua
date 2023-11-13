@@ -179,13 +179,14 @@ lspconfig["marksman"].setup {
 
 -- Rust {{{
 require("rust-tools").setup {
-  -- dap = {
-  --   adapter = require("rust-tools.dap").get_codelldb_adapter(
-  --     "/Users/rafael/personal/nvim/codelldb/extension/adapter/codelldb",
-  --     "/Users/rafael/personal/nvim/codelldb/extension/lldb/lib/liblldb.dylib"
-  --   ),
-  -- },
   server = { on_attach = custom_attach },
+  -- Link for fixing codelldb: https://github.com/vadimcn/codelldb/discussions/456#discussioncomment-874122
+  dap = {
+    adapter = require("rust-tools.dap").get_codelldb_adapter(
+      "/Users/rafael/.local/share/nvim/mason/packages/codelldb/codelldb",
+      "/Users/rafael/.local/share/nvim/mason/packages/codelldb/extension/lldb/lib/liblldb.dylib"
+    ),
+  },
 }
 -- }}}
 
