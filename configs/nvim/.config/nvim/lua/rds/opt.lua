@@ -1,6 +1,5 @@
 local set = vim.opt
 
--- Testing this
 set.guicursor = "a:block"
 
 set.relativenumber = true
@@ -11,8 +10,8 @@ set.colorcolumn = "80"
 set.splitright = true
 -- set.scrolloff = 10 -- add a "buffer" of 10 lines up and down the cursor position
 set.signcolumn = "yes"
-set.wrap = false -- Don't wrap text when there is not enough space on buffer
-set.termguicolors = true -- Enables 24-bit RGB on TUI
+set.wrap = false
+set.termguicolors = true
 set.wrapscan = true
 set.laststatus = 3
 set.mouse = nil
@@ -24,8 +23,6 @@ set.softtabstop = 4
 set.autoindent = true
 set.ignorecase = true
 set.smartindent = true
-
-set.mouse = ""
 
 -- By default, uses `marker` for folding
 set.foldmethod = "marker"

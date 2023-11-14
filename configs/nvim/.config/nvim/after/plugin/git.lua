@@ -21,7 +21,7 @@ vim.api.nvim_create_autocmd("BufEnter", {
     if branch == "main" and block_main_flag == "1" then
       print "Main branch blocked"
       local bufnr = vim.api.nvim_get_current_buf()
-      vim.api.nvim_buf_set_option(bufnr, "modifiable", false)
+      vim.api.nvim_set_option_value("modifiable", false, { buf = bufnr })
     end
   end,
 })

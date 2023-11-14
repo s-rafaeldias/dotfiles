@@ -10,6 +10,8 @@ export RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
 export PYTHONNOUSERSITE=1
 export HOMEBREW_NO_INSTALL_FROM_API=1
 
+export ZSH_COMPDUMP="$ZSH/cache/.zcompdump-$HOST"
+
 export PAGER=/usr/bin/less
 
 export ZSH=$HOME/.oh-my-zsh

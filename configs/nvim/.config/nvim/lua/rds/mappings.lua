@@ -11,7 +11,7 @@ vim.keymap.set("t", "<Esc>", "<C-\\><C-n>")
 -- vim.keymap.set("i", "<C-g>", "<Esc>vB~Ea")
 
 -- Reload config
-vim.keymap.set("n", "<Leader>sv", "<Cmd>luafile $MYVIMRC<CR>")
+-- vim.keymap.set("n", "<Leader>sv", "<Cmd>luafile $MYVIMRC<CR>")
 
 -- Switch between related files. See `tpope/vim-projectionist`
 vim.keymap.set("n", "<Leader>s", "<Cmd>A<CR>")

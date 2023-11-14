@@ -6,7 +6,8 @@ require("packer").startup(function(use)
   use "tpope/vim-speeddating"
   -- use "kyazdani42/nvim-web-devicons"
   -- Super duper plugin to help surrounding text-objects
-  use "tpope/vim-surround"
+  -- TODO: make this more natural.
+  -- use "tpope/vim-surround"
   -- Show macros and registers
   use "junegunn/vim-peekaboo"
   -- Easier navigation between marked files
