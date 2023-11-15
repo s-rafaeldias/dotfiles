@@ -4,24 +4,24 @@ local get_node_text = vim.treesitter.get_node_text
 local M = {}
 
 ---@return TSNode | nil
-local function get_current_function_node() -- 0-index position
-  local d = vim.treesitter.get_node()
+local function get_current_function_node()
+  local node = vim.treesitter.get_node()
 
-  while d ~= nil do
-    if d:type() == "function_definition" then
-      print(vim.inspect(d:named_child_count()))
+  while node ~= nil do
+    if node:type() == "function_definition" then
+      p(node:named_child_count())
       break
     end
 
-    d = d:parent()
+    node = node:parent()
   end
 
-  if d == nil then
+  if node == nil then
     print "d is nil"
     return
   end
 
-  return d
+  return node
 end
 
 ---@param function_node TSNode
