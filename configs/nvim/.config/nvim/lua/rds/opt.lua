@@ -14,7 +14,7 @@ set.wrap = false
 set.termguicolors = true
 set.wrapscan = true
 set.laststatus = 3
-set.mouse = nil
+set.mouse = ""
 
 set.tabstop = 4
 set.expandtab = true
