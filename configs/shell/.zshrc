@@ -1,26 +1,48 @@
 # vim: ft=zsh
-# Plugins ============================================
-plugins=(
-    zsh-z
-    taskwarrior
-    poetry
-    # tmuxinator
-    zsh-syntax-highlighting
-    vi-mode
-    docker
-)
+
+zmodload zsh/zprof # Debug time info
+
+# History {{{
+export HISTSIZE=50000
+export SAVEHIST=50000
+export HISTFILE=~/.zsh_history
+
+setopt HIST_IGNORE_ALL_DUPS     # do not put duplicated command into history list
+setopt HIST_SAVE_NO_DUPS        # do not save duplicated command
+setopt HIST_IGNORE_DUPS         # do not save duplicated command
+setopt HIST_REDUCE_BLANKS       # remove unnecessary blanks
+setopt HIST_FIND_NO_DUPS        # don't show dups
+setopt INC_APPEND_HISTORY_TIME  # append command to history file immediately after execution
+setopt EXTENDED_HISTORY         # record command start time
+
+bindkey '^R' history-incremental-search-backward
+
+# Setup arrows for quick history search (https://coderwall.com/p/jpj_6q/zsh-better-history-searching-with-arrow-keys)
+autoload -U up-line-or-beginning-search
+autoload -U down-line-or-beginning-search
+
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+
+bindkey "^[[A" up-line-or-beginning-search   # Up
+bindkey "^[[B" down-line-or-beginning-search # Down
+# }}}
+
+# Completion {{{
+autoload -U compinit && compinit
+# }}}
 
 # Sources ============================================== {{{
-fpath=(~/.zsh/{completion,plugin} $fpath)
+# fpath=(~/.zsh/{completion,plugin} $fpath)
 
-source $ZSH/oh-my-zsh.sh
+# source $ZSH/oh-my-zsh.sh
 
 source ~/.zstyles
 
 # Colors for ls
 source "$HOME/.local/share/lscolors.sh"
 
-. "$HOME/.cargo/env"
+source "$HOME/.cargo/env"
 
 eval "$(starship init zsh)"
 eval "$(direnv hook zsh)"
@@ -90,10 +112,12 @@ alias pyig='wget https://raw.githubusercontent.com/github/gitignore/main/Python.
 
 # }}}
 
-autoload -U +X bashcompinit && bashcompinit
-complete -o nospace -C /usr/local/bin/terraform terraform
+# autoload -U +X bashcompinit && bashcompinit
+# complete -o nospace -C /usr/local/bin/terraform terraform
 
 # Bindkeys ============================================ {{{
+bindkey -e
+
 bindkey -s '\C-f' '~/.local/bin/rds-tmux-create-session\r'
 # }}}
 
@@ -107,3 +131,8 @@ timer() {
         -sound Crystal
 }
 # }}}
+
+# TODO: do I really care for highlighting? Let's see after a few weeks...
+# source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+zprof # Debug time info
