@@ -32,11 +32,7 @@ bindkey "^[[B" down-line-or-beginning-search # Down
 autoload -U compinit && compinit
 # }}}
 
-# Sources ============================================== {{{
-# fpath=(~/.zsh/{completion,plugin} $fpath)
-
-# source $ZSH/oh-my-zsh.sh
-
+# Sources {{{
 source ~/.zstyles
 
 # Colors for ls
@@ -53,7 +49,7 @@ eval "$(direnv hook zsh)"
 [ -f ~/.env ] && source ~/.env
 # }}}
 
-# Alias ============================================ {{{
+# Alias {{{
 alias tf='terraform'
 alias q='exit'
 alias j='just'
@@ -112,16 +108,13 @@ alias pyig='wget https://raw.githubusercontent.com/github/gitignore/main/Python.
 
 # }}}
 
-# autoload -U +X bashcompinit && bashcompinit
-# complete -o nospace -C /usr/local/bin/terraform terraform
-
-# Bindkeys ============================================ {{{
+# Bindkeys {{{
 bindkey -e
 
 bindkey -s '\C-f' '~/.local/bin/rds-tmux-create-session\r'
 # }}}
 
-# Functions ============================================ {{{
+# Functions {{{
 timer() {
     # https://github.com/trehn/termdown
     # pipx install termdown
