@@ -83,12 +83,12 @@ require("packer").startup(function(use)
   -- use "fatih/vim-go"
   use "simrat39/rust-tools.nvim"
   -- use "scalameta/nvim-metals"
-  -- use {
-  --   "mattn/emmet-vim",
-  --   config = function()
-  --     vim.g.user_emmet_leader_key = "<C-Z>"
-  --   end,
-  -- }
+  use {
+    "mattn/emmet-vim",
+    config = function()
+      vim.g.user_emmet_leader_key = "<C-Z>"
+    end,
+  }
 
   -- Debugging {{{2
   use "mfussenegger/nvim-dap"
