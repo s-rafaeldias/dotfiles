@@ -1,10 +1,14 @@
 # vim: ft=zsh
 
-zmodload zsh/zprof # Debug time info
+# zmodload zsh/zprof # Debug time info
+
+# Inital setup {{{
+bindkey -e
+# }}}
 
 # History {{{
-export HISTSIZE=50000
-export SAVEHIST=50000
+export HISTSIZE=100000
+export SAVEHIST=100000
 export HISTFILE=~/.zsh_history
 
 setopt HIST_IGNORE_ALL_DUPS     # do not put duplicated command into history list
@@ -109,8 +113,6 @@ alias pyig='wget https://raw.githubusercontent.com/github/gitignore/main/Python.
 # }}}
 
 # Bindkeys {{{
-bindkey -e
-
 bindkey -s '\C-f' '~/.local/bin/rds-tmux-create-session\r'
 # }}}
 
@@ -128,4 +130,4 @@ timer() {
 # TODO: do I really care for highlighting? Let's see after a few weeks...
 # source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-zprof # Debug time info
+# zprof # Debug time info
