@@ -52,6 +52,10 @@ eval "$(direnv hook zsh)"
 # }}}
 
 # Alias {{{
+alias md='mkdir -p'
+alias ..='cd ..'
+alias ...='cd ../..'
+
 alias tf='terraform'
 alias q='exit'
 alias j='just'
