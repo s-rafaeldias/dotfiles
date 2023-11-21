@@ -28,8 +28,8 @@ autoload -U down-line-or-beginning-search
 zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
 
-bindkey "^[[A" up-line-or-beginning-search   # Up
-bindkey "^[[B" down-line-or-beginning-search # Down
+bindkey '^[[A' up-line-or-beginning-search   # Up
+bindkey '^[[B' down-line-or-beginning-search # Down
 # }}}
 
 # Completion {{{
@@ -46,8 +46,6 @@ source "$HOME/.cargo/env"
 
 eval "$(starship init zsh)"
 eval "$(direnv hook zsh)"
-# eval "$(opam env)"
-# [[ ! -r /Users/rafael/.opam/opam-init/init.zsh ]] || source /Users/rafael/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [ -f ~/.env ] && source ~/.env
@@ -67,13 +65,6 @@ alias bu='brew upgrade'
 alias bb='brew bundle --file=$HOME/.dotfiles/Brewfile'
 alias bv='brew uninstall neovim && brew install neovim --HEAD'
 
-# Disable for now. One day I want to go back to NixOS
-# alias he='home-manager edit'
-# alias hg='home-manager generations'
-# alias hp='home-manager packages'
-# alias hs='home-manager switch'
-# alias hu='nix-channel --update && home-manager switch'
-
 alias inflate='ruby -r zlib -e "STDOUT.write Zlib::Inflate.inflate(STDIN.read)"'
 
 alias ls='gls --color=auto'
@@ -85,11 +76,8 @@ alias nnn='nnn -H -d -i'
 alias n='pnpm'
 
 # alias t='tmuxinator'
-alias tm='tmux'
+alias tx='tmux'
 alias tb='tmuxinator start basic'
-# First deactivate conda env to make sure
-# `pip` will use the correct bin (from current activated env)
-# https://github.com/conda/conda/issues/7173#issuecomment-1053848539
 alias t='tmuxinator start home'
 alias d='tmuxinator start dotfiles'
 
