@@ -225,6 +225,7 @@ null_ls.setup {
     null_ls.builtins.formatting.jq.with {
       args = { "--indent", "2" },
     },
+    null_ls.builtins.formatting.rustywind,
     -- Bash
     null_ls.builtins.code_actions.shellcheck,
     null_ls.builtins.diagnostics.shellcheck,
