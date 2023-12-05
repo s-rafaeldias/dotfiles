@@ -12,6 +12,11 @@ require("packer").startup(function(use)
   use "junegunn/vim-peekaboo"
   -- Easier navigation between marked files
   use "ThePrimeagen/harpoon"
+  -- use {
+  --   "ThePrimeagen/harpoon",
+  --   branch = "harpoon2",
+  --   requires = { { "nvim-lua/plenary.nvim" } },
+  -- }
   -- Neovim lua setup
   use "folke/neodev.nvim"
   -- plugin for comments

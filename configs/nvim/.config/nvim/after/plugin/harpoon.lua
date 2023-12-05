@@ -1,0 +1,28 @@
+-- HARPOON 2 (review this and my tmux usage)
+-- local harpoon = require "harpoon"
+--
+-- harpoon:setup()
+--
+-- -- vim.keymap.set("n", "<Leader><Leader>u", function()
+-- --   tmux.gotoTerminal(3)
+-- -- end)
+-- vim.keymap.set("n", "<Leader>a", function()
+--   harpoon:list():append()
+-- end)
+-- -- vim.keymap.set("n", "<Leader>h", "<Cmd>lua require'harpoon.ui'.toggle_quick_menu()<CR>")
+-- vim.keymap.set("n", "<Leader>h", function()
+--   harpoon.ui:toggle_quick_menu(harpoon:list())
+-- end)
+--
+-- vim.keymap.set("n", "<Leader><Leader>j", function()
+--   harpoon:list():select(1)
+-- end)
+-- vim.keymap.set("n", "<Leader><Leader>k", function()
+--   harpoon:list():select(2)
+-- end)
+-- vim.keymap.set("n", "<Leader><Leader>l", function()
+--   harpoon:list():select(3)
+-- end)
+-- vim.keymap.set("n", "<Leader><Leader>;", function()
+--   harpoon:list():select(4)
+-- end)
