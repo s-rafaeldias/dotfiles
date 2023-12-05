@@ -25,6 +25,7 @@ treesitter.setup {
     "regex",
     "rst",
     "vim",
+    "vimdoc",
     "yaml",
     -- "tsx",
     -- "typescript",
