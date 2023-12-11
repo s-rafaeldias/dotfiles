@@ -226,6 +226,7 @@ null_ls.setup {
       args = { "--indent", "2" },
     },
     null_ls.builtins.formatting.rustywind,
+    -- null_ls.builtins.formatting.ocamlformat,
     -- Bash
     null_ls.builtins.code_actions.shellcheck,
     null_ls.builtins.diagnostics.shellcheck,

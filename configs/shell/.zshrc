@@ -32,10 +32,6 @@ bindkey '^[[A' up-line-or-beginning-search   # Up
 bindkey '^[[B' down-line-or-beginning-search # Down
 # }}}
 
-# Completion {{{
-autoload -U compinit && compinit
-# }}}
-
 # Sources {{{
 source ~/.zstyles
 
@@ -47,8 +43,20 @@ source "$HOME/.cargo/env"
 eval "$(starship init zsh)"
 eval "$(direnv hook zsh)"
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[[ ! -r ~/.opam/opam-init/init.zsh ]] || source ~/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
+
 [ -f ~/.env ] && source ~/.env
+# }}}
+
+# Plugins {{{
+# TODO: install plugin if it doesn't exists
+[ -f ~/.zsh/plugin/zsh-z/zsh-z.plugin.zsh ] && source ~/.zsh/plugin/zsh-z/zsh-z.plugin.zsh
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# }}}
+
+# Completion {{{
+autoload -U compinit && compinit
 # }}}
 
 # Alias {{{
