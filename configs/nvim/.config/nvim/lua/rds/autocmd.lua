@@ -18,6 +18,13 @@ vim.api.nvim_create_autocmd({ "BufEnter" }, {
   desc = "Set Go HTML template filetype as HTML",
 })
 
+vim.api.nvim_create_autocmd({ "BufEnter" }, {
+  pattern = "*.mli",
+  command = "set filetype=ocamlinterface",
+  group = rds_group,
+  desc = "Set MLI files to ocamlinterface",
+})
+
 -- Sessions {{{
 local session_filename = "Session.vim"
 

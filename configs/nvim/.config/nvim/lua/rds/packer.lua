@@ -54,6 +54,13 @@ require("packer").startup(function(use)
   -- use "williamboman/mason-lspconfig.nvim"
   -- use "WhoIsSethDaniel/mason-tool-installer.nvim"
 
+  use {
+    "ThePrimeagen/refactoring.nvim",
+    config = function()
+      require("refactoring").setup {}
+    end,
+  }
+
   -- Snippets engine
   use { "L3MON4D3/LuaSnip", rtp = "." }
   -- use "rafamadriz/friendly-snippets"

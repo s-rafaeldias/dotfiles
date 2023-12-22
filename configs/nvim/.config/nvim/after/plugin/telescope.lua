@@ -11,7 +11,7 @@ require("telescope").setup {
       "**/__pycache__/*",
       "__pycache__/*",
       ".DS_Store/",
-      ".DS_Store"
+      ".DS_Store",
     },
     sorting_strategy = "ascending",
 
@@ -41,6 +41,7 @@ require("telescope").setup {
 require("telescope").load_extension "git_worktree"
 require("telescope").load_extension "fzf"
 require("telescope").load_extension "ui-select"
+require("telescope").load_extension "refactoring"
 
 local project_files = function()
   local in_git_repo = vim.fn.systemlist("git rev-parse --is-inside-work-tree")[1] == "true"
@@ -58,3 +59,6 @@ vim.keymap.set("n", "<leader>pf", require("telescope.builtin").find_files)
 vim.keymap.set("n", "<C-F>", "<Cmd>lua require'telescope.builtin'.live_grep { hidden=true }<CR>")
 vim.keymap.set("n", "<C-B>", "<Cmd>lua require'telescope.builtin'.buffers{}<CR>")
 vim.keymap.set("n", "<leader>x", "<Cmd>lua require'telescope.builtin'.diagnostics{}<CR>")
+vim.keymap.set({ "n", "x" }, "<leader>rf", function()
+  require("telescope").extensions.refactoring.refactors()
+end)
