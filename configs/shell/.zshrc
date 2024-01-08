@@ -55,10 +55,6 @@ eval "$(direnv hook zsh)"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 # }}}
 
-# Completion {{{
-autoload -U compinit && compinit
-# }}}
-
 # Alias {{{
 alias md='mkdir -p'
 alias ..='cd ..'
@@ -131,5 +127,12 @@ timer() {
 
 # TODO: do I really care for highlighting? Let's see after a few weeks...
 # source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# Completion {{{
+autoload bashcompinit && bashcompinit
+autoload -U compinit && compinit
+
+complete -C '/usr/local/bin/aws_completer' aws
+# }}}
 
 # zprof # Debug time info
