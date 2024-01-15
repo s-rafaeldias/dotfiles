@@ -1,5 +1,9 @@
 # vim: ft=zsh
 
+# This is my zsh setup
+# Some references I used to build this:
+# https://github.com/mrnugget/dotfiles/blob/6615bd6167d183eeba09be5374fa4bde1d63e624/zshrc
+
 # zmodload zsh/zprof # Debug time info
 
 # Inital setup {{{
@@ -7,19 +11,66 @@ bindkey -e
 # }}}
 
 # History {{{
+export HISTFILE=$HOME/.zsh_history
 export HISTSIZE=100000
 export SAVEHIST=100000
-export HISTFILE=~/.zsh_history
 
-setopt HIST_IGNORE_ALL_DUPS     # do not put duplicated command into history list
-setopt HIST_SAVE_NO_DUPS        # do not save duplicated command
+setopt EXTENDED_HISTORY
+setopt HIST_VERIFY
+setopt HIST_IGNORE_ALL_DUPS     # delete old entry if new is duped
 setopt HIST_IGNORE_DUPS         # do not save duplicated command
+setopt HIST_SAVE_NO_DUPS        # do not save duplicated command
 setopt HIST_REDUCE_BLANKS       # remove unnecessary blanks
 setopt HIST_FIND_NO_DUPS        # don't show dups
+setopt HIST_IGNORE_SPACE
 setopt INC_APPEND_HISTORY_TIME  # append command to history file immediately after execution
-setopt EXTENDED_HISTORY         # record command start time
 
+setopt share_history
+
+# }}}
+
+# Completion {{{
+autoload -Uz bashcompinit && bashcompinit
+autoload -Uz compinit && compinit
+
+# Add completions installed through Homebrew packages
+# See: https://docs.brew.sh/Shell-Completion
+if type brew &>/dev/null; then
+  FPATH=/usr/local/share/zsh/site-functions:$FPATH
+fi
+
+complete -C '/usr/local/bin/aws_completer' aws
+
+setopt always_to_end
+setopt auto_pushd
+
+source ~/.zstyles
+# }}}
+
+# Sources {{{
+
+# Colors for ls
+source "$HOME/.local/share/lscolors.sh"
+
+source "$HOME/.cargo/env"
+
+# eval "$(starship init zsh)"
+eval "$(direnv hook zsh)"
+
+# [[ ! -r ~/.opam/opam-init/init.zsh ]] || source ~/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
+
+[ -f ~/.env ] && source ~/.env
+# }}}
+
+# Key bindings {{{
+bindkey -s '\C-f' '~/.local/bin/rds-tmux-create-session\n'
+
+# CTRL-R for history search
 bindkey '^R' history-incremental-search-backward
+# CTRL-S for search forward in history
+bindkey '^S' history-incremental-search-forward
+# CTRL-Y for selecting search without executing it
+bindkey '^Y' accept-search
 
 # Setup arrows for quick history search (https://coderwall.com/p/jpj_6q/zsh-better-history-searching-with-arrow-keys)
 autoload -U up-line-or-beginning-search
@@ -30,22 +81,7 @@ zle -N down-line-or-beginning-search
 
 bindkey '^[[A' up-line-or-beginning-search   # Up
 bindkey '^[[B' down-line-or-beginning-search # Down
-# }}}
 
-# Sources {{{
-source ~/.zstyles
-
-# Colors for ls
-source "$HOME/.local/share/lscolors.sh"
-
-source "$HOME/.cargo/env"
-
-eval "$(starship init zsh)"
-eval "$(direnv hook zsh)"
-
-[[ ! -r ~/.opam/opam-init/init.zsh ]] || source ~/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
-
-[ -f ~/.env ] && source ~/.env
 # }}}
 
 # Plugins {{{
@@ -104,14 +140,11 @@ alias python='python3'
 alias p='python'
 
 alias pywatch='fswatch -o **/*.py | xargs -n1 -I {} make test'
+
+# TODO: create a fzf extension to create/clone .gitignore files
 alias pyig='wget https://raw.githubusercontent.com/github/gitignore/main/Python.gitignore -O .gitignore'
 
 alias ports='lsof -iTCP -sTCP:LISTEN -P -n'
-
-# }}}
-
-# Bindkeys {{{
-bindkey -s '\C-f' '~/.local/bin/rds-tmux-create-session\r'
 # }}}
 
 # Functions {{{
@@ -127,12 +160,5 @@ timer() {
 
 # TODO: do I really care for highlighting? Let's see after a few weeks...
 # source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-# Completion {{{
-autoload bashcompinit && bashcompinit
-autoload -U compinit && compinit
-
-complete -C '/usr/local/bin/aws_completer' aws
-# }}}
 
 # zprof # Debug time info
