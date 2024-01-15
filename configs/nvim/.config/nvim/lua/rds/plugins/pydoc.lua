@@ -1,5 +1,5 @@
 -- TODO: make this flexible somehow (probably using capture groups)
-local p = require("rds.utils").print_tbl
+local pprint = require("rds.utils").print_tbl
 local get_node_text = vim.treesitter.get_node_text
 
 local M = {}
@@ -31,8 +31,12 @@ local function get_arguments(function_node)
   local params = function_node:field("parameters")[1]
   local args = {}
 
+  -- TODO: get *args and **kwargs
+  -- TODO: get return type
+
   for v in params:iter_children() do
     local t = v:type()
+
     if t == "identifier" then
       local text = string.format(":param %s: {}", get_node_text(v, 0))
       table.insert(args, text)
@@ -49,15 +53,28 @@ local function get_arguments(function_node)
 
       table.insert(args, string.format(":param %s: {}", ident))
       table.insert(args, string.format(":type %s: %s", ident, type))
-    elseif t == "return_type" then
-      table.insert(args, string.format ":returns: {}")
-      local text = string.format(":rtype %s:", get_node_text(v, 0))
-      table.insert(args, text)
     end
+
+    -- pprint(args)
+    return args
+  end
+end
+
+---@param node TSNode
+---@return string
+local function get_return_type(node)
+  local ret_type = node:field("return_type")[1]
+
+  if not ret_type then
+    pprint "No return type defined"
+    return ""
   end
 
-  p(args)
-  return args
+  for v in ret_type:iter_children() do
+    local ident = get_node_text(v, 0)
+  end
+
+  return ""
 end
 
 function M.run()
@@ -67,5 +84,6 @@ function M.run()
   end
 
   get_arguments(f)
+  get_return_type(f)
 end
 return M

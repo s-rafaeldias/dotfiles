@@ -212,9 +212,6 @@ require("rust-tools").setup {
 -- Null-ls {{{
 null_ls.setup {
   sources = {
-    -- Python
-    -- null_ls.builtins.formatting.ruff,
-    -- null_ls.builtins.diagnostics.ruff,
     -- Lua
     null_ls.builtins.formatting.stylua,
     -- Rust
@@ -225,7 +222,7 @@ null_ls.setup {
     null_ls.builtins.formatting.jq.with {
       args = { "--indent", "2" },
     },
-    null_ls.builtins.formatting.rustywind,
+    -- null_ls.builtins.formatting.rustywind,
     -- null_ls.builtins.formatting.ocamlformat,
     -- Bash
     null_ls.builtins.code_actions.shellcheck,
