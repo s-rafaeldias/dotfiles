@@ -171,8 +171,4 @@ dir_info="%~ %% "
 export PROMPT="$dir_info"
 # }}}
 
-
-# TODO: do I really care for highlighting? Let's see after a few weeks...
-# source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
 # zprof # Debug time info
