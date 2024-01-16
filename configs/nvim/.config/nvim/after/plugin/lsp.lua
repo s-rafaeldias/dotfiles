@@ -178,16 +178,16 @@ lspconfig["marksman"].setup {
 -- }}}
 
 -- Rust {{{
-require("rust-tools").setup {
-  server = { on_attach = custom_attach },
-  -- Link for fixing codelldb: https://github.com/vadimcn/codelldb/discussions/456#discussioncomment-874122
-  dap = {
-    adapter = require("rust-tools.dap").get_codelldb_adapter(
-      "/Users/rafael/.local/share/nvim/mason/packages/codelldb/codelldb",
-      "/Users/rafael/.local/share/nvim/mason/packages/codelldb/extension/lldb/lib/liblldb.dylib"
-    ),
-  },
-}
+-- require("rust-tools").setup {
+--   server = { on_attach = custom_attach },
+--   -- Link for fixing codelldb: https://github.com/vadimcn/codelldb/discussions/456#discussioncomment-874122
+--   dap = {
+--     adapter = require("rust-tools.dap").get_codelldb_adapter(
+--       "/Users/rafael/.local/share/nvim/mason/packages/codelldb/codelldb",
+--       "/Users/rafael/.local/share/nvim/mason/packages/codelldb/extension/lldb/lib/liblldb.dylib"
+--     ),
+--   },
+-- }
 -- }}}
 
 -- Metals (scala) {{{

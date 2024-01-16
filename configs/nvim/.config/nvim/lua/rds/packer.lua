@@ -78,8 +78,9 @@ require("packer").startup(function(use)
       -- "petertriho/cmp-git",
     },
   }
+  -- }}}
 
-  -- LSP stuff {{{2
+  -- LSP stuff {{{
   -- use "folke/trouble.nvim"
   use "neovim/nvim-lspconfig"
   use "nvim-lua/lsp_extensions.nvim"
@@ -88,12 +89,10 @@ require("packer").startup(function(use)
   use "ray-x/lsp_signature.nvim"
   -- }}}
 
-  -- }}}
-
   -- Language specifics {{{
   -- use "NoahTheDuke/vim-just"
   -- use "fatih/vim-go"
-  use "simrat39/rust-tools.nvim"
+  -- use "simrat39/rust-tools.nvim"
   -- use "scalameta/nvim-metals"
   use {
     "mattn/emmet-vim",
@@ -101,13 +100,13 @@ require("packer").startup(function(use)
       vim.g.user_emmet_leader_key = "<C-Z>"
     end,
   }
+  -- }}}
 
-  -- Debugging {{{2
+  -- Debugging {{{
   use "mfussenegger/nvim-dap"
   use "rcarriga/nvim-dap-ui"
   use "leoluz/nvim-dap-go"
   use "mfussenegger/nvim-dap-python"
-  -- }}}
   -- }}}
 
   -- Theme {{{
