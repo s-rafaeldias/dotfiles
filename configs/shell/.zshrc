@@ -158,6 +158,20 @@ timer() {
 }
 # }}}
 
+# Prompt {{{
+# Ref: https://zsh.sourceforge.io/Doc/Release/Prompt-Expansion.html
+# alternative ref: https://zsh-manual.netlify.app/prompt-expansion
+# what info I want?
+# - path (how much of the path?)
+# - add new line after execution (Do I really care?)
+# - anything else?
+# dir_info="%(5~|%-1~/.../%2~|%4~) %% "
+# Do I care enough to not show the full path?
+dir_info="%~ %% "
+export PROMPT="$dir_info"
+# }}}
+
+
 # TODO: do I really care for highlighting? Let's see after a few weeks...
 # source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
