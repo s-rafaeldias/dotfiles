@@ -168,7 +168,7 @@ timer() {
 # dir_info="%(5~|%-1~/.../%2~|%4~) %% "
 # Do I care enough to not show the full path?
 dir_info="%~ %% "
-export PROMPT="$dir_info"
+export PROMPT="%n @ $dir_info"
 # }}}
 
 # zprof # Debug time info
