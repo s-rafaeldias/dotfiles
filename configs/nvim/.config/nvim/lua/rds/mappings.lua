@@ -7,12 +7,6 @@ vim.keymap.set("v", "<Leader>y", '"+y')
 -- Use <Esc> to exit insert mode on terminal
 vim.keymap.set("t", "<Esc>", "<C-\\><C-n>")
 
--- Toggle case of current WORD in insert mode
--- vim.keymap.set("i", "<C-g>", "<Esc>vB~Ea")
-
--- Reload config
--- vim.keymap.set("n", "<Leader>sv", "<Cmd>luafile $MYVIMRC<CR>")
-
 -- Switch between related files. See `tpope/vim-projectionist`
 vim.keymap.set("n", "<Leader>s", "<Cmd>A<CR>")
 vim.keymap.set("n", "<Leader>S", "<Cmd>AV<CR>")

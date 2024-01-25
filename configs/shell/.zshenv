@@ -12,8 +12,6 @@ export HOMEBREW_NO_INSTALL_FROM_API=1
 
 export ZSH_COMPDUMP="$ZSH/cache/.zcompdump-$HOST"
 
-export PAGER=/usr/bin/less
-
 export ZSH=$HOME/.oh-my-zsh
 export LC_ALL=en_US.UTF-8
 
@@ -35,4 +33,5 @@ export PATH=$HOME/.luarocks/bin:$PATH
 export PATH=$HOME/workspace/scripts:$PATH
 export PATH="$HOME/Library/Application Support/Coursier/bin:$PATH"
 
+export PAGER=/usr/bin/less
 export EDITOR='nvim'

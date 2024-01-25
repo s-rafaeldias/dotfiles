@@ -40,7 +40,7 @@ require("telescope").setup {
 
 require("telescope").load_extension "git_worktree"
 require("telescope").load_extension "fzf"
-require("telescope").load_extension "ui-select"
+-- require("telescope").load_extension "ui-select"
 require("telescope").load_extension "refactoring"
 
 local project_files = function()
@@ -55,6 +55,9 @@ end
 vim.keymap.set("n", "<Leader>t", "<Cmd>Telescope<CR>")
 vim.keymap.set("n", "<C-P>", project_files)
 vim.keymap.set("n", "<leader>pf", require("telescope.builtin").find_files)
+
+vim.keymap.set("n", "<leader><leader>n", "<cmd>ObsidianQuickSwitch<CR>")
+vim.keymap.set("n", "<leader><leader>s", "<cmd>ObsidianSearch<CR>")
 
 vim.keymap.set("n", "<C-F>", "<Cmd>lua require'telescope.builtin'.live_grep { hidden=true }<CR>")
 vim.keymap.set("n", "<C-B>", "<Cmd>lua require'telescope.builtin'.buffers{}<CR>")

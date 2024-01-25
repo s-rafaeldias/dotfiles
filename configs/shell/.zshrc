@@ -126,6 +126,7 @@ alias t='tmuxinator start home'
 alias d='tmuxinator start dotfiles'
 
 # Git alias
+alias gb='git branch'
 alias gst='git status'
 alias gcb='git checkout -b'
 alias gsb='git switch'

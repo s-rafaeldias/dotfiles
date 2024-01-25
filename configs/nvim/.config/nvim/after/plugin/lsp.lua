@@ -10,12 +10,12 @@ local custom_attach = function(client, bufnr)
   -- vim.notify("Attaching LSP: " .. client.name)
   local opts = { noremap = true }
 
-  require("lsp_signature").on_attach({
-    bind = true,
-    hint_prefix = "🐍 ",
-    doc_lines = 0,
-    floating_window = false,
-  }, bufnr)
+  -- require("lsp_signature").on_attach({
+  --   bind = true,
+  --   hint_prefix = "🐍 ",
+  --   doc_lines = 0,
+  --   floating_window = false,
+  -- }, bufnr)
 
   lsp_status.on_attach(client)
 
@@ -46,16 +46,16 @@ local lsp_servers = {
   "lua_ls",
   -- "sumneko_lua",
   "marksman",
-  "powershell_es",
+  -- "powershell_es",
   "bashls",
   -- "metals",
   "zls",
-  "ocamllsp",
-  "tsserver",
-  "prismals",
-  "elmls",
-  "tailwindcss",
-  "astro",
+  -- "ocamllsp",
+  -- "tsserver",
+  -- "prismals",
+  -- "elmls",
+  -- "tailwindcss",
+  -- "astro",
   "ruff_lsp",
 }
 
@@ -66,9 +66,21 @@ for _, lsp in ipairs(lsp_servers) do
   }
 end
 
--- JS {{{
-lspconfig["tsserver"].setup {
-  on_attach = custom_attach,
+-- Elixir {{{
+require("elixir").setup {
+  nextls = {
+    enable = false,
+    on_attach = custom_attach,
+    init_options = {
+      experimental = {
+        completions = {
+          enable = true, -- control if completions are enabled. defaults to false
+        },
+      },
+    },
+  },
+  credo = { enable = true },
+  elixirls = { enable = true, on_attach = custom_attach },
 }
 -- }}}
 
@@ -224,6 +236,7 @@ null_ls.setup {
     },
     -- null_ls.builtins.formatting.rustywind,
     -- null_ls.builtins.formatting.ocamlformat,
+    null_ls.builtins.formatting.zigfmt,
     -- Bash
     null_ls.builtins.code_actions.shellcheck,
     null_ls.builtins.diagnostics.shellcheck,
