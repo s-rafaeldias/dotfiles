@@ -94,6 +94,8 @@ require("packer").startup(function(use)
   -- use "fatih/vim-go"
   -- use "simrat39/rust-tools.nvim"
   -- use "scalameta/nvim-metals"
+  use "mfussenegger/nvim-jdtls"
+  use { "elixir-tools/elixir-tools.nvim", tag = "stable" }
   use {
     "mattn/emmet-vim",
     config = function()
@@ -135,4 +137,19 @@ require("packer").startup(function(use)
   use "nvim-lua/plenary.nvim"
   use "nvim-lua/popup.nvim"
   -- }}}
+
+  use {
+    "epwalsh/obsidian.nvim",
+    tag = "*", -- recommended, use latest release instead of latest commit
+    config = function()
+      require("obsidian").setup {
+        workspaces = {
+          {
+            name = "personal",
+            path = "~/personal/obsidian/notes",
+          },
+        },
+      }
+    end,
+  }
 end)
