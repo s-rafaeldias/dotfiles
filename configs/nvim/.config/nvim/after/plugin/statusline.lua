@@ -46,7 +46,7 @@ require("lualine").setup {
     },
 
     lualine_x = {
-      "require'lsp-status'.status()",
+      -- "require'lsp-status'.status()",
       -- "encoding",
       "require('harpoon.mark').status()",
       "filetype",

@@ -4,7 +4,7 @@ local lsp_status = require "lsp-status"
 
 require("neodev").setup()
 
-lsp_status.register_progress()
+-- lsp_status.register_progress()
 
 local custom_attach = function(client, bufnr)
   -- vim.notify("Attaching LSP: " .. client.name)
@@ -67,21 +67,21 @@ for _, lsp in ipairs(lsp_servers) do
 end
 
 -- Elixir {{{
-require("elixir").setup {
-  nextls = {
-    enable = false,
-    on_attach = custom_attach,
-    init_options = {
-      experimental = {
-        completions = {
-          enable = true, -- control if completions are enabled. defaults to false
-        },
-      },
-    },
-  },
-  credo = { enable = true },
-  elixirls = { enable = true, on_attach = custom_attach },
-}
+-- require("elixir").setup {
+--   nextls = {
+--     enable = false,
+--     on_attach = custom_attach,
+--     init_options = {
+--       experimental = {
+--         completions = {
+--           enable = true, -- control if completions are enabled. defaults to false
+--         },
+--       },
+--     },
+--   },
+--   credo = { enable = true },
+--   elixirls = { enable = true, on_attach = custom_attach },
+-- }
 -- }}}
 
 -- Python {{{
@@ -227,7 +227,7 @@ null_ls.setup {
     -- Lua
     null_ls.builtins.formatting.stylua,
     -- Rust
-    null_ls.builtins.formatting.rustfmt,
+    -- null_ls.builtins.formatting.rustfmt,
     -- TF
     null_ls.builtins.formatting.terraform_fmt,
     -- JSON
@@ -236,7 +236,7 @@ null_ls.setup {
     },
     -- null_ls.builtins.formatting.rustywind,
     -- null_ls.builtins.formatting.ocamlformat,
-    null_ls.builtins.formatting.zigfmt,
+    -- null_ls.builtins.formatting.zigfmt,
     -- Bash
     null_ls.builtins.code_actions.shellcheck,
     null_ls.builtins.diagnostics.shellcheck,

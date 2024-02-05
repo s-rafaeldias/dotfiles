@@ -95,7 +95,7 @@ require("packer").startup(function(use)
   -- use "simrat39/rust-tools.nvim"
   -- use "scalameta/nvim-metals"
   use "mfussenegger/nvim-jdtls"
-  use { "elixir-tools/elixir-tools.nvim", tag = "stable" }
+  -- use { "elixir-tools/elixir-tools.nvim", tag = "stable" }
   use {
     "mattn/emmet-vim",
     config = function()
