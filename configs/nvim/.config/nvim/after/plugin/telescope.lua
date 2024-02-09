@@ -56,8 +56,8 @@ vim.keymap.set("n", "<Leader>t", "<Cmd>Telescope<CR>")
 vim.keymap.set("n", "<C-P>", project_files)
 vim.keymap.set("n", "<leader>pf", require("telescope.builtin").find_files)
 
-vim.keymap.set("n", "<leader><leader>n", "<cmd>ObsidianQuickSwitch<CR>")
-vim.keymap.set("n", "<leader><leader>s", "<cmd>ObsidianSearch<CR>")
+vim.keymap.set("n", "<leader>on", "<cmd>ObsidianQuickSwitch<CR>")
+vim.keymap.set("n", "<leader>os", "<cmd>ObsidianSearch<CR>")
 
 vim.keymap.set("n", "<C-F>", "<Cmd>lua require'telescope.builtin'.live_grep { hidden=true }<CR>")
 vim.keymap.set("n", "<C-B>", "<Cmd>lua require'telescope.builtin'.buffers{}<CR>")

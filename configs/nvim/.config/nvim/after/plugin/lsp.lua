@@ -54,7 +54,7 @@ local lsp_servers = {
   -- "tsserver",
   -- "prismals",
   -- "elmls",
-  -- "tailwindcss",
+  "tailwindcss",
   -- "astro",
   "ruff_lsp",
 }

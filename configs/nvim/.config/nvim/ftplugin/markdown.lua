@@ -6,3 +6,5 @@
 vim.cmd [[
 setlocal spell spelllang=en_us
 ]]
+
+vim.opt_local.conceallevel = 2
