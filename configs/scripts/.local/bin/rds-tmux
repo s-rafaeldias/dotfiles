@@ -1,0 +1,27 @@
+#!/bin/bash
+set -euo pipefail
+IFS=$'\n\t'
+
+create_basic() {
+    local session_name
+    session_name=$(basename $(pwd))
+
+    # replace `_` for `.` because tmux session name cannot contain `.`
+    session_name=$(echo "$session_name" | tr . _)
+
+    # TODO: handle cases where session exists
+    tmux new-session -Ad -c "$(pwd)" -s "$session_name"
+    tmux switch-client -t "$session_name"
+}
+
+case "$1" in
+    create)
+        create_basic
+        exit 0
+        ;;
+    *)
+        echo "Command not valid"
+        ;;
+esac
+
+create_basic
