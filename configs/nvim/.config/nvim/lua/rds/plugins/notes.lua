@@ -2,9 +2,8 @@
 -- Create new projects with index.md setup as a template
 -- Archive projects easily
 -- move notes easily between folders
---
 
-local utils = require "rds.utils"
+-- local utils = require "rds.utils"
 local base_path = "~/personal/obsidian/notes"
 
 require("obsidian").setup {
@@ -21,6 +20,7 @@ require("obsidian").setup {
     return title
   end,
   prepend_note_id = false,
+
   note_frontmatter_func = function(note)
     -- Add the title of the note as an alias.
     if note.title then
