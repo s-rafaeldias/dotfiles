@@ -7,6 +7,10 @@
     editor = nvim
     excludesfile = ~/.gitignore
 
+[url "git@github.com:"]
+    insteadOf = "https://github.com/"
+    pushInsteadOf = "https://github.com/"
+
 [commit]
     gpgsign = true
     template = ~/.gitmessage
@@ -16,6 +20,7 @@
 
 [branch]
     autoSetupMerge = always
+    sort = committerdate
 
 [rebase]
     autosquash = true
@@ -23,6 +28,8 @@
 
 [push]
     default = current
+    followtags = true
+    autoSetupRemote = true
 
 [pull]
     default = current
@@ -43,3 +50,7 @@
 
 [fetch]
     prune = true
+    prunetags = true
+
+[log]
+    date = iso
