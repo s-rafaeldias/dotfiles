@@ -29,7 +29,13 @@ vim.api.nvim_create_autocmd("BufEnter", {
 vim.keymap.set("n", "<Leader>gg", "<Cmd>G<CR>")
 vim.keymap.set("n", "<Leader>gp", "<Cmd>G pull<CR>")
 vim.keymap.set("n", "<Leader>gP", "<Cmd>G push<CR>")
+
 -- Git worktree extension
-vim.keymap.set("n", "<Leader>gl", "<Cmd>lua require('telescope').extensions.git_worktree.git_worktrees()<CR>")
-vim.keymap.set("n", "<Leader>ga", "<Cmd>lua require('telescope').extensions.git_worktree.create_git_worktree()<CR>")
-vim.keymap.set("n", "<Leader>gn", create_git_worktree)
+-- TODO: do I really want to use worktrees or git stash?
+-- I will try git stash (when needed) for now to simplify my workflow
+-- vim.keymap.set("n", "<Leader>gl", "<Cmd>lua require('telescope').extensions.git_worktree.git_worktrees()<CR>")
+-- vim.keymap.set("n", "<Leader>ga", "<Cmd>lua require('telescope').extensions.git_worktree.create_git_worktree()<CR>")
+-- vim.keymap.set("n", "<Leader>gn", create_git_worktree)
+vim.keymap.set("n", "<Leader>gl", "<Cmd>lua require('telescope.builtin').git_branches()<CR>")
+-- vim.keymap.set("n", "<Leader>ga", "<Cmd>lua require('telescope').extensions.git_worktree.create_git_worktree()<CR>")
+-- vim.keymap.set("n", "<Leader>gn", create_git_worktree)
