@@ -74,5 +74,6 @@ yabai -m rule --add app="^TickTick$" manage=off
 yabai -m rule --add app="^Sublime$" manage=off
 yabai -m rule --add app="^Keymapp$" manage=off
 yabai -m rule --add app="^Calendar$" manage=off
+yabai -m rule --add app="Photos" manage=off
 
 echo "yabai configuration loaded.."

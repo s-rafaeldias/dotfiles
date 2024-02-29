@@ -3,14 +3,56 @@
 -- Archive projects easily
 -- move notes easily between folders
 
--- local utils = require "rds.utils"
-local base_path = "~/personal/obsidian/notes"
+local utils = require "rds.utils"
+local BASE_PATH = "~/personal/obsidian/notes"
+
+local function create_note()
+  -- get type of note (projects, area, resoures/references, archive)
+  -- TODO: create enum for projects
+  local projects = { "1_projeto", "2_area", "3_resources", "4_archive" }
+  local project_type = ""
+
+  vim.ui.select(projects, {
+    prompt = "Select project type:",
+  }, function(choice)
+    project_type = choice
+  end)
+
+  local sub_project_path = vim.fs.dir(vim.fs.joinpath(BASE_PATH, project_type))
+  local sub_projects = {}
+  for name, type in sub_project_path do
+    if type == "directory" then
+      table.insert(sub_projects, name)
+    end
+  end
+
+  local sub_project_selected = ""
+  vim.ui.select(sub_projects, {
+    prompt = "Select subproject:",
+  }, function(choice)
+    sub_project_selected = choice
+  end)
+
+  local sub_project_selected = ""
+  local note = utils.input "note name: "
+  note = note .. ".md"
+
+  local note_path = vim.fs.joinpath(BASE_PATH, project_type, sub_project_selected)
+  local buf = vim.api.nvim_create_buf(true, false)
+  vim.api.nvim_buf_set_name(buf, note_path)
+
+  -- given the type, get the "project" (subfolder)
+  -- Create new note on this path
+  -- add template?
+  -- open new note
+  -- save new note (will this trigger the template engine from obsidian.nvim?)
+end
 
 require("obsidian").setup {
   workspaces = {
     {
       name = "personal",
-      path = base_path,
+      path = BASE_PATH,
     },
   },
   daily_notes = {
@@ -28,12 +70,17 @@ require("obsidian").setup {
     end
 
     -- Get project
+    -- print("path")
+    -- utils.print_tbl(note.path)
     local project_path = note.path:parent()
-    local project_name = vim.fs.basename(project_path:absolute())
+    -- print("project path: ")
+    -- utils.print_tbl(project_path)
+    local project_name = vim.fs.basename(project_path.filename)
+    -- print("project name:", project_name)
 
     -- Get group name
     local group_path = project_path:parent()
-    local group_name = vim.fs.basename(group_path:absolute())
+    local group_name = vim.fs.basename(group_path.filename)
 
     local out = {
       id = note.id,
@@ -56,5 +103,6 @@ require("obsidian").setup {
   end,
 }
 
-vim.keymap.set("n", "<leader>on", "<cmd>ObsidianQuickSwitch<CR>")
-vim.keymap.set("n", "<leader>os", "<cmd>ObsidianSearch<CR>")
+vim.keymap.set("n", "<leader>nl", "<cmd>ObsidianQuickSwitch<CR>")
+vim.keymap.set("n", "<leader>ns", "<cmd>ObsidianSearch<CR>")
+vim.keymap.set("n", "<leader>nn", create_note)
