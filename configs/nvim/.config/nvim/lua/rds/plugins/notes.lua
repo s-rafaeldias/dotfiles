@@ -33,7 +33,6 @@ local function create_note()
     sub_project_selected = choice
   end)
 
-  local sub_project_selected = ""
   local note = utils.input "note name: "
   note = note .. ".md"
 
