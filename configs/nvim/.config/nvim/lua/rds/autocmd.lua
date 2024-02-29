@@ -1,31 +1,3 @@
--- Basic autocmd {{{
-local rds_group = vim.api.nvim_create_augroup("RDS", {})
-
-vim.api.nvim_create_autocmd("TextYankPost", {
-  pattern = "*",
-  callback = function()
-    vim.highlight.on_yank()
-  end,
-  group = rds_group,
-  desc = "Highlight yank",
-})
--- }}}
---
-vim.api.nvim_create_autocmd({ "BufEnter" }, {
-  pattern = "*.gohtml",
-  command = "set filetype=html",
-  group = rds_group,
-  desc = "Set Go HTML template filetype as HTML",
-})
-
-vim.api.nvim_create_autocmd({ "BufEnter" }, {
-  pattern = "*.mli",
-  command = "set filetype=ocamlinterface",
-  group = rds_group,
-  desc = "Set MLI files to ocamlinterface",
-})
-
--- Sessions {{{
 local session_filename = "Session.vim"
 
 local function persist_session()
@@ -49,4 +21,3 @@ local function persist_session()
 end
 
 vim.api.nvim_create_user_command("Mks", persist_session, {})
--- }}}
