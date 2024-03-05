@@ -6,6 +6,13 @@
 local utils = require "rds.utils"
 local BASE_PATH = "~/personal/obsidian/notes"
 
+---Create a new file in a new buffer
+---@param path string
+local function create_file(path)
+  local buf = vim.api.nvim_create_buf(true, false)
+  vim.api.nvim_buf_set_name(buf, path)
+end
+
 local function create_note()
   -- get type of note (projects, area, resoures/references, archive)
   -- TODO: create enum for projects
@@ -37,14 +44,7 @@ local function create_note()
   note = note .. ".md"
 
   local note_path = vim.fs.joinpath(BASE_PATH, project_type, sub_project_selected)
-  local buf = vim.api.nvim_create_buf(true, false)
-  vim.api.nvim_buf_set_name(buf, note_path)
-
-  -- given the type, get the "project" (subfolder)
-  -- Create new note on this path
-  -- add template?
-  -- open new note
-  -- save new note (will this trigger the template engine from obsidian.nvim?)
+  create_file(note_path)
 end
 
 require("obsidian").setup {
@@ -68,16 +68,9 @@ require("obsidian").setup {
       note:add_alias(note.title)
     end
 
-    -- Get project
-    -- print("path")
-    -- utils.print_tbl(note.path)
     local project_path = note.path:parent()
-    -- print("project path: ")
-    -- utils.print_tbl(project_path)
     local project_name = vim.fs.basename(project_path.filename)
-    -- print("project name:", project_name)
 
-    -- Get group name
     local group_path = project_path:parent()
     local group_name = vim.fs.basename(group_path.filename)
 
@@ -86,7 +79,7 @@ require("obsidian").setup {
       aliases = note.aliases,
       tags = note.tags,
       -- path = note.path,
-      project = group_name .. "/" .. project_name,
+      project = vim.fs.joinpath(group_name, project_name),
     }
 
     -- `note.metadata` contains any manually added fields in the frontmatter.
