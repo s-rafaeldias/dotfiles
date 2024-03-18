@@ -9,7 +9,7 @@
 
 [url "git@github.com:"]
     insteadOf = "https://github.com/"
-    pushInsteadOf = "https://github.com/"
+    ; pushInsteadOf = "https://github.com/"
 
 [commit]
     gpgsign = true
@@ -24,7 +24,7 @@
 
 [rebase]
     autosquash = true
-    autoStash = true
+    autostash = true
 
 [push]
     default = current
@@ -40,6 +40,13 @@
 [gpg]
     program = gpg
 
+[fetch]
+    prune = true
+    prunetags = true
+
+[log]
+    date = iso
+
 [alias]
     recent = branch --sort=-committerdate --format='%(committerdate:relative)%09%(refname:short)'
     pl = pull
@@ -47,10 +54,3 @@
     s = status
     new = log main..HEAD
     missing = log HEAD..main
-
-[fetch]
-    prune = true
-    prunetags = true
-
-[log]
-    date = iso

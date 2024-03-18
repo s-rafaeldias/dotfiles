@@ -8,16 +8,16 @@ hyper - 1 : yabai -m display --focus 2
 hyper - 2 : yabai -m display --focus 1
 
 # Move between windows
-hyper - h : yabai -m window --focus west
-hyper - j : yabai -m window --focus south
-hyper - k : yabai -m window --focus north
-hyper - l : yabai -m window --focus east
+# hyper - h : yabai -m window --focus west
+# hyper - j : yabai -m window --focus south
+# hyper - k : yabai -m window --focus north
+# hyper - l : yabai -m window --focus east
 
 # Fullscreen (just for current window)
-hyper - o : yabai -m window --toggle zoom-fullscreen
+# hyper - o : yabai -m window --toggle zoom-fullscreen
 
 # Flip the tree horizontally
-hyper - u : yabai -m space --mirror x-axis
+# hyper - u : yabai -m space --mirror x-axis
 
 # Flip the tree vertically
-hyper - i : yabai -m space --mirror y-axis
+# hyper - i : yabai -m space --mirror y-axis

@@ -4,7 +4,7 @@ local lsp_status = require "lsp-status"
 
 require("neodev").setup()
 
--- lsp_status.register_progress()
+lsp_status.register_progress()
 
 local custom_attach = function(client, bufnr)
   -- vim.notify("Attaching LSP: " .. client.name)
@@ -51,7 +51,8 @@ local lsp_servers = {
   -- "metals",
   "zls",
   -- "ocamllsp",
-  -- "tsserver",
+  "tsserver",
+  "vuels",
   -- "prismals",
   -- "elmls",
   "tailwindcss",
