@@ -85,6 +85,7 @@ require("packer").startup(function(use)
   use "wbthomason/packer.nvim"
   use "nvim-lua/plenary.nvim"
   use "nvim-lua/popup.nvim"
+  use "nvim-neotest/nvim-nio"
 
   use "tpope/vim-projectionist"
   -- make `C-x` and `C-a` work with dates
@@ -96,7 +97,8 @@ require("packer").startup(function(use)
   -- Show macros and registers
   use "junegunn/vim-peekaboo"
   -- Easier navigation between marked files
-  use "ThePrimeagen/harpoon"
+  -- use "ThePrimeagen/harpoon"
+  use "s-rafaeldias/harpoon"
   -- use {
   --   "ThePrimeagen/harpoon",
   --   branch = "harpoon2",
