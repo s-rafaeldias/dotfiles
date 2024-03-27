@@ -1,7 +1,7 @@
 local dap = require "dap"
 local dap_python = require "dap-python"
 local dapui = require "dapui"
-local dap_go = require "dap-go"
+-- local dap_go = require "dap-go"
 
 vim.fn.sign_define("DapBreakpoint", { text = "🛑", texthl = "", linehl = "", numhl = "" })
 
@@ -31,7 +31,7 @@ dapui.setup {
   },
 }
 
-dap_go.setup()
+-- dap_go.setup()
 
 vim.keymap.set("n", "<Leader>dd", function()
   dap.continue()

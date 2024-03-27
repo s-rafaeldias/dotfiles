@@ -41,7 +41,7 @@ require("telescope").setup {
 require("telescope").load_extension "git_worktree"
 require("telescope").load_extension "fzf"
 -- require("telescope").load_extension "ui-select"
-require("telescope").load_extension "refactoring"
+-- require("telescope").load_extension "refactoring"
 
 local project_files = function()
   local in_git_repo = vim.fn.systemlist("git rev-parse --is-inside-work-tree")[1] == "true"

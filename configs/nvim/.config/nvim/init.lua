@@ -93,9 +93,9 @@ require("packer").startup(function(use)
   -- use "kyazdani42/nvim-web-devicons"
   -- Super duper plugin to help surrounding text-objects
   -- TODO: make this more natural.
-  -- use "tpope/vim-surround"
+  use "tpope/vim-surround"
   -- Show macros and registers
-  use "junegunn/vim-peekaboo"
+  -- use "junegunn/vim-peekaboo"
   -- Easier navigation between marked files
   -- use "ThePrimeagen/harpoon"
   use "s-rafaeldias/harpoon"
@@ -137,12 +137,12 @@ require("packer").startup(function(use)
     end,
   }
 
-  use {
-    "ThePrimeagen/refactoring.nvim",
-    config = function()
-      require("refactoring").setup {}
-    end,
-  }
+  -- use {
+  --   "ThePrimeagen/refactoring.nvim",
+  --   config = function()
+  --     require("refactoring").setup {}
+  --   end,
+  -- }
 
   -- Snippets engine
   use { "L3MON4D3/LuaSnip", rtp = "." }
@@ -170,18 +170,18 @@ require("packer").startup(function(use)
 
   -- use "simrat39/rust-tools.nvim"
   -- use "scalameta/nvim-metals"
-  use "mfussenegger/nvim-jdtls"
+  -- use "mfussenegger/nvim-jdtls"
   -- use { "elixir-tools/elixir-tools.nvim", tag = "stable" }
-  use {
-    "mattn/emmet-vim",
-    config = function()
-      vim.g.user_emmet_leader_key = "<C-Z>"
-    end,
-  }
+  -- use {
+  --   "mattn/emmet-vim",
+  --   config = function()
+  --     vim.g.user_emmet_leader_key = "<C-Z>"
+  --   end,
+  -- }
 
   use "mfussenegger/nvim-dap"
   use "rcarriga/nvim-dap-ui"
-  use "leoluz/nvim-dap-go"
+  -- use "leoluz/nvim-dap-go"
   use "mfussenegger/nvim-dap-python"
 
   use "nvim-lualine/lualine.nvim"

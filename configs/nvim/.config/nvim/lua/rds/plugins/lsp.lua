@@ -4,8 +4,8 @@ local function start_spark_lsp()
   vim.lsp.set_log_level(0)
 
   local client_id = vim.lsp.start {
-    name = "spark_lsp",
-    cmd = { vim.fs.normalize "~/code/mylsp/main.py" },
+    name = "custom_lsp",
+    cmd = { "custom_lsp" },
     root_dir = vim.fs.normalize "~/code/mylsp",
   }
 
