@@ -119,7 +119,7 @@ require("packer").startup(function(use)
   use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" }
   use { "nvim-treesitter/playground", run = ":TSInstall query" }
   use "nvim-treesitter/nvim-treesitter-textobjects"
-  use "nvim-treesitter/nvim-treesitter-context"
+  -- use "nvim-treesitter/nvim-treesitter-context"
   -- use "nvim-treesitter/nvim-treesitter-refactor"
 
   -- fuzzy finder
@@ -172,12 +172,12 @@ require("packer").startup(function(use)
   -- use "scalameta/nvim-metals"
   -- use "mfussenegger/nvim-jdtls"
   -- use { "elixir-tools/elixir-tools.nvim", tag = "stable" }
-  -- use {
-  --   "mattn/emmet-vim",
-  --   config = function()
-  --     vim.g.user_emmet_leader_key = "<C-Z>"
-  --   end,
-  -- }
+  use {
+    "mattn/emmet-vim",
+    config = function()
+      vim.g.user_emmet_leader_key = "<C-Z>"
+    end,
+  }
 
   use "mfussenegger/nvim-dap"
   use "rcarriga/nvim-dap-ui"
@@ -227,8 +227,8 @@ vim.keymap.set("n", "<Leader>e", "<Cmd>Ex!<CR>")
 
 vim.keymap.set("n", "<leader>q", rds_utils.toggle_qflist)
 
-vim.keymap.set("n", "<C-D>", "<C-D>zz")
-vim.keymap.set("n", "<C-U>", "<C-U>zz")
+-- vim.keymap.set("n", "<C-D>", "<C-D>zz")
+-- vim.keymap.set("n", "<C-U>", "<C-U>zz")
 
 -- vim.keymap.set("n", "<leader>u", "<Cmd>UndotreeToggle<CR>")
 vim.keymap.set("n", "<Leader>a", "<Cmd>lua require'harpoon.mark'.add_file()<CR>")
@@ -1019,13 +1019,13 @@ treesitter.setup {
   --   enable = true,
   --   extended_mode = true,
   -- },
-  refactor = {
-    highlight_definitions = {
-      enable = true,
-      -- Set to false if you have an `updatetime` of ~100.
-      clear_on_cursor_move = false,
-    },
-  },
+  -- refactor = {
+  --   highlight_definitions = {
+  --     enable = true,
+  --     -- Set to false if you have an `updatetime` of ~100.
+  --     clear_on_cursor_move = false,
+  --   },
+  -- },
 
   textobjects = {
     select = {
@@ -1063,7 +1063,7 @@ treesitter.setup {
   },
 }
 
-require("treesitter-context").setup {}
+-- require("treesitter-context").setup {}
 -- }}}
 
 -- require "rds.opt"

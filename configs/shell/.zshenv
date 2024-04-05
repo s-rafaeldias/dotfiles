@@ -1,6 +1,7 @@
 # vim: ft=bash
 
 # Environment variables
+export XDG_CONFIG_HOME="/Users/rafael/.config"
 export TERM="xterm-256color"
 export COMPLETION_WAITING_DOTS="true"
 export FZF_DEFAULT_COMMAND="fd --type f --hidden --follow --exclude .git"
