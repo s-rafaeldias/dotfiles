@@ -106,13 +106,6 @@ require("packer").startup(function(use)
   -- }
   -- Neovim lua setup
   use "folke/neodev.nvim"
-  -- plugin for comments
-  use {
-    "numToStr/Comment.nvim",
-    config = function()
-      require("Comment").setup()
-    end,
-  }
   -- git interface
   use "tpope/vim-fugitive"
   -- Treesitter stuff
