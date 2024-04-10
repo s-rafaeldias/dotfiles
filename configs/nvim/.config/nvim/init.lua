@@ -80,20 +80,22 @@ vim.cmd [[ colorscheme catppuccin-macchiato ]]
 -- }}}
 
 -- {{{ Plugins
--- require "rds.packer"
 require("packer").startup(function(use)
+  -- "utils" plugins
   use "wbthomason/packer.nvim"
   use "nvim-lua/plenary.nvim"
   use "nvim-lua/popup.nvim"
   use "nvim-neotest/nvim-nio"
 
+  -- tpope, my pope
   use "tpope/vim-projectionist"
   -- make `C-x` and `C-a` work with dates
   use "tpope/vim-speeddating"
-  -- use "kyazdani42/nvim-web-devicons"
+  -- git interface
+  use "tpope/vim-fugitive"
   -- Super duper plugin to help surrounding text-objects
-  -- TODO: make this more natural.
   use "tpope/vim-surround"
+
   -- Show macros and registers
   -- use "junegunn/vim-peekaboo"
   -- Easier navigation between marked files
@@ -106,8 +108,6 @@ require("packer").startup(function(use)
   -- }
   -- Neovim lua setup
   use "folke/neodev.nvim"
-  -- git interface
-  use "tpope/vim-fugitive"
   -- Treesitter stuff
   use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" }
   use { "nvim-treesitter/playground", run = ":TSInstall query" }
@@ -161,7 +161,7 @@ require("packer").startup(function(use)
   use "jose-elias-alvarez/null-ls.nvim"
   use "ray-x/lsp_signature.nvim"
 
-  -- use "simrat39/rust-tools.nvim"
+  use { "mrcjkb/rustaceanvim" }
   -- use "scalameta/nvim-metals"
   -- use "mfussenegger/nvim-jdtls"
   -- use { "elixir-tools/elixir-tools.nvim", tag = "stable" }
@@ -195,10 +195,10 @@ require("packer").startup(function(use)
     end,
   }
 
-  use {
-    "epwalsh/obsidian.nvim",
-    tag = "*", -- recommended, use latest release instead of latest commit
-  }
+  -- use {
+  --   "epwalsh/obsidian.nvim",
+  --   tag = "*", -- recommended, use latest release instead of latest commit
+  -- }
 end)
 -- }}}
 
@@ -707,6 +707,13 @@ lspconfig["marksman"].setup {
 -- }}}
 
 -- Rust {{{
+-- vim.g.rustaceanvim.server.on_attach = custom_attach
+vim.g.rustaceanvim = {
+  -- Plugin configuration
+  -- tools = {},
+  -- LSP configuration
+  server = { on_attach = custom_attach },
+}
 -- require("rust-tools").setup {
 --   server = { on_attach = custom_attach },
 --   -- Link for fixing codelldb: https://github.com/vadimcn/codelldb/discussions/456#discussioncomment-874122
