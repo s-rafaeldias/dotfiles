@@ -21,7 +21,7 @@ export CXX=g++
 
 # export DOCKER_BUILDKIT=0
 # Remove this if I stop using colima for docker
-# export DOCKER_HOST="unix://$HOME/.colima/docker.sock"
+export DOCKER_HOST="unix://$HOME/.colima/docker.sock"
 
 export PATH=/usr/local/sbin:$PATH
 export PATH=/usr/local/opt/llvm/bin:$PATH
