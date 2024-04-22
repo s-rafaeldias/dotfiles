@@ -104,7 +104,14 @@ alias vi='nvim'
 alias vim='nvim'
 alias k='kubectl'
 alias br='brew uninstall'
-alias bi='brew install'
+# alias bi='brew install'
+# Save all libs I install via Brew so I can review later if I want to move them
+# to `Brewfile`
+bi() {
+    echo $@ >> /Users/rafael/.dotfiles/Brewfile_new
+    brew install $@
+}
+
 alias bu='brew upgrade'
 alias bb='brew bundle --file=$HOME/.dotfiles/Brewfile'
 alias bv='rm -rf /Users/rafael/Library/Caches/Homebrew/neovim--git && brew uninstall neovim && brew install neovim --HEAD'
