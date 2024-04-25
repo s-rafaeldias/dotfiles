@@ -19,6 +19,8 @@ export LC_ALL=en_US.UTF-8
 export CC=gcc
 export CXX=g++
 
+export FUNCTIONS_CORE_TOOLS_TELEMETRY_OPTOUT=1
+
 # export DOCKER_BUILDKIT=0
 # Remove this if I stop using colima for docker
 export DOCKER_HOST="unix://$HOME/.colima/docker.sock"
