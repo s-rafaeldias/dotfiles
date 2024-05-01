@@ -22,13 +22,13 @@ direnv allow .
 echo "Updating pip"
 ./.venv/bin/pip install -U pip
 
-echo "Installing basic dev tools..."
-./.venv/bin/pip install \
-    python-lsp-ruff \
-    pylsp-mypy \
-    pylsp-rope \
-    ruff-lsp \
-    "python-lsp-server[all]"
+# echo "Installing basic dev tools..."
+# ./.venv/bin/pip install \
+#     python-lsp-ruff \
+#     pylsp-mypy \
+#     pylsp-rope \
+#     ruff-lsp \
+#     "python-lsp-server[all]"
     # pyls-isort \
     # python-lsp-black \
     # "python-lsp-server[all]"

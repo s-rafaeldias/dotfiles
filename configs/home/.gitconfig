@@ -1,5 +1,5 @@
 [user]
-    name = Rafael Dias
+    name = Rafael Dias Silveira
     email = s.rafaeldias@protonmail.com
     signingkey = s.rafaeldias@protonmail.com
 
@@ -54,3 +54,9 @@
     s = status
     new = log main..HEAD
     missing = log HEAD..main
+
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f

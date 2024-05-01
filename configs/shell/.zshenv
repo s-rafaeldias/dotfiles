@@ -16,6 +16,9 @@ export ZSH_COMPDUMP="$ZSH/cache/.zcompdump-$HOST"
 export ZSH=$HOME/.oh-my-zsh
 export LC_ALL=en_US.UTF-8
 
+
+export GPG_TTY=$(tty)
+
 export CC=gcc
 export CXX=g++
 
@@ -39,3 +42,4 @@ export PATH="$HOME/Library/Application Support/Coursier/bin:$PATH"
 
 export PAGER=/usr/bin/less
 export EDITOR='nvim'
+. "$HOME/.cargo/env"

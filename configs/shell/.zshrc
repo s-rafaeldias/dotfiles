@@ -81,13 +81,14 @@ zle -N down-line-or-beginning-search
 
 bindkey '^[[A' up-line-or-beginning-search   # Up
 bindkey '^[[B' down-line-or-beginning-search # Down
-
 # }}}
 
 # Plugins {{{
 # TODO: install plugin if it doesn't exists
 [ -f ~/.zsh/plugin/zsh-z/zsh-z.plugin.zsh ] && source ~/.zsh/plugin/zsh-z/zsh-z.plugin.zsh
 
+# Set up fzf key bindings and fuzzy completion
+# eval "$(fzf --zsh)"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 # }}}
 

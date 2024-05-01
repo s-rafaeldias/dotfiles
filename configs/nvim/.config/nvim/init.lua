@@ -162,6 +162,12 @@ require("packer").startup(function(use)
   use "ray-x/lsp_signature.nvim"
 
   use { "mrcjkb/rustaceanvim" }
+  use {
+    "ray-x/go.nvim",
+    config = function()
+      require("go").setup()
+    end,
+  }
   -- use "scalameta/nvim-metals"
   -- use "mfussenegger/nvim-jdtls"
   -- use { "elixir-tools/elixir-tools.nvim", tag = "stable" }
@@ -573,7 +579,7 @@ local lsp_servers = {
   -- "elmls",
   "tailwindcss",
   -- "astro",
-  "ruff_lsp",
+  -- "ruff_lsp",
 }
 
 for _, lsp in ipairs(lsp_servers) do
@@ -601,49 +607,59 @@ end
 -- }
 -- }}}
 
--- Python {{{
-lspconfig["pylsp"].setup {
+-- Python [pylsp] {{{
+-- lspconfig["pylsp"].setup {
+--   on_attach = custom_attach,
+--   settings = {
+--     pylsp = {
+--       plugins = {
+--         -- TODO: remove this after formatter is added to ruff-lsp
+--         black = {
+--           enabled = true,
+--           line_length = 80,
+--         },
+--         mypy = {
+--           enabled = true,
+--         },
+--         isort = {
+--           enabled = true,
+--         },
+--         pycodestyle = {
+--           ignore = { "E501" },
+--           maxLineLength = 80,
+--         },
+--         flake8 = {
+--           enabled = false,
+--         },
+--         ruff = {
+--           enabled = true,
+--           lineLength = 80,
+--         },
+--         autopep = {
+--           enabled = false,
+--         },
+--         rope_autoimport = {
+--           enabled = false,
+--         },
+--         pyflakes = {
+--           enabled = false,
+--         },
+--         mccabe = {
+--           enabled = false,
+--         },
+--       },
+--     },
+--   },
+-- }
+-- }}}
+
+-- NOTE: testing this to see which I like the most
+-- Python [pyright] {{{
+lspconfig["pyright"].setup {
   on_attach = custom_attach,
-  settings = {
-    pylsp = {
-      plugins = {
-        -- TODO: remove this after formatter is added to ruff-lsp
-        black = {
-          enabled = true,
-          line_length = 80,
-        },
-        mypy = {
-          enabled = true,
-        },
-        isort = {
-          enabled = true,
-        },
-        pycodestyle = {
-          ignore = { "E501" },
-          maxLineLength = 80,
-        },
-        flake8 = {
-          enabled = false,
-        },
-        ruff = {
-          enabled = true,
-          lineLength = 80,
-        },
-        autopep = {
-          enabled = false,
-        },
-        rope_autoimport = {
-          enabled = false,
-        },
-        pyflakes = {
-          enabled = false,
-        },
-        mccabe = {
-          enabled = false,
-        },
-      },
-    },
-  },
+  capabilities = require("cmp_nvim_lsp").default_capabilities(),
+  -- settings = {
+  -- },
 }
 -- }}}
 
@@ -750,6 +766,8 @@ null_ls.setup {
   sources = {
     -- Lua
     null_ls.builtins.formatting.stylua,
+    -- Python
+    null_ls.builtins.formatting.black,
     -- Rust
     -- null_ls.builtins.formatting.rustfmt,
     -- TF
@@ -969,12 +987,18 @@ end)
 local treesitter = require "nvim-treesitter.configs"
 
 treesitter.setup {
+  auto_install = false,
+  ignore_install = {},
+  sync_install = false,
   ensure_installed = {
     "scala",
     "sql",
     "elixir",
     "ruby",
     "go",
+    "gotmpl",
+    "gomod",
+    "gosum",
     "markdown",
     "lua",
     "python",
