@@ -82,7 +82,8 @@ vim.cmd [[ colorscheme catppuccin-macchiato ]]
 -- {{{ Plugins
 require("packer").startup(function(use)
   -- "utils" plugins
-  use "wbthomason/packer.nvim"
+  use "s-rafaeldias/packer.nvim"
+  -- use "wbthomason/packer.nvim"
   use "nvim-lua/plenary.nvim"
   use "nvim-lua/popup.nvim"
   use "nvim-neotest/nvim-nio"
@@ -772,16 +773,14 @@ null_ls.setup {
     -- null_ls.builtins.formatting.rustfmt,
     -- TF
     null_ls.builtins.formatting.terraform_fmt,
+    -- null_ls.builtins.formatting.prettier,
     -- JSON
-    null_ls.builtins.formatting.jq.with {
-      args = { "--indent", "2" },
-    },
-    -- null_ls.builtins.formatting.rustywind,
-    -- null_ls.builtins.formatting.ocamlformat,
-    -- null_ls.builtins.formatting.zigfmt,
+    -- null_ls.builtins.formatting.jq.with {
+    --   args = { "--indent", "2" },
+    -- },
     -- Bash
-    null_ls.builtins.code_actions.shellcheck,
-    null_ls.builtins.diagnostics.shellcheck,
+    -- null_ls.builtins.code_actions.shellcheck,
+    -- null_ls.builtins.diagnostics.shellcheck,
   },
 }
 -- }}}
@@ -1009,6 +1008,7 @@ treesitter.setup {
     "cmake",
     "dockerfile",
     "javascript",
+    -- "typescript",
     "json",
     -- "comment",
     -- "jsonc",
@@ -1019,8 +1019,8 @@ treesitter.setup {
     "vim",
     "vimdoc",
     "yaml",
-    -- "tsx",
-    -- "typescript",
+    "tsx",
+    "typescript",
     "terraform",
     "toml",
     "http",
