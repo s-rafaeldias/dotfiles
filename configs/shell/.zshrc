@@ -154,6 +154,8 @@ alias pywatch='fswatch -o **/*.py | xargs -n1 -I {} make test'
 alias pyig='wget https://raw.githubusercontent.com/github/gitignore/main/Python.gitignore -O .gitignore'
 
 alias ports='lsof -iTCP -sTCP:LISTEN -P -n'
+
+alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
 # }}}
 
 # Functions {{{

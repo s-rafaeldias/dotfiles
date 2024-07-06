@@ -159,7 +159,8 @@ require("packer").startup(function(use)
   use "neovim/nvim-lspconfig"
   use "nvim-lua/lsp_extensions.nvim"
   use "nvim-lua/lsp-status.nvim"
-  use "jose-elias-alvarez/null-ls.nvim"
+  use "s-rafaeldias/null-ls.nvim"
+  -- use "jose-elias-alvarez/null-ls.nvim"
   use "ray-x/lsp_signature.nvim"
 
   use { "mrcjkb/rustaceanvim" }
@@ -171,7 +172,7 @@ require("packer").startup(function(use)
   }
   -- use "scalameta/nvim-metals"
   -- use "mfussenegger/nvim-jdtls"
-  -- use { "elixir-tools/elixir-tools.nvim", tag = "stable" }
+  use { "elixir-tools/elixir-tools.nvim", tag = "stable" }
   use {
     "mattn/emmet-vim",
     config = function()
@@ -581,6 +582,8 @@ local lsp_servers = {
   "tailwindcss",
   -- "astro",
   -- "ruff_lsp",
+  "gdscript",
+  "intelephense",
 }
 
 for _, lsp in ipairs(lsp_servers) do
@@ -591,21 +594,21 @@ for _, lsp in ipairs(lsp_servers) do
 end
 
 -- Elixir {{{
--- require("elixir").setup {
---   nextls = {
---     enable = false,
---     on_attach = custom_attach,
---     init_options = {
---       experimental = {
---         completions = {
---           enable = true, -- control if completions are enabled. defaults to false
---         },
---       },
---     },
---   },
---   credo = { enable = true },
---   elixirls = { enable = true, on_attach = custom_attach },
--- }
+require("elixir").setup {
+  nextls = {
+    enable = false,
+    on_attach = custom_attach,
+    init_options = {
+      experimental = {
+        completions = {
+          enable = true, -- control if completions are enabled. defaults to false
+        },
+      },
+    },
+  },
+  credo = { enable = true },
+  elixirls = { enable = true, on_attach = custom_attach },
+}
 -- }}}
 
 -- Python [pylsp] {{{
@@ -773,7 +776,7 @@ null_ls.setup {
     -- null_ls.builtins.formatting.rustfmt,
     -- TF
     null_ls.builtins.formatting.terraform_fmt,
-    -- null_ls.builtins.formatting.prettier,
+    null_ls.builtins.formatting.prettier,
     -- JSON
     -- null_ls.builtins.formatting.jq.with {
     --   args = { "--indent", "2" },
@@ -985,6 +988,22 @@ end)
 -- plugin: treesitter {{{
 local treesitter = require "nvim-treesitter.configs"
 
+local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
+-- TODO: testing blade template
+parser_config.blade = {
+  install_info = {
+    url = "https://github.com/EmranMR/tree-sitter-blade",
+    files = { "src/parser.c" },
+    branch = "main",
+  },
+  filetype = "blade",
+}
+vim.cmd [[
+augroup BladeFiltypeRelated
+  au BufNewFile,BufRead *.blade.php set ft=blade
+augroup END
+]]
+
 treesitter.setup {
   auto_install = false,
   ignore_install = {},
@@ -1029,9 +1048,11 @@ treesitter.setup {
     "git_rebase",
     "gitcommit",
     "gitignore",
+    "blade",
+    "html"
   },
   indent = {
-    enable = false,
+    enable = true,
   },
   highlight = {
     enable = true,
