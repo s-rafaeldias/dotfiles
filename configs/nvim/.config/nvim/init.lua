@@ -593,24 +593,6 @@ for _, lsp in ipairs(lsp_servers) do
   }
 end
 
--- Elixir {{{
-require("elixir").setup {
-  nextls = {
-    enable = false,
-    on_attach = custom_attach,
-    init_options = {
-      experimental = {
-        completions = {
-          enable = true, -- control if completions are enabled. defaults to false
-        },
-      },
-    },
-  },
-  credo = { enable = true },
-  elixirls = { enable = true, on_attach = custom_attach },
-}
--- }}}
-
 -- Python [pylsp] {{{
 -- lspconfig["pylsp"].setup {
 --   on_attach = custom_attach,
