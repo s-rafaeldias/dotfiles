@@ -171,7 +171,7 @@ require("packer").startup(function(use)
     end,
   }
   -- use "scalameta/nvim-metals"
-  -- use "mfussenegger/nvim-jdtls"
+  use "mfussenegger/nvim-jdtls"
   use { "elixir-tools/elixir-tools.nvim", tag = "stable" }
   use {
     "mattn/emmet-vim",
@@ -700,23 +700,6 @@ lspconfig["lua_ls"].setup {
     },
   },
 }
--- }}}
-
--- Arduino {{{
--- lspconfig["arduino_language_server"].setup {
---   on_attach = custom_attach,
---   cmd = {
---     "arduino-language-server",
---     "-cli-config",
---     "/Users/rafael/Library/Arduino15/arduino-cli.yaml",
---     "-fqbn",
---     "esp8266:esp8266:nodemcu",
---     "-cli",
---     "arduino-cli",
---     "-clangd",
---     "clangd",
---   },
--- }
 -- }}}
 
 -- Markdown {{{
