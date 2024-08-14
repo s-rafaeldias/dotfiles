@@ -1,15 +1,16 @@
+
 local custom_attach = function(client, bufnr)
   -- vim.notify("Attaching LSP: " .. client.name)
   local opts = { noremap = true }
 
-  -- require("lsp_signature").on_attach({
-  --   bind = true,
-  --   hint_prefix = "🐍 ",
-  --   doc_lines = 0,
-  --   floating_window = false,
-  -- }, bufnr)
+  require("lsp_signature").on_attach({
+    bind = true,
+    hint_prefix = "🐍 ",
+    doc_lines = 0,
+    floating_window = false,
+  }, bufnr)
 
-  -- lsp_status.on_attach(client)
+  require("lsp-status").on_attach(client)
 
   local function definition_split()
     -- TODO: check how many splits we have and add some smart logic here

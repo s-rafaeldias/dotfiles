@@ -172,7 +172,7 @@ require("packer").startup(function(use)
   }
   -- use "scalameta/nvim-metals"
   use "mfussenegger/nvim-jdtls"
-  use { "elixir-tools/elixir-tools.nvim", tag = "stable" }
+  -- use { "elixir-tools/elixir-tools.nvim", tag = "stable" }
   use {
     "mattn/emmet-vim",
     config = function()
@@ -534,12 +534,12 @@ local custom_attach = function(client, bufnr)
   -- vim.notify("Attaching LSP: " .. client.name)
   local opts = { noremap = true }
 
-  -- require("lsp_signature").on_attach({
-  --   bind = true,
-  --   hint_prefix = "🐍 ",
-  --   doc_lines = 0,
-  --   floating_window = false,
-  -- }, bufnr)
+  require("lsp_signature").on_attach({
+    bind = true,
+    hint_prefix = "🐍 ",
+    doc_lines = 0,
+    floating_window = false,
+  }, bufnr)
 
   lsp_status.on_attach(client)
 
@@ -576,7 +576,7 @@ local lsp_servers = {
   "zls",
   -- "ocamllsp",
   "tsserver",
-  "vuels",
+  "volar",
   -- "prismals",
   -- "elmls",
   "tailwindcss",
@@ -587,11 +587,40 @@ local lsp_servers = {
 }
 
 for _, lsp in ipairs(lsp_servers) do
-  lspconfig[lsp].setup {
+  local base_config = {
     on_attach = custom_attach,
     capabilities = require("cmp_nvim_lsp").default_capabilities(),
   }
+
+  if lsp == "intelephense" then
+    local php_config = vim.deepcopy(base_config)
+    php_config.filetypes = {
+      "php",
+      "blade",
+    }
+
+    lspconfig[lsp].setup(php_config)
+  else
+    lspconfig[lsp].setup(base_config)
+  end
 end
+
+-- require("lspconfig").tsserver.setup {
+--   init_options = {
+--     plugins = {
+--       {
+--         name = "@vue/typescript-plugin",
+--         location = "/usr/local/lib/node_modules/@vue/typescript-plugin",
+--         languages = { "javascript", "typescript", "vue" },
+--       },
+--     },
+--   },
+--   filetypes = {
+--     "javascript",
+--     "typescript",
+--     "vue",
+--   },
+-- }
 
 -- Python [pylsp] {{{
 -- lspconfig["pylsp"].setup {
