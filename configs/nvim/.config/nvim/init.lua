@@ -56,6 +56,7 @@ set.swapfile = false
 set.directory = "."
 -- set.backup = false
 set.undofile = true
+set.undodir = vim.fn.expand "~/.undodir"
 
 set.wildignore:append "*node_modules*,_site,*/__pycache__/,*/venv/*,*/target/*,*/.vim$,~$,*.log,*.aux,*.cls,*.aux,*.bbl,*.blg,*.fls,*.fdb*/,*.toc,*.out,*.glo,*.log,*.ist,*fdb_latexmk"
 
@@ -96,6 +97,8 @@ require("packer").startup(function(use)
   use "tpope/vim-fugitive"
   -- Super duper plugin to help surrounding text-objects
   use "tpope/vim-surround"
+
+  use "mbbill/undotree"
 
   -- Show macros and registers
   -- use "junegunn/vim-peekaboo"
