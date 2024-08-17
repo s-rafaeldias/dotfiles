@@ -1,5 +1,5 @@
 stow:
-	cd configs && ./setup.sh -f
+	stow configs -t "${HOME}"
 
 install-ansible:
 	python3 -m pip install --user ansible ansible-core
