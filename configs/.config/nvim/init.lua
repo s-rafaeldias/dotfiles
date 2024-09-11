@@ -76,7 +76,8 @@ vim.g.loaded_perl_provider = 0
 -- vim.g.vim_json_conceal = 0
 
 -- Colorscheme
-vim.cmd [[ colorscheme catppuccin-macchiato ]]
+vim.cmd [[ colorscheme tokyonight ]]
+-- vim.cmd [[ colorscheme catppuccin-macchiato ]]
 -- vim.cmd [[ colorscheme kiss ]]
 -- }}}
 
@@ -189,22 +190,23 @@ require("packer").startup(function(use)
   use "mfussenegger/nvim-dap-python"
 
   use "nvim-lualine/lualine.nvim"
-  use {
-    "catppuccin/nvim",
-    as = "catppuccin",
-    config = function()
-      require("catppuccin").setup {
-        integrations = {
-          vimwiki = true,
-          harpoon = true,
-          dap = {
-            enabled = true,
-            enable_ui = true,
-          },
-        },
-      }
-    end,
-  }
+  use "folke/tokyonight.nvim"
+  -- use {
+  --   "catppuccin/nvim",
+  --   as = "catppuccin",
+  --   config = function()
+  --     require("catppuccin").setup {
+  --       integrations = {
+  --         vimwiki = true,
+  --         harpoon = true,
+  --         dap = {
+  --           enabled = true,
+  --           enable_ui = true,
+  --         },
+  --       },
+  --     }
+  --   end,
+  -- }
 
   -- use {
   --   "epwalsh/obsidian.nvim",
@@ -578,7 +580,7 @@ local lsp_servers = {
   -- "metals",
   "zls",
   -- "ocamllsp",
-  "tsserver",
+  "ts_ls",
   "volar",
   -- "prismals",
   -- "elmls",
@@ -867,7 +869,7 @@ local branch_color = function()
 end
 
 require("lualine").setup {
-  -- options = { theme = "catppuccin" },
+  options = { theme = "tokyonight" },
   extensions = { "quickfix", "fugitive" },
   sections = {
     lualine_b = {
