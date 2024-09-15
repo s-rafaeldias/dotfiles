@@ -125,8 +125,6 @@ require("packer").startup(function(use)
   use "nvim-lua/telescope.nvim"
   use "nvim-telescope/telescope-ui-select.nvim"
 
-  -- UI for working with git worktree: https://dev.to/yankee/practical-guide-to-git-worktree-58o0
-  use "ThePrimeagen/git-worktree.nvim"
   -- Install stuff when I'm lazy (or don't care too much for it): LSP, linter, formatters...
   use {
     "williamboman/mason.nvim",
@@ -167,13 +165,13 @@ require("packer").startup(function(use)
   -- use "jose-elias-alvarez/null-ls.nvim"
   use "ray-x/lsp_signature.nvim"
 
-  use { "mrcjkb/rustaceanvim" }
-  use {
-    "ray-x/go.nvim",
-    config = function()
-      require("go").setup()
-    end,
-  }
+  -- use { "mrcjkb/rustaceanvim" }
+  -- use {
+  --   "ray-x/go.nvim",
+  --   config = function()
+  --     require("go").setup()
+  --   end,
+  -- }
   -- use "scalameta/nvim-metals"
   use "mfussenegger/nvim-jdtls"
   -- use { "elixir-tools/elixir-tools.nvim", tag = "stable" }
@@ -206,11 +204,6 @@ require("packer").startup(function(use)
   --       },
   --     }
   --   end,
-  -- }
-
-  -- use {
-  --   "epwalsh/obsidian.nvim",
-  --   tag = "*", -- recommended, use latest release instead of latest commit
   -- }
 end)
 -- }}}
@@ -483,13 +476,8 @@ end
 -- }}}
 
 -- plugin: git {{{
-local Worktree = require "git-worktree"
+-- local Worktree = require "git-worktree"
 local utils = require "rds.utils"
-
-local create_git_worktree = function()
-  local branch = utils.input "Branch name: "
-  Worktree.create_worktree(branch, branch, "origin")
-end
 
 local group = vim.api.nvim_create_augroup("git", { clear = true })
 
@@ -939,10 +927,8 @@ require("telescope").setup {
   },
 }
 
-require("telescope").load_extension "git_worktree"
 require("telescope").load_extension "fzf"
 -- require("telescope").load_extension "ui-select"
--- require("telescope").load_extension "refactoring"
 
 local project_files = function()
   local in_git_repo = vim.fn.systemlist("git rev-parse --is-inside-work-tree")[1] == "true"
