@@ -39,6 +39,7 @@ export PATH=/usr/local/go/bin:$PATH
 export PATH=$HOME/.luarocks/bin:$PATH
 export PATH=$HOME/workspace/scripts:$PATH
 export PATH="$HOME/Library/Application Support/Coursier/bin:$PATH"
+export PATH="$HOME/.rbenv/bin:$PATH"
 # export PATH="/opt/homebrew/opt/openjdk@21/bin:$PATH"
 
 export JAVA_HOME="/opt/homebrew/opt/openjdk@21/libexec/openjdk.jdk/Contents/Home"

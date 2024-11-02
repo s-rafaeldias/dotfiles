@@ -97,6 +97,8 @@ alias md='mkdir -p'
 alias ..='cd ..'
 alias ...='cd ../..'
 
+alias r='bin/rails'
+
 alias tf='terraform'
 alias q='exit'
 alias j='just'

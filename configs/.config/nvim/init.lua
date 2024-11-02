@@ -174,7 +174,7 @@ require("packer").startup(function(use)
   -- }
   -- use "scalameta/nvim-metals"
   use "mfussenegger/nvim-jdtls"
-  -- use { "elixir-tools/elixir-tools.nvim", tag = "stable" }
+  use { "elixir-tools/elixir-tools.nvim", tag = "stable" }
   use {
     "mattn/emmet-vim",
     config = function()
@@ -577,6 +577,7 @@ local lsp_servers = {
   -- "ruff_lsp",
   "gdscript",
   "intelephense",
+  "ruby_lsp",
 }
 
 for _, lsp in ipairs(lsp_servers) do
@@ -591,8 +592,14 @@ for _, lsp in ipairs(lsp_servers) do
       "php",
       "blade",
     }
-
     lspconfig[lsp].setup(php_config)
+  elseif lsp == "ruby_lsp" then
+    local ruby_config = vim.deepcopy(base_config)
+    ruby_config.init_options = {
+      formatter = "standard",
+      linters = { "standard" },
+    }
+    lspconfig[lsp].setup(ruby_config)
   else
     lspconfig[lsp].setup(base_config)
   end
@@ -733,6 +740,13 @@ vim.g.rustaceanvim = {
 -- }
 -- }}}
 
+require("elixir").setup {
+  on_attach = custom_attach,
+  nextls = { enable = false },
+  elixirls = { enable = true },
+  projectionist = { enable = true },
+}
+
 -- Null-ls {{{
 null_ls.setup {
   sources = {
@@ -745,6 +759,7 @@ null_ls.setup {
     -- TF
     null_ls.builtins.formatting.terraform_fmt,
     null_ls.builtins.formatting.prettier,
+    null_ls.builtins.formatting.rubyfmt,
     -- JSON
     -- null_ls.builtins.formatting.jq.with {
     --   args = { "--indent", "2" },
@@ -1015,6 +1030,7 @@ treesitter.setup {
     "vim",
     "vimdoc",
     "yaml",
+    "embedded_template",
     -- "jsonc",
   },
   indent = {
