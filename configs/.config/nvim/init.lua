@@ -593,6 +593,7 @@ for _, lsp in ipairs(lsp_servers) do
       "blade",
     }
     lspconfig[lsp].setup(php_config)
+    print "Connect to php LSP server..."
   elseif lsp == "ruby_lsp" then
     local ruby_config = vim.deepcopy(base_config)
     ruby_config.init_options = {
@@ -623,59 +624,59 @@ end
 -- }
 
 -- Python [pylsp] {{{
--- lspconfig["pylsp"].setup {
---   on_attach = custom_attach,
---   settings = {
---     pylsp = {
---       plugins = {
---         -- TODO: remove this after formatter is added to ruff-lsp
---         black = {
---           enabled = true,
---           line_length = 80,
---         },
---         mypy = {
---           enabled = true,
---         },
---         isort = {
---           enabled = true,
---         },
---         pycodestyle = {
---           ignore = { "E501" },
---           maxLineLength = 80,
---         },
---         flake8 = {
---           enabled = false,
---         },
---         ruff = {
---           enabled = true,
---           lineLength = 80,
---         },
---         autopep = {
---           enabled = false,
---         },
---         rope_autoimport = {
---           enabled = false,
---         },
---         pyflakes = {
---           enabled = false,
---         },
---         mccabe = {
---           enabled = false,
---         },
---       },
---     },
---   },
--- }
+lspconfig["pylsp"].setup {
+  on_attach = custom_attach,
+  settings = {
+    pylsp = {
+      plugins = {
+        -- TODO: remove this after formatter is added to ruff-lsp
+        black = {
+          enabled = true,
+          line_length = 80,
+        },
+        mypy = {
+          enabled = true,
+        },
+        isort = {
+          enabled = true,
+        },
+        pycodestyle = {
+          ignore = { "E501" },
+          maxLineLength = 80,
+        },
+        flake8 = {
+          enabled = false,
+        },
+        ruff = {
+          enabled = true,
+          lineLength = 80,
+        },
+        autopep = {
+          enabled = false,
+        },
+        rope_autoimport = {
+          enabled = false,
+        },
+        pyflakes = {
+          enabled = false,
+        },
+        mccabe = {
+          enabled = false,
+        },
+      },
+    },
+  },
+}
 -- }}}
 
 -- NOTE: testing this to see which I like the most
--- Python [pyright] {{{
-lspconfig["pyright"].setup {
-  on_attach = custom_attach,
-  capabilities = require("cmp_nvim_lsp").default_capabilities(),
-  -- settings = {
-  -- },
-}
+-- -- Python [pyright] {{{
+-- lspconfig["pyright"].setup {
+--   on_attach = custom_attach,
+--   capabilities = require("cmp_nvim_lsp").default_capabilities(),
+--   -- settings = {
+--   -- },
+-- }
 -- }}}
 
 -- Lua {{{

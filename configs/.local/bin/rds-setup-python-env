@@ -2,7 +2,7 @@
 set -euo pipefail
 IFS=$'\n\t'
 
-python_version=${1:-"3.12"}
+python_version=${1:-"3.13"}
 echo "Using python version $python_version"
 
 echo "Creating a new virtual env..."
