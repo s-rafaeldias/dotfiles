@@ -57,6 +57,7 @@ source "$HOME/.cargo/env"
 # eval "$(starship init zsh)"
 eval "$(direnv hook zsh)"
 
+eval "$(laravel completion zsh)"
 # [[ ! -r ~/.opam/opam-init/init.zsh ]] || source ~/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
 
 [ -f ~/.env ] && source ~/.env
@@ -187,5 +188,4 @@ export PROMPT="%n @ $dir_info"
 # zprof # Debug time info
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"

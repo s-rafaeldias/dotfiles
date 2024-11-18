@@ -7,6 +7,7 @@ export COMPLETION_WAITING_DOTS="true"
 export FZF_DEFAULT_COMMAND="fd --type f --hidden --follow --exclude .git"
 export FZF_DEFAULT_OPTS="--layout=reverse"
 export RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
+export SDKMAN_DIR="$HOME/.sdkman"
 
 export PYTHONNOUSERSITE=1
 export HOMEBREW_NO_INSTALL_FROM_API=1
@@ -40,11 +41,13 @@ export PATH=$HOME/.luarocks/bin:$PATH
 export PATH=$HOME/workspace/scripts:$PATH
 export PATH="$HOME/Library/Application Support/Coursier/bin:$PATH"
 export PATH="$HOME/.rbenv/bin:$PATH"
+export PATH="$HOME/.config/herd-lite/bin:$PATH"
 # export PATH="/opt/homebrew/opt/openjdk@21/bin:$PATH"
 
 export JAVA_HOME="/opt/homebrew/opt/openjdk@21/libexec/openjdk.jdk/Contents/Home"
 export PATH="$JAVA_HOME/bin:$PATH"
 
+export PHP_INI_SCAN_DIR="$HOME/.config/herd-lite/bin:$PHP_INI_SCAN_DIR"
 
 export PAGER=/usr/bin/less
 export EDITOR='nvim'
