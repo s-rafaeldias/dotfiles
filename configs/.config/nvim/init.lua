@@ -578,6 +578,7 @@ local lsp_servers = {
   "gdscript",
   "intelephense",
   "ruby_lsp",
+  "htmx",
 }
 
 for _, lsp in ipairs(lsp_servers) do

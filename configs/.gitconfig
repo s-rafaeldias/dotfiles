@@ -22,6 +22,9 @@
     autoSetupMerge = always
     sort = committerdate
 
+[diff]
+    algorithm = patience
+
 [rebase]
     autosquash = true
     autostash = true
