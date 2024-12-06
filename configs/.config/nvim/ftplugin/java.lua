@@ -1,4 +1,3 @@
-
 local custom_attach = function(client, bufnr)
   -- vim.notify("Attaching LSP: " .. client.name)
   local opts = { noremap = true }
@@ -29,9 +28,18 @@ local custom_attach = function(client, bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, "n", "<Leader>ff", "<Cmd>lua vim.lsp.buf.format { async=true }<CR>", opts)
 end
 
+local bundles = {
+  "/Users/rafael/code/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-0.53.1.jar",
+}
+vim.list_extend(bundles, vim.split(vim.fn.glob("/Users/rafael/code/vscode-java-test/server/*.jar", true), "\n"))
+
 local java_config = {
   cmd = { "/Users/rafael/.local/bin/java-lsp/bin/jdtls" },
   root_dir = vim.fs.dirname(vim.fs.find({ "gradlew", ".git", "mvnw" }, { upward = true })[1]),
   on_attach = custom_attach,
+
+  init_options = {
+    bundles = bundles,
+  },
 }
 require("jdtls").start_or_attach(java_config)

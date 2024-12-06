@@ -173,7 +173,7 @@ require("packer").startup(function(use)
   --   end,
   -- }
   -- use "scalameta/nvim-metals"
-  use "mfussenegger/nvim-jdtls"
+  use { "mfussenegger/nvim-jdtls", requires = { "mfussenegger/nvim-dap" } }
   use { "elixir-tools/elixir-tools.nvim", tag = "stable" }
   use {
     "mattn/emmet-vim",

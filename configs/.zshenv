@@ -44,8 +44,8 @@ export PATH="$HOME/.rbenv/bin:$PATH"
 export PATH="$HOME/.config/herd-lite/bin:$PATH"
 # export PATH="/opt/homebrew/opt/openjdk@21/bin:$PATH"
 
-export JAVA_HOME="/opt/homebrew/opt/openjdk@21/libexec/openjdk.jdk/Contents/Home"
-export PATH="$JAVA_HOME/bin:$PATH"
+# export JAVA_HOME="/opt/homebrew/opt/openjdk@21/libexec/openjdk.jdk/Contents/Home"
+# export PATH="$JAVA_HOME/bin:$PATH"
 
 export PHP_INI_SCAN_DIR="$HOME/.config/herd-lite/bin:$PHP_INI_SCAN_DIR"
 
