@@ -211,8 +211,8 @@ require("lazy").setup {
         require("telescope").load_extension "ui-select"
 
         local project_files = function()
-          local in_git_repo = vim.fn.systemlist("git rev-parse --is-inside-work-tree")[1] == "true"
-          if in_git_repo then
+          local _in_git_repo = vim.fn.system { "git", "rev-parse", "--is-inside-work-tree" }
+          if vim.v.shell_error == 0 then
             require("telescope.builtin").git_files()
           else
             require("telescope.builtin").find_files()
