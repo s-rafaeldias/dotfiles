@@ -97,8 +97,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 })
 -- }}}
 
--- {{{ Plugins with lazy.nvim
--- {{{2 Bootstrap lazy.nvim
+-- {{{ Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
   local lazyrepo = "https://github.com/folke/lazy.nvim.git"
@@ -114,7 +113,7 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
   end
 end
 vim.opt.rtp:prepend(lazypath)
--- 2}}}
+-- }}}
 
 require("lazy").setup {
   spec = {
@@ -132,33 +131,99 @@ require("lazy").setup {
     { "tpope/vim-fugitive" },
     { "williamboman/mason.nvim", opts = {} },
 
-    -- {{{2 lsp stuff
+    -- {{{ lsp stuff
     {
       "neovim/nvim-lspconfig",
+      dependencies = {
+        {
+          "folke/lazydev.nvim",
+          ft = "lua", -- only load on lua files
+          opts = {
+            library = {
+              -- See the configuration section for more details
+              -- Load luvit types when the `vim.uv` word is found
+              { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+            },
+          },
+        },
+      },
       config = function()
         local custom_attach = function(client, bufnr)
-          vim.notify("Attaching LSP: " .. client.name)
-          local opts = { noremap = true }
+          -- vim.notify("Attaching LSP: " .. client.name)
           local function definition_split()
             vim.cmd "vs"
             vim.lsp.buf.definition()
           end
 
-          vim.keymap.set("n", "K", "<Cmd>lua vim.lsp.buf.hover()<CR>", opts)
-          vim.keymap.set("n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
+          vim.keymap.set("n", "K", "<Cmd>lua vim.lsp.buf.hover()<CR>")
+          vim.keymap.set("n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>")
           vim.keymap.set("n", "gD", "", { callback = definition_split, noremap = true })
-          vim.keymap.set("n", "gr", "<Cmd>lua vim.lsp.buf.references()<CR>", opts)
-          vim.keymap.set("n", "gs", "<Cmd>lua require'telescope.builtin'.lsp_document_symbols{}<CR>", opts)
-          vim.keymap.set("n", "<Leader>rr", "<Cmd>lua vim.lsp.buf.rename()<CR>", opts)
-          vim.keymap.set("n", "<Leader>ca", "<Cmd>lua vim.lsp.buf.code_action()<CR>", opts)
-          vim.keymap.set("v", "<Leader>ca", "<Cmd>lua vim.lsp.buf.code_action()<CR>", opts)
-          vim.keymap.set("n", "<Leader>ff", "<Cmd>lua vim.lsp.buf.format()<CR>", opts)
+          vim.keymap.set("n", "gr", "<Cmd>lua vim.lsp.buf.references()<CR>")
+          vim.keymap.set("n", "gs", "<Cmd>lua require'telescope.builtin'.lsp_document_symbols{}<CR>")
+          vim.keymap.set("n", "<Leader>rr", "<Cmd>lua vim.lsp.buf.rename()<CR>")
+          vim.keymap.set("n", "<Leader>ca", "<Cmd>lua vim.lsp.buf.code_action()<CR>")
+          vim.keymap.set("v", "<Leader>ca", "<Cmd>lua vim.lsp.buf.code_action()<CR>")
+          vim.keymap.set("n", "<Leader>gf", "<Cmd>lua vim.lsp.buf.format()<CR>")
+        end
+
+        local lsp_servers = {
+          "clangd",
+          "jsonls",
+          "gopls",
+          -- "terraformls",
+          -- "pylsp",
+          -- "rust_analyzer",
+          "lua_ls",
+          -- "sumneko_lua",
+          "marksman",
+          -- "powershell_es",
+          "bashls",
+          -- "metals",
+          -- "zls",
+          -- "ocamllsp",
+          "ts_ls",
+          "volar",
+          -- "prismals",
+          -- "elmls",
+          "tailwindcss",
+          -- "astro",
+          -- "ruff_lsp",
+          -- "gdscript",
+          -- "intelephense",
+          -- "ruby_lsp",
+          -- "htmx",
+        }
+
+        local lspconfig = require "lspconfig"
+        for _, lsp in ipairs(lsp_servers) do
+          local base_config = {
+            on_attach = custom_attach,
+            -- capabilities = require("cmp_nvim_lsp").default_capabilities(),
+          }
+
+          if lsp == "intelephense" then
+            local php_config = vim.deepcopy(base_config)
+            php_config.filetypes = {
+              "php",
+              "blade",
+            }
+            base_config = php_config
+          elseif lsp == "ruby_lsp" then
+            local ruby_config = vim.deepcopy(base_config)
+            ruby_config.init_options = {
+              formatter = "standard",
+              linters = { "standard" },
+            }
+            base_config = ruby_config
+          end
+
+          lspconfig[lsp].setup(base_config)
         end
       end,
     },
-    -- 2}}}
+    -- }}}
 
-    -- {{{2 treesitter
+    -- {{{ treesitter
     {
       "nvim-treesitter/nvim-treesitter",
       build = ":TSUpdate",
@@ -272,9 +337,9 @@ require("lazy").setup {
         }
       end,
     },
-    -- 2}}}
+    -- }}}
 
-    -- {{{2 telescope
+    -- {{{ telescope
     {
       "nvim-telescope/telescope.nvim",
       branch = "0.1.x",
@@ -331,18 +396,9 @@ require("lazy").setup {
         require("telescope").load_extension "fzf"
         require("telescope").load_extension "ui-select"
 
-        local project_files = function()
-          local _in_git_repo = vim.fn.system { "git", "rev-parse", "--is-inside-work-tree" }
-          if vim.v.shell_error == 0 then
-            require("telescope.builtin").git_files()
-          else
-            require("telescope.builtin").find_files()
-          end
-        end
-
         vim.keymap.set("n", "<Leader>t", "<Cmd>Telescope<CR>")
-        vim.keymap.set("n", "<C-P>", project_files)
-        vim.keymap.set("n", "<leader>pf", require("telescope.builtin").find_files)
+        vim.keymap.set("n", "<C-P>", require("telescope.builtin").git_files)
+        vim.keymap.set("n", "<leader>ff", require("telescope.builtin").find_files)
 
         vim.keymap.set("n", "<C-F>", "<Cmd>lua require'telescope.builtin'.live_grep { hidden=true }<CR>")
         vim.keymap.set("n", "<C-B>", "<Cmd>lua require'telescope.builtin'.buffers{}<CR>")
@@ -352,8 +408,6 @@ require("lazy").setup {
         -- end)
       end,
     },
-    -- 2}}}
+    -- }}}
   },
 }
-
--- }}}
