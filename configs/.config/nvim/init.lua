@@ -154,7 +154,16 @@ require("lazy").setup {
         end
       end,
     },
-    { -- Fuzzy Finder (files, lsp, etc)
+    {
+      "nvim-treesitter/nvim-treesitter",
+      build = ":TSUpdate",
+      dependencies = {
+        { "nvim-treesitter/playground", build = ":TSInstall query" },
+        { "nvim-treesitter/nvim-treesitter-textobjects" },
+      },
+      config = function() end,
+    },
+    {
       "nvim-telescope/telescope.nvim",
       branch = "0.1.x",
       dependencies = {
