@@ -131,6 +131,8 @@ require("lazy").setup {
     { "tpope/vim-projectionist" },
     { "tpope/vim-fugitive" },
     { "williamboman/mason.nvim", opts = {} },
+
+    -- {{{2 lsp stuff
     {
       "neovim/nvim-lspconfig",
       config = function()
@@ -154,6 +156,9 @@ require("lazy").setup {
         end
       end,
     },
+    -- 2}}}
+
+    -- {{{2 treesitter
     {
       "nvim-treesitter/nvim-treesitter",
       build = ":TSUpdate",
@@ -161,8 +166,115 @@ require("lazy").setup {
         { "nvim-treesitter/playground", build = ":TSInstall query" },
         { "nvim-treesitter/nvim-treesitter-textobjects" },
       },
-      config = function() end,
+      config = function()
+        local treesitter = require "nvim-treesitter.configs"
+        treesitter.setup {
+          auto_install = false,
+          ignore_install = {},
+          sync_install = false,
+          ensure_installed = {
+            "bash",
+            -- "blade",
+            "c",
+            "cmake",
+            "comment",
+            "cpp",
+            "dockerfile",
+            "elixir",
+            "git_config",
+            "git_rebase",
+            "gitcommit",
+            "gitignore",
+            "gitattributes",
+            "go",
+            "gomod",
+            "gosum",
+            "gotmpl",
+            "html",
+            "http",
+            "java",
+            "javascript",
+            "json",
+            "lua",
+            "make",
+            "markdown",
+            "python",
+            "query",
+            "regex",
+            "rst",
+            "rust",
+            "sql",
+            "terraform",
+            "toml",
+            "tsx",
+            "typescript",
+            "vim",
+            "vimdoc",
+            "yaml",
+            "embedded_template",
+            -- "jsonc",
+          },
+          indent = {
+            enable = true,
+          },
+          highlight = {
+            enable = true,
+          },
+          playgroud = {
+            enable = true,
+          },
+          -- rainbow = {
+          --   enable = true,
+          --   extended_mode = true,
+          -- },
+          -- refactor = {
+          --   highlight_definitions = {
+          --     enable = true,
+          --     -- Set to false if you have an `updatetime` of ~100.
+          --     clear_on_cursor_move = false,
+          --   },
+          -- },
+
+          textobjects = {
+            select = {
+              enable = true,
+              lookahead = true,
+              keymaps = {
+                ["af"] = "@function.outer",
+                ["if"] = "@function.inner",
+              },
+            },
+            move = {
+              enable = true,
+              set_jumps = true,
+              -- TODO: test this
+              goto_next_start = {
+                ["]f"] = "@function.outer",
+                ["]c"] = "@class.outer",
+              },
+              goto_previous_start = {
+                ["[f"] = "@function.outer",
+                ["[c"] = "@class.outer",
+              },
+              -- goto_next_end = {
+              --   ["<Leader>M"] = "@function.outer",
+              --   ["]["] = "@class.outer",
+              -- },
+            },
+            lsp_interop = {
+              enable = true,
+              peek_definition_code = {
+                ["<leader>df"] = "@function.outer",
+                ["<leader>dF"] = "@class.outer",
+              },
+            },
+          },
+        }
+      end,
     },
+    -- 2}}}
+
+    -- {{{2 telescope
     {
       "nvim-telescope/telescope.nvim",
       branch = "0.1.x",
@@ -240,6 +352,7 @@ require("lazy").setup {
         -- end)
       end,
     },
+    -- 2}}}
   },
 }
 
