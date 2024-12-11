@@ -65,8 +65,8 @@ vim.g.loaded_perl_provider = 0
 vim.g.vim_json_conceal = 0
 
 -- Execute current (lua) line and visual selection
-vim.keymap.set("n", "<Leader><Leader>x", "<cmd>.lua<cr>")
-vim.keymap.set("v", "<Leader><Leader>x", ":lua<cr>")
+vim.keymap.set("n", "<Leader>x", "<cmd>.lua<cr>")
+vim.keymap.set("v", "<Leader>x", ":lua<cr>")
 
 vim.keymap.set("n", "<Leader>e", "<Cmd>Ex!<CR>")
 vim.keymap.set("t", "<Esc>", "<C-\\><C-n>")
@@ -115,6 +115,27 @@ end
 vim.opt.rtp:prepend(lazypath)
 -- }}}
 
+-- TODO: move this to its own module?
+-- Reusable code {{{
+local custom_attach = function(client, bufnr)
+  -- vim.notify("Attaching LSP: " .. client.name)
+  local function definition_split()
+    vim.cmd "vs"
+    vim.lsp.buf.definition()
+  end
+
+  vim.keymap.set("n", "K", "<Cmd>lua vim.lsp.buf.hover()<CR>")
+  vim.keymap.set("n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>")
+  vim.keymap.set("n", "gD", "", { callback = definition_split, noremap = true })
+  vim.keymap.set("n", "gr", "<Cmd>lua vim.lsp.buf.references()<CR>")
+  vim.keymap.set("n", "gs", "<Cmd>lua require'telescope.builtin'.lsp_document_symbols{}<CR>")
+  vim.keymap.set("n", "<Leader>rr", "<Cmd>lua vim.lsp.buf.rename()<CR>")
+  vim.keymap.set("n", "<Leader>ca", "<Cmd>lua vim.lsp.buf.code_action()<CR>")
+  vim.keymap.set("v", "<Leader>ca", "<Cmd>lua vim.lsp.buf.code_action()<CR>")
+  vim.keymap.set("n", "<Leader>cf", "<Cmd>lua vim.lsp.buf.format()<CR>")
+end
+-- }}}
+
 require("lazy").setup {
   spec = {
     {
@@ -128,8 +149,45 @@ require("lazy").setup {
     },
     { "tpope/vim-speeddating" },
     { "tpope/vim-projectionist" },
-    { "tpope/vim-fugitive" },
+    {
+      "tpope/vim-fugitive",
+      config = function()
+        vim.keymap.set("n", "<Leader>gg", "<Cmd>G<CR>")
+        vim.keymap.set("n", "<Leader>gp", "<Cmd>G pull<CR>")
+        vim.keymap.set("n", "<Leader>gP", "<Cmd>G push<CR>")
+      end,
+    },
     { "williamboman/mason.nvim", opts = {} },
+
+    {
+      "ThePrimeagen/harpoon",
+      branch = "harpoon2",
+      dependencies = { "nvim-lua/plenary.nvim" },
+      config = function()
+        local harpoon = require "harpoon"
+        harpoon:setup()
+
+        vim.keymap.set("n", "<Leader>a", function()
+          harpoon:list():add()
+        end)
+        vim.keymap.set("n", "<Leader>h", function()
+          harpoon.ui:toggle_quick_menu(harpoon:list())
+        end)
+
+        vim.keymap.set("n", "<Leader><Leader>j", function()
+          harpoon:list():select(1)
+        end)
+        vim.keymap.set("n", "<Leader><Leader>k", function()
+          harpoon:list():select(2)
+        end)
+        vim.keymap.set("n", "<Leader><Leader>l", function()
+          harpoon:list():select(3)
+        end)
+        vim.keymap.set("n", "<Leader><Leader>;", function()
+          harpoon:list():select(4)
+        end)
+      end,
+    },
 
     -- {{{ lsp stuff
     {
@@ -148,24 +206,6 @@ require("lazy").setup {
         },
       },
       config = function()
-        local custom_attach = function(client, bufnr)
-          -- vim.notify("Attaching LSP: " .. client.name)
-          local function definition_split()
-            vim.cmd "vs"
-            vim.lsp.buf.definition()
-          end
-
-          vim.keymap.set("n", "K", "<Cmd>lua vim.lsp.buf.hover()<CR>")
-          vim.keymap.set("n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>")
-          vim.keymap.set("n", "gD", "", { callback = definition_split, noremap = true })
-          vim.keymap.set("n", "gr", "<Cmd>lua vim.lsp.buf.references()<CR>")
-          vim.keymap.set("n", "gs", "<Cmd>lua require'telescope.builtin'.lsp_document_symbols{}<CR>")
-          vim.keymap.set("n", "<Leader>rr", "<Cmd>lua vim.lsp.buf.rename()<CR>")
-          vim.keymap.set("n", "<Leader>ca", "<Cmd>lua vim.lsp.buf.code_action()<CR>")
-          vim.keymap.set("v", "<Leader>ca", "<Cmd>lua vim.lsp.buf.code_action()<CR>")
-          vim.keymap.set("n", "<Leader>gf", "<Cmd>lua vim.lsp.buf.format()<CR>")
-        end
-
         local lsp_servers = {
           "clangd",
           "jsonls",
@@ -370,13 +410,6 @@ require("lazy").setup {
             },
             sorting_strategy = "ascending",
 
-            fzf = {
-              fuzzy = true,
-              override_generic_sorter = false, -- override the generic sorter
-              override_file_sorter = true, -- override the file sorter
-              case_mode = "smart_case", -- or "ignore_case" or "respect_case"
-            },
-
             layout_config = {
               prompt_position = "top",
             },
@@ -390,6 +423,15 @@ require("lazy").setup {
             ["ui-select"] = {
               require("telescope.themes").get_dropdown {},
             },
+            fzf = {
+              fuzzy = true,
+              override_generic_sorter = true, -- override the generic sorter
+              override_file_sorter = true, -- override the file sorter
+              case_mode = "smart_case", -- or "ignore_case" or "respect_case"
+            },
+          },
+          pickers = {
+            diagnostics = { theme = "ivy" },
           },
         }
 
@@ -407,6 +449,129 @@ require("lazy").setup {
         --   require("telescope").extensions.refactoring.refactors()
         -- end)
       end,
+    },
+    -- }}}
+
+    -- {{{ cmp
+    {
+      "hrsh7th/nvim-cmp",
+      dependencies = {
+        { "hrsh7th/cmp-nvim-lsp" },
+        { "hrsh7th/cmp-path" },
+      },
+      config = function()
+        local cmp = require "cmp"
+
+        local t = function(str)
+          return vim.api.nvim_replace_termcodes(str, true, true, true)
+        end
+
+        cmp.setup {
+          completion = {
+            -- keyword_length = 3,
+            autocomplete = false,
+          },
+
+          preselect = cmp.PreselectMode.None,
+
+          -- snippet = {
+          --   expand = function(args)
+          --     require("luasnip").lsp_expand(args.body)
+          --   end,
+          -- },
+
+          mapping = {
+            ["<C-q>"] = cmp.mapping.close(),
+            ["<C-y>"] = cmp.mapping.confirm { select = true },
+            ["<C-n>"] = cmp.mapping {
+              c = function()
+                if cmp.visible() then
+                  cmp.select_next_item { behavior = cmp.SelectBehavior.Select }
+                else
+                  vim.api.nvim_feedkeys(t "<Down>", "n", true)
+                end
+              end,
+              i = function()
+                if cmp.visible() then
+                  cmp.select_next_item { behavior = cmp.SelectBehavior.Select }
+                else
+                  -- Trigger completion manually only! https://github.com/hrsh7th/nvim-cmp/issues/178
+                  cmp.complete()
+                end
+              end,
+            },
+            ["<C-p>"] = cmp.mapping {
+              c = function()
+                if cmp.visible() then
+                  cmp.select_prev_item { behavior = cmp.SelectBehavior.Select }
+                else
+                  vim.api.nvim_feedkeys(t "<Up>", "n", true)
+                end
+              end,
+              i = function()
+                if cmp.visible() then
+                  cmp.select_prev_item { behavior = cmp.SelectBehavior.Select }
+                else
+                  cmp.complete()
+                end
+              end,
+            },
+          },
+
+          formatting = {
+            format = function(entry, vim_item)
+              vim_item.menu = ({
+                nvim_lsp = "[LSP]",
+                buffer = "[Buf]",
+                nvim_lua = "[NVIM_LUA]",
+                path = "[Path]",
+                luasnip = "[Snip]",
+                nvim_lsp_signature_help = "🐍",
+              })[entry.source.name]
+
+              return vim_item
+            end,
+          },
+
+          sources = {
+            -- { name = "nvim_lsp_signature_help" },
+            { name = "nvim_lsp" },
+            -- { name = "luasnip" },
+            -- { name = "nvim_lua" },
+            { name = "path" },
+            -- { name = "buffer" },
+            -- { name = "cmp_git" },
+          },
+        }
+      end,
+    },
+    -- }}}
+
+    -- Elixir stuff {{{
+    {
+      "elixir-tools/elixir-tools.nvim",
+      version = "*",
+      event = { "BufReadPre", "BufNewFile" },
+      config = function()
+        local elixir = require "elixir"
+        local elixirls = require "elixir.elixirls"
+
+        elixir.setup {
+          nextls = { enable = false },
+          elixirls = {
+            enable = true,
+            settings = elixirls.settings {
+              dialyzerEnabled = true,
+              enableTestLenses = true,
+            },
+            on_attach = custom_attach,
+          },
+          projectionist = { enable = true },
+        }
+      end,
+      dependencies = {
+        "nvim-lua/plenary.nvim",
+      },
     },
     -- }}}
   },
