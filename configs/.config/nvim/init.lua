@@ -261,6 +261,12 @@ require("lazy").setup {
         end
       end,
     },
+
+    { "mfussenegger/nvim-dap" },
+    { "rcarriga/nvim-dap-ui", dependencies = { "mfussenegger/nvim-dap" } },
+    { "mfussenegger/nvim-dap-python", dependencies = { "mfussenegger/nvim-dap" } },
+    { "leoluz/nvim-dap-go", dependencies = { "mfussenegger/nvim-dap" } },
+    { "mfussenegger/nvim-jdtls", dependencies = { "mfussenegger/nvim-dap" } },
     -- }}}
 
     -- {{{ treesitter
