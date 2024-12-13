@@ -79,6 +79,8 @@ nnoremap <expr> k (v:count > 1 ? "m'" . v:count : '') . 'k'
 nnoremap <expr> j (v:count > 1 ? "m'" . v:count : '') . 'j'
 ]]
 
+vim.g.user_emmet_leader_key = "<C-Z>"
+
 -- Colorscheme
 -- vim.cmd [[ colorscheme tokyonight ]]
 -- vim.cmd [[ colorscheme catppuccin-macchiato ]]
@@ -142,13 +144,25 @@ require("lazy").setup {
       "folke/tokyonight.nvim",
       lazy = false, -- make sure we load this during startup if it is your main colorscheme
       priority = 1000, -- make sure to load this before all the other start plugins
+      enabled = false,
       config = function()
         -- load the colorscheme here
         vim.cmd [[colorscheme tokyonight]]
       end,
     },
+    {
+      "catppuccin/nvim",
+      lazy = false,
+      config = function()
+        require("catppuccin").setup {}
+
+        vim.cmd [[ colorscheme catppuccin-mocha ]]
+      end,
+    },
+
     { "tpope/vim-speeddating" },
     { "tpope/vim-projectionist" },
+    { "mattn/emmet-vim" },
     {
       "tpope/vim-fugitive",
       config = function()
