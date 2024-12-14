@@ -53,8 +53,9 @@ set.wildignore:append "*node_modules*,_site,*/__pycache__/,*/venv/*,*/target/*,*
 
 vim.g.mapleader = " "
 
--- Git stuff
 set.diffopt:append { "linematch:60", "vertical" }
+
+vim.o.winbar = "%=%m %f"
 
 -- Providers
 vim.g.loaded_python3_provider = 0
@@ -157,6 +158,53 @@ require("lazy").setup {
         require("catppuccin").setup {}
 
         vim.cmd [[ colorscheme catppuccin-mocha ]]
+      end,
+    },
+    {
+      "nvim-lualine/lualine.nvim",
+      config = function()
+        local branch_color = function()
+          local branch = require("lualine.components.branch.git_branch").get_branch()
+
+          local block_main_flag = vim.env["BLOCK_MAIN"]
+
+          if branch == "main" and block_main_flag then
+            return { bg = "red" }
+          elseif branch == "dev" or branch == "develop" then
+            return { bg = "blue" }
+          end
+
+          return nil
+        end
+
+        require("lualine").setup {
+          options = { theme = "catppuccin-mocha" },
+          extensions = { "quickfix", "fugitive" },
+          sections = {
+            lualine_b = {
+              {
+                "branch",
+                color = branch_color,
+              },
+              "diff",
+              "diagnostics",
+            },
+            lualine_c = {
+              {
+                "filename",
+                file_status = true, -- displays file status (readonly status, modified status)
+                path = 0, -- 0 = just filename, 1 = relative path, 2 = absolute path
+              },
+            },
+
+            lualine_x = {
+              -- "require'lsp-status'.status()",
+              -- "encoding",
+              "require('harpoon.mark').status()",
+              "filetype",
+            },
+          },
+        }
       end,
     },
 
@@ -282,6 +330,7 @@ require("lazy").setup {
     { "leoluz/nvim-dap-go", dependencies = { "mfussenegger/nvim-dap" } },
     {
       "mfussenegger/nvim-jdtls",
+      ft = "java",
       dependencies = { "mfussenegger/nvim-dap" },
       config = function()
         local bundles = {
@@ -313,24 +362,27 @@ require("lazy").setup {
       },
       config = function()
         local treesitter = require "nvim-treesitter.configs"
+        ---@diagnostic disable-next-line: missing-fields
         treesitter.setup {
           auto_install = false,
           ignore_install = {},
           sync_install = false,
           ensure_installed = {
             "bash",
-            -- "blade",
             "c",
             "cmake",
             "comment",
             "cpp",
             "dockerfile",
             "elixir",
+            "eex",
+            "heex",
+            "embedded_template",
             "git_config",
             "git_rebase",
+            "gitattributes",
             "gitcommit",
             "gitignore",
-            "gitattributes",
             "go",
             "gomod",
             "gosum",
@@ -356,7 +408,7 @@ require("lazy").setup {
             "vim",
             "vimdoc",
             "yaml",
-            "embedded_template",
+            -- "blade",
             -- "jsonc",
           },
           indent = {
@@ -368,18 +420,6 @@ require("lazy").setup {
           playgroud = {
             enable = true,
           },
-          -- rainbow = {
-          --   enable = true,
-          --   extended_mode = true,
-          -- },
-          -- refactor = {
-          --   highlight_definitions = {
-          --     enable = true,
-          --     -- Set to false if you have an `updatetime` of ~100.
-          --     clear_on_cursor_move = false,
-          --   },
-          -- },
-
           textobjects = {
             select = {
               enable = true,
