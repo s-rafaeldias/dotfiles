@@ -65,14 +65,6 @@ vim.g.loaded_ruby_provider = 0
 vim.g.loaded_perl_provider = 0
 vim.g.vim_json_conceal = 0
 
--- Execute current (lua) line and visual selection
-vim.keymap.set("n", "<Leader>x", "<cmd>.lua<cr>")
-vim.keymap.set("v", "<Leader>x", ":lua<cr>")
-
-vim.keymap.set("n", "<Leader>e", "<Cmd>Ex!<CR>")
-vim.keymap.set("t", "<Esc>", "<C-\\><C-n>")
-vim.keymap.set("v", "<Leader>y", '"+y')
-
 -- Make numbered jump add to jumplist
 -- Ref: https://vi.stackexchange.com/a/7697
 vim.cmd [[
@@ -86,6 +78,33 @@ vim.g.user_emmet_leader_key = "<C-Z>"
 -- vim.cmd [[ colorscheme tokyonight ]]
 -- vim.cmd [[ colorscheme catppuccin-macchiato ]]
 -- vim.cmd [[ colorscheme kiss ]]
+-- }}}
+
+-- {{{ Keymaps
+-- Execute current (lua) line and visual selection
+vim.keymap.set("n", "<Leader>x", "<cmd>.lua<cr>")
+vim.keymap.set("v", "<Leader>x", ":lua<cr>")
+
+vim.keymap.set("n", "<Leader>e", "<Cmd>Ex!<CR>")
+vim.keymap.set("t", "<Esc>", "<C-\\><C-n>")
+vim.keymap.set("v", "<Leader>y", '"+y')
+vim.keymap.set("n", "<leader>q", function()
+  local qf_exists = false
+
+  for _, win in pairs(vim.fn.getwininfo()) do
+    if win["quickfix"] == 1 then
+      qf_exists = true
+    end
+  end
+
+  if qf_exists then
+    vim.cmd "cclose"
+  elseif not vim.tbl_isempty(vim.fn.getqflist()) then
+    vim.cmd "copen"
+  else
+    vim.notify "Quickfix list empty"
+  end
+end)
 -- }}}
 
 -- {{{ autocmd's
@@ -199,7 +218,7 @@ require("lazy").setup {
 
             lualine_x = {
               -- "require'lsp-status'.status()",
-              -- "encoding",
+              "encoding",
               "require('harpoon.mark').status()",
               "filetype",
             },
@@ -300,7 +319,7 @@ require("lazy").setup {
         for _, lsp in ipairs(lsp_servers) do
           local base_config = {
             on_attach = custom_attach,
-            -- capabilities = require("cmp_nvim_lsp").default_capabilities(),
+            capabilities = require("cmp_nvim_lsp").default_capabilities(),
           }
 
           if lsp == "intelephense" then
@@ -512,6 +531,9 @@ require("lazy").setup {
           },
           pickers = {
             diagnostics = { theme = "ivy" },
+            buffers = { theme = "ivy" },
+            live_grep = { theme = "ivy" },
+            git_files = { theme = "ivy" },
           },
         }
 
