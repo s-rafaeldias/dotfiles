@@ -534,6 +534,7 @@ require("lazy").setup {
             buffers = { theme = "ivy" },
             live_grep = { theme = "ivy" },
             git_files = { theme = "ivy" },
+            lsp_document_symbols = { theme = "ivy" },
           },
         }
 
