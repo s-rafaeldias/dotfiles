@@ -548,6 +548,7 @@ require("lazy").setup {
         vim.keymap.set("n", "<C-F>", "<Cmd>lua require'telescope.builtin'.live_grep { hidden=true }<CR>")
         vim.keymap.set("n", "<C-B>", "<Cmd>lua require'telescope.builtin'.buffers{}<CR>")
         vim.keymap.set("n", "<leader>?", "<Cmd>lua require'telescope.builtin'.diagnostics{}<CR>")
+        vim.keymap.set("n", "<Leader>gl", "<Cmd>lua require('telescope.builtin').git_branches()<CR>")
         -- vim.keymap.set({ "n", "x" }, "<leader>rf", function()
         --   require("telescope").extensions.refactoring.refactors()
         -- end)
