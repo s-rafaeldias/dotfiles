@@ -296,6 +296,7 @@ require("lazy").setup {
           -- "terraformls",
           -- "pylsp",
           -- "rust_analyzer",
+          "pylsp",
           "lua_ls",
           -- "sumneko_lua",
           "marksman",
@@ -324,7 +325,49 @@ require("lazy").setup {
             capabilities = require("blink.cmp").get_lsp_capabilities(),
           }
 
-          if lsp == "intelephense" then
+          if lsp == "pylsp" then
+            local python_config = vim.deepcopy(base_config)
+            python_config.settings = {
+              plsp = {
+                plugins = {
+                  black = {
+                    enabled = true,
+                  },
+                  mypy = {
+                    enabled = true,
+                  },
+                  isort = {
+                    enabled = true,
+                  },
+                  pycodestyle = {
+                    ignore = { "E501" },
+                    maxLineLength = 80,
+                  },
+                  flake8 = {
+                    enabled = false,
+                  },
+                  ruff = {
+                    enabled = true,
+                    lineLength = 80,
+                  },
+                  autopep = {
+                    enabled = false,
+                  },
+                  rope_autoimport = {
+                    enabled = false,
+                  },
+                  pyflakes = {
+                    enabled = false,
+                  },
+                  mccabe = {
+                    enabled = false,
+                  },
+                },
+              },
+            }
+
+            base_config = python_config
+          elseif lsp == "intelephense" then
             local php_config = vim.deepcopy(base_config)
             php_config.filetypes = {
               "php",
