@@ -274,6 +274,8 @@ require("lazy").setup {
     {
       "neovim/nvim-lspconfig",
       dependencies = {
+        "saghen/blink.cmp",
+
         {
           "folke/lazydev.nvim",
           ft = "lua", -- only load on lua files
@@ -319,7 +321,7 @@ require("lazy").setup {
         for _, lsp in ipairs(lsp_servers) do
           local base_config = {
             on_attach = custom_attach,
-            capabilities = require("cmp_nvim_lsp").default_capabilities(),
+            capabilities = require("blink.cmp").get_lsp_capabilities(),
           }
 
           if lsp == "intelephense" then
@@ -556,98 +558,130 @@ require("lazy").setup {
     },
     -- }}}
 
-    -- {{{ cmp
+    -- -- {{{ cmp
+    -- {
+    --   "hrsh7th/nvim-cmp",
+    --   dependencies = {
+    --     { "hrsh7th/cmp-nvim-lsp" },
+    --     { "hrsh7th/cmp-path" },
+    --   },
+    --   config = function()
+    --     local cmp = require "cmp"
+    --
+    --     local t = function(str)
+    --       return vim.api.nvim_replace_termcodes(str, true, true, true)
+    --     end
+    --
+    --     cmp.setup {
+    --       completion = {
+    --         -- keyword_length = 3,
+    --         autocomplete = false,
+    --       },
+    --
+    --       preselect = cmp.PreselectMode.None,
+    --
+    --       -- snippet = {
+    --       --   expand = function(args)
+    --       --     require("luasnip").lsp_expand(args.body)
+    --       --   end,
+    --       -- },
+    --
+    --       mapping = {
+    --         ["<C-q>"] = cmp.mapping.close(),
+    --         ["<C-y>"] = cmp.mapping.confirm { select = true },
+    --         ["<C-n>"] = cmp.mapping {
+    --           c = function()
+    --             if cmp.visible() then
+    --               cmp.select_next_item { behavior = cmp.SelectBehavior.Select }
+    --             else
+    --               vim.api.nvim_feedkeys(t "<Down>", "n", true)
+    --             end
+    --           end,
+    --           i = function()
+    --             if cmp.visible() then
+    --               cmp.select_next_item { behavior = cmp.SelectBehavior.Select }
+    --             else
+    --               -- Trigger completion manually only! https://github.com/hrsh7th/nvim-cmp/issues/178
+    --               cmp.complete()
+    --             end
+    --           end,
+    --         },
+    --         ["<C-p>"] = cmp.mapping {
+    --           c = function()
+    --             if cmp.visible() then
+    --               cmp.select_prev_item { behavior = cmp.SelectBehavior.Select }
+    --             else
+    --               vim.api.nvim_feedkeys(t "<Up>", "n", true)
+    --             end
+    --           end,
+    --           i = function()
+    --             if cmp.visible() then
+    --               cmp.select_prev_item { behavior = cmp.SelectBehavior.Select }
+    --             else
+    --               cmp.complete()
+    --             end
+    --           end,
+    --         },
+    --       },
+    --
+    --       formatting = {
+    --         format = function(entry, vim_item)
+    --           vim_item.menu = ({
+    --             nvim_lsp = "[LSP]",
+    --             buffer = "[Buf]",
+    --             nvim_lua = "[NVIM_LUA]",
+    --             path = "[Path]",
+    --             luasnip = "[Snip]",
+    --             nvim_lsp_signature_help = "🐍",
+    --           })[entry.source.name]
+    --
+    --           return vim_item
+    --         end,
+    --       },
+    --
+    --       sources = {
+    --         -- { name = "nvim_lsp_signature_help" },
+    --         { name = "nvim_lsp" },
+    --         -- { name = "luasnip" },
+    --         -- { name = "nvim_lua" },
+    --         { name = "path" },
+    --         -- { name = "buffer" },
+    --         -- { name = "cmp_git" },
+    --       },
+    --     }
+    --   end,
+    -- },
+    -- -- }}}
+
+    -- {{{ blink.nvim
     {
-      "hrsh7th/nvim-cmp",
-      dependencies = {
-        { "hrsh7th/cmp-nvim-lsp" },
-        { "hrsh7th/cmp-path" },
+      "saghen/blink.cmp",
+      -- optional: provides snippets for the snippet source
+      -- dependencies = 'rafamadriz/friendly-snippets',
+      -- use a release tag to download pre-built binaries
+      version = "v0.*",
+      opts = {
+        keymap = { preset = "default" },
+
+        appearance = {
+          nerd_font_variant = "mono",
+        },
+
+        sources = {
+          ---@diagnostic disable-next-line: unused-local
+          defaults = function(ctx)
+            local has_lsp_attached = vim.lsp.get_clients { bufnr = vim.api.nvim_get_current_buf() }
+            if has_lsp_attached then
+              return { "lsp", "path", "snippets" }
+            else
+              return { "lsp", "path", "snippets", "buffer" }
+            end
+          end,
+        },
+
+        -- experimental signature help support
+        signature = { enabled = true },
       },
-      config = function()
-        local cmp = require "cmp"
-
-        local t = function(str)
-          return vim.api.nvim_replace_termcodes(str, true, true, true)
-        end
-
-        cmp.setup {
-          completion = {
-            -- keyword_length = 3,
-            autocomplete = false,
-          },
-
-          preselect = cmp.PreselectMode.None,
-
-          -- snippet = {
-          --   expand = function(args)
-          --     require("luasnip").lsp_expand(args.body)
-          --   end,
-          -- },
-
-          mapping = {
-            ["<C-q>"] = cmp.mapping.close(),
-            ["<C-y>"] = cmp.mapping.confirm { select = true },
-            ["<C-n>"] = cmp.mapping {
-              c = function()
-                if cmp.visible() then
-                  cmp.select_next_item { behavior = cmp.SelectBehavior.Select }
-                else
-                  vim.api.nvim_feedkeys(t "<Down>", "n", true)
-                end
-              end,
-              i = function()
-                if cmp.visible() then
-                  cmp.select_next_item { behavior = cmp.SelectBehavior.Select }
-                else
-                  -- Trigger completion manually only! https://github.com/hrsh7th/nvim-cmp/issues/178
-                  cmp.complete()
-                end
-              end,
-            },
-            ["<C-p>"] = cmp.mapping {
-              c = function()
-                if cmp.visible() then
-                  cmp.select_prev_item { behavior = cmp.SelectBehavior.Select }
-                else
-                  vim.api.nvim_feedkeys(t "<Up>", "n", true)
-                end
-              end,
-              i = function()
-                if cmp.visible() then
-                  cmp.select_prev_item { behavior = cmp.SelectBehavior.Select }
-                else
-                  cmp.complete()
-                end
-              end,
-            },
-          },
-
-          formatting = {
-            format = function(entry, vim_item)
-              vim_item.menu = ({
-                nvim_lsp = "[LSP]",
-                buffer = "[Buf]",
-                nvim_lua = "[NVIM_LUA]",
-                path = "[Path]",
-                luasnip = "[Snip]",
-                nvim_lsp_signature_help = "🐍",
-              })[entry.source.name]
-
-              return vim_item
-            end,
-          },
-
-          sources = {
-            -- { name = "nvim_lsp_signature_help" },
-            { name = "nvim_lsp" },
-            -- { name = "luasnip" },
-            -- { name = "nvim_lua" },
-            { name = "path" },
-            -- { name = "buffer" },
-            -- { name = "cmp_git" },
-          },
-        }
-      end,
     },
     -- }}}
 
