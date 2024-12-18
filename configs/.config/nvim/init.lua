@@ -668,6 +668,7 @@ require("lazy").setup {
         },
 
         sources = {
+          min_keyword_length = 3,
           ---@diagnostic disable-next-line: unused-local
           defaults = function(ctx)
             local has_lsp_attached = vim.lsp.get_clients { bufnr = vim.api.nvim_get_current_buf() }
