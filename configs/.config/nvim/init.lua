@@ -148,9 +148,10 @@ local custom_attach = function(client, bufnr)
 
   vim.keymap.set("n", "K", "<Cmd>lua vim.lsp.buf.hover()<CR>")
   vim.keymap.set("n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>")
-  vim.keymap.set("n", "gD", "", { callback = definition_split, noremap = true })
+  vim.keymap.set("n", "gD", definition_split)
   vim.keymap.set("n", "gr", "<Cmd>lua vim.lsp.buf.references()<CR>")
   vim.keymap.set("n", "gs", "<Cmd>lua require'telescope.builtin'.lsp_document_symbols{}<CR>")
+  vim.keymap.set("n", "<Leader>cl", "<Cmd>lua vim.lsp.codelens.run()<CR>")
   vim.keymap.set("n", "<Leader>rr", "<Cmd>lua vim.lsp.buf.rename()<CR>")
   vim.keymap.set("n", "<Leader>ca", "<Cmd>lua vim.lsp.buf.code_action()<CR>")
   vim.keymap.set("v", "<Leader>ca", "<Cmd>lua vim.lsp.buf.code_action()<CR>")
@@ -228,7 +229,13 @@ require("lazy").setup {
     },
 
     { "tpope/vim-speeddating" },
-    { "tpope/vim-projectionist" },
+    {
+      "tpope/vim-projectionist",
+      config = function()
+        vim.keymap.set("n", "<leader>s", "<Cmd>A")
+        vim.keymap.set("n", "<leader>S", "<Cmd>AS")
+      end,
+    },
     { "mattn/emmet-vim" },
     {
       "tpope/vim-fugitive",
@@ -293,26 +300,13 @@ require("lazy").setup {
           "clangd",
           "jsonls",
           "gopls",
-          -- "terraformls",
-          -- "pylsp",
-          -- "rust_analyzer",
           "pylsp",
           "lua_ls",
-          -- "sumneko_lua",
           "marksman",
-          -- "powershell_es",
           "bashls",
-          -- "metals",
-          -- "zls",
-          -- "ocamllsp",
           "ts_ls",
           "volar",
-          -- "prismals",
-          -- "elmls",
           "tailwindcss",
-          -- "astro",
-          -- "ruff_lsp",
-          -- "gdscript",
           -- "intelephense",
           -- "ruby_lsp",
           -- "htmx",
@@ -713,7 +707,7 @@ require("lazy").setup {
         sources = {
           min_keyword_length = 3,
           ---@diagnostic disable-next-line: unused-local
-          defaults = function(ctx)
+          default = function(ctx)
             local has_lsp_attached = vim.lsp.get_clients { bufnr = vim.api.nvim_get_current_buf() }
             if has_lsp_attached then
               return { "lsp", "path", "snippets" }
@@ -758,6 +752,3 @@ require("lazy").setup {
     -- }}}
   },
 }
-
--- {{{ Java stuff
--- }}}
