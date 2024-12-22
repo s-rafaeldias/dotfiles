@@ -16,7 +16,7 @@ brew "zk"
 # brew "koekeishiya/formulae/skhd"
 # brew "koekeishiya/formulae/yabai", args: ["HEAD"]
 
-brew "neovim", args: ["HEAD"], greedy: true
+# brew "neovim", args: ["HEAD"], greedy: true
 # Deps for building neovim
 brew "ninja"
 brew "libtool"

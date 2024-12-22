@@ -232,8 +232,8 @@ require("lazy").setup {
     {
       "tpope/vim-projectionist",
       config = function()
-        vim.keymap.set("n", "<leader>s", "<Cmd>A")
-        vim.keymap.set("n", "<leader>S", "<Cmd>AS")
+        vim.keymap.set("n", "<leader>s", "<Cmd>A<CR>")
+        vim.keymap.set("n", "<leader>S", "<Cmd>AS<CR>")
       end,
     },
     { "mattn/emmet-vim" },
