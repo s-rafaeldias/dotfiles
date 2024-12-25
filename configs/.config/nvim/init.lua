@@ -85,7 +85,7 @@ vim.g.user_emmet_leader_key = "<C-Z>"
 vim.keymap.set("n", "<Leader>x", "<cmd>.lua<cr>")
 vim.keymap.set("v", "<Leader>x", ":lua<cr>")
 
-vim.keymap.set("n", "<Leader>e", "<Cmd>Ex!<CR>")
+-- vim.keymap.set("n", "<Leader>e", "<Cmd>Ex!<CR>")
 vim.keymap.set("t", "<Esc>", "<C-\\><C-n>")
 vim.keymap.set("v", "<Leader>y", '"+y')
 vim.keymap.set("n", "<leader>q", function()
@@ -237,6 +237,19 @@ require("lazy").setup {
       end,
     },
     { "mattn/emmet-vim" },
+    {
+      "stevearc/oil.nvim",
+      dependencies = { { "echasnovski/mini.icons", opts = {} } },
+      config = function()
+        local oil = require "oil"
+        oil.setup {
+          view_options = {
+            show_hidden = true,
+          },
+        }
+        vim.keymap.set("n", "<leader>e", oil.toggle_float)
+      end,
+    },
     {
       "tpope/vim-fugitive",
       config = function()
