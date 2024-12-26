@@ -719,6 +719,7 @@ require("lazy").setup {
         sources = {
           min_keyword_length = 3,
           default = { "lsp", "path", "snippets", "buffer" },
+          cmdline = {},
         },
 
         -- experimental signature help support
