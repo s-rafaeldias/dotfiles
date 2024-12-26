@@ -503,7 +503,6 @@ require("lazy").setup {
             move = {
               enable = true,
               set_jumps = true,
-              -- TODO: test this
               goto_next_start = {
                 ["]f"] = "@function.outer",
                 ["]c"] = "@class.outer",
@@ -719,15 +718,7 @@ require("lazy").setup {
 
         sources = {
           min_keyword_length = 3,
-          ---@diagnostic disable-next-line: unused-local
-          default = function(ctx)
-            local has_lsp_attached = vim.lsp.get_clients { bufnr = vim.api.nvim_get_current_buf() }
-            if has_lsp_attached then
-              return { "lsp", "path", "snippets" }
-            else
-              return { "lsp", "path", "snippets", "buffer" }
-            end
-          end,
+          default = { "lsp", "path", "snippets", "buffer" },
         },
 
         -- experimental signature help support
