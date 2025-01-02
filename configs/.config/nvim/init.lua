@@ -722,6 +722,11 @@ require("lazy").setup {
           cmdline = {},
         },
 
+        completion = {
+          menu = {
+            draw = { columns = { { "label", "label_description", gap = 1 }, { "kind" } } },
+          },
+        },
         -- experimental signature help support
         signature = { enabled = true },
       },
