@@ -15,7 +15,7 @@ defaults:
     open: true
     width: 60
 repoPaths:
-  dlvhdr/*: ~/code/repos/*       # will match dlvhdr/repo-name to ~/code/repos/repo-name
+  dlvhdr/*: ~/code/*       # will match dlvhdr/repo-name to ~/code/repos/repo-name
   dlvhdr/gh-dash: ~/code/gh-dash # will not match wildcard and map to specified path
 keybindings: # optional
 pager:

@@ -1,8 +1,8 @@
 font-family = JetBrainsMono Nerd Font
 font-size = 14.5
-font-feature = -liga
-font-feature = -calt
-font-feature = -dlig
+# font-feature = -liga
+# font-feature = -calt
+# font-feature = -dlig
 
 theme = iTerm2 Default
 

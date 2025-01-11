@@ -12,7 +12,6 @@ tap "koekeishiya/formulae"
 tap "universal-ctags/universal-ctags"
 tap "xwmx/taps"
 brew "gcc"
-brew "zk"
 # brew "koekeishiya/formulae/skhd"
 # brew "koekeishiya/formulae/yabai", args: ["HEAD"]
 
@@ -37,10 +36,6 @@ brew "ack"
 brew "fd"
 brew "fzf"
 brew "ripgrep"
-# task
-brew "task"
-brew "taskd"
-brew "tasksh"
 
 # git stuff
 brew "gh"
@@ -50,7 +45,6 @@ brew "git-secret"
 
 # Tmux
 brew "tmux"
-# TODO: do I need this?
 brew "tmuxinator"
 
 # Utils
@@ -70,7 +64,6 @@ brew "imagemagick"
 brew "pandoc"
 # GNU awk
 brew "gawk"
-brew "nnn"
 
 brew "pipx"
 brew "node"

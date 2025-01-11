@@ -320,6 +320,7 @@ require("lazy").setup {
           "ts_ls",
           "volar",
           "tailwindcss",
+          "docker_compose_language_service",
           -- "intelephense",
           -- "ruby_lsp",
           -- "htmx",
@@ -717,14 +718,14 @@ require("lazy").setup {
         },
 
         sources = {
-          min_keyword_length = 3,
+          -- min_keyword_length = 3,
           default = { "lsp", "path", "snippets", "buffer" },
           cmdline = {},
         },
 
         completion = {
           menu = {
-            draw = { columns = { { "label", "label_description", gap = 1 }, { "kind" } } },
+            draw = { columns = { { "label", "label_description", gap = 1 }, { "kind", gap = 1 } } },
           },
         },
         -- experimental signature help support
