@@ -51,4 +51,4 @@ export PHP_INI_SCAN_DIR="$HOME/.config/herd-lite/bin:$PHP_INI_SCAN_DIR"
 
 export PAGER=/usr/bin/less
 export EDITOR='nvim'
-. "$HOME/.cargo/env"
+source "$HOME/.cargo/env"
