@@ -725,7 +725,10 @@ require("lazy").setup {
 
         completion = {
           menu = {
-            draw = { columns = { { "label", "label_description", gap = 1 }, { "kind", gap = 1 } } },
+            draw = {
+              columns = { { "label", "label_description", gap = 1 }, { "kind_icon", "kind" } },
+              treesitter = { "lsp" },
+            },
           },
         },
         -- experimental signature help support

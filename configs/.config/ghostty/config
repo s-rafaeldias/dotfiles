@@ -2,13 +2,13 @@ font-family = "JetBrainsMono Nerd Font"
 font-style = Regular
 font-size = 13.4
 font-thicken = true
-bold-is-bright = true
+#bold-is-bright = true
 
 term = xterm-256color
 
 font-feature = -liga
 font-feature = -calt
-font-feature = -dlig
+#font-feature = -dlig
 
 window-padding-color = background
 
