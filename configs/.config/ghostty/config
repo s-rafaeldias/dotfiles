@@ -1,8 +1,7 @@
 font-family = "JetBrainsMono Nerd Font"
 font-style = Regular
-font-size = 13.4
+font-size = 13.5
 font-thicken = true
-#bold-is-bright = true
 
 term = xterm-256color
 

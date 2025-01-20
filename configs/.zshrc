@@ -137,14 +137,12 @@ alias t='tmuxinator start home'
 alias d='tmuxinator start dotfiles'
 
 # Git alias
-alias gb='git branch'
+alias ga='git add -A -p'
+alias gc='git commit'
 alias gst='git status'
-alias gco='git checkout -b'
-alias gsb='git switch'
-alias gcm='git checkout main'
 alias gp='git pull'
 alias gps='git push'
-alias grm='git rebase --interactive main'
+alias grb='git rebase --interactive main'
 
 # alias ca='conda activate $(basename $(pwd))'
 alias np='rds-setup-python-env'
