@@ -245,6 +245,10 @@ require("lazy").setup {
         oil.setup {
           view_options = {
             show_hidden = true,
+            float = {
+              max_width = 0.4,
+              max_height = 0.4,
+            },
           },
         }
         vim.keymap.set("n", "<leader>e", oil.toggle_float)
