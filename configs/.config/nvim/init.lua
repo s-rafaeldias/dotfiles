@@ -714,23 +714,32 @@ require("lazy").setup {
       -- dependencies = 'rafamadriz/friendly-snippets',
       -- use a release tag to download pre-built binaries
       version = "v0.*",
+      ---@module 'blink.cmp'
+      ---@type blink.cmp.Config
       opts = {
         keymap = { preset = "default" },
 
         appearance = {
+          use_nvim_cmp_as_default = true,
           nerd_font_variant = "mono",
         },
+
+        cmdline = { enabled = false },
 
         sources = {
           -- min_keyword_length = 3,
           default = { "lsp", "path", "snippets", "buffer" },
-          cmdline = {},
         },
 
         completion = {
+          documentation = {
+            auto_show = true,
+            auto_show_delay_ms = 500,
+          },
+
           menu = {
             draw = {
-              columns = { { "label", "label_description", gap = 1 }, { "kind_icon", "kind" } },
+              -- columns = { { "label", "label_description", gap = 1 }, { "kind_icon", "kind", gap = 1 } },
               treesitter = { "lsp" },
             },
           },
