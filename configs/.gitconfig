@@ -3,17 +3,16 @@
     email = s.rafaeldias@protonmail.com
     signingkey = s.rafaeldias@protonmail.com
 
+[commit]
+    gpgsign = true
+    template = ~/.gitmessage
+
 [core]
     editor = nvim
     excludesfile = ~/.gitignore
 
 [url "git@github.com:"]
     insteadOf = "https://github.com/"
-    ; pushInsteadOf = "https://github.com/"
-
-[commit]
-    gpgsign = true
-    template = ~/.gitmessage
 
 [init]
     defaultbranch = main
@@ -39,6 +38,7 @@
 
 [rerere]
     enabled = true
+    autoUpdate = true
 
 [gpg]
     program = gpg
@@ -51,15 +51,27 @@
     date = iso
 
 [alias]
-    recent = branch --sort=-committerdate --format='%(committerdate:relative)%09%(refname:short)'
-    pl = pull
-    ps = push
+    pushf = push --force-with-lease
+    p = push
+    pu = pull
     s = status
+    f = fetch
+
+    d = diff
+    dw = diff --word-diff
+
+    recent = branch --sort=-committerdate --format='%(committerdate:relative)%09%(refname:short)'
     new = log main..HEAD
     missing = log HEAD..main
 
 [filter "lfs"]
-	process = git-lfs filter-process
-	required = true
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+
+[maintenance]
+    repo = ~/.dotfiles
+
+[includeIf "gitdir:~/work/"]
+    path = ~/.gitconfig-work
