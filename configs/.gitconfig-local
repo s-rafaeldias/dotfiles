@@ -1,0 +1,12 @@
+# vim: ft=gitconfig
+[user]
+    name = Rafael Dias Silveira
+    email = s.rafaeldias@protonmail.com
+    signingkey = s.rafaeldias@protonmail.com
+
+[commit]
+    gpgsign = true
+    template = ~/.gitmessage
+
+[url "git@github.com:"]
+    insteadOf = "https://github.com/"

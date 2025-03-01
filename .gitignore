@@ -3,3 +3,4 @@ packer_compiled.lua
 Brewfile.lock.json
 Brewfile_new
 tmp/
+lazy-lock.json
