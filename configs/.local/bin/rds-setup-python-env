@@ -29,4 +29,5 @@ echo "Installing basic dev tools..."
     pylsp-mypy \
     pylsp-rope \
     ruff-lsp \
-    pyls-isort
+    pyls-isort \
+    debugpy

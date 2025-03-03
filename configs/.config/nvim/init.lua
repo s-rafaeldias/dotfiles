@@ -400,10 +400,97 @@ require("lazy").setup {
       end,
     },
 
-    { "mfussenegger/nvim-dap" },
-    { "rcarriga/nvim-dap-ui", dependencies = { "mfussenegger/nvim-dap" } },
-    { "mfussenegger/nvim-dap-python", dependencies = { "mfussenegger/nvim-dap" } },
-    { "leoluz/nvim-dap-go", dependencies = { "mfussenegger/nvim-dap" } },
+    {
+      "mfussenegger/nvim-dap",
+      config = function()
+        local dap = require "dap"
+        vim.fn.sign_define("DapBreakpoint", { text = "🛑", texthl = "", linehl = "", numhl = "" })
+
+        vim.keymap.set("n", "<Leader>dd", function()
+          dap.continue()
+        end)
+        vim.keymap.set("n", "<Leader>db", function()
+          dap.toggle_breakpoint()
+        end)
+        vim.keymap.set("n", "<Leader>dn", function()
+          dap.step_over()
+        end)
+        vim.keymap.set("n", "<Leader>dp", function()
+          dap.step_back()
+        end)
+        vim.keymap.set("n", "<Leader>di", function()
+          dap.step_into()
+        end)
+        vim.keymap.set("n", "<Leader>do", function()
+          dap.step_out()
+        end)
+
+        vim.keymap.set("n", "<Leader>dr", function()
+          dap.repl.open()
+        end)
+        vim.keymap.set("n", "<Leader>dc", function()
+          dap.run_to_cursor()
+        end)
+      end,
+    },
+    {
+      "rcarriga/nvim-dap-ui",
+      dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
+      config = function()
+        local dapui = require "dapui"
+        local dap = require "dap"
+
+        dapui.setup {
+          layouts = {
+            {
+              elements = {
+                -- Elements can be strings or table with id and size keys.
+                { id = "scopes", size = 0.25 },
+                "breakpoints",
+                "stacks",
+                "watches",
+              },
+              size = 40,
+              position = "left",
+            },
+            {
+              elements = {
+                "console",
+              },
+              size = 10,
+              position = "bottom",
+            },
+          },
+        }
+
+        dap.listeners.after.event_initialized["dapui_config"] = function()
+          dapui.open {}
+        end
+        dap.listeners.before.event_terminated["dapui_config"] = function()
+          -- dapui.close()
+        end
+        dap.listeners.before.event_exited["dapui_config"] = function()
+          -- dapui.close()
+        end
+        vim.keymap.set("n", "<Leader>dq", function()
+          dapui.close {}
+        end)
+      end,
+    },
+    {
+      "mfussenegger/nvim-dap-python",
+      dependencies = { "mfussenegger/nvim-dap" },
+      ft = "python",
+      config = function()
+        local dap_python = require "dap-python"
+        dap_python.setup(vim.fs.normalize "~/.local/pipx/venvs/debugpy/bin/python")
+        dap_python.test_runner = "pytest"
+        vim.keymap.set("n", "<Leader>dt", function()
+          dap_python.test_method()
+        end)
+      end,
+    },
+    -- { "leoluz/nvim-dap-go", dependencies = { "mfussenegger/nvim-dap" } },
     {
       "mfussenegger/nvim-jdtls",
       ft = "java",
