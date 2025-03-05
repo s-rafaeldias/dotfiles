@@ -64,8 +64,8 @@
 [includeIf "gitdir:~/work/"]
     path = ~/.gitconfig-work
 
-[includeIf "gitdir:~/code"]
+[includeIf "gitdir:~/code/"]
     path = ~/.gitconfig-local
 
-[includeIf "gitdir:~/.dotfiles"]
+[includeIf "gitdir:~/.dotfiles/"]
     path = ~/.gitconfig-local

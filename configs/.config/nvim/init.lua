@@ -325,7 +325,7 @@ require("lazy").setup {
           "volar",
           "tailwindcss",
           "docker_compose_language_service",
-          -- "intelephense",
+          "intelephense",
           -- "ruby_lsp",
           -- "htmx",
         }
@@ -525,6 +525,22 @@ require("lazy").setup {
       },
       config = function()
         local treesitter = require "nvim-treesitter.configs"
+
+        local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
+        parser_config.blade = {
+          install_info = {
+            url = "https://github.com/EmranMR/tree-sitter-blade",
+            files = { "src/parser.c" },
+            branch = "main",
+          },
+          filetype = "blade",
+        }
+        vim.cmd [[
+  augroup BladeFiltypeRelated
+    au BufNewFile,BufRead *.blade.php set ft=blade
+  augroup END
+  ]]
+
         ---@diagnostic disable-next-line: missing-fields
         treesitter.setup {
           auto_install = false,
@@ -571,7 +587,7 @@ require("lazy").setup {
             "vim",
             "vimdoc",
             "yaml",
-            -- "blade",
+            "blade",
             -- "jsonc",
           },
           indent = {
