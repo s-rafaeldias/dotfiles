@@ -493,25 +493,25 @@ require("lazy").setup {
     -- { "leoluz/nvim-dap-go", dependencies = { "mfussenegger/nvim-dap" } },
     {
       "mfussenegger/nvim-jdtls",
-      ft = "java",
+      ft = { "java" },
       dependencies = { "mfussenegger/nvim-dap" },
-      config = function()
-        local bundles = {
-          "/Users/rafael/code/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-0.53.1.jar",
-        }
-        vim.list_extend(bundles, vim.split(vim.fn.glob("/Users/rafael/code/vscode-java-test/server/*.jar", true), "\n"))
-
-        local java_config = {
-          cmd = { "/Users/rafael/.local/bin/java-lsp/bin/jdtls" },
-          root_dir = vim.fs.dirname(vim.fs.find({ "gradlew", ".git", "mvnw" }, { upward = true })[1]),
-          on_attach = custom_attach,
-
-          init_options = {
-            bundles = bundles,
-          },
-        }
-        require("jdtls").start_or_attach(java_config)
-      end,
+      -- config = function()
+      -- local bundles = {
+      --   "/Users/rafael/code/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-0.53.1.jar",
+      -- }
+      -- vim.list_extend(bundles, vim.split(vim.fn.glob("/Users/rafael/code/vscode-java-test/server/*.jar", true), "\n"))
+      --
+      -- local java_config = {
+      --   cmd = { "/Users/rafael/.local/bin/java-lsp/bin/jdtls" },
+      --   root_dir = vim.fs.dirname(vim.fs.find({ "gradlew", ".git", "mvnw" }, { upward = true })[1]),
+      --   on_attach = custom_attach,
+      --
+      --   init_options = {
+      --     bundles = bundles,
+      --   },
+      -- }
+      -- require("jdtls").start_or_attach(java_config)
+      -- end,
     },
     -- }}}
 
