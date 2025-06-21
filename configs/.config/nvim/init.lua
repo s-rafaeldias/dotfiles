@@ -322,11 +322,12 @@ require("lazy").setup {
           "marksman",
           "bashls",
           "ts_ls",
-          "volar",
+          -- "vue_ls",
           "tailwindcss",
           "docker_compose_language_service",
           "intelephense",
-          -- "ruby_lsp",
+          "ruby_lsp",
+          "gdscript",
           -- "htmx",
         }
 
@@ -393,6 +394,23 @@ require("lazy").setup {
               linters = { "standard" },
             }
             base_config = ruby_config
+          elseif lsp == "ts_ls" then
+            local ts = vim.deepcopy(base_config)
+            ts.init_options = {
+              plugins = {
+                {
+                  name = "@vue/typescript-plugin",
+                  location = "/usr/local/lib/node_modules/@vue/typescript-plugin",
+                  languages = { "javascript", "typescript", "vue" },
+                },
+              },
+            }
+            ts.filetypes = {
+              "javascript",
+              "typescript",
+              "vue",
+            }
+            base_config = ts
           end
 
           lspconfig[lsp].setup(base_config)
@@ -835,6 +853,9 @@ require("lazy").setup {
         },
 
         completion = {
+          list = {
+            selection = { auto_insert = false, preselect = false },
+          },
           documentation = {
             auto_show = true,
             auto_show_delay_ms = 500,

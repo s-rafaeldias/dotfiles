@@ -190,7 +190,7 @@ hide_when_typing = true
 
 [window]
 dynamic_padding = true
-startup_mode = "Fullscreen"
+# startup_mode = "Fullscreen"
 
 [general]
 live_config_reload = true

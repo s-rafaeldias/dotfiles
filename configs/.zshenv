@@ -17,7 +17,6 @@ export ZSH_COMPDUMP="$ZSH/cache/.zcompdump-$HOST"
 export ZSH=$HOME/.oh-my-zsh
 export LC_ALL=en_US.UTF-8
 
-
 export GPG_TTY=$(tty)
 
 export CC=gcc
@@ -39,15 +38,11 @@ export PATH=$HOME/go/bin:$PATH
 export PATH=/usr/local/go/bin:$PATH
 export PATH=$HOME/.luarocks/bin:$PATH
 export PATH=$HOME/workspace/scripts:$PATH
-export PATH="$HOME/Library/Application Support/Coursier/bin:$PATH"
-export PATH="$HOME/.rbenv/bin:$PATH"
-export PATH="$HOME/.config/herd-lite/bin:$PATH"
+# export PATH="$HOME/.local/share/mise/shims:$PATH"
 # export PATH="/opt/homebrew/opt/openjdk@21/bin:$PATH"
 
 # export JAVA_HOME="/opt/homebrew/opt/openjdk@21/libexec/openjdk.jdk/Contents/Home"
 # export PATH="$JAVA_HOME/bin:$PATH"
-
-export PHP_INI_SCAN_DIR="$HOME/.config/herd-lite/bin:$PHP_INI_SCAN_DIR"
 
 export PAGER=/usr/bin/less
 export EDITOR='nvim'

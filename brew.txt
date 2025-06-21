@@ -24,7 +24,6 @@ cairo
 capstone
 certifi
 cheat
-chruby
 cli
 cmake
 colima
@@ -200,8 +199,6 @@ readline
 rebar3
 ripgrep
 rtmpdump
-ruby
-ruby-install
 rustywind
 sbt
 scala
@@ -264,7 +261,6 @@ cairo
 capstone
 certifi
 cheat
-chruby
 cmake
 colima
 coreutils
@@ -436,8 +432,6 @@ readline
 rebar3
 ripgrep
 rtmpdump
-ruby
-ruby-install
 sbt
 scala
 shared-mime-info
