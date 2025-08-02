@@ -116,7 +116,6 @@ bi() {
 }
 
 alias bu='brew upgrade'
-alias bv='rm -rf /Users/rafael/Library/Caches/Homebrew/neovim--git && brew uninstall neovim && brew install neovim --HEAD'
 
 alias inflate='ruby -r zlib -e "STDOUT.write Zlib::Inflate.inflate(STDIN.read)"'
 
