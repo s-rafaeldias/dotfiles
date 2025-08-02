@@ -314,7 +314,7 @@ require("lazy").setup {
       },
       config = function()
         local lsp_servers = {
-          "clangd",
+          -- "clangd",
           "jsonls",
           "gopls",
           "pylsp",

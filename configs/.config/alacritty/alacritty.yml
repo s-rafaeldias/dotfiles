@@ -19,7 +19,7 @@ font:
     y: 1
 
   normal:
-    family: JetBrainsMono Nerd Font
+    family: Google Sans Code
     style: Regular
 
 colors:

@@ -38,6 +38,8 @@ export PATH=$HOME/go/bin:$PATH
 export PATH=/usr/local/go/bin:$PATH
 export PATH=$HOME/.luarocks/bin:$PATH
 export PATH=$HOME/workspace/scripts:$PATH
+export PATH="/opt/homebrew/sbin:$PATH"
+export PATH="/opt/homebrew/opt/arm-none-eabi-gcc@8/bin:$PATH"
 # export PATH="$HOME/.local/share/mise/shims:$PATH"
 # export PATH="/opt/homebrew/opt/openjdk@21/bin:$PATH"
 

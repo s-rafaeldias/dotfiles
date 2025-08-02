@@ -1,45 +1,18 @@
-font-family = "JetBrainsMono Nerd Font"
+font-family = "Google Sans Code"
 font-style = Regular
 font-size = 13.5
 font-thicken = true
+adjust-cell-width = "-6%"
+
+mouse-hide-while-typing
 
 term = xterm-256color
 
 font-feature = -liga
 font-feature = -calt
-#font-feature = -dlig
+#font-feature = -dlasdfig
 
 window-padding-color = background
-
-keybind = ctrl+c=copy_to_clipboard
-keybind = ctrl+v=paste_from_clipboard
-
-keybind = cmd+a=text:\x01
-keybind = cmd+b=text:\x02
-keybind = cmd+c=text:\x03
-keybind = cmd+d=text:\x04
-keybind = cmd+e=text:\x05
-keybind = cmd+f=text:\x06
-keybind = cmd+g=text:\x07
-keybind = cmd+h=text:\x08
-keybind = cmd+i=text:\x09
-keybind = cmd+j=text:\x0a
-keybind = cmd+k=text:\x0b
-keybind = cmd+l=text:\x0c
-keybind = cmd+m=text:\x0d
-keybind = cmd+n=text:\x0e
-keybind = cmd+o=text:\x0f
-keybind = cmd+p=text:\x10
-keybind = cmd+q=text:\x11
-keybind = cmd+r=text:\x12
-keybind = cmd+s=text:\x13
-keybind = cmd+t=text:\x14
-keybind = cmd+u=text:\x15
-keybind = cmd+v=text:\x16
-keybind = cmd+w=text:\x17
-keybind = cmd+x=text:\x18
-keybind = cmd+y=text:\x19
-keybind = cmd+z=text:\x1a
 
 # Theme
 cursor-color = c7c7c7
