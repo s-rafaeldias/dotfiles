@@ -38,8 +38,15 @@
 [log]
     date = iso
 
+[merge]
+    tool = nvimdiff
+    conflictstyle = diff3
+
+[mergetool]
+    prompt = false
+
 [alias]
-    pushf = push --force-with-lease
+    pf = push --force-with-lease
     p = push
     pu = pull
     s = status
