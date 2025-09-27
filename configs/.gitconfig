@@ -46,11 +46,14 @@
     prompt = false
 
 [alias]
+    c = commit
+    a = add -A -p
     pf = push --force-with-lease
-    p = push
+    ps = push
     pu = pull
     s = status
     f = fetch
+    r = rebase --interactive main
 
     d = diff
     dw = diff --word-diff

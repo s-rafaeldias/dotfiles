@@ -133,14 +133,6 @@ alias tb='tmuxinator start basic'
 alias t='tmuxinator start home'
 alias d='tmuxinator start dotfiles'
 
-# Git alias
-alias ga='git add -A -p'
-alias gc='git commit'
-alias gst='git status'
-alias gp='git pull'
-alias gps='git push'
-alias grb='git rebase --interactive main'
-
 # alias ca='conda activate $(basename $(pwd))'
 alias np='rds-setup-python-env'
 alias python='python3'
@@ -149,11 +141,11 @@ alias p='python'
 alias pywatch='fswatch -o **/*.py | xargs -n1 -I {} make test'
 
 # TODO: create a fzf extension to create/clone .gitignore files
-alias pyig='wget https://raw.githubusercontent.com/github/gitignore/main/Python.gitignore -O .gitignore'
+alias pyignore='wget https://raw.githubusercontent.com/github/gitignore/main/Python.gitignore -O .gitignore'
 
 alias ports='lsof -iTCP -sTCP:LISTEN -P -n'
 
-alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
+alias ts="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
 # }}}
 
 # Functions {{{
