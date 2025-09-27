@@ -331,7 +331,7 @@ require("lazy").setup {
           -- "htmx",
         }
 
-        local lspconfig = require "lspconfig"
+        local lspconfig = vim.lsp.config
         for _, lsp in ipairs(lsp_servers) do
           local base_config = {
             on_attach = custom_attach,
@@ -413,7 +413,7 @@ require("lazy").setup {
             base_config = ts
           end
 
-          lspconfig[lsp].setup(base_config)
+          lspconfig[lsp] = base_config
         end
       end,
     },
