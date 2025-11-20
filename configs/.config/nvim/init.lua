@@ -413,7 +413,8 @@ require("lazy").setup {
             base_config = ts
           end
 
-          lspconfig[lsp] = base_config
+          vim.lsp.config(lsp, base_config)
+          vim.lsp.enable(lsp)
         end
       end,
     },
