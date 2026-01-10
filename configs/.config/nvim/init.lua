@@ -328,6 +328,8 @@ require("lazy").setup {
           "intelephense",
           "ruby_lsp",
           "gdscript",
+          "yamlls",
+          -- "kotlin_lsp",
           -- "htmx",
         }
 

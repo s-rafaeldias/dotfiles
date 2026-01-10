@@ -1,7 +1,7 @@
 font-family = "Google Sans Code"
 font-style = Regular
 font-size = 13.3
-font-thicken = true
+#font-thicken = true
 adjust-cell-width = "-6%"
 
 mouse-hide-while-typing

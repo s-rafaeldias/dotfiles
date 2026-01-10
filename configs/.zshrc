@@ -39,7 +39,10 @@ if type brew &>/dev/null; then
   FPATH=/usr/local/share/zsh/site-functions:$FPATH
 fi
 
-complete -C '/usr/local/bin/aws_completer' aws
+# complete -C '/usr/local/bin/aws_completer' aws
+
+eval "$(uv generate-shell-completion zsh)"
+# eval "$(uvx generate-shell-completion zsh)"
 
 setopt always_to_end
 setopt auto_pushd
@@ -142,6 +145,8 @@ alias pywatch='fswatch -o **/*.py | xargs -n1 -I {} make test'
 
 # TODO: create a fzf extension to create/clone .gitignore files
 alias pyignore='wget https://raw.githubusercontent.com/github/gitignore/main/Python.gitignore -O .gitignore'
+
+alias gst='git status'
 
 alias ports='lsof -iTCP -sTCP:LISTEN -P -n'
 
