@@ -43,6 +43,7 @@ fi
 
 eval "$(uv generate-shell-completion zsh)"
 # eval "$(uvx generate-shell-completion zsh)"
+[ -s "/Users/rafael/.bun/_bun" ] && source "/Users/rafael/.bun/_bun"
 
 setopt always_to_end
 setopt auto_pushd

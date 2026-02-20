@@ -22,6 +22,9 @@ export GPG_TTY=$(tty)
 export CC=gcc
 export CXX=g++
 
+export BUN_INSTALL="$HOME/.bun"
+export PHP_INI_SCAN_DIR="/Users/rafael/.config/herd-lite/bin:$PHP_INI_SCAN_DIR"
+
 export FUNCTIONS_CORE_TOOLS_TELEMETRY_OPTOUT=1
 
 # export DOCKER_BUILDKIT=0
@@ -40,6 +43,8 @@ export PATH=$HOME/.luarocks/bin:$PATH
 export PATH=$HOME/workspace/scripts:$PATH
 export PATH="/opt/homebrew/sbin:$PATH"
 export PATH="/opt/homebrew/opt/arm-none-eabi-gcc@8/bin:$PATH"
+export PATH="$BUN_INSTALL/bin:$PATH"
+export PATH="/Users/rafael/.config/herd-lite/bin:$PATH"
 # export PATH="$HOME/.local/share/mise/shims:$PATH"
 # export PATH="/opt/homebrew/opt/openjdk@21/bin:$PATH"
 
